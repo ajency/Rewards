@@ -1,0 +1,96 @@
+
+		<div class="row">
+
+			<div class="col-md-12 col-sm-12">	
+ 			<h2>Welcome to SKYi Rewards Program.</h2>
+ 			<p class="m-b-40">Refer your friends, family members, or other colleagues by providing us their name, phone no. and/or email. We will send them information about various SKYi projects. If any of them go on to make a purchase with us, you will get rewarded in proportion to the purchase value. We will not publish their information anywhere and not spam them either. That's a promise.<br>
+ 			We appreciate your time and effort in participating in this program.</p>	
+ 				
+
+					
+			</div>
+		</div> <form id="referral_form">
+		<h2 class="m-t-40">Add  <span class="text-success semi-bold">Referrals&nbsp;<span class="large-text normal">(People you know)</span></span></h2>
+		<!-- Login Section-->
+
+                                    <table id="referral_table" class="table no-more-tables" style="border-collapse:collapse " border='0' align='center'>
+                                        <thead>
+                                            <tr>
+                                                <th class="">Name</th>
+                                                <th class="">Email*</th>
+                                                <th class="">Contact No.*</th>
+                                                <th class="">City</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+
+<tbody>
+</tbody>
+</table>
+<i class="normal">* Either email or phone number must be provided.</i>
+
+		<div class="row m-t-10 p-t-30">  
+        <div class="col-md-4 ">
+   <h2>Your  <span class="text-success semi-bold">Details</span></h2>
+                      <div class="form-group">
+						<label class="form-label">Name</label>
+						<div class="input-with-icon  right">                                       
+							<i class=""></i>
+							<input type="text" required name="program_member_name" id="program_member_name" class="form-control">                                 
+						</div>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label">Contact No.</label>
+                        <span class="help">e.g. "9685741233"</span>
+						<div class="input-with-icon  right">                                       
+							<i class=""></i>
+							<input type="tel"  name="program_member_phone" id="program_member_phone" class="form-control">
+							<span style="display:none" id="programphone" class="field-validation-error" data-valmsg-for="UserName" data-valmsg-replace="true">
+         					<span for="UserName" generated="true" class="">Not a valid Contact No</span></span>
+         					<div class="error-msg-view"></div>
+						</div>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <span class="help">e.g. "xyz@yahoo.com"</span>
+						<div class="input-with-icon  right">                                       
+							<i class=""></i>
+							<input type="email" required  name="program_member_email" id="program_member_email" class="form-control">
+							                                 
+						</div>
+						
+                      </div>
+				 <!--<div class="checkbox check-success">
+                      <input id="customer" name="customer" type="checkbox" value="0">
+
+                      <label for="customer">Are you a Customer ?</label>
+                    </div>-->
+				
+		</div>
+      <div class="col-md-8 hidden-xs" ><img class="img-responsive" src="http://rewards.skyi.com/html/assets/img/program-member-referral.jpg"/></div>
+      	<div class="col-md-4 hidden-xs" >
+      		Program Member: One who is referring friends to SKYi. The program member, may or may not be our customer, and is eligible for rewards under this Rewards Program.
+      	</div>
+      	<div class="col-md-4 hidden-xs" >
+      		Referral: One who is getting referred to SKYi through a program member. The program member gets rewarded if the referral becomes a SKYi customer.
+      	</div>
+      
+      </div>
+	  
+
+<div class="form-actions">  
+					<div class="pull-right">
+						<input type="hidden" name="num_ref" id="num_ref" value=""/>
+						<input type="hidden" name="num_ref_deleted" id="num_ref_deleted" value=""/>
+						<div id="msg_text" class="hidden">Thank you for the referrals. You are now a Program Member on the SKYi Rewards Program. We will send you an email confirmation shortly. We'll write to you if any of your referrals make a purchase with us. And yes, we'll send you your gift too.</div>
+
+					  <button type="submit" id="referral_add" class="btn btn-success btn-cons"><i class="icon-ok"></i> Submit</button>
+					  <div class="pace pace-inactive pull-right">
+					  <div class="pace-activity"></div></div>
+					  <button type="reset" class="hidden">Reset</button>
+					  
+					</div>
+					</div>
+					</form>
+  </div>
+

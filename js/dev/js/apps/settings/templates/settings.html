@@ -1,0 +1,114 @@
+<div class="page-title">		
+	
+		<h3><span class="semi-bold">Settings</span></h3>	
+	</div>
+	<form id="SettingsForm">
+	<div class="row">
+    <div class="col-md-12">
+      <div class="grid simple">
+
+            <div class="grid-body no-border">
+			
+                           
+              <div class="form-group">
+              <h4 class="semi-bold m-b-20">Expiry Period</h4>
+              	<div class="row">
+    			<div class="col-md-6">
+              
+                <div class="row ">
+	            <div class="col-md-2">
+	            <h5 class="semi-bold">Months:  </h5>
+	            </div>
+	            <div class="col-md-10">
+			  <input type="text" name="expiry_date" required id="expiry_date"  class="form-control">
+			  </div></div>
+			  </div>
+    			<div class="col-md-6">
+			      <div class="grid simple">
+			        <div class="no-border">
+			        <div class="tiles grey added-margin  m-b-20">
+					    <div class="p-l-10 p-r-10 p-b-10 p-t-5">
+					    <h4 class="text-black">What is this? </h4>
+					    <div class=""> 
+							<span class="text-black">The validity of points for a Program Member.<br>
+							By default, a Program Member's points lapse after 6 months. You can change the setting here.<br>
+							<i>(Please enter a number. Expiry period is calculated in months)</i></span>
+						  </div>
+					  </div>			
+					</div>
+
+			        </div>
+			        </div>
+			        </div></div>
+              
+              </div>
+		
+        </div>
+      </div>
+    </div>		
+</div>
+
+     <div class="row">
+    <div class="col-md-12">
+      <div class="grid simple">
+
+            <div class="grid-body no-border">
+			
+                           
+              <div class="form-group">
+              <h4 class="semi-bold m-b-20">Reward Price Range</h4>
+			    <div class="row">
+    			<div class="col-md-6">
+					<div class="row form-row m-t-5">
+					 
+				    <div class="col-md-5">
+				    <input type="text" placeholder="Minimum % required" required class="form-control checkrange" id="min_per" name="min_per">
+				    </div>
+				    <div class="col-md-1">
+				    <h5 class="semi-bold">% </h5>
+				    </div>
+		            <div class="col-md-5">
+		            <input type="text" placeholder="Maximum % required" required class="form-control checkrange" id="max_per" name="max_per">
+		            </div>
+		            <div class="col-md-1">
+				   <h5 class="semi-bold">% </h5>
+				    </div>
+					</div>
+				</div>
+
+    			<div class="col-md-6">
+    						      <div class="grid simple">
+			        <div class="no-border">
+			        <div class="tiles grey added-margin  m-b-20">
+					    <div class="p-l-10 p-r-10 p-b-10 p-t-5">
+					    <h4 class="text-black">What is this? </h4>
+					    <div class=""> 
+							<span class="text-black">The price range for a reward that a Program Member is eligible for.<br>
+							By default, the min. and max. range is 0.05 - 0.07% of the value of the property that the referral has purchased. You can change the setting here.<br>
+							<i>(Please enter a number. System calculates the percentage)</i></span>
+						  </div>
+					  </div>			
+					</div>
+
+			        </div>
+			        </div>
+    			</div>
+
+              </div>
+              </div>
+		
+        </div>
+      </div>
+    </div>		
+    </div>
+
+<div class="row">
+<div class="col-md-6"> 
+<div class="pull-left">
+<button type="button" required id="save_settings" class="btn btn-success btn-cons"><i class="icon-ok"></i> Save</button>
+<button type="reset" class="hidden">Reset</button>
+</div>
+</div>
+<div class="col-md-6"></div>
+</div>
+</form>

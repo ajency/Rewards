@@ -1,0 +1,57 @@
+	
+		<div class="page-title">		
+		
+		<h3><span class="semi-bold">Users</span></h3>	
+	</div>
+	      <div class="row-fluid">
+        <div class="span12">
+          <div class="grid simple ">
+            <!--<div class="grid-title">
+              <h4>Users <span class="semi-bold"></span></h4>
+            
+            </div>-->
+            <div class="grid-body referral-table">
+			<!--<select id="remote" class="pull-left" style="width:80px;">
+                    <option value="0">All</option>
+					{{#roles}}
+					<option value="{{name}}">{{name}}</option>
+					{{/roles}}
+                  </select>-->
+			  <div class="m-b-10 pull-right">
+			  <button  class="btn btn-primary pull-right" style="margin-right:5px;" id="add-user" onclick="location.href='#users/add';" >Add Users</button>
+			</div>
+                <table class="table no-more-tables" id="user-list">
+                <thead>
+                    <tr>
+                        <th class="width25">Name</th>
+                        <th class="width25">Role</th>
+                        <th class="width25">Last Login</th>
+                        <th class="width25">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  
+       
+             
+                </tbody>
+              </table>
+			     <div id="myDiv" style="display:none;">
+					<div class="page-title">		
+						<i class="icon-custom-left" id="back-user-table"></i>
+						<h3><span class="semi-bold">Bulk Add</span></h3>	<br>
+						You can add all your user at one go
+					</div>
+					Your csv must be in the following format Email Address, Name, Telephone Number
+					<br><p class="text-success">eg: Micheal_sal@gmail.com, Micheal Saldana, 0456565555</p>
+					<div class="form-group">
+					
+					<input type="file" id="exampleInputFile" class="btn btn-primary">
+					<p class="help-block"> <a href="#">Sample CSV.</a></p>
+				  </div>
+				</div>
+            </div>
+          </div>
+        </div>
+		
+ 
+      </div>

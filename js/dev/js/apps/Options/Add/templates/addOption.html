@@ -1,0 +1,109 @@
+<div class="page-title"> 
+        <h3><span class="semi-bold showpac">Packages</span></h3>
+      </div>
+          <div class="pull-right actions m-b-30">
+          <button class="btn btn-primary btn-cons" type="button" id="add-product-option">Add Package</button>
+        </div>
+        <div class="clearfix"></div>
+	        <div id="" class="row">
+        <div class="col-md-12">
+          <div class="grid simple transparent" id="add-option-details" style="display:none">
+            <div class="no-border">
+              <h4 class="semi-bold">Add Package Details</h4>
+            </div>
+            <div class="p-t-10">
+              <form class="" id="add-new-option">
+                <div class="row form-row simple">
+
+                  <div class="col-md-8">
+                    <input type="text" placeholder="Title" required class="form-control" id="option_name" name="option_name">
+					 <div class="row form-row">
+					  <div class="col-md-12">
+						<textarea rows="5" class="form-control " id="option_desc" required name="option_desc" placeholder="Description"></textarea>
+					  </div>
+					</div>
+				
+					 <div class="row form-row m-t-5">
+					  
+					  <div class="col-md-6">
+
+            <div class="row ">
+            <div class="col-md-2">
+            <h5 class="semi-bold">Points:  </h5>
+            </div>
+            <div class="col-md-10">
+					  <input type="text" placeholder="Minimum Points required"  class="form-control checkrange price" id="min_opt" name="min_opt">
+					  </div></div>
+            </div>
+
+            <div class="col-md-6">
+             <div class="row ">
+            <div class="col-md-5">
+            <h5 class="semi-bold">Package Value: </h5>
+            </div>
+            <div class="col-md-7">
+            <h5 id="" class="semi-bold text-left"><i class="font18 fa fa-rupee"></i><span id="price_val"></span></h5>
+            </div></div>
+            </div>
+					
+					</div>
+
+
+            <div class="row m-b-10">
+            <div class="col-md-6">
+             <div class="row ">
+            <div class="col-md-4">
+            <h5 class="semi-bold">Price Range: </h5>
+            </div>
+            <div class="col-md-8">
+            <h5 class="semi-bold text-left"><i class="font18 fa fa-rupee"></i><span id="min_range">0</span> - <i class="font18 fa fa-rupee"></i><span id="max_range">0</span></h5>
+            </div></div>
+            </div>
+            <div class="col-md-6"></div>
+            </div>
+                <input type="hidden" name="archiveval" id="archiveval" value="0" />
+                <div class="checkbox check-success ">
+                    <input id="archive" name="archive" type="checkbox" value="0" >
+                     <label class="semi-bold" for="archive" style="padding-left:25px;margin-left: 0;"><b>Archive</b></label>
+                </div>
+          <div id="desc"></div>
+					  
+                  </div>
+
+
+                          <div class="col-md-4">
+                          <div class="thumbnail grid simple">
+              <div class="grid-title ">
+                <div class="row">
+                <div class="col-md-7">
+                <h4>Products </h4>
+                </div>
+                <div class="col-md-5">
+                   <h4>Price </h4>
+                </div></div>
+              </div>
+              <div class="grid-body product" id="product">
+                 
+                
+              </div>
+              </div>
+            </div>
+                </div>
+               
+                <div class="row form-row">
+                  <div class="col-md-12 margin-top-10">
+                 
+                    <div class="pull-right">
+                      <button class="btn btn-white btn-cons" id="cancel_product_option" type="button">Cancel</button>
+                      <button class="btn btn-success btn-cons hidden" type="submit" id="submit-new-option">Add</button> 
+                      <button type="reset" class="hidden">Reset</button>
+                      <div class="pace  pace-inactive">
+                      <div class="pace-activity"></div></div><input type="hidden" name="optionstring" id="optionstring" value="" />
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>

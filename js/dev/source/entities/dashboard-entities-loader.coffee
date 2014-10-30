@@ -1,0 +1,17 @@
+define [
+		'entities/menu'
+		'entities/user'
+		'entities/programmember'
+		'entities/referral_user'
+		'entities/product'
+		'entities/redemption'
+		'entities/referrallist'
+		'entities/customer'
+		'entities/rewards'
+		'entities/shipping'
+		'entities/optionadd'
+		'entities/option'
+		'entities/inventory'
+		'entities/pickup'
+    'entities/inventoryPackage'
+		],->

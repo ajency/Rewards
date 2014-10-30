@@ -1,0 +1,144 @@
+
+          <div class="row" id="initiated_div">
+            <div class="col-md-4">
+              <div class="tiles points-earned">
+                <p class="no-margin p-t-10 point-label inline">Points Earned: </p>
+                <h3 class="subheader text-center inline"><div id="sum_points"></div></h3>
+                <input type="hidden" id="pointer_val_field" name="pointer_val_field" value="" />
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="tiles redemption-status">
+
+                <h5 class="status-label inline">Current Status: </h5>
+                <div id="redemption_status" class="inline status"></div>
+
+                 <div class="pace pace-inactive pull-left">
+                <div class="pace-activity"></div></div>
+                 <div id="redemption_msg" class="redemption_msg"></div><input type="hidden" name="option_name" id="option_name" value="" />
+                 <input type="hidden" name="option_count" id="option_count" value="0" />
+                <!-- <p>Animate your icons in just a click!</p> -->
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+
+
+
+            <div id="confirmation_div" class="row hidden">
+            <div class="col-md-12 m-t-20">
+            <div  class="alert alert-success ">
+              <button class="close" data-dismiss="alert"></button>
+              <div style="font-size:18px">Done! Process of points redemption is almost complete. You now only have to go and collect your reward on the set date and time.</div> </div>
+            </div></div>
+            <div class="info-boxed">
+          
+        
+
+
+
+            <div id="redemption_initiation_div" class="jumbotron compact">
+                
+
+
+
+                <div id="shippingrow">
+
+                </div>
+                <br/>
+                <p id="ini_msg"></p>
+
+                <div id="delivery_details" class="hidden">
+
+                    <label class="inline">
+                        <input type="radio" id="rad1" class="radio_delivery" name="group1" value="1" checked/> Pick up
+                    </label>
+                    <label class="inline">
+                        <input type="radio" id="rad2" class="radio_delivery" name="group1" value="2"/> Delivery
+                    </label>
+
+                </div>
+<br/>
+                <div id="rewards_msg"></div>
+
+                <div class="row" id="initiated">
+                    <div class="col-md-12">
+                        <div class="tiles-body row">
+
+
+                            <div class="col-md-6 hidden" id="time_details">
+                                <h4 class="semi-bold m-b-20">When can we expect you?</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-append success date no-padding">
+                                            <input type="text" id="datepicker" class="form-control">
+                                            <span class="add-on"><span class="arrow"></span><i class="fa fa-th"></i></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input type="text" id="timepicker" class="timepicker-24 span12">
+                                            <span class="add-on"><span class="arrow"></span><i class="fa fa-clock-o"></i></span> </div>
+                                    </div></div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-6 hidden" id="address_details">
+                                <h4 class="semi-bold m-b-20">Where do you want it delivered?</h4>
+                                <label>Address</label>
+                                <textarea id="address" name="address" value="" class="col-md-12"></textarea>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-6 hidden" id="pickdetails">
+                                <h4 class="semi-bold m-b-10">We expect to see you at our office:</h4>
+                                <div class="m-t-10">
+                                    <div class="pull-left width35 semi-bold"> <h5>On :</h5> </div>
+                                    <div class="pull-left"> <h5 class="semi-bold" id="date">22-06-2014</h5> </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="m-t-10">
+                                    <div class="pull-left width35 semi-bold"> <h5>At :</h5> </div>
+                                    <div class="pull-left"> <h5 class="semi-bold" id="time">12:00 pm </h5></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-6 hidden" id="ship_details">
+                                <h4 class="semi-bold m-b-10">Address:</h4>
+                                <div id="add_value"></div>
+                            </div>
+                        </div>
+                        <div class="row" id="confirm_details">
+                            <div class="col-md-12 m-b-10">
+                                <p class="text-center"><button type="button" class="btn btn-danger btn-cons hidden" id="final_confirm_button">Confirm</button></p></div>
+                                <div class="pace pace-inactive  pull-left">
+                                    <div class="pace-activity"></div></div>
+                                <!-- <p>Animate your icons in just a click!</p> -->
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                <div id="confirm_msg" class="row hidden">
+                    <div class="col-md-12 m-t-20">
+                        <div  class="alert alert-success ">
+                            <button class="close" data-dismiss="alert"></button>
+                            <div style="font-size:18px">You have successfully initiated redemption of your points. </div> </div>
+                    </div></div>
+                <p align="center"><button type="button" class="btn btn-danger btn-cons" id="final-redemption"></button></p>
+                </div>
+
+
+            </div>
+
+            </div>
+
+
+
+            <div id ="redemption_notinitaited" class ="hidden">
+            <div class="ref_msg alert alert-success m-t-10">
+            <button data-dismiss="alert" class="close"></button>
+            <h3 class="semi-bold">Redemption Not Initiated.</h3>
+            <h4>User has to first inititate redemption on Step 1 </h4>
+            </div>
+            </div>

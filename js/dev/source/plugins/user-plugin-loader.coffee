@@ -1,0 +1,16 @@
+define [
+			'jquery'
+			'underscore'
+			'backbone'
+			'marionette'
+			'mustache'
+			'spin'
+			'jqueryspin'
+			'backbonesyphon'
+			'jqueryvalidate'
+			'bootstrap'
+			'underscorestring'
+			'additionalmethod'
+			'placeholder'
+			'intltelinput'
+		], ->

@@ -1,0 +1,96 @@
+<div class="page-title">		
+		<a href="dashboard.html"></a>
+		<h3>Add <span class="semi-bold">Users</span></h3>	
+	</div>
+	<div class="row">
+            <div class="col-md-6">
+              <div class="grid simple">
+                <div class="grid-title no-border">
+                 
+                 
+                </div>
+                <div class="grid-body no-border">
+				<form id="addUserForm">
+                           
+                      <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <span class="help">e.g. "Arvind Shah"</span>
+						<div class="input-with-icon  right">                                       
+							<i class=""></i>
+							<input type="text" name="display_name" required id="display_name"  class="form-control">                                 
+						</div>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <div class="input-with-icon  right">                                       
+							<i class=""></i>
+							<input type="email" remote="{{AJAXURL}}?action=check_email" name="user_email" required id="user_email" class="form-control">                                 
+						</div>
+                      </div>
+					   <div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="form-label">Role</label>
+									
+										<div class="input-with-icon  right">                                       
+											<i class=""></i>
+											<select name="role" id="role" required >
+												<option value="">Select a Role</option>
+											{{#roles}}
+												<option value="{{id}}">{{name}}</option>
+											{{/roles}}	
+							
+											</select>
+										</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								
+							</div>
+					   </div>
+					   <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <div class="input-with-icon  right">                                       
+							<i class=""></i>
+							<input type="password"  name="password" required id="password" class="form-control">                                 
+						</div>
+                      </div>
+				
+					
+				  <div class="form-actions">  
+					<div class="pull-right">
+					  <button type="submit" id="saveUser" class="btn btn-success btn-cons"><i class="icon-ok"></i> Save</button>
+					  <button type="button" class="btn btn-white btn-cons" onclick="location.href='#users';">Cancel</button>
+					  <button type="reset" class="hidden">Reset</button>
+					</div>
+					</div>
+				</form>
+                </div>
+              </div>
+            </div>		
+            <div class="col-md-6">
+        <div class="grid simple">
+							<div class="grid-title no-border">
+								<h4> <span class="semi-bold">Help</span></h4>
+							
+							</div>
+							<div class="grid-body no-border">
+								<div class="row-fluid">
+
+								<span class="semi-bold">Add a new user or edit the role for an existing user. You can assign one of the following roles:</span><ul>
+								  <li>Administrator</li>
+								  <li>Rewards Manager</li>
+								  </ul>
+								<span class="semi-bold">Administrator has the ability to:</span><ul>
+								<li>Manage Users</li>
+								<li>ManageProgram Members, Products, Points and Redemption of Points</li>
+								<li>Import Customers Database</li>
+								  </ul>
+								<span class="semi-bold">Rewards Manager has the ability to:</span><ul>
+								<li>Manage Program Members, Products, Points and Redemption of Points</li>
+								  <li>Import Customers Database</li></ul>
+								  </div>
+							</div>
+						</div>
+            </div>
+          </div>

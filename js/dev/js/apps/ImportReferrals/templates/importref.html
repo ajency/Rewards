@@ -1,0 +1,78 @@
+<div class="page-title">
+        <h3>Import <span class="semi-bold">Referral Database</span></h3>
+      </div>
+        
+
+        <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="grid">
+                <div class=" no-border">
+                  <h4>Upload the referral CSV file:</h4>
+                </div>
+                <div class="grid-body no-border">
+                  <div class="row-fluid">
+                    <form id="uploadRefFormdata" action="" class="dropzone no-margin" enctype="multipart/form-data">
+                      <div class="fallback">
+                        <input name="file" type="file"  />
+                      </div>
+                      <div class="m-t-20"> 
+                        <button type="submit" class="btn btn-primary btn-cons edit pull-left" id="submit-csvfile" >Upload</button> 
+                       <div class="pace pace-inactive pull-left">
+                        <div class="pace-activity"></div></div></div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+                          <div class="row">
+                    <div class="col-md-8">
+                        <div class="grid simple ">
+                            <div id="showdiv" class="grid-body no-border" style="display:none" >
+                                  <h4 class="m-b-20">CSV successfully uploaded.</h4>
+                                   <table class="table no-more-tables  m-b-5">
+                                        <tbody>
+                                            <tr>
+                                                <td  class="v-align-middle"><span class="muted"><h5>Total No. of Records:</h5></span>
+                                                </td>
+                                                <td><span id="totalrecords" class="muted"><h5>500</h5></span>
+                                                </td>
+                                            </tr>
+                                             <tr>
+                                                <td  class="v-align-middle"><span class="muted"><h5>Total No. of Records Added:</h5></span>
+                                                </td>
+                                                <td><span id="recordsAdded" class="muted"><h5>500</h5></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="v-align-middle"><span class="muted"><h5>No. of Duplicates(Referrals):</h5></span>
+                                                </td>
+                                                <td><span id="dupli_ref" class="muted"><h5>450</h5></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="v-align-middle"><span class="muted"><h5>No. of Duplicates(Customers):</h5></span>
+                                                </td>
+                                                <td><span id="dupli_cus" class="muted"><h5>400</h5></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="v-align-middle"><span class="muted"><h5>No. of Duplicates(Program Members):</h5></span>
+                                                </td>
+                                                <td><span id="dupli_pm" class="muted"><h5>350</h5></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+
+        </div>
+      </div>
