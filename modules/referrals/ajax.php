@@ -3,7 +3,7 @@ date_default_timezone_set( "Asia/Kolkata" );
 require_once 'functions.php';
 require_once 'send_mail.php';
 
-//add_action('wp_ajax_nopriv_get_userdata', 'ajax_call_to_fetch_referral_users');
+add_action('wp_ajax_nopriv_get_userdata', 'ajax_call_to_fetch_referral_users');
 
 add_action( 'wp_ajax_get_userdata', 'ajax_call_to_fetch_referral_users' );
 
@@ -118,6 +118,7 @@ function ajax_call_to_fetch_referral_users() {
         }
     } else {
         $get_program_member_user_id = get_program_member_user( $_REQUEST[ 'program_member_email' ], $_REQUEST[ 'customer' ], $_REQUEST[ 'program_member_phone' ] );
+        
         if ( $get_program_member_user_id ) {
             $num_ref = explode( ',', $_REQUEST[ 'num_ref' ] );
             for ( $ii = 0; $ii < count( $num_ref ); $ii++ ) {

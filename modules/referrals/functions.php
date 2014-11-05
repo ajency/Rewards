@@ -33,7 +33,7 @@ function referral_email_exists($parameter, $argument, $params, $args) {
 
     $referrals_table = $wpdb->prefix . "referrals";
     $customer_table = $wpdb->prefix . "customer";
-    $users_table = $wpdb->prefix . "users";
+    $users_table = "wp_users";
     $flag = 0;
     $ref_email = 0;
     $cus_email = 0;
@@ -125,7 +125,7 @@ function create_referral($referrals) {
 function get_program_member_user($email, $customer, $phone) {
 
     global $wpdb;
-    $referrals_table = $wpdb->prefix . "users";
+    $referrals_table = "wp_users";
 
     $user_id = $wpdb->get_var("SELECT ID from $referrals_table where user_email='" . $email . "'");
     $single = TRUE;
