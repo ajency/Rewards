@@ -15,7 +15,14 @@ define ['app','text!apps/settings/templates/settings.html'], (App,settingsTpl)->
 									@trigger "save:expiry:date" , Backbone.Syphon.serialize @
 
 						onShowExpiryData:->
+							@$el.find('.alert').remove()
 							@$el.find("#save_settings").attr 'disabled'  , false
+							@$el.find("#settingsmsg").before '<div class="alert alert-success">
+							<button data-dismiss="alert" class="close"></button>
+							Your changes have been saved</div>'
+							$('html, body').animate({
+							scrollTop: 0
+							}, 'slow')
 
 						onShow:->
 							$( "#SettingsForm" ).validate({
@@ -37,6 +44,8 @@ define ['app','text!apps/settings/templates/settings.html'], (App,settingsTpl)->
 									object.$el.find("#expiry_date").val result.date
 									object.$el.find("#min_per").val result.min
 									object.$el.find("#max_per").val result.max
+									
+
 							,
 							
 							})

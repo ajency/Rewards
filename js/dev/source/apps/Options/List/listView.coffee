@@ -298,7 +298,7 @@ define ['app','text!apps/Options/List/templates/optionList.html'], (App,listTpl)
 				@$el.find('#archiveval').val model.get 'archiveval'
 				@$el.find("#rowdata").before '<div class="alert alert-success">
 				<button data-dismiss="alert" class="close"></button>
-				Option Updated successfully</div>'
+				Package details updated successfully</div>'
 				
 
 			onShowRangeList :(data,ID)->

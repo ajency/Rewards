@@ -63,7 +63,7 @@ get_header();
             <img src="<?php echo site_url(); ?>/html/assets/img/skyi-logo-gray.png" class="center-image">
             <ul class="footer-links">
                 <li><a href="http://www.skyi.com/">About SKYi</a></li>
-                <li><a href="http://skyi.ajency.in/wp-login.php">System Login</a></li>
+                <li><a href="<?php echo site_url(); ?>/wp-login.php">System Login</a></li>
                 <!--<li><a href="#">Terms and Conditions</a></li>
                 <li><a href="#">Copyrights &amp; Privacy </a></li>
                 <li><a href="#">Help &amp; FAQ</a></li>

@@ -6,7 +6,7 @@ function dashboard_info(){
     $customers_table = $wpdb->prefix . "customer";
     $redemption_table      = $wpdb->prefix . "redemption";
     $redemption_meta_table = $wpdb->prefix . "redemption_meta";
-    $users_table = $wpdb->prefix . "users";
+    $users_table = "wp_users";
    
     $ref_count = $wpdb->get_var("select count(*) from $referrals_table");
     

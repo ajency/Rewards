@@ -163,7 +163,7 @@ define(['app', 'text!apps/Options/List/templates/optionList.html'], function(App
         this.$el.find('#minrange' + ID).val(model.get('min_range'));
         this.$el.find('#maxrange' + ID).val(model.get('max_range'));
         this.$el.find('#archiveval').val(model.get('archiveval'));
-        return this.$el.find("#rowdata").before('<div class="alert alert-success"> <button data-dismiss="alert" class="close"></button> Option Updated successfully</div>');
+        return this.$el.find("#rowdata").before('<div class="alert alert-success"> <button data-dismiss="alert" class="close"></button> Package details updated successfully</div>');
       };
 
       ProductList.prototype.onShowRangeList = function(data, ID) {

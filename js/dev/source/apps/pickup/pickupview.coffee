@@ -24,6 +24,9 @@ define ['app','text!apps/pickup/templates/pickup.html'], (App,pickupTpl)->
                     </ul>
                   </li>'
                           
+        class emptyView extends Marionette.CompositeView
+
+          template    : 'No Schedules'
 
            
 
@@ -31,7 +34,7 @@ define ['app','text!apps/pickup/templates/pickup.html'], (App,pickupTpl)->
 
             template    : pickupTpl
 
-           
+            emptyView   : emptyView
 
             itemView    : SingleView
 
