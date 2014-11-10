@@ -28,9 +28,10 @@ define ['app'
 				@listenTo view , "show:final:view" , @_viewdetails
 
 
+				App.execute "when:fetched", [@_viewdetails], =>
+          			@show view
 
-
-				@show view
+				
 
 			
 			_getCustomerShippingView :(shippingdata,option,ID)->

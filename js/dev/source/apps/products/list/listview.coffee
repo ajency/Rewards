@@ -4,7 +4,7 @@ define ['app', 'text!apps/products/list/templates/productlist.html'], (App, list
 
             tagName : 'div'
 
-            template : '<div id="showdiv" class="panel panel-default" style="height:50px">
+            template : '<div id="showdiv" class="panel panel-default" >
                             <div class="panel-heading">
                                 <div class="panel-title">
                                     <a class="collapsed" id="collapsediv{{ID}}" data-toggle="collapse" data-parent="#accordion"

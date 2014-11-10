@@ -29,7 +29,11 @@ define(['app', 'controllers/region-controller', 'apps/customer/shipping/shipping
         this.listenTo(view, "save:final:details", this._finalDetails);
         this.listenTo(view, "new:member:info", this._memberdetails);
         this.listenTo(view, "show:final:view", this._viewdetails);
-        return this.show(view);
+        return App.execute("when:fetched", [this._viewdetails], (function(_this) {
+          return function() {
+            return _this.show(view);
+          };
+        })(this));
       };
 
       ShippingController.prototype._getCustomerShippingView = function(shippingdata, option, ID) {

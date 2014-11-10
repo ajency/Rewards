@@ -10,7 +10,7 @@ define ['app','text!apps/Options/List/templates/optionList.html'], (App,listTpl)
 			className   : 'panel panel-default'
 			
 			template 	: '
-						<div class="panel-heading m-b-10" style="height:50px">
+						<div class="panel-heading m-b-10" >
 									  <h4 class="panel-title">
 										<a class="collapsed" data-toggle="collapse"  href="#collapseOne{{ID}}">
 										   <div class="row">

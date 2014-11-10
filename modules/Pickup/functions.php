@@ -29,8 +29,8 @@ MONTH( SUBSTRING_INDEX( confirm_date,  '|', 1 ) ) order by MONTH( SUBSTRING_INDE
 
     $sub_query1 = "SELECT * , DAYOFMONTH( SUBSTRING_INDEX( confirm_date,  '|', 1 ) ) as dayofmonth, MONTH( SUBSTRING_INDEX( confirm_date,  '|', 1 ) ) as month ,GROUP_CONCAT(r.initiated_by)  as initiated_by
 
-FROM  wp_redemption_meta as m
-INNER JOIN wp_redemption r on r.id = m.redemption_id
+FROM  $redemption_meta_table as m
+INNER JOIN $redemption_table r on r.id = m.redemption_id
 WHERE MONTH( SUBSTRING_INDEX( confirm_date,  '|', 1 ) ) = $sub_value->month
 group  by DAYOFMONTH( SUBSTRING_INDEX( confirm_date,  '|', 1 ) ) order by DAYOFMONTH( SUBSTRING_INDEX( confirm_date,  '|', 1 ) )";
              $date_details = array();
