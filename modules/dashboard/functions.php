@@ -67,7 +67,7 @@ function dashboard_info(){
     
     
     $redem_count = $wpdb->get_var("select count(*) from $redemption_table as r
-             Inner JOIN $redemption_meta_table m on m.redemption_id = r.id where m.status='Inititated'
+             Inner JOIN $redemption_meta_table m on m.redemption_id = r.id where m.status='Initiated'
             and ( m.status!='Approved' Or m.status!='Confirmed' Or m.status!='Closed' Or m.status!='Redemption Not Initiated')");
      
     $redem_count_last_week = $wpdb->get_var("select count(*) from $redemption_meta_table  where date(date)

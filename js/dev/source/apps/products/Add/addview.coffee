@@ -29,7 +29,7 @@ define ['app', 'text!apps/products/Add/templates/addproduct.html'], (App, addTpl
             mixinTemplateHelpers : (data)->
                 data = super()
                 data.uniqueID = @uniqueID
-                data.dummyImage = "#{SITEURL}/wp-content/themes/skyi/img/placeholder.jpg"
+                data.dummyImage = "#{SITEURL}/wp-content/themes/Rewards/img/placeholder.jpg"
                 data
 
             onProductAdded : ->
@@ -41,7 +41,7 @@ define ['app', 'text!apps/products/Add/templates/addproduct.html'], (App, addTpl
                 @$el.find('#submit-new-product').removeAttr 'disabled', false
                 @$el.find('button[type="reset"]').trigger 'click'
                 @$el.find("#progress-#{@uniqueID}").closest('.caption').find('.uploaded-image')
-                        .attr 'src', "#{SITEURL}/wp-content/themes/skyi/img/placeholder.jpg"
+                        .attr 'src', "#{SITEURL}/wp-content/themes/Rewards/img/placeholder.jpg"
                 $('html, body').animate({ scrollTop : $(document).height() }, 'slow')
 
 
