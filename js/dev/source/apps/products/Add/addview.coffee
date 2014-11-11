@@ -40,6 +40,7 @@ define ['app', 'text!apps/products/Add/templates/addproduct.html'], (App, addTpl
                 @$el.find("#add-new-div").hide()
                 @$el.find('#submit-new-product').removeAttr 'disabled', false
                 @$el.find('button[type="reset"]').trigger 'click'
+                @$el.find('input[name="attachmentid"]').val ""
                 @$el.find("#progress-#{@uniqueID}").closest('.caption').find('.uploaded-image')
                         .attr 'src', "#{SITEURL}/wp-content/themes/Rewards/img/placeholder.jpg"
                 $('html, body').animate({ scrollTop : $(document).height() }, 'slow')

@@ -56,8 +56,8 @@ function dashboard_info(){
      
      $ref_count_previous_day = count($ref_count_previous_day);
      
-     $converted_count = $wpdb->get_var("select distinct(count(c.referral_id)) from wp_customer as c
-             Inner JOIN wp_referrals r on r.ID = c.referral_id
+     $converted_count = $wpdb->get_var("select distinct(count(c.referral_id)) from $customers_table as c
+             Inner JOIN $referrals_table r on r.ID = c.referral_id
                 where c.referral_id != 0");
     $program_member_count = $wpdb->get_var("select distinct(count(r.user_id)) from $customers_table as c
              Inner JOIN $referrals_table r on r.ID = c.referral_id");
@@ -68,7 +68,7 @@ function dashboard_info(){
     
     $redem_count = $wpdb->get_var("select count(*) from $redemption_table as r
              Inner JOIN $redemption_meta_table m on m.redemption_id = r.id where m.status='Initiated'
-            and ( m.status!='Approved' Or m.status!='Confirmed' Or m.status!='Closed' Or m.status!='Redemption Not Initiated')");
+            ");
      
     $redem_count_last_week = $wpdb->get_var("select count(*) from $redemption_meta_table  where date(date)
              >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY
