@@ -441,10 +441,10 @@ blockquote small{
 	color:#8b91a0 !important;
 }
 .text-success{
-	color:#0AA699 !important;
+	color:#faa61a !important;
 }
 .text-info{
-	color:#0090D9 !important;
+	color:#98c4cf !important;
 }
 .text-warning{
 	color:#fbb05e !important;
@@ -4703,10 +4703,10 @@ border:0;
 }
 .btn-success{
 	color: #fff;
-    background-color: #0090d9;
+    background-color: #faa61a;
 }
 .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .btn-success.disabled, .btn-success[disabled] {
-    background-color: #1285d1;
+    background-color: #e79301;
 }
 .btn-info{
 	color: #fff;
