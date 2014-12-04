@@ -118,8 +118,8 @@ define ['app','text!apps/Options/Add/templates/addOption.html'], (App,addTpl)->
 				'keyup #min_opt':(e)->
 					@$el.find('.alert').remove()
 					code = e.keyCode || e.which		
-					console.log code
-					if parseInt(code) == 48
+					console.log $('#min_opt').val()
+					if parseInt($('#min_opt').val()) == 0
 						@$el.find("#add-new-option").before '<div class="alert alert-success">
 						<button data-dismiss="alert" class="close"></button>
 						Cannot create package with points 0

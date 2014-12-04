@@ -96,8 +96,8 @@ define(['app', 'text!apps/Options/Add/templates/addOption.html'], function(App, 
           var code;
           this.$el.find('.alert').remove();
           code = e.keyCode || e.which;
-          console.log(code);
-          if (parseInt(code) === 48) {
+          console.log($('#min_opt').val());
+          if (parseInt($('#min_opt').val()) === 0) {
             this.$el.find("#add-new-option").before('<div class="alert alert-success"> <button data-dismiss="alert" class="close"></button> Cannot create package with points 0 </div>');
             $('#submit-new-option').addClass('hidden');
             return false;
