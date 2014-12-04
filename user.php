@@ -18,15 +18,15 @@ get_header();
                 <div class="compressed">
                     <div class="row">
                         <div class="col-md-2 col-xs-2">
-                            <a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/Rewards/img/skyi-logo-1.png" alt=""
-                                             class="logo"></a>
+                            <a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/Rewards/img/skyi-logo.png" alt=""
+                                             class="logo" width="90"></a>
                         </div>
                         <div class="col-md-10 col-xs-10 hidden-xs hidden-sm">
                             <ul class=" nav navbar-nav navbar-right pull-right">
                                 <li><b>View Our Projects <span class="glyphicon glyphicon-arrow-right"></span></b></li>
                                 <li><a href="http://www.manaslake.com/">Manas Lake </a></li>
-                                <!-- <li><a href="http://www.songbirds.in/">Songbirds </a></li>
-                                <li><a href="http://www.skyi.com/2bhk_3bhk_bavdhan.php">Iris (Bavdhan) </a></li>
+                                <li><a href="http://www.songbirds.in/">Songbirds </a></li>
+                                <!-- <li><a href="http://www.skyi.com/2bhk_3bhk_bavdhan.php">Iris (Bavdhan) </a></li>
                                 <li><a href="http://www.skyi.com/2bhk_3bhk_baner.php">Iris (Baner) </a></li>
                                 <li><a href="http://www.skyi.com/4bhk_baner.php">5</a></li>
                                 <li><a href="http://www.skyi.com/villa_pune.php">Aquila </a></li>
@@ -55,7 +55,7 @@ get_header();
  top:300px;display:none">
         <img src="<?php echo site_url(); ?>/html/assets/img/spinner.gif" border=0></div>
     <div class="container " id="main-content-region">
-
+        
     </div>
 
 
@@ -63,7 +63,10 @@ get_header();
         <div class="error-container">
             <img src="<?php echo site_url(); ?>/html/assets/img/skyi-logo-gray.png" class="center-image">
             <ul class="footer-links">
-                <li><a href="http://www.skyi.com/">About SKYi</a></li>
+                <li><a href="http://www.skyi.com/">SKYi</a></li>
+                <li><a href="http://www.manaslake.com/">Manas Lake</a></li>
+                <li><a href="http://www.songbirds.in/">Songbirds</a></li>
+                <li><a href="http://www.skyi.com/tnc/">Terms and Conditions</a></li>
                 <li><a href="<?php echo site_url(); ?>/wp-login.php">System Login</a></li>
                 <!--<li><a href="#">Terms and Conditions</a></li>
                 <li><a href="#">Copyrights &amp; Privacy </a></li>
@@ -74,7 +77,7 @@ get_header();
             </ul>
             <br>
 
-            <div class="copyright"> All work copyright of respective owner, 2013 skyi</div>
+            <div class="copyright"> All work copyright of respective owner, 2014-15 SKYi</div>
         </div>
     </div>
     <!-- END CONTAINER -->

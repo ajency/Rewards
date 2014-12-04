@@ -19,12 +19,14 @@ get_header();
                     </div>
                     <div class="col-md-10 col-xs-10 hidden-xs hidden-sm">
                         <ul class=" nav navbar-nav navbar-right pull-right">
-                            <li><b>View All Projects <span class="glyphicon glyphicon-arrow-right"></span></b></li>
-                            <li><a href="index.html">Songbirds </a></li>
-                            <li><a href="index.html">Iris </a></li>
-                            <li><a href="index.html">5</a></li>
-                            <li><a href="index.html">Aquila </a></li>
-                            <li><a href="index.html">Seher</a></li>
+                            <li><b>View Our Projects <span class="glyphicon glyphicon-arrow-right"></span></b></li>
+                            <li><a href="http://www.manaslake.com/">Manas Lake </a></li>
+                            <li><a href="http://www.songbirds.in/">Songbirds </a></li>
+                            <!-- <li><a href="http://www.skyi.com/2bhk_3bhk_bavdhan.php">Iris (Bavdhan) </a></li>
+                            <li><a href="http://www.skyi.com/2bhk_3bhk_baner.php">Iris (Baner) </a></li>
+                            <li><a href="http://www.skyi.com/4bhk_baner.php">5</a></li>
+                            <li><a href="http://www.skyi.com/villa_pune.php">Aquila </a></li>
+                            <li><a href="http://www.skyi.com/villas_pune.php">Seher</a></li> -->
                         </ul>
 
                     </div>
