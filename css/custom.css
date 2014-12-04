@@ -833,9 +833,9 @@ thead .tablesorter-headerAsc:hover .arrow:before, thead .tablesorter-headerAsc:h
   font-family: 'Open Sans';
 }
 .stepsImg {
-  height: 300px;
+  height: 320px;
   width: 100%;
-  background-image: url(../img/program-member-referral.jpg);
+  background-image: url(../img/program-member-referral.png);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;

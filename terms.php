@@ -18,8 +18,8 @@ get_header();
                 <div class="compressed">
                     <div class="row">
                         <div class="col-md-2 col-xs-2">
-                            <a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/Rewards/img/skyi-logo-1.png" alt=""
-                                             class="logo"></a>
+                            <a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/Rewards/img/skyi-logo.png" alt=""
+                                             class="logo" width="90"></a>
                         </div>
                         <div class="col-md-10 col-xs-10 hidden-xs hidden-sm">
                             <ul class=" nav navbar-nav navbar-right pull-right">
@@ -59,51 +59,129 @@ get_header();
             <div class="row">
                 <div class="col-sm-12">
                     <h2>Terms and Conditions</h2>
-                   <ul>
-                    <li>Everyone, including those who are not SKYi customers, are eligible to participate in this program.</li>
-                    <li>Bookings through channel partners and employees of SKYi Group are not eligible to participate in the referral program.</li>
-                    <li>Referring an immediate family member / blood relation will be considered invalid.</li>
-                • Each introduction, which results in a booking, will entitle you to a reward that will be in proportion to the sale value of the property.
-                • Referred customer should declare the source at the time of Enquiry of any SKYi projects (Note: The one who refers is Source &amp; the recommended customer is reference customer).
-                • Reward Chart:
-                a. The number of Gold stars awarded is proportional to the Sale value of homes.
-                b. The Sale value will be the Total Agreement Amount of the customers.
-                • Once the person referred completes the registration process, you can select the reward out of the given options, which will be delivered to you within 60 days from the date of registration process.
-                • Source can choose only one reward from the options of the applicable category.
-                • Reward options cannot be combined with any other options and no discount of the mentioned offers.
-                • Depending on the number of the bookings made by the Reference Customer, the source will receive reward options
-                accordingly. In case of multiple bookings, the source will be entitled for reward options of higher valuation as
-                mentioned in the SKYi referral program booklet.
-                • The accumulated Gold stars will have to be redeemed within 12 months from the date of registration of 1st
-                referred customer.
-                • All rewards are subject to availability and supplier restrictions. SKYi may, without any notice, withdraw or
-                substitute any reward for another reward of comparable value and nature.
-                • Eligibility and decision on the rewards will be a sole discretion of SKYi.
-                • In the case of the exact model/brands of merchandise mentioned in the booklet are not available at the time
-                of redemption, SKYi Group may provide an alternate equivalent brand/model/product.
-                • Delivery of rewards to the customers will be done within 60 days from the date of registration process. The delivery will be made at the individual’s address, subject to address being in India and depending on the individual’s address being within serviceable area. In case the address falls outside this area, the individual can collect the same from the SKYi Office.
-                • Source must take open delivery of rewards from the courier or outlet and must not accept damaged products. Any
-                complaints post acknowledgement will not be treated as valid.
-                • SKYi will not be liable for any delay/deficiency/defect in any product or services disbursed as rewards by it or on account of any dispute relating to right to utilize the product or services subsequent to disbursement of the same as rewards.
-                • Any risk/loss during usage of the product is not the responsibility of SKYi.
-                • Rewards redeemed for two wheelers or automobiles will require the following to be done by the member:
-                a. The member will have to personally visit the specified dealer showroom along with their authorization letter, which will be mailed and with their proof of identity (Preferably photo identity) to redeem their reward.
-                b. The member will have to bear the cost of registration, insurance and RTO formalities and accessories if any as
-                well as petrol and oil charges as applicable (Subject to ex-showroom Mumbai only).
-                Terms and Conditions
-                c. SKYi Group will not be responsible for any delay in delivery of the vehicle caused by the automobile
-                company or any strike related issues pertaining to the automobile company.
-                • Rewards once processed will not be changed and the customers will not be entitled to any refund or credit or
-                change in reward options.
-                • Rewards cannot be clubbed, upgraded and/or combined with any other offer during the referral program.
-                • SKYi Group shall present the reward in the form of Goodies or the reward itself.
-                • The offer is valid only till 1st Dec. 2013 and any further reference beyond 1st Dec. 2013 from the customers will not be included in the referral program.
-                • SKYi Group reserves the rights to include, modify and/or remove projects in the referral program without any prior notice.
-                • SKYi Group holds all rights to change, extend, revise and/or terminate the referral program without any prior
-                intimation to the customers.
-                • Brand names, Image, colors and models shown in the rewards catalogue are indicative only.
-                • In case of cancellation of flat/s SKYi will not be liable for any distribution of gifts or rewards.
-                </ul>
+                    <ul>                   
+                        <li>Everyone, including those who are not SKYi customers, are eligible to participate in this program.</li>
+
+                        <li>Bookings through channel partners and employees of SKYi
+                                            Group are not eligible to participate in the referral program.</li>
+
+                        <li>Referring an immediate family member / blood relation will
+                                            be considered invalid.</li>
+
+                        <li>Each introduction, which results in a booking, will entitle
+                        you to a reward that will be in proportion to the sale value
+                                            of the property.</li>
+
+                        <li>Referred customer should declare the source at the time
+                        of Enquiry of any SKYi projects (Note: The one who refers
+                        is Source &amp; the recommended customer is reference
+                                            customer).</li>
+
+                        <li>Reward Chart:
+                            <ul>
+                                <li>The number of Points awarded is proportional to the Sale value of homes.</li>
+                                <li>The Sale value will be the Total Agreement Amount of the customers.</li>
+                            </ul>
+                        </li>
+
+                        <li>Once the person referred completes the registration
+                        process, you can select the reward out of the given options,
+                        which will be delivered to you within 60 days from the date
+                                            of registration process.</li>
+
+                        <li>Source can choose only one reward from the options of the
+                                            applicable category.</li>
+
+                        <li>Reward options cannot be combined with any other
+                                            options and no discount of the mentioned offers.</li>
+
+                        <li>Depending on the number of the bookings made by the
+                        Reference Customer, the source will receive reward options
+                        accordingly. In case of multiple bookings, the source
+                        will be entitled for reward options of higher valuation as
+                                            mentioned in the SKYi referral program booklet.</li>
+
+                        <li>The accumulated Points will have to be redeemed
+                        within 12 months from the date of registration of 1st
+                                            referred customer.</li>
+
+                        <li>All rewards are subject to availability and supplier
+                        restrictions. SKYi may, without any notice, withdraw or
+                        substitute any reward for another reward of comparable
+                                            value and nature.</li>
+
+                        <li>Eligibility and decision on the rewards will be a sole
+                                            discretion of SKYi.</li>
+
+                        <li>In the case of the exact model/brands of merchandise
+                        mentioned in the booklet are not available at the time
+                        of redemption, SKYi Group may provide an alternate
+                                            equivalent brand/model/product.</li>
+
+                        <li>Delivery of rewards to the customers will be done within
+                        60 days from the date of registration process. The delivery
+                        will be made at the individual?s address, subject to address
+                        being in India and depending on the individual?s address
+                        being within serviceable area. In case the address falls
+                        outside this area, the individual can collect the same from
+                                            the SKYi Office.</li>
+
+                        <li>Source must take open delivery of rewards from the courier
+                        or outlet and must not accept damaged products. Any
+                                            complaints post acknowledgement will not be treated as valid.</li>
+
+                        <li>SKYi will not be liable for any delay/deficiency/defect
+                        in any product or services disbursed as rewards by it or
+                        on account of any dispute relating to right to utilize the
+                        product or services subsequent to disbursement of the
+                                            same as rewards.</li>
+
+                        <li>Any risk/loss during usage of the product is not the
+                                            responsibility of SKYi.</li>
+
+                        <li>Rewards redeemed for two wheelers or automobiles will
+                        require the following to be done by the member:
+                            <ul>
+                                <li>The member will have to personally visit the
+                                specified dealer showroom along with their
+                                authorization letter, which will be mailed and with their
+                                proof of identity
+                                (Preferably photo identity) to redeem their reward.</li>
+                                <li>The member will have to bear the cost of registration,
+                                insurance and RTO formalities and accessories if any as
+                                well as petrol and oil charges as applicable
+                                (Subject to ex-showroom Mumbai only).</li>
+                                <li>SKYi Group will not be responsible for any delay in
+                                delivery of the vehicle caused by the automobile
+                                company or any strike related issues pertaining to
+                                            the automobile company.</li>
+                            </ul>
+                        </li>
+
+                        <li>Rewards once processed will not be changed and the
+                        customers will not be entitled to any refund or credit or
+                                            change in reward options.</li>
+
+                        <li>Rewards cannot be clubbed, upgraded and/or combined
+                                            with any other offer during the referral program.</li>
+
+                        <li>SKYi Group shall present the reward in the form of
+                                            Goodies or the reward itself.</li>
+
+                        <li>SKYi Group reserves the rights to include, modify and/or
+                        remove projects in the referral program without any prior
+                                            notice.</li>
+
+                        <li>SKYi Group holds all rights to change, extend, revise
+                        and/or terminate the referral program without any prior
+                                            intimation to the customers.</li>
+
+                        <li>Brand names, Image, colors and models shown in the
+                                            rewards catalogue are indicative only.</li>
+
+                        <li>In case of cancellation of flat/s SKYi will not be liable for
+                                            any distribution of gifts or rewards.</li>
+                    </ul>
     </div>
 
 
