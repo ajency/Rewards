@@ -66,7 +66,7 @@ get_header();
                 <li><a href="http://www.skyi.com/">SKYi</a></li>
                 <li><a href="http://www.manaslake.com/">Manas Lake</a></li>
                 <li><a href="http://www.songbirds.in/">Songbirds</a></li>
-                <li><a href="http://rewards.skyi.com./terms-conditions/">Terms and Conditions</a></li>
+                <li><a href="http://rewards.skyi.com/terms-conditions/">Terms and Conditions</a></li>
                 <li><a href="<?php echo site_url(); ?>/wp-login.php">System Login</a></li>
                 <!--<li><a href="#">Terms and Conditions</a></li>
                 <li><a href="#">Copyrights &amp; Privacy </a></li>

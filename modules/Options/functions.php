@@ -4,7 +4,9 @@ function get_all_option_products($args) {
 
     global $post;
     $product_array = array();
+
     $products = new WP_Query($args);
+    
     if ($products->have_posts()):
         while ($products->have_posts()):$products->the_post();
             $product = get_post($post->ID);

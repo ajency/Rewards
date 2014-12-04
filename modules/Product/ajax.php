@@ -36,7 +36,8 @@ function ajax_call_fetch_products() {
     $args = array(
 
         'post_author' => $user_ID,
-        'post_type'   => 'Products'
+        'post_type'   => 'Products',
+        'posts_per_page' => -1
     );
 
     $products = get_all_products( $args );
