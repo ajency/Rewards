@@ -147,6 +147,10 @@ define ['app','text!apps/Options/Add/templates/addOption.html'], (App,addTpl)->
 					if (code >64 && code < 91) || (code >96 && code < 123 )
 						return false
 
+			onShow:->
+				min_range = 0
+				max_range= 0
+				price_total = 0
 
 
 

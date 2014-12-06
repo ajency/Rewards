@@ -71,7 +71,7 @@ define [ 'app'
                 object = @
                 $.ajax
                     method: "POST",
-                    url: AJAXURL+"?actio=set-notinitiated-email"
+                    url: AJAXURL+"?action=set-notinitiated-email"
                     data: 'option=' + option + '&ID=' + ID + '&str=' + str,
                     success: ( result )->
                         object.sendInitiateMail result

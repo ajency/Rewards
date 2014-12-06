@@ -58,7 +58,7 @@ define [ 'app', 'text!apps/program-member/members/templates/member_info.html' ],
                     $( '#approved-redemt' ).hide()
                 else if stringname == 'Redemption Not initiated' && rejected_status == 0
                     $( '#redem_not' ).removeClass 'hidden'
-                    $( '#noti_redem_not' ).removeClass 'hidden'
+                    $( '#noti_redem_not' ).addClass 'hidden'
                     if parseInt( points ) == 0
                         @$el.find( '#ini_redemption' ).hide()
                 else if stringname == 'Initiated'
