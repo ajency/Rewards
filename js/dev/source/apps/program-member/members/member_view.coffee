@@ -149,6 +149,7 @@ define [ 'app', 'text!apps/program-member/members/templates/member_info.html' ],
 
             onSendInitiateReminder: ->
                 $( '.modal-backdrop.in' ).remove()
+                $( 'body' ).removeClass 'modal-open'
                 @$el.find( ".email_message" ).after '<div class="alert alert-info ref_msg">
                                         <button data-dismiss="alert" class="close"></button>
                         				Message has been sent.

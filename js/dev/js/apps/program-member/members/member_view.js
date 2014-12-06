@@ -141,6 +141,7 @@ define(['app', 'text!apps/program-member/members/templates/member_info.html'], f
 
       Info.prototype.onSendInitiateReminder = function() {
         $('.modal-backdrop.in').remove();
+        $('body').removeClass('modal-open');
         this.$el.find(".email_message").after('<div class="alert alert-info ref_msg"> <button data-dismiss="alert" class="close"></button> Message has been sent. </div>');
         $('#ini_redemption').attr('disabled', false);
         $('#send_ini_redemption').attr('disabled', false);
