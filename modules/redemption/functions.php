@@ -291,6 +291,8 @@ function set_closure_email($ID){
       
 
     }
+    $arr = array('code'=> 200 , 'status'=> 'sent');
+        return $arr;
        
     }
 

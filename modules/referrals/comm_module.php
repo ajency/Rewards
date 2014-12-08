@@ -119,7 +119,7 @@ function call_comm_module_referrals( $email_type, $recipeint, $data, $comm_id ) 
               <tbody>
                 <tr>
                   <td align="center">
-                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="'.site_url().'/wp-content/themes/skyi/img/skyi-logo-1.png" alt="Skyi" /></div>
+                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="'.site_url().'/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="Skyi" /></div>
                   </td>
                 </tr>
                 <tr>
@@ -247,7 +247,7 @@ if($referral_info->phone == 0 )
                 </tr>
                 <tr>
                   <td align="center" bgcolor="#ffffff">
-                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="'.site_url().'/wp-content/themes/skyi/img/skyi-logo-1.png" alt="SKYi" /></div>
+                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="'.site_url().'/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="SKYi" /></div>
                   </td>
                   <td>  </td>
                 </tr>
@@ -309,7 +309,7 @@ if($referral_info->phone == 0 )
                                   <tbody>
                                     <tr>
                                       <td align="center">
-                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="'.site_url().'/wp-content/themes/skyi/img/skyi-logo-1.png" alt="Skyi" /></div>
+                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="'.site_url().'/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="Skyi" /></div>
                                       </td>
                                     </tr>
                                     <tr>
@@ -330,7 +330,7 @@ if($referral_info->phone == 0 )
                                     </tr>
                                     <tr>
                                       <td align="center" bgcolor="#ffffff">
-                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="'.site_url().'/wp-content/themes/skyi/img/skyi-logo-1.png" alt="SKYi" /></div>
+                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="'.site_url().'/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="SKYi" /></div>
                                       </td>
                                       <td>  </td>
                                     </tr>

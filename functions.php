@@ -353,7 +353,7 @@ add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
 function cron_job_send_emails() {
 
-    include( ABSPATH . "wp-content/themes/skyi/modules/referrals/comm_module.php" );
+    include( ABSPATH . "wp-content/themes/Rewards/modules/referrals/comm_module.php" );
 
 }
 add_filter('CRON_SCHEDULE_SEND_MAILS', 'cron_job_send_emails', 2, 0);
@@ -366,7 +366,7 @@ add_filter('CRON_SCHEDULE_SEND_MAILS', 'cron_job_send_emails', 2, 0);
 
 function cron_job2_send_mails(){
 
-    //include( ABSPATH . "wp-content/themes/skyi/modules/redemption/comm_module_redemption.php" );
+    //include( ABSPATH . "wp-content/themes/Rewards/modules/redemption/comm_module_redemption.php" );
     send_mail_redemption();
 
 }

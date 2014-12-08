@@ -78,7 +78,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
               <tbody><div class="clearfix"></div>
             <ol class="m-l-5 m-t-20 m-b-10 user_step_list"><tr>
                   <td align="center">
-                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="Skyi" /></div>
+                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="Skyi" /></div>
                   </td>
                 </tr>
                 <tr>
@@ -127,7 +127,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                 </tr>
                 <tr>
                   <td align="center" bgcolor="#ffffff">
-                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="SKYi" /></div>
+                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="SKYi" /></div>
                   </td>
                   <td>  </td>
                 </tr>
@@ -188,7 +188,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                   <tbody>
                                     <tr>
                                       <td align="center">
-                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="Skyi" /></div>
+                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="Skyi" /></div>
                                       </td>
                                     </tr>
                                     <tr>
@@ -209,7 +209,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                     </tr>
                                     <tr>
                                       <td align="center" bgcolor="#ffffff">
-                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="SKYi" /></div>
+                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="SKYi" /></div>
                                       </td>
                                       <td>  </td>
                                     </tr>
@@ -274,7 +274,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                               <tbody>
                                 <tr>
                                   <td align="center">
-                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="Skyi" /></div>
+                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="Skyi" /></div>
                                   </td>
                                 </tr>
                                 <tr>
@@ -290,7 +290,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                 </tr>
                                 <tr>
                                   <td align="center" bgcolor="#ffffff">
-                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="SKYi" /></div>
+                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="SKYi" /></div>
                                   </td>
                                   <td>  </td>
                                 </tr>
@@ -382,7 +382,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                               <tbody>
                                 <tr>
                                   <td align="center">
-                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="Skyi" /></div>
+                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="Skyi" /></div>
                                   </td>
                                 </tr>
                                 <tr>
@@ -390,7 +390,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                 </tr>
                                 <tr>
                                   <td align="center" bgcolor="#ffffff">
-                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="SKYi" /></div>
+                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="SKYi" /></div>
                                   </td>
                                   <td>  </td>
                                 </tr>
@@ -461,7 +461,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                   <tbody>
                                     <tr>
                                       <td align="center">
-                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="Skyi" /></div>
+                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="Skyi" /></div>
                                       </td>
                                     </tr>
                                     <tr>
@@ -472,7 +472,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                     </tr>
                                     <tr>
                                       <td align="center" bgcolor="#ffffff">
-                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="SKYi" /></div>
+                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="SKYi" /></div>
                                       </td>
                                       <td>  </td>
                                     </tr>
@@ -560,7 +560,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                               <tbody>
                                 <tr>
                                   <td align="center">
-                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="Skyi" /></div>
+                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="Skyi" /></div>
                                   </td>
                                 </tr>
                                 <tr>
@@ -568,7 +568,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                 </tr>
                                 <tr>
                                   <td align="center" bgcolor="#ffffff">
-                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="SKYi" /></div>
+                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="SKYi" /></div>
                                   </td>
                                   <td>  </td>
                                 </tr>
@@ -636,7 +636,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                               <tbody>
                                 <tr>
                                   <td align="center">
-                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="Skyi" /></div>
+                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="Skyi" /></div>
                                   </td>
                                 </tr>
                                 <tr>
@@ -647,7 +647,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                 </tr>
                                 <tr>
                                   <td align="center" bgcolor="#ffffff">
-                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="SKYi" /></div>
+                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="SKYi" /></div>
                                   </td>
                                   <td>  </td>
                                 </tr>
@@ -735,7 +735,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                   <tbody>
                                     <tr>
                                       <td align="center">
-                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="Skyi" /></div>
+                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="Skyi" /></div>
                                       </td>
                                     </tr>
                                     <tr>
@@ -743,7 +743,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                     </tr>
                                     <tr>
                                       <td align="center" bgcolor="#ffffff">
-                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="SKYi" /></div>
+                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="SKYi" /></div>
                                       </td>
                                       <td>  </td>
                                     </tr>
@@ -841,7 +841,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                   <tbody>
                                     <tr>
                                       <td align="center">
-                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="Skyi" /></div>
+                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="Skyi" /></div>
                                       </td>
                                     </tr>
                                     <tr>
@@ -854,7 +854,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                     </tr>
                                     <tr>
                                       <td align="center" bgcolor="#ffffff">
-                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="SKYi" /></div>
+                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="SKYi" /></div>
                                       </td>
                                       <td>  </td>
                                     </tr>
@@ -929,7 +929,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                               <tbody>
                                 <tr>
                                   <td align="center">
-                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="Skyi" /></div>
+                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="Skyi" /></div>
                                   </td>
                                 </tr>
                                 <tr>
@@ -942,7 +942,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                 </tr>
                                 <tr>
                                   <td align="center" bgcolor="#ffffff">
-                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="SKYi" /></div>
+                                    <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="SKYi" /></div>
                                   </td>
                                   <td>  </td>
                                 </tr>
@@ -1036,7 +1036,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                   <tbody>
                                     <tr>
                                       <td align="center">
-                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="Skyi" /></div>
+                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="Skyi" /></div>
                                       </td>
                                     </tr>
                                     <tr>
@@ -1049,7 +1049,7 @@ function call_comm_module_redemption($email_type, $recipeint, $comm_id, $data) {
                                     </tr>
                                     <tr>
                                       <td align="center" bgcolor="#ffffff">
-                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/skyi/img/skyi-logo-1.png" alt="SKYi" /></div>
+                                        <div class="header" style="margin-bottom: 10px; color: #b8b8b8;"><br /> <br /> <img src="' . site_url() . '/wp-content/themes/Rewards/img/skyi-logo-1.png" alt="SKYi" /></div>
                                       </td>
                                       <td>  </td>
                                     </tr>
