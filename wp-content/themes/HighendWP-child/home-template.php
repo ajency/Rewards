@@ -21,13 +21,7 @@
     <title><?php wp_title( '|', true, 'right' ); ?></title>
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-      <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/xoomaapp/images/favicon.png">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/xoomaapp/css/theme.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/xoomaapp/css/animate.min.css">
-   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/xoomaapp/css/jquery-ui.min.css">
-   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/xoomaapp/css/bootstrap-timepicker.css">
-<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/xoomaapp/css/jquery.ui.timepicker.css">
-
+    
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.js"></script>
 
 
