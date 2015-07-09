@@ -423,17 +423,25 @@ function my_function($order_id) {
 	// order object (optional but handy)
 	global $woocommerce;
 	$order = new WC_Order();
+
 	   if ( $order->status != 'failed' ) {
+			$rand = 'FREEDOM'.$order_id;
+			$payment = get_post_meta($order_id, '_payment_method' ,true);
+			if( $payment != 'cheque' ){
+			update_post_meta($order_id,'coupon' ,$rand );
+			}
+
+			?>
+			<script type="text/javascript">
+			jQuery('form').clearForm()
+
+			</script>
+
+			<?php
 	    wp_redirect( home_url() ); exit; // or whatever url you want
 	   }
 
-		?>
-		<script type="text/javascript">
-		jQuery('form[name="checkout"]').trigger('reset')
-[
-		</script>
 
-	  <?php
 
 }
 

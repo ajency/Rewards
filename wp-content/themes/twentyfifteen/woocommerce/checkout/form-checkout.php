@@ -44,7 +44,7 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 			<div class="col-2">
 				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
 			</div>
-		
+
 				<input type="button" name="payment_next" id="payment_next" value="Next" / >
 					<input type="button" name="customer_back" id="customer_back" value="Back" / >
 		</div>
