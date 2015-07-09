@@ -422,151 +422,25 @@ function my_function($order_id) {
 
 	// order object (optional but handy)
 	global $woocommerce;
-	$order = new WC_Order( $order_id );
-	$myuser_id = (int)$order->user_id;
-  $user_info = get_userdata($myuser_id);
-  $items = $order->get_items();
+	$order = new WC_Order();
+	   if ( $order->status != 'failed' ) {
+	    wp_redirect( home_url() ); exit; // or whatever url you want
+	   }
 
+		?>
+		<script type="text/javascript">
+		jQuery('form[name="checkout"]').trigger('reset')
+[
+		</script>
 
-	$woocommerce->cart->empty_cart();
-	// send_notifications_to_admin($myuser_id);
-	// send_notifications_to_user($myuser_id);
-
-	// do some stuff here
+	  <?php
 
 }
 
-//communication module//
-function dba_add_communication_components($defined_comm_components){
 
-	$defined_comm_components['registration_emails'] = array(
-				'admin_email' => array('preference'=>1),
-				'customer_email'  => array('preference'=>1)
-
-		);
-
-
-
-	return $defined_comm_components;
-}
 add_filter('add_commponents_filter','dba_add_communication_components',10,1);
 
-function send_notifications_to_admin($user_id){
 
-
-	global $aj_comm;
-
-	$args = array(
-		'component'             => 'registration_emails',
-		'communication_type'    => 'admin_email',
-		'user_id'               => $user_id
-
-		);
-	// user data
-	$user = login_response($user_id);
-
-	$meta = array(
-		'username'        => $user['display_name'],
-		'email'           => $user['user_email'],
-
-
-		);
-
-	//get all the admins
-	$arguments = array(
-				'role' => 'Administrator',
-				'orderby' => 'ID',
-				'order' => 'ASC',
-				'offset' => 0,
-				'number' => 0
-		);
-	$admins = get_users($arguments);
-
-	foreach ((array) $admins as $value) {
-
-		$recipients_args = array(
-							array(
-							'user_id'     => $value->ID,
-							'type'        => 'email',
-							'value'       => $value->user_email
-
-						)
-
-			);
-
-		$aj_comm->create_communication($args,$meta,$recipients_args);
-
-		}
-
-
-
-
-
-	return true;
-
-
-}
-
-function login_response($user_id){
-
-
-		$user = array();
-		$user_info = get_userdata($user_id);
-
-
-
-
-
-		$user['status'] = 'true';
-		$user['id'] = $user_id;
-		$user['user_login'] = $user_info->data->user_login;
-		$user['user_email'] = $user_info->data->user_email;
-		$user['display_name'] = $user_info->data->display_name;
-		$user['user_registered'] = $user_info->data->user_registered;
-
-		return  $user;
-}
-
-function send_notifications_to_user($user_id){
-
-
-	global $aj_comm;
-
-	$args = array(
-		'component'             => 'registration_emails',
-		'communication_type'    => 'customer_email',
-		'user_id'               => $user_id
-
-		);
-	// user data
-	$user = login_response($user_id);
-
-	$meta = array(
-		'username'        => $user['display_name'],
-		'email'           => $user['user_email'],
-
-
-		);
-
-	$recipients_args = array(
-												array(
-													'user_id'     => $user_id,
-													'type'        => 'email',
-													'value'       =>  $user['user_email']
-
-												)
-
-										);
-
-	$aj_comm->create_communication($args,$meta,$recipients_args);
-
-
-
-
-	return true;
-
-
-}
 
 function wc_remove_all_quantity_fields( $return, $product ) {
     return true;
@@ -618,19 +492,7 @@ function woocommerce_variable_add_to_cart() {
 		<?php
 		}
 		?>	</form>
-		<script>
-		jQuery('.single_add_to_cart_button').on('click' , function(e){
-			e.preventDefault()
-			jQuery('#variation_id').val(jQuery(e.currentTarget).val());
-			jQuery('#product_id').val(jQuery(e.currentTarget).attr('data-product'));
-				jQuery('#add-to-cart').val(jQuery(e.currentTarget).attr('data-product'));
 
-				jQuery('#attribute_pa_unit_type').val(jQuery('#attributepa_unit_type'+jQuery(e.currentTarget).val()).val());
-			jQuery('form#myForm').submit();
-		})
-
-
-		</script>
 <?php
 }
 add_filter( 'woocommerce_add_cart_item_data', 'wdm_empty_cart', 10,  3);

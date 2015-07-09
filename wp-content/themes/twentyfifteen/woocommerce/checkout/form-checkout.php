@@ -28,13 +28,15 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 	<h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3>
 			<table class="shop_table woocommerce-checkout-review-order-table">
 			</table>
+			<br/>
+			<input type="button" name="customer_next" id="customer_next" value="Next" / >
 	<?php if ( sizeof( $checkout->checkout_fields ) > 0 ) : ?>
 
 		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
 
 
-		<div class="col2-set" id="customer_details">
+		<div class="col2-set" id="customer_details" style="display:none">
 			<div class="col-1">
 				<?php do_action( 'woocommerce_checkout_billing' ); ?>
 			</div>
@@ -42,19 +44,22 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 			<div class="col-2">
 				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
 			</div>
+		
+				<input type="button" name="payment_next" id="payment_next" value="Next" / >
+					<input type="button" name="customer_back" id="customer_back" value="Back" / >
 		</div>
 
 		<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
-
+		<div id="payment_options" style="display:none">
 		<h3 id="order_review_heading"><?php _e( 'Payment', 'woocommerce' ); ?></h3>
 
 	<?php endif; ?>
 
 	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
-	<div id="order_review" class="woocommerce-checkout-review-order">
+	<div id="order_review" class="woocommerce-checkout-review-order" >
 		<?php do_action( 'woocommerce_checkout_paymen_options' ); ?>
-	</div>
+	</div>	</div>
 
 	<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
