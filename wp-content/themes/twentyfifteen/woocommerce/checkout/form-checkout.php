@@ -25,11 +25,10 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->get_checkout_url() ); ?>
 
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( $get_checkout_url ); ?>" enctype="multipart/form-data">
-
+	<h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3>
+			<table class="shop_table woocommerce-checkout-review-order-table">
+			</table>
 	<?php if ( sizeof( $checkout->checkout_fields ) > 0 ) : ?>
-			<h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3>
-		<table class="shop_table woocommerce-checkout-review-order-table">
-		</table>
 
 		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
@@ -47,12 +46,17 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 
 		<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
-
+		<h3 id="order_review_heading"><?php _e( 'Payment', 'woocommerce' ); ?></h3>
 
 	<?php endif; ?>
-<br/>
-	<h3 id="order_payment_heading"><?php _e( 'Payment', 'woocommerce' ); ?></h3>
-<div id="payment" class="woocommerce-checkout-payment"></div>
+
+	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+
+	<div id="order_review" class="woocommerce-checkout-review-order">
+		<?php do_action( 'woocommerce_checkout_paymen_options' ); ?>
+	</div>
+
+	<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
 </form>
 
