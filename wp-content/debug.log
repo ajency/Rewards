@@ -1,0 +1,6 @@
+[09-Jul-2015 07:44:57 UTC] PHP Warning:  An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/">support forums</a>. (WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.) in C:\wamp\www\skyifirst\wp-admin\includes\translation-install.php on line 59
+[09-Jul-2015 07:44:57 UTC] PHP Stack trace:
+[09-Jul-2015 07:44:57 UTC] PHP   1. {main}() C:\wamp\www\skyifirst\wp-admin\install.php:0
+[09-Jul-2015 07:44:57 UTC] PHP   2. wp_get_available_translations() C:\wamp\www\skyifirst\wp-admin\install.php:196
+[09-Jul-2015 07:44:57 UTC] PHP   3. translations_api() C:\wamp\www\skyifirst\wp-admin\includes\translation-install.php:103
+[09-Jul-2015 07:44:57 UTC] PHP   4. trigger_error() C:\wamp\www\skyifirst\wp-admin\includes\translation-install.php:59
