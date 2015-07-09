@@ -492,6 +492,7 @@ div.box::before {
 }
 .hb-woo-product-details .hb-woo-main-link {
 	display: block;
+  position: relative;
 	background: #F15922;
 	padding: 35px 15px;
 	color: #fff;

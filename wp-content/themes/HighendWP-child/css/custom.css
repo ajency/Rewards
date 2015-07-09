@@ -1,0 +1,15 @@
+.woocommerce div.product div.summary {
+  width: 100%;
+}
+.woocommerce div.product div.summary .hb-heading,
+.woocommerce div.product div.summary .sku_wrapper,
+.woocommerce div.product div.summary p.price {
+  display: none;
+}
+.woocommerce div.product div.summary .hb-woo-product-details {
+  width: 32%;
+  margin-right: 1%;
+}
+.woocommerce div.product div.summary .hb-woo-product-details .hb-woo-main-link {
+  width: 100%;
+}

@@ -2,7 +2,6 @@
 
 function skyi_scripts() {
 	wp_enqueue_script( 'customjs', site_template_directory_uri() . '/js/custom.js', array(), '', true );
-	wp_enqueue_style( 'custom-highend-css', site_template_directory_uri() . '/css/hb-custom.css');
 	wp_enqueue_style( 'customcss', site_template_directory_uri() . '/css/custom.css');
 }
 add_action( 'wp_enqueue_scripts', 'skyi_scripts' );

@@ -41,13 +41,12 @@ global $product, $post, $woocommerce;
 
 
 
-
-			<button type="submit" id="buy_button<?php echo $value['variation_id']?>" data-product="<?php echo $product->id; ?>" value="<?php echo $value['variation_id']?>" class="single_add_to_cart_button button alt"><?php echo $product->single_add_to_cart_text(); ?>
-			<div><?php echo implode('/', $value['attributes']);?></b></div>
-		<br/><div><?php echo $value['price_html'];?></b></div>
-
-
-			</button>
+			<div class="hb-woo-product-details">
+				<button type="submit" id="buy_button<?php echo $value['variation_id']?>" data-product="<?php echo $product->id; ?>" value="<?php echo $value['variation_id']?>" class="hb-woo-main-link">
+					<div><?php echo implode('/', $value['attributes']);?></div>
+					<div><?php echo $value['price_html'];?></div>
+				</button>
+			</div>
 
 				<script>
 
