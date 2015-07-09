@@ -68,17 +68,25 @@ function my_function($order_id) {
 	// order object (optional but handy)
 	global $woocommerce;
 	$order = new WC_Order();
+
 	   if ( $order->status != 'failed' ) {
+			$rand = 'FREEDOM'.$order_id;
+			$payment = get_post_meta($order_id, '_payment_method' ,true);
+			if( $payment != 'cheque' ){
+			update_post_meta($order_id,'coupon' ,$rand );
+			}
+
+			?>
+			<script type="text/javascript">
+			jQuery('form').clearForm()
+
+			</script>
+
+			<?php
 	    wp_redirect( home_url() ); exit; // or whatever url you want
 	   }
 
-		?>
-		<script type="text/javascript">
-		jQuery('form[name="checkout"]').trigger('reset')
-[
-		</script>
 
-	  <?php
 
 }
 
@@ -131,7 +139,21 @@ function woocommerce_variable_add_to_cart() {
 
 
 			</button>
+				
+				<script>
 
+				jQuery('.single_add_to_cart_button').on('click' , function(e){
+				 e.preventDefault()
+				 jQuery('#variation_id').val(jQuery(e.currentTarget).val());
+				 jQuery('#product_id').val(jQuery(e.currentTarget).attr('data-product'));
+				   jQuery('#add-to-cart').val(jQuery(e.currentTarget).attr('data-product'));
+
+				   jQuery('#attribute_pa_unit_type').val(jQuery('#attributepa_unit_type'+jQuery(e.currentTarget).val()).val());
+				 jQuery('form#myForm').submit();
+				})
+
+
+				</script>
 
 
 		<?php
@@ -250,6 +272,3 @@ remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_f
 
 add_action( 'woocommerce_checkout_order_review_details', 'woocommerce_order_review', 10 );
 add_action( 'woocommerce_checkout_paymen_options', 'woocommerce_checkout_payment', 20 );
-
-
-?>
