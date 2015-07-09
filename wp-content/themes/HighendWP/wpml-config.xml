@@ -1,0 +1,28 @@
+<wpml-config>
+	<admin-texts>
+		<key name="hb_highend_option">
+			<key name="hb_ios_bookmark_title" />
+			<key name="hb_top_header_info_text" />
+			<key name="hb_top_header_map_text" />
+			<key name="hb_header_right_text" />
+			<key name="hb_pre_footer_text" />
+			<key name="hb_pre_footer_button_text" />
+			<key name="hb_copyright_line_text" />
+			<key name="hb_quick_contact_box_title" />
+			<key name="hb_quick_contact_box_text" />
+			<key name="hb_quick_contact_box_button_title" />
+			<key name="hb_comment_form_text" />
+			<key name="hb_archives_title" />
+			<key name="hb_location_1_info" />
+			<key name="hb_location_2_info" />
+			<key name="hb_location_3_info" />
+			<key name="hb_location_4_info" />
+			<key name="hb_location_5_info" />
+			<key name="hb_location_6_info" />
+			<key name="hb_location_7_info" />
+			<key name="hb_location_8_info" />
+			<key name="hb_location_9_info" />
+			<key name="hb_location_10_info" />
+		</key>
+	</admin-texts>
+</wpml-config>
