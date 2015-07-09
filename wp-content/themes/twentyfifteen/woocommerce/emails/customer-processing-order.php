@@ -15,10 +15,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php do_action('woocommerce_email_header', $email_heading); ?>
 <p><?php printf( __( "Hi %s ", 'woocommerce' ), get_option( 'blogname' ) ); ?></p>
-<p>Thank you for participating.Your application has been registered in our database.
-You will receive your coupon code once the payment has been made.
- You will be an eligible candidate for the offer only after receiving your coupon code.</p>
 
+<?php	if($order->payment_method != 'cheque')
+{
+	?>
+Thank you for participating.Your application has been registered in our database.
+ You coupon code is as follows
+<?php
+	$coupon = get_post_meta($order->id, 'coupon' ,true);
+echo $coupon ;
+ ?>
+
+The result of the draw will be declared on 19th July 2015>
+	<?php
+}
+else {?>
+
+	<p>Thank you for participating.Your application has been registered in our database.
+	You will receive your coupon code once the payment has been made.
+	 You will be an eligible candidate for the offer only after receiving your coupon code.</p>
+
+<?php }
+
+?>
 <!-- <p><?php _e( "Your order has been received and is now being processed. Your order details are shown below for your reference:", 'woocommerce' ); ?></p>
 
 <?php do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plain_text ); ?>

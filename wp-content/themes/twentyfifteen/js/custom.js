@@ -1,6 +1,7 @@
 
 window.onload = function(){
     jQuery('.woocommerce-message').hide()
+
     jQuery('#customer_next').on('click',function(e){
 
       jQuery('#customer_details').show()
@@ -15,7 +16,7 @@ window.onload = function(){
 
       jQuery('#customer_details').hide()
       jQuery('#payment_options').hide()
-      jQuery('form[name="checkout"]').trigger('reset')
+      jQuery('form').clearForm()
 
 
     })
@@ -28,5 +29,25 @@ window.onload = function(){
         jQuery('#attribute_pa_unit_type').val(jQuery('#attributepa_unit_type'+jQuery(e.currentTarget).val()).val());
       jQuery('form#myForm').submit();
     })
+
+    jQuery.fn.clearForm = function(){
+      return this.each(function() {
+        var type = this.type, tag = this.tagName.toLowerCase();
+        if (tag == 'form')
+          return jQuery(':input',this).clearForm();
+        if (type == 'text' || type == 'password' || tag == 'textarea')
+          this.value = '';
+        else if (type == 'checkbox' || type == 'radio')
+          this.checked = false;
+        else if (tag == 'select')
+          this.selectedIndex = -1;
+      });
+
+    };
+      jQuery('form').clearForm()
+
+
+
+
 
 }
