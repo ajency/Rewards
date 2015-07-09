@@ -4,3 +4,11 @@
 [09-Jul-2015 07:44:57 UTC] PHP   2. wp_get_available_translations() C:\wamp\www\skyifirst\wp-admin\install.php:196
 [09-Jul-2015 07:44:57 UTC] PHP   3. translations_api() C:\wamp\www\skyifirst\wp-admin\includes\translation-install.php:103
 [09-Jul-2015 07:44:57 UTC] PHP   4. trigger_error() C:\wamp\www\skyifirst\wp-admin\includes\translation-install.php:59
+[09-Jul-2015 07:58:07 UTC] PHP Warning:  An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/">support forums</a>. (WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.) in C:\wamp\www\skyifirst\wp-includes\update.php on line 457
+[09-Jul-2015 07:58:07 UTC] PHP Stack trace:
+[09-Jul-2015 07:58:07 UTC] PHP   1. {main}() C:\wamp\www\skyifirst\wp-admin\themes.php:0
+[09-Jul-2015 07:58:07 UTC] PHP   2. require_once() C:\wamp\www\skyifirst\wp-admin\themes.php:10
+[09-Jul-2015 07:58:07 UTC] PHP   3. do_action() C:\wamp\www\skyifirst\wp-admin\admin.php:332
+[09-Jul-2015 07:58:07 UTC] PHP   4. call_user_func_array() C:\wamp\www\skyifirst\wp-includes\plugin.php:496
+[09-Jul-2015 07:58:07 UTC] PHP   5. wp_update_themes() C:\wamp\www\skyifirst\wp-includes\plugin.php:496
+[09-Jul-2015 07:58:07 UTC] PHP   6. trigger_error() C:\wamp\www\skyifirst\wp-includes\update.php:457
