@@ -122,15 +122,15 @@ function custom_override_checkout_fields( $fields ) {
     // unset($fields['billing']['billing_first_name']);
     // unset($fields['billing']['billing_last_name']);
     unset($fields['billing']['billing_company']);
-    unset($fields['billing']['billing_address_1']);
-    unset($fields['billing']['billing_address_2']);
+    // unset($fields['billing']['billing_address_1']);
+    // unset($fields['billing']['billing_address_2']);
     // unset($fields['billing']['billing_city']);
     unset($fields['billing']['billing_postcode']);
-    unset($fields['billing']['billing_country']);
-    unset($fields['billing']['billing_state']);
+    // unset($fields['billing']['billing_country']);
+    // unset($fields['billing']['billing_state']);
     // unset($fields['billing']['billing_phone']);
     unset($fields['order']['order_comments']);
-    unset($fields['billing']['billing_address_2']);
+    // unset($fields['billing']['billing_address_2']);
     unset($fields['billing']['billing_postcode']);
     unset($fields['billing']['billing_company']);
     // unset($fields['billing']['billing_last_name']);
@@ -152,56 +152,58 @@ function wc_custom_addresses_labels( $translated_text, $text, $domain )
     return $translated_text;
 }
 add_filter( 'gettext', 'wc_custom_addresses_labels', 20, 3 );
-$wdm_address_fields = array('full_name','city','first_name','last_name'
-
-				);
-
-//global array only for extra fields
-	$wdm_ext_fields = array('full_name');
-
-add_filter( 'woocommerce_default_address_fields' , 'wdm_override_default_address_fields' );
-
-     function wdm_override_default_address_fields( $address_fields ){
-
-     $temp_fields = array();
-
-     $address_fields['full_name'] = array(
-    'label'     => __('Full Name', 'woocommerce'),
-    'required'  => true,
-    'class'     => array('form-row-wide'),
-    'type'  => 'text',
-     );
-
-		// $address_fields['refund'] = array(
-    // 'label'     => __('Refund', 'woocommerce'),
-  	// 'class'     => array('form-row-wide'),
-    // 'type'  => 'label',
-    //  );
-
-
-
-    global $wdm_address_fields;
-
-    foreach($wdm_address_fields as $fky){
-    $temp_fields[$fky] = $address_fields[$fky];
-    }
-
-    $address_fields = $temp_fields;
-
-    return $address_fields;
-}
+// $wdm_address_fields = array('full_name','city','first_name','last_name','state','country' ,'address_1' ,'address_2'
+//
+// 				);
+//
+// //global array only for extra fields
+// 	$wdm_ext_fields = array('full_name');
+//
+// add_filter( 'woocommerce_default_address_fields' , 'wdm_override_default_address_fields' );
+//
+//      function wdm_override_default_address_fields( $address_fields ){
+//
+//      $temp_fields = array();
+//
+//      $address_fields['full_name'] = array(
+//     'label'     => __('Full Name', 'woocommerce'),
+//     'required'  => true,
+//     'class'     => array('form-row-wide'),
+//     'type'  => 'text',
+//      );
+//
+// 		// $address_fields['refund'] = array(
+//     // 'label'     => __('Refund', 'woocommerce'),
+//   	// 'class'     => array('form-row-wide'),
+//     // 'type'  => 'label',
+//     //  );
+//
+//
+//
+//     global $wdm_address_fields;
+//
+//     foreach($wdm_address_fields as $fky){
+//     $temp_fields[$fky] = $address_fields[$fky];
+//     }
+//
+//     $address_fields = $temp_fields;
+//
+//     return $address_fields;
+// }
 add_filter("woocommerce_checkout_fields", "order_fields");
 
 function order_fields($fields) {
 
 $order = array(
-	"billing_full_name",
-	"billing_email",
+  "billing_first_name",
+	"billing_last_name",
+  "billing_email",
 	"billing_email-2",
 	"billing_phone",
+  "billing_address_1",
+  "billing_address_2",
 	"billing_city",
-	"billing_first_name",
-	"billing_last_name"
+	"billing_state"
 
     );
     foreach($order as $field)
@@ -216,3 +218,101 @@ remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_f
 
 add_action( 'woocommerce_checkout_order_review_details', 'woocommerce_order_review', 10 );
 add_action( 'woocommerce_checkout_paymen_options', 'woocommerce_checkout_payment', 20 );
+
+function kia_woocommerce_order_item_name( $name, $item ){
+
+    $product_id = $item['product_id'];
+    $tax = 'product_cat';
+
+    $terms = wp_get_post_terms( $product_id, $tax, array( 'fields' => 'names' ) );
+
+    if( $terms && ! is_wp_error( $terms )) {
+        $taxonomy = get_taxonomy($tax);
+        $name .= '<label>' . $taxonomy->label . ': </label>' . implode( ', ', $terms );
+    }
+
+    return $name;
+}
+add_filter( 'woocommerce_order_item_name', 'kia_woocommerce_order_item_name', 10, 2 );
+
+add_filter( 'manage_edit-shop_order_columns', 'MY_COLUMNS_FUNCTION' );
+function MY_COLUMNS_FUNCTION($columns){
+    $new_columns = (is_array($columns)) ? $columns : array();
+    unset( $new_columns['order_actions'] );
+    unset( $new_columns['shipping_address'] );
+    unset( $new_columns['customer_message'] );
+    unset( $new_columns['order_notes'] );
+    unset( $new_columns['order_items'] );
+    unset( $new_columns['order_title'] );
+    $new_columns['order_date'] = 'Booking Date';
+    $new_columns['order_total'] = 'Amount';
+
+    //edit this for you column(s)
+    //all of your columns will be added before the actions column
+    $new_columns['ordertitle'] = 'Bookings';
+    $new_columns['order_product'] = 'Product';
+    $new_columns['order_date'] = 'Booking Date';
+    $new_columns['order_total'] = 'Amount';
+    $new_columns['status'] = 'Status';
+    
+    //stop editing
+
+
+
+    $new_columns['order_actions'] = $columns['order_actions'];
+    return $new_columns;
+}
+add_action( 'manage_shop_order_posts_custom_column', 'MY_COLUMNS_VALUES_FUNCTION', 2 );
+
+function MY_COLUMNS_VALUES_FUNCTION($column){
+    global $post, $woocommerce, $the_order,$product;
+   
+
+    switch ( $column ) {
+
+        case 'order_product' :
+            $terms = $the_order->get_items();
+           if ( is_array( $terms ) ) {
+                 	foreach($terms as $term)
+    		             {
+                            
+                  		echo $term['item_meta']['pa_unit_type'][0];
+                  		}
+                  } else {
+                  	_e( 'Unable get the producten', 'woocommerce' );
+    		              }
+                break;
+
+        case 'status' : 
+             print_r($the_order->get_status());
+
+            break;
+
+        case 'ordertitle' :
+            $customer_user = get_post_meta( $post->ID, '_customer_user', true);
+            $billing_first_name = get_user_meta($customer_user,'billing_first_name' , true);
+            $billing_last_name = get_user_meta($customer_user,'billing_last_name' , true);
+            $billing_email = get_user_meta($customer_user,'billing_email' , true);
+            echo '<a href="'.esc_url( $the_order->get_view_order_url() ).'">#'.$the_order->get_order_number().'</a>
+
+            by '.$billing_first_name.' '.$billing_last_name.'<br/>'.$billing_email.'';
+            
+           
+
+            break;
+
+    }
+    //stop editing
+}
+
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'woo_display_order_username', 10, 1 );
+
+function woo_display_order_username( $order ){
+
+    global $post;
+    
+    $customer_user = get_post_meta( $post->ID, '_customer_user', true );
+    echo '<p><strong style="display: block;">'.__('Customer Username').':</strong> <a href="user-edit.php?user_id=' . $customer_user . '">' . get_user_meta( $customer_user, 'nickname', true ) . '</a></p>';
+    $customer_coupon = get_post_meta( $post->ID, 'coupon', true ) != "" ? get_post_meta( $post->ID, 'coupon', true ) : 'Not generated';
+    echo '<p><strong style="display: block;">'.__('Customer Coupon').':</strong>'.$customer_coupon.'</p>';
+}
