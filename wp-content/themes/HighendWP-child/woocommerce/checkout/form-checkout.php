@@ -50,6 +50,7 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 					<div>
 						<?php do_action( 'woocommerce_checkout_billing' ); ?>
 					</div>
+					<div class="clearfix"></div>
 					<div class="hb-aligncenter">
 						<button type="button" name="customer_back" id="customer_back" class="hb-button hb-medium-button no-three-d">Back</button>
 						<button type="button" name="payment_next" id="payment_next" class="hb-button hb-medium-button no-three-d">Next</button>
