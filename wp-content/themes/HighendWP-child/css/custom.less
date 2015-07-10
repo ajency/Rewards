@@ -1,7 +1,105 @@
+/*woo commerce*/
+.custom-btns .hb-woo-product-details {
+	display: block;
+	float: none;
+	max-width: none;
+}
+.hb-woo-product-details .hb-woo-main-link {
+	display: block;
+  position: relative;
+	background: #F15922;
+	padding: 35px 15px;
+	color: #fff;
+	border: 6px solid #fff;
+  	box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  	-webkit-transition: all 0.5s;
+  	-o-transition: all 0.5s;
+  	-moz-transition: all 0.5s;
+  	-ms-transition: all 0.5s;
+  	transition: all 0.5s;
+}
+.hb-woo-product-details .hb-woo-main-link .hb-woo-title {
+	display: block;
+	text-align: center;
+	font-size: 32px;
+	font-family:  'kievit' !important;
+	text-transform: uppercase;
+	margin-bottom: 25px;
+	color: #fff;
+	line-height: 1;
+}
+.hb-woo-product-details .hb-woo-main-link .hb-woo-title:after {
+	content: '';
+	display: block;
+	width: 200px;
+	height: 1px;
+	background: #fff;
+	opacity: 0.3;
+	margin-top: 25px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.hb-woo-product-details .hb-woo-main-link .price {
+	font-size: 18px;
+	float: none;
+	max-width: none;
+	position: relative;
+  	color: #fff !important;
+  	font-family:  'kievit' !important;
+  	text-align: center;
+}
+#main-content .hb-woo-wrapper ul.sort-count li ul li {
+	margin-left: 0;
+}
+#main-content .hb-woo-wrapper ul.sort-count .current-li {
+	text-indent: 0;
+	/*padding: 0 60px 0 35px!important;*/
+}
+#main-content .hb-woo-wrapper ul.sort-count .current-li a {
+	text-indent: 0;
+}
+#main-content .hb-woo-wrapper .hb-main-content ul.sort-count li ul li a {
+  padding: 8px 35px!important;
+}
+.hb-woo-product-details .hb-woo-main-link:hover {
+	padding-right: 55px;
+	background-color: #DD4007;
+}
+.hb-woo-product-details .hb-woo-main-link:after {
+	content: "\e2bd";
+	font-family: Icomoon;
+	font-size: 24px;
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	margin-top: -12px;
+	right: -25px;
+	opacity: 0;
+	transition: all 0.5s;
+}
+.hb-woo-product-details .hb-woo-main-link:hover::after {
+	right: 25px;
+	opacity: 1;
+}
+.hb-separator-extra.shop-separator {
+	margin-top: 15px;
+	border-top: solid 1px #CFCFCF;
+}
+.hb-separator-extra.shop-separator:before {
+	content: 'Please select any of the following';
+	display: inline-block;
+	background-color: #F9F9F9;
+	position: relative;
+	top: -11px;
+	padding-right: 6px;
+	margin-left: 16px;
+	padding-left: 6px;
+}
+
 .woocommerce div.product div.summary{
 	width: 100%;
 
-	.hb-heading, .sku_wrapper, p.price{
+	.hb-heading, .sku_wrapper, p.price, .product_meta{
 		display: none;
 	}
 

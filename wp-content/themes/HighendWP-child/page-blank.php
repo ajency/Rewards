@@ -20,7 +20,6 @@ if ( vp_metabox('background_settings.hb_content_background_color') )
 		<div class="row main-row">
 			<div id="page-<?php the_ID(); ?>" <?php post_class('col-12'); ?>>
 				<?php the_content(); ?>
-				<?php echo do_shortcode('[product_page id="8"]'); ?>
 			</div>
 		</div>
 		<!-- END .row -->
