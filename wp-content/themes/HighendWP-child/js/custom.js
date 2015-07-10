@@ -20,15 +20,7 @@ window.onload = function(){
 
 
     })
-    jQuery('.single_add_to_cart_button').on('click' , function(e){
-      e.preventDefault()
-      jQuery('#variation_id').val(jQuery(e.currentTarget).val());
-      jQuery('#product_id').val(jQuery(e.currentTarget).attr('data-product'));
-        jQuery('#add-to-cart').val(jQuery(e.currentTarget).attr('data-product'));
-
-        jQuery('#attribute_pa_unit_type').val(jQuery('#attributepa_unit_type'+jQuery(e.currentTarget).val()).val());
-      jQuery('form#myForm').submit();
-    })
+   
 
     jQuery.fn.clearForm = function(){
       return this.each(function() {
