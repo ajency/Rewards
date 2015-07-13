@@ -23,9 +23,36 @@ Details as follows:
   Email:<?php echo  $order->billing_email;?>
   Phone:<?php echo  $order->billing_phone;?>
   City:<?php echo  $order->billing_city;?>
-  Apartment :<?php _e( 'Product', 'woocommerce' ); ?>
+	<?php
+	$order = new WC_Order( $order->id );
+    $items = $order->get_items();
+
+    foreach ( $items as $item ) {
+        $product_name = $item['name'];
+        $product_id = $item['product_id'];
+        $product_variation_id = $item['variation_id'];
+        $pa_version = $item['pa_version'];
+    }
+
+		$variation = wc_get_product($product_variation_id);
+		$variation->get_formatted_name();
+
+
+
+	 ?>
+  Apartment :<?php echo 	$variation->get_formatted_name(); ?>
   Payment :<?php echo  $order->payment_method;?></p>
 
+<?php	if($order->payment_method != 'cheque')
+{
+		$coupon = get_post_meta($order->id, 'coupon' ,true);
+	?>
+
+	Coupon code generated :<?php echo  $coupon;?></p>
+	<?php
+}
+
+?>
 <!-- <?php do_action( 'woocommerce_email_before_order_table', $order, true, false ); ?>
 
 <h2><a href="<?php echo admin_url( 'post.php?post=' . $order->id . '&action=edit' ); ?>"><?php printf( __( 'Order #%s', 'woocommerce'), $order->get_order_number() ); ?></a> (<?php printf( '<time datetime="%s">%s</time>', date_i18n( 'c', strtotime( $order->order_date ) ), date_i18n( wc_date_format(), strtotime( $order->order_date ) ) ); ?>)</h2>

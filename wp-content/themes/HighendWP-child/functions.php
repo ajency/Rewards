@@ -326,7 +326,10 @@ function woo_display_order_username( $order ){
 		$billing_last_name = get_user_meta($customer_user,'billing_last_name' , true);
 		$billing_email = get_user_meta($customer_user,'billing_email' , true);
     echo '<p><strong style="display: block;">'.__('Customer Username').':</strong> <a href="user-edit.php?user_id=' . $customer_user . '">' .$billing_first_name .' '.$billing_last_name. '</a></p>';
-    $customer_coupon = get_post_meta( $post->ID, 'coupon', true ) != "" ? get_post_meta( $post->ID, 'coupon', true ) : 'Not generated';
+		echo '<p><strong style="display: block;">'.__('Customer Email Address').':</strong> <a href="user-edit.php?user_id=' . $customer_user . '">' .$billing_email. '</a></p>';
+
+
+		$customer_coupon = get_post_meta( $post->ID, 'coupon', true ) != "" ? get_post_meta( $post->ID, 'coupon', true ) : 'Not generated';
     echo '<p><strong style="display: block;">'.__('Customer Coupon').':</strong>'.$customer_coupon.'</p>';
 		$customer_chequeno = get_post_meta( $post->ID, 'cheque_no', true ) != "" ? get_post_meta( $post->ID, 'cheque_no', true ) : 'Not present';
     echo '<p><strong style="display: block;">'.__('Cheque No').':</strong>'.$customer_chequeno.'</p>';
@@ -433,6 +436,8 @@ function myplugin_save_meta_box_data( $post_id ) {
 
 	// Update the meta field in the database.
 	update_post_meta( $post_id, 'cheque_bank', $my_data );
+
+  order_complete_function($post_id);
 }
 add_action( 'save_post', 'myplugin_save_meta_box_data' );
 
@@ -442,6 +447,7 @@ add_action( 'woocommerce_order_status_completed ', 'order_complete_function' );
  * Do something after WooCommerce sets an order on completed
  */
 function order_complete_function($order_id) {
+
 
 	// order object (optional but handy)
 	$order = new WC_Order( $order_id );
@@ -455,23 +461,22 @@ function order_complete_function($order_id) {
 
 	$coupon = get_post_meta( $order_id, 'coupon', true );
 
-	$random = 'FREEDOM'.$order_id;
-
-  update_post_meta( $order_id, 'coupon', $random );
 
 
-	if($order->status == 'completed' && $cheque_no != "" && $cheque_bank != "" && $_payment_method == 'cheque' && $coupon !="")
+
+	if($order->status == 'completed' && $cheque_no != "" && $cheque_bank != "" && $_payment_method == 'cheque' && $coupon =="")
 	{
 			$random = 'FREEDOM'.$order_id;
 
-		 update_post_meta( $post_id, 'coupon', $random );
+		 update_post_meta( $order_id, 'coupon', $random );
+		 add_filter( 'woocommerce_email_actions', 'so_27112461_woocommerce_email_actions' );
 
 	}
 
 }
 
-function so_27112461_woocommerce_email_actions( $actions ){
-    $actions[] = 'woocommerce_order_status_completed';
+function so_27112461_woocommerce_email_actions( $actions){
+
+	$actions[] = 'woocommerce_order_status_completed';
     return $actions;
 }
-add_filter( 'woocommerce_email_actions', 'so_27112461_woocommerce_email_actions' );
