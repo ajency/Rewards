@@ -7,7 +7,7 @@ function skyi_scripts() {
 add_action( 'wp_enqueue_scripts', 'skyi_scripts' );
 
 function site_template_directory_uri() {
-    return site_url('wp-content/themes/HighendWP-child');
+    return site_url('wp-content/themes/skyifirst');
 }
 
 /* Code added by Surekha */
