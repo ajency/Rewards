@@ -243,3 +243,27 @@
 .woocommerce-billing-fields .hb-heading {
   display: none;
 }
+#billing_email-2_field {
+  float: right;
+}
+#billing_city_field {
+  width: 47%;
+  float: left;
+}
+#billing_state_field {
+  float: right;
+}
+#billing_state_field .state_select {
+  min-height: 43px;
+  line-height: 2.5em;
+}
+#billing_state_field .hb-custom-select {
+  display: none;
+}
+#billing_phone_field {
+  float: left;
+}
+.woocommerce #payment #place_order {
+  float: none;
+  background: rgba(52, 73, 94, 0.8);
+}

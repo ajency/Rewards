@@ -199,11 +199,11 @@ $order = array(
 	"billing_last_name",
   "billing_email",
 	"billing_email-2",
-	"billing_phone",
   "billing_address_1",
   "billing_address_2",
-	"billing_city",
-	"billing_state"
+    "billing_city",
+    "billing_state",
+	"billing_phone"
 
     );
     foreach($order as $field)
