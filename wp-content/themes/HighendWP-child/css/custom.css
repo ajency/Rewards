@@ -167,6 +167,44 @@
 .woocommerce div.product div.summary .hb-woo-product-details .hb-woo-main-link {
   width: 100%;
 }
+.hb-woo-product-details2.checkout {
+  width: 100%;
+  max-width: 250px;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 20px 0;
+  float: none;
+  display: block;
+  border: 1px solid #eeeeee;
+  background-color: #eeeeee;
+}
+.hb-woo-product-details2.checkout .hb-woo-main-link {
+  color: #555555;
+  text-align: center;
+}
+.hb-woo-product-details2.checkout .hb-woo-main-link .hb-woo-title {
+  font-family: 'kievit';
+  font-weight: 500;
+  font-size: 32px;
+  color: #ff6600;
+  margin-bottom: 0;
+}
+.hb-woo-product-details2.checkout .hb-woo-main-link .hb-woo-title dl {
+  margin: 0;
+}
+.hb-woo-product-details2.checkout .hb-woo-main-link .hb-woo-title dt {
+  display: none;
+}
+.hb-woo-product-details2.checkout .hb-woo-main-link .hb-woo-title dd {
+  display: inline-block;
+}
+.hb-woo-product-details2.checkout .hb-woo-main-link .hb-woo-title dd p {
+  margin: 0;
+}
+.hb-woo-product-details2.checkout .hb-woo-main-link .price {
+  color: #555555 !important;
+  font-size: 20px;
+}
 .ease {
   -webkit-transition: all 0.3s ease-out;
   /* Chrome 1-25, Safari 3.2+ */
