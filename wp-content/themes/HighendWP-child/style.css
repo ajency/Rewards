@@ -49,27 +49,6 @@ input:focus{
  #main-content{
      padding:0px;
  }
-#header-inner {
- position:absolute !important;
-}
-#header-inner {
- position:absolute !important;
-  margin-top: 100vh;
-}
-#header-inner #header-inner-bg{
-  background: #000;
-}
-#header-inner #header-inner-bg a{
- color:#fff ;
-}
-#header-inner #header-inner-bg a:hover{
- color:#e67e22 !important;
- border-bottom:2px solid #e67e22;
-}
-
-#header-inner.fixed #header-inner-bg a{
-   color: #444;
-}
 .third-skin #main-nav > li.current-menu-item > a{
     color:#e67e22 !important;
  border-bottom:2px solid #e67e22;

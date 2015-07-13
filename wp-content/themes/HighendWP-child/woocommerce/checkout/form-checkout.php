@@ -34,7 +34,7 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 			<table class="shop_table woocommerce-checkout-review-order-table">
 			</table>
 			<div class="hb-aligncenter">
-				<button type="button" name="customer_next" id="customer_next" class="hb-button hb-medium-button no-three-d" >Next</button>
+				<button type="button" name="customer_next" id="customer_next" class="hb-button hb-wet-asphalt hb-medium-button no-three-d" >Next</button>
 			</div>
 		</div>
 	</div>
@@ -47,13 +47,16 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 			</div>
 			<div class="acc-body">
 				<div class="col2-set" id="customer_details">
+				<h4 class="step-intro">
+					Supply us with your contact details. We shall need them to communicate participation code and results
+				</h4>
 					<div>
 						<?php do_action( 'woocommerce_checkout_billing' ); ?>
 					</div>
 					<div class="clearfix"></div>
 					<div class="hb-aligncenter">
-						<button type="button" name="customer_back" id="customer_back" class="hb-button hb-medium-button no-three-d">Back</button>
-						<button type="button" name="payment_next" id="payment_next" class="hb-button hb-medium-button no-three-d">Next</button>
+						<button type="button" name="customer_back" id="customer_back" class="hb-button hb-wet-asphalt hb-medium-button no-three-d">Back</button>
+						<button type="button" name="payment_next" id="payment_next" class="hb-button hb-wet-asphalt hb-medium-button no-three-d">Next</button>
 					</div>
 				</div>
 			</div>
