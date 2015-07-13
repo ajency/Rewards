@@ -24,8 +24,54 @@ window.onload = function(){
     //   jQuery('#payment_options').show()
 
     // })
-    
+
     jQuery('#payment_next').click(function() {
+      if(jQuery('#billing_first_name').val() == "")
+      {
+        alert('Please enter First name');
+        return false;
+      }
+      if(jQuery('#billing_last_name').val() == "")
+      {
+        alert('Please enter Last name');
+        return false;
+      }
+      if(jQuery('#billing_email').val() == "")
+      {
+        alert('Please enter Email Address');
+        return false;
+      }
+      if(jQuery('#billing_email-2').val() == "")
+      {
+        alert('Please enter Email Address');
+        return false;
+      }
+      if(jQuery('#billing_phone').val() == "")
+      {
+        alert('Please enter Phone No');
+        return false;
+      }
+      if(jQuery('#billing_address_1').val() == "")
+      {
+        alert('Please enter Address');
+        return false;
+      }
+      if(jQuery('#billing_address2').val() == "")
+      {
+        alert('Please enter Address');
+        return false;
+      }
+      if(jQuery('#billing_city').val() == "")
+      {
+        alert('Please enter Town/City');
+        return false;
+      }
+      if(jQuery('#billing_state').val() == "")
+      {
+        alert('Please enter State');
+        return false;
+      }
+
       jQuery('.accordion-group.two').removeClass('open');
       jQuery('.accordion-group.three').addClass('open viewed');
     });

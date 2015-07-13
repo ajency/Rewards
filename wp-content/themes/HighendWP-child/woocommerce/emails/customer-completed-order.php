@@ -1,6 +1,6 @@
 <?php
 /**
- * Customer processing order email
+ * Customer completed order email
  *
  * @author 		WooThemes
  * @package 	WooCommerce/Templates/Emails
@@ -13,19 +13,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
-<?php do_action('woocommerce_email_header', $email_heading); ?>
-<p><?php printf( __( "Hi %s ", 'woocommerce' ), get_option( 'blogname' ) ); ?></p>
-<p>Thank you for participating.Your application has been registered in our database.
-You will receive your coupon code once the payment has been made.
- You will be an eligible candidate for the offer only after receiving your coupon code.</p>
+<?php do_action( 'woocommerce_email_header', $email_heading ); ?>
 
-<!-- <p><?php _e( "Your order has been received and is now being processed. Your order details are shown below for your reference:", 'woocommerce' ); ?></p>
+<p><?php printf( __( "Hi %s ", 'woocommerce' ), get_option( 'blogname' ) ); ?></p>
 
 <?php do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plain_text ); ?>
 
 <h2><?php printf( __( 'Order #%s', 'woocommerce' ), $order->get_order_number() ); ?></h2>
+<?php	if($order->payment_method != 'cheque')
+{
+	?>
+Thank you for participating.Your application has been registered in our database.
+ You coupon code is as follows
+<?php
+	$coupon = get_post_meta($order->id, 'coupon' ,true);
+echo $coupon ;
+ ?>
 
-<table cellspacing="0" cellpadding="6" style="width: 100%; border: 1px solid #eee;" border="1" bordercolor="#eee">
+The result of the draw will be declared on 19th July 2015>
+	<?php
+}
+else {?>
+
+	<p>Thank you for participating.Your application has been registered in our database.
+	You will receive your coupon code once the payment has been made.
+	 You will be an eligible candidate for the offer only after receiving your coupon code.</p>
+
+<?php }
+
+?>
+<!-- <table cellspacing="0" cellpadding="6" style="width: 100%; border: 1px solid #eee;" border="1" bordercolor="#eee">
 	<thead>
 		<tr>
 			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Product', 'woocommerce' ); ?></th>
@@ -34,7 +51,7 @@ You will receive your coupon code once the payment has been made.
 		</tr>
 	</thead>
 	<tbody>
-		<?php echo $order->email_order_items_table( $order->is_download_permitted(), true, $order->has_status( 'processing' ) ); ?>
+		<?php echo $order->email_order_items_table( true, false, true ); ?>
 	</tbody>
 	<tfoot>
 		<?php
@@ -50,12 +67,12 @@ You will receive your coupon code once the payment has been made.
 			}
 		?>
 	</tfoot>
-</table>
+</table> -->
 
-<?php do_action( 'woocommerce_email_after_order_table', $order, $sent_to_admin, $plain_text ); ?>
+<!-- <?php do_action( 'woocommerce_email_after_order_table', $order, $sent_to_admin, $plain_text ); ?>
 
-<?php do_action( 'woocommerce_email_order_meta', $order, $sent_to_admin, $plain_text ); ?> -->
+<?php do_action( 'woocommerce_email_order_meta', $order, $sent_to_admin, $plain_text ); ?>
 
-<!-- <?php do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_text ); ?> -->
+<?php do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_text ); ?> -->
 
 <?php do_action( 'woocommerce_email_footer' ); ?>

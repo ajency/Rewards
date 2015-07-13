@@ -130,7 +130,7 @@ function custom_override_checkout_fields( $fields ) {
     // unset($fields['billing']['billing_state']);
     // unset($fields['billing']['billing_phone']);
     unset($fields['order']['order_comments']);
-    // unset($fields['billing']['billing_address_2']);
+    unset($fields['billing']['billing_address_2']);
     unset($fields['billing']['billing_postcode']);
     unset($fields['billing']['billing_company']);
     // unset($fields['billing']['billing_last_name']);
@@ -141,7 +141,9 @@ function custom_override_checkout_fields( $fields ) {
 
 function wc_custom_addresses_labels( $translated_text, $text, $domain )
 {
+
     switch ( $translated_text )
+
     {
       	case 'Billing Details' : // Back-end
             $translated_text = __( 'Customer Details', 'woocommerce' );
@@ -152,55 +154,60 @@ function wc_custom_addresses_labels( $translated_text, $text, $domain )
     return $translated_text;
 }
 add_filter( 'gettext', 'wc_custom_addresses_labels', 20, 3 );
-// $wdm_address_fields = array('full_name','city','first_name','last_name','state','country' ,'address_1' ,'address_2'
-//
-// 				);
-//
-// //global array only for extra fields
-// 	$wdm_ext_fields = array('full_name');
-//
-// add_filter( 'woocommerce_default_address_fields' , 'wdm_override_default_address_fields' );
-//
-//      function wdm_override_default_address_fields( $address_fields ){
-//
-//      $temp_fields = array();
-//
-//      $address_fields['full_name'] = array(
-//     'label'     => __('Full Name', 'woocommerce'),
-//     'required'  => true,
-//     'class'     => array('form-row-wide'),
-//     'type'  => 'text',
-//      );
-//
-// 		// $address_fields['refund'] = array(
-//     // 'label'     => __('Refund', 'woocommerce'),
-//   	// 'class'     => array('form-row-wide'),
-//     // 'type'  => 'label',
-//     //  );
-//
-//
-//
-//     global $wdm_address_fields;
-//
-//     foreach($wdm_address_fields as $fky){
-//     $temp_fields[$fky] = $address_fields[$fky];
-//     }
-//
-//     $address_fields = $temp_fields;
-//
-//     return $address_fields;
-// }
+
+
+$wdm_address_fields = array('address2','city','first_name','last_name','state','country' ,'address_1'
+
+				);
+
+//global array only for extra fields
+	$wdm_ext_fields = array('address2');
+
+add_filter( 'woocommerce_default_address_fields' , 'wdm_override_default_address_fields' );
+
+     function wdm_override_default_address_fields( $address_fields ){
+
+     $temp_fields = array();
+
+     $address_fields['address2'] = array(
+    'label'     => __('Addree 2', 'woocommerce'),
+    'required'  => true,
+    'class'     => array('form-row-wide'),
+    'type'  => 'text',
+     );
+
+		// $address_fields['refund'] = array(
+    // 'label'     => __('Refund', 'woocommerce'),
+  	// 'class'     => array('form-row-wide'),
+    // 'type'  => 'label',
+    //  );
+
+
+
+    global $wdm_address_fields;
+
+    foreach($wdm_address_fields as $fky){
+    $temp_fields[$fky] = $address_fields[$fky];
+    }
+
+    $address_fields = $temp_fields;
+
+    return $address_fields;
+}
 add_filter("woocommerce_checkout_fields", "order_fields");
 
 function order_fields($fields) {
 
+
+
+
 $order = array(
-  "billing_first_name",
+    "billing_first_name",
 	"billing_last_name",
-  "billing_email",
+    "billing_email",
 	"billing_email-2",
-  "billing_address_1",
-  "billing_address_2",
+    "billing_address_1",
+    "billing_address_2",
     "billing_city",
     "billing_state",
 	"billing_phone"
@@ -212,6 +219,9 @@ $order = array(
     }
 
     $fields["billing"] = $ordered_fields;
+    $fields['billing']['billing_address_1']['placeholder'] = '';
+    $fields['billing']['billing_address_1']['label'] = 'Address 1';
+    $fields['billing']['billing_state']['label'] = 'State';
     return $fields;
 }
 remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
@@ -254,7 +264,7 @@ function MY_COLUMNS_FUNCTION($columns){
     $new_columns['order_date'] = 'Booking Date';
     $new_columns['order_total'] = 'Amount';
     $new_columns['status'] = 'Status';
-    
+
     //stop editing
 
 
@@ -266,7 +276,7 @@ add_action( 'manage_shop_order_posts_custom_column', 'MY_COLUMNS_VALUES_FUNCTION
 
 function MY_COLUMNS_VALUES_FUNCTION($column){
     global $post, $woocommerce, $the_order,$product;
-   
+
 
     switch ( $column ) {
 
@@ -275,7 +285,7 @@ function MY_COLUMNS_VALUES_FUNCTION($column){
            if ( is_array( $terms ) ) {
                  	foreach($terms as $term)
     		             {
-                            
+
                   		echo $term['item_meta']['pa_unit_type'][0];
                   		}
                   } else {
@@ -283,7 +293,7 @@ function MY_COLUMNS_VALUES_FUNCTION($column){
     		              }
                 break;
 
-        case 'status' : 
+        case 'status' :
              print_r($the_order->get_status());
 
             break;
@@ -296,8 +306,8 @@ function MY_COLUMNS_VALUES_FUNCTION($column){
             echo '<a href="'.esc_url( $the_order->get_view_order_url() ).'">#'.$the_order->get_order_number().'</a>
 
             by '.$billing_first_name.' '.$billing_last_name.'<br/>'.$billing_email.'';
-            
-           
+
+
 
             break;
 
@@ -310,9 +320,163 @@ add_action( 'woocommerce_admin_order_data_after_billing_address', 'woo_display_o
 function woo_display_order_username( $order ){
 
     global $post;
-    
-    $customer_user = get_post_meta( $post->ID, '_customer_user', true );
-    echo '<p><strong style="display: block;">'.__('Customer Username').':</strong> <a href="user-edit.php?user_id=' . $customer_user . '">' . get_user_meta( $customer_user, 'nickname', true ) . '</a></p>';
-    $customer_coupon = get_post_meta( $post->ID, 'coupon', true ) != "" ? get_post_meta( $post->ID, 'coupon', true ) : 'Not generated';
+
+    $customer_user = get_post_meta( $post->ID, '_customer_user', true);
+		$billing_first_name = get_user_meta($customer_user,'billing_first_name' , true);
+		$billing_last_name = get_user_meta($customer_user,'billing_last_name' , true);
+		$billing_email = get_user_meta($customer_user,'billing_email' , true);
+    echo '<p><strong style="display: block;">'.__('Customer Username').':</strong> <a href="user-edit.php?user_id=' . $customer_user . '">' .$billing_first_name .' '.$billing_last_name. '</a></p>';
+		echo '<p><strong style="display: block;">'.__('Customer Email Address').':</strong> <a href="user-edit.php?user_id=' . $customer_user . '">' .$billing_email. '</a></p>';
+
+
+		$customer_coupon = get_post_meta( $post->ID, 'coupon', true ) != "" ? get_post_meta( $post->ID, 'coupon', true ) : 'Not generated';
     echo '<p><strong style="display: block;">'.__('Customer Coupon').':</strong>'.$customer_coupon.'</p>';
+		$customer_chequeno = get_post_meta( $post->ID, 'cheque_no', true ) != "" ? get_post_meta( $post->ID, 'cheque_no', true ) : 'Not present';
+    echo '<p><strong style="display: block;">'.__('Cheque No').':</strong>'.$customer_chequeno.'</p>';
+		$customer_cheque_bank = get_post_meta( $post->ID, 'cheque_bank', true ) != "" ? get_post_meta( $post->ID, 'cheque_bank', true ) : 'Not present';
+    echo '<p><strong style="display: block;">'.__('Bank').':</strong>'.$customer_cheque_bank.'</p>';
+}
+
+
+add_action( 'add_meta_boxes', 'add_meta_boxes' );
+
+function add_meta_boxes()
+{
+    add_meta_box(
+        'woocommerce-order-my-custom',
+        __( 'Cheque Details' ),
+        'order_my_custom',
+        'shop_order',
+        'side',
+        'default'
+    );
+
+}
+function order_my_custom($post)
+{
+
+	wp_nonce_field( 'myplugin_save_meta_box_data', 'myplugin_meta_box_nonce' );
+
+
+	$value = get_post_meta( $post->ID, 'cheque_no', true );
+
+	echo '<label for="myplugin_cheque_no">';
+	_e( 'Cheque No', 'myplugin_textdomain' );
+	echo '</label> ';
+	echo '<input type="text" id="myplugin_cheque_no" name="myplugin_cheque_no" value="' . esc_attr( $value ) . '" size="25" />';
+
+	$value = get_post_meta( $post->ID, 'cheque_bank', true );
+
+	echo '<br/><label for="myplugin_cheque_bank">';
+	_e( 'Bank', 'myplugin_textdomain' );
+	echo '</label> ';
+	echo '<br/><input type="text" id="myplugin_cheque_bank" name="myplugin_cheque_bank" value="' . esc_attr( $value ) . '" size="25" />';
+
+
+
+}
+
+function myplugin_save_meta_box_data( $post_id ) {
+
+	/*
+	 * We need to verify this came from our screen and with proper authorization,
+	 * because the save_post action can be triggered at other times.
+	 */
+
+	// Check if our nonce is set.
+	if ( ! isset( $_POST['myplugin_meta_box_nonce'] ) ) {
+		return;
+	}
+
+	// Verify that the nonce is valid.
+	if ( ! wp_verify_nonce( $_POST['myplugin_meta_box_nonce'], 'myplugin_save_meta_box_data' ) ) {
+		return;
+	}
+
+	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check the user's permissions.
+	if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
+
+		if ( ! current_user_can( 'edit_page', $post_id ) ) {
+			return;
+		}
+
+	} else {
+
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return;
+		}
+	}
+
+	/* OK, it's safe for us to save the data now. */
+
+	// Make sure that it is set.
+	if ( ! isset( $_POST['myplugin_cheque_no'] ) ) {
+		return;
+	}
+
+	// Sanitize user input.
+	$my_data = sanitize_text_field( $_POST['myplugin_cheque_no'] );
+
+	// Update the meta field in the database.
+	update_post_meta( $post_id, 'cheque_no', $my_data );
+
+
+	// Make sure that it is set.
+	if ( ! isset( $_POST['myplugin_cheque_bank'] ) ) {
+		return;
+	}
+
+	// Sanitize user input.
+	$my_data = sanitize_text_field( $_POST['myplugin_cheque_bank'] );
+
+	// Update the meta field in the database.
+	update_post_meta( $post_id, 'cheque_bank', $my_data );
+
+  order_complete_function($post_id);
+}
+add_action( 'save_post', 'myplugin_save_meta_box_data' );
+
+
+add_action( 'woocommerce_order_status_completed ', 'order_complete_function' );
+/*
+ * Do something after WooCommerce sets an order on completed
+ */
+function order_complete_function($order_id) {
+
+
+	// order object (optional but handy)
+	$order = new WC_Order( $order_id );
+
+	$cheque_no = get_post_meta( $order_id, 'cheque_no', true );
+
+	$cheque_bank = get_post_meta( $order_id, 'cheque_bank', true );
+
+
+	$_payment_method = get_post_meta( $order_id, '_payment_method', true );
+
+	$coupon = get_post_meta( $order_id, 'coupon', true );
+
+
+
+
+	if($order->status == 'completed' && $cheque_no != "" && $cheque_bank != "" && $_payment_method == 'cheque' && $coupon =="")
+	{
+			$random = 'FREEDOM'.$order_id;
+
+		 update_post_meta( $order_id, 'coupon', $random );
+		 add_filter( 'woocommerce_email_actions', 'so_27112461_woocommerce_email_actions' );
+
+	}
+
+}
+
+function so_27112461_woocommerce_email_actions( $actions){
+
+	$actions[] = 'woocommerce_order_status_completed';
+    return $actions;
 }
