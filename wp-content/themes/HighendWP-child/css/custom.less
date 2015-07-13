@@ -1,5 +1,17 @@
 @icon-font-path:  "../fonts/";
 
+@gray-darker:            lighten(#000, 13.5%); // #222
+@gray-dark:              lighten(#000, 20%);   // #333
+@gray:                   lighten(#000, 33.5%); // #555
+@gray-light:             lighten(#000, 60%);   // #999
+@gray-lighter:           lighten(#000, 93.5%); // #eee
+
+@color-grey: #8b91a0;
+@color-white: #fff;
+@color-dark: @gray-dark;
+
+@brand-primary:         #ff6600;
+
 @font-face {
     font-family: 'kievit';
     src: url('@{icon-font-path}kievitot-thin-webfont.eot');
@@ -200,5 +212,72 @@
 		.hb-woo-main-link{
 			width: 100%;
 		}
+	}
+}
+
+.ease{
+  -webkit-transition: all 0.3s ease-out;  /* Chrome 1-25, Safari 3.2+ */
+     -moz-transition: all 0.3s ease-out;  /* Firefox 4-15 */
+       -o-transition: all 0.3s ease-out;  /* Opera 10.50–12.00 */
+          transition: all 0.3s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+
+/* Booking Styles */
+.page-heading{
+	margin-top: 10px;
+}
+
+.accordion{
+	max-width: 850px;
+	margin: auto;
+}
+.accordion-group{
+	box-shadow: 0 0px 6px rgba(0,0,0,0.2);
+	.acc-title{
+		background: @gray-lighter;
+		padding: 15px;
+		h3{
+			margin: 0;
+			font-family: Open Sans;
+		}
+	}
+
+	.acc-body{
+		height: 0px;
+		// opacity: 0;
+		overflow: hidden;
+		z-index: 0;
+		.ease;
+	}
+
+	&.open{
+		.acc-title{
+			// color: @brand-primary;
+			background: @brand-primary;
+			box-shadow: 0 2px 1px lighten(@color-grey, 30%);
+			h3{
+				color: @color-white;
+				font-weight: 600;
+			}
+		}
+		.acc-body{
+			padding: 20px;
+			height: auto;
+			opacity: 1;
+			overflow: visible;
+			z-index: 5;
+		}
+	}
+
+	&.viewed{
+		.acc-title{
+			cursor: pointer;
+		}
+	}
+}
+
+.details-form{
+	label{
+		font-weight: normal;
 	}
 }

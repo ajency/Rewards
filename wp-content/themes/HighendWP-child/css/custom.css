@@ -167,3 +167,66 @@
 .woocommerce div.product div.summary .hb-woo-product-details .hb-woo-main-link {
   width: 100%;
 }
+.ease {
+  -webkit-transition: all 0.3s ease-out;
+  /* Chrome 1-25, Safari 3.2+ */
+  -moz-transition: all 0.3s ease-out;
+  /* Firefox 4-15 */
+  -o-transition: all 0.3s ease-out;
+  /* Opera 10.50–12.00 */
+  transition: all 0.3s ease-out;
+  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+/* Booking Styles */
+.page-heading {
+  margin-top: 10px;
+}
+.accordion {
+  max-width: 850px;
+  margin: auto;
+}
+.accordion-group {
+  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.2);
+}
+.accordion-group .acc-title {
+  background: #eeeeee;
+  padding: 15px;
+}
+.accordion-group .acc-title h3 {
+  margin: 0;
+  font-family: Open Sans;
+}
+.accordion-group .acc-body {
+  height: 0px;
+  overflow: hidden;
+  z-index: 0;
+  -webkit-transition: all 0.3s ease-out;
+  /* Chrome 1-25, Safari 3.2+ */
+  -moz-transition: all 0.3s ease-out;
+  /* Firefox 4-15 */
+  -o-transition: all 0.3s ease-out;
+  /* Opera 10.50–12.00 */
+  transition: all 0.3s ease-out;
+  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+.accordion-group.open .acc-title {
+  background: #ff6600;
+  box-shadow: 0 2px 1px #dfe1e5;
+}
+.accordion-group.open .acc-title h3 {
+  color: #ffffff;
+  font-weight: 600;
+}
+.accordion-group.open .acc-body {
+  padding: 20px;
+  height: auto;
+  opacity: 1;
+  overflow: visible;
+  z-index: 5;
+}
+.accordion-group.viewed .acc-title {
+  cursor: pointer;
+}
+.details-form label {
+  font-weight: normal;
+}
