@@ -7,7 +7,7 @@ function skyi_scripts() {
 add_action( 'wp_enqueue_scripts', 'skyi_scripts' );
 
 function site_template_directory_uri() {
-    return site_url('wp-content/themes/HighendWP-child');
+    return site_url('wp-content/themes/skyifirst');
 }
 
 /* Code added by Surekha */
@@ -206,11 +206,11 @@ $order = array(
 	"billing_last_name",
     "billing_email",
 	"billing_email-2",
-	"billing_phone",
     "billing_address_1",
-    "billing_address2",
+    "billing_address_2",
     "billing_city",
-	"billing_state"
+    "billing_state",
+	"billing_phone"
 
     );
     foreach($order as $field)

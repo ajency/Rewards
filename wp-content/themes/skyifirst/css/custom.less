@@ -215,6 +215,48 @@
 	}
 }
 
+.hb-woo-product-details2{
+	&.checkout{
+		width: 100%;
+		max-width: 250px;
+		margin: auto;
+		margin-bottom: 20px;
+		padding: 20px 0;
+		float: none;
+		display: block;
+		border: 1px solid @gray-lighter;
+		background-color: @gray-lighter; 
+		.hb-woo-main-link {
+			// background: @color-white;
+			color: @gray;
+			text-align: center;
+			.hb-woo-title{
+				font-family:  'kievit';
+				font-weight: 500;
+				font-size: 32px;
+				color: @brand-primary ;
+				margin-bottom: 0;
+				dl{
+					margin: 0;
+				}
+				dt{
+					display: none;
+				}
+				dd{
+					display: inline-block;
+					p{
+						margin: 0;
+					}
+				}
+			}
+			.price{
+				color: @gray !important;
+				font-size: 20px;
+			}
+		}
+	}
+}
+
 .ease{
   -webkit-transition: all 0.3s ease-out;  /* Chrome 1-25, Safari 3.2+ */
      -moz-transition: all 0.3s ease-out;  /* Firefox 4-15 */
@@ -298,4 +340,33 @@
 	.hb-heading{
 		display: none;
 	}
+}
+
+#billing_email-2_field{
+	float: right;
+}
+
+#billing_city_field{
+	width: 47%;
+	float: left;
+}
+
+#billing_state_field{
+	float: right;
+	.state_select{
+		min-height: 43px;
+		line-height: 2.5em;
+	}
+	.hb-custom-select{
+		display: none;
+	}
+}
+
+#billing_phone_field{
+	float: left;
+}
+
+.woocommerce #payment #place_order{
+	float: none;
+	background: rgba(52,73,94,0.8);
 }

@@ -31,10 +31,13 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 		    <h3>Step 1</h3>
 		</div>
 		<div class="acc-body">
+			<h4 class="step-intro">
+				Below is a summary of your selection. Click next to initiate the enrolment for the draw.
+			</h4>
 			<table class="shop_table woocommerce-checkout-review-order-table">
 			</table>
 			<div class="hb-aligncenter">
-				<button type="button" name="customer_next" id="customer_next" class="hb-button hb-wet-asphalt hb-medium-button no-three-d" >Next</button>
+				<button type="button" name="customer_next" id="customer_next" class="hb-button hb-wet-asphalt hb-medium-button no-three-d" >Next <span class="icon-chevron-right"></span></button>
 			</div>
 		</div>
 	</div>
@@ -47,16 +50,17 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 			</div>
 			<div class="acc-body">
 				<div class="col2-set" id="customer_details">
-				<h4 class="step-intro">
-					Supply us with your contact details. We shall need them to communicate participation code and results
-				</h4>
+					<h4 class="step-intro">
+						Supply us with your contact details. We shall need them to communicate participation code and results.
+					</h4>
 					<div>
 						<?php do_action( 'woocommerce_checkout_billing' ); ?>
 					</div>
 					<div class="clearfix"></div>
+					<br />
 					<div class="hb-aligncenter">
-						<button type="button" name="customer_back" id="customer_back" class="hb-button hb-wet-asphalt hb-medium-button no-three-d">Back</button>
-						<button type="button" name="payment_next" id="payment_next" class="hb-button hb-wet-asphalt hb-medium-button no-three-d">Next</button>
+						<button type="button" name="customer_back" id="customer_back" class="hb-button hb-wet-asphalt hb-medium-button no-three-d"><span class="icon-chevron-left"></span> Back</button>
+						<button type="button" name="payment_next" id="payment_next" class="hb-button hb-wet-asphalt hb-medium-button no-three-d">Next <span class="icon-chevron-right"></span></button>
 					</div>
 				</div>
 			</div>
@@ -69,7 +73,10 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
             </div>
             <div class="acc-body">
 				<div id="payment_options">
-					<h3 id="order_review_heading"><?php _e( 'Payment', 'woocommerce' ); ?></h3>
+					<!--<h3 id="order_review_heading"><?php _e( 'Payment', 'woocommerce' ); ?></h3>-->
+					<h4 class="step-intro">
+						Make a refundable payment of Rs 10,000 via our online payment gateway or by cheque, as an indication of serious interest.
+					</h4>
 
 					<?php endif; ?>
 
