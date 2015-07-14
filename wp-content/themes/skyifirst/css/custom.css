@@ -296,10 +296,13 @@
 }
 .page-template-checkout-template #header-inner,
 .page-template-home-template #header-inner,
+.page-template-terms-template #header-inner,
 .page-template-checkout-template #footer,
 .page-template-home-template #footer,
+.page-template-terms-template #footer,
 .page-template-checkout-template #pre-footer-area,
-.page-template-home-template #pre-footer-area {
+.page-template-home-template #pre-footer-area,
+.page-template-terms-template #pre-footer-area {
   display: none;
 }
 /*# sourceMappingURL=custom.css.map */
