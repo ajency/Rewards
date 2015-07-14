@@ -48,21 +48,7 @@ global $product, $post, $woocommerce;
 				</button>
 			</div>
 
-				<script>
-
-				jQuery('.hb-woo-main-link').on('click' , function(e){
-					console.log("entered");
-				 e.preventDefault()
-				 jQuery('#variation_id').val(jQuery(e.currentTarget).val());
-				 jQuery('#product_id').val(jQuery(e.currentTarget).attr('data-product'));
-				   jQuery('#add-to-cart').val(jQuery(e.currentTarget).attr('data-product'));
-
-				   jQuery('#attribute_pa_unit_type').val(jQuery('#attributepa_unit_type'+jQuery(e.currentTarget).val()).val());
-				 jQuery('form#myForm').submit();
-				})
-
-
-				</script>
+			
 
 
 		<?php
