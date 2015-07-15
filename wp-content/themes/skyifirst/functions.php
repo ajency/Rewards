@@ -70,7 +70,11 @@ function my_function($order_id) {
 	$order = new WC_Order();
 
 	   if ( $order->status != 'failed' ) {
-			$rand = 'FREEDOM'.$order_id;
+			// $rand = 'FREEDOM'.$order_id;
+      $original_string = 'kjlmnopqrst';
+      $random_string = get_random_string($original_string, 6);
+      $rand = md5(uniqid($order_id, true));
+      // $rand = $random_string;
 			$payment = get_post_meta($order_id, '_payment_method' ,true);
 			if( $payment != 'cheque' ){
 			update_post_meta($order_id,'coupon' ,$rand );
@@ -220,8 +224,8 @@ $order = array(
     }
 
     $fields["billing"] = $ordered_fields;
-    $fields['billing']['billing_address_1']['placeholder'] = ' (apartment,building ,floor etc)';
-		$fields['billing']['billing_address_2']['placeholder'] = '  ( street address, pincode etc)';
+    $fields['billing']['billing_address_1']['placeholder'] = 'apartment,building ,floor etc';
+		$fields['billing']['billing_address_2']['placeholder'] = 'street address, pincode etc';
 		$fields['billing']['billing_first_name']['placeholder'] = 'John';
 		$fields['billing']['billing_last_name']['placeholder'] = 'Doe';
 		$fields['billing']['billing_email']['placeholder'] = 'john@example.com';
@@ -230,6 +234,7 @@ $order = array(
     $fields['billing']['billing_address_1']['label'] = 'Address';
 		$fields['billing']['billing_phone']['label'] = 'Mobile';
     $fields['billing']['billing_state']['label'] = 'State';
+    
     return $fields;
 }
 remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
@@ -474,7 +479,11 @@ function order_complete_function($order_id) {
 
 	if($order->status == 'completed' && $cheque_no != "" && $cheque_bank != "" && $_payment_method == 'cheque' && $coupon =="")
 	{
-			$random = 'FREEDOM'.$order_id;
+			// $random = 'FREEDOM'.$order_id;
+      $original_string = 'abcdefghi';
+      $random_string = get_random_string($original_string, 6);
+      // $random = $random_string;
+      $random = md5(uniqid($order_id, true));
 
 		 update_post_meta( $order_id, 'coupon', $random );
 		 add_filter( 'woocommerce_email_actions', 'so_27112461_woocommerce_email_actions' );
@@ -505,7 +514,32 @@ function so_27112461_woocommerce_email_actions( $actions){
 //
 // }
 
-add_filter( 'default_checkout_state', 'change_default_checkout_state' );
-function change_default_checkout_state() {
-  return 'MH'; // state code
+// add_filter( 'default_checkout_state', 'change_default_checkout_state' );
+// function change_default_checkout_state() {
+//   return 'MH'; // state code
+// }
+function get_random_string($valid_chars, $length)
+{
+    // start with an empty random string
+    $random_string = "";
+
+    // count the number of chars in the valid chars string so we know how many choices we have
+    $num_valid_chars = strlen($valid_chars);
+
+    // repeat the steps until we've created a string of the right length
+    for ($i = 0; $i < $length; $i++)
+    {
+        // pick a random number from 1 up to the number of valid chars
+        $random_pick = mt_rand(1, $num_valid_chars);
+
+        // take the random character out of the string of valid chars
+        // subtract 1 from $random_pick because strings are indexed starting at 0, and we started picking at 1
+        $random_char = $valid_chars[$random_pick-1];
+
+        // add the randomly-chosen char onto the end of our string so far
+        $random_string .= $random_char;
+    }
+
+    // return our finished random string
+    return $random_string;
 }

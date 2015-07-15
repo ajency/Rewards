@@ -102,11 +102,9 @@ window.onload = function(){
 
       jQuery('.accordion-group.two').removeClass('open');
       jQuery('.accordion-group.three').addClass('open viewed');
-       jQuery('form#myForm').submit();
+    
 
-      jQuery('.accordion-group.three').addClass('open viewed');
-      //  jQuery('form#myForm').submit();
-      jQuery('form#checkout').submit();
+
       jQuery('.progress-outer').css('width', '85%');
 
     });
@@ -255,7 +253,15 @@ window.onload = function(){
         jQuery('.validation').remove();
 
 
-})
+    })
+    jQuery(document).on('keypress' , function(e){
+        if(e.keyCode == 13)
+        e.preventDefault();
+
+
+    })
+
+          // jQuery('#billing_state option[value="MH"]').prop("selected",true)
 
 
 }
