@@ -271,6 +271,7 @@
   font-family: Open Sans;
   font-weight: 400;
   font-style: normal;
+  margin-top: 15px;
 }
 .woocommerce-billing-fields .hb-heading {
   display: none;
@@ -310,6 +311,9 @@
 .page-template-terms-template #pre-footer-area {
   display: none;
 }
+.variations_form {
+  padding: 25px 10px;
+}
 /* Fixed Header */
 .fixed-header {
   text-align: center;
@@ -338,10 +342,10 @@
   height: 0;
 }
 .fixed-header.smaller + .steps-container {
-  margin-top: 150px;
+  padding-top: 150px;
 }
 .steps-container {
-  margin-top: 220px;
+  padding-top: 220px;
 }
 /* Progress */
 .progress-section {
