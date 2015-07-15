@@ -48,6 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<input type="hidden" id="product_id" name="product_id" value="" />
 					<input type="hidden" id="add-to-cart" name="add-to-cart" value="" />
 						<input type="hidden" id="attribute_pa_unit_type" name="attribute_pa_unit_type" value="" />
+							<div class="row">
 
 			<?php
 			foreach ($variations as $key => $value) {
@@ -65,8 +66,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 
-				<div class="hb-woo-product-details">
-					<button type="button" id="buy_button<?php echo $value['variation_id']?>" data-product="<?php echo $product->id; ?>" value="<?php echo $value['variation_id']?>" class="hb-woo-main-link-checkout">
+				<div class="hb-woo-product-details col-4">
+					<button type="button" id="buy_button<?php echo $value['variation_id']?>" data-product="<?php echo $product->id; ?>" value="<?php echo $value['variation_id']?>" class="hb-woo-main-link-checkout hb-woo-main-link">
 						<h2 class="hb-woo-title"><?php echo implode('/', $value['attributes']);?></h2>
 						<div><?php echo $value['price_html'];?> all inclusive*</div>
 					</button>
@@ -78,6 +79,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php
 			}
 			?>
+			</div>
 <?php
 	do_action( 'woocommerce_review_order_after_cart_contents' );
 ?>

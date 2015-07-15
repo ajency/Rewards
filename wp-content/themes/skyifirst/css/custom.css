@@ -63,7 +63,7 @@
 .hb-woo-product-details .hb-woo-main-link {
   display: block;
   position: relative;
-  background: #F15922;
+  background: #ff6600;
   padding: 35px 15px;
   color: #fff;
   border: 6px solid #fff;
@@ -114,8 +114,7 @@
   padding: 8px 35px!important;
 }
 .hb-woo-product-details .hb-woo-main-link:hover {
-  padding-right: 55px;
-  background-color: #DD4007;
+  background-color: #cc5200;
 }
 .hb-woo-product-details .hb-woo-main-link:after {
   content: "\e2bd";
@@ -129,10 +128,6 @@
   opacity: 0;
   -webkit-transition: all 0.5s;
           transition: all 0.5s;
-}
-.hb-woo-product-details .hb-woo-main-link:hover::after {
-  right: 25px;
-  opacity: 1;
 }
 .hb-separator-extra.shop-separator {
   margin-top: 15px;
@@ -162,6 +157,16 @@
 }
 .woocommerce div.product div.summary .hb-woo-product-details .hb-woo-main-link {
   width: 100%;
+}
+.hb-woo-product-details .hb-woo-main-link-checkout {
+  width: 100%;
+  background-color: #999999;
+}
+.hb-woo-product-details .hb-woo-main-link-checkout:hover {
+  background-color: #555555;
+}
+.hb-woo-product-details .hb-woo-main-link-checkout.variation_seleced {
+  background-color: #ff6c0a;
 }
 .hb-woo-product-details2.checkout {
   width: 100%;
