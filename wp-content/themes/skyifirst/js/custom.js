@@ -26,56 +26,81 @@ window.onload = function(){
     // })
 
     jQuery('#payment_next').click(function() {
-      // if(jQuery('#billing_first_name').val() == "")
-      // {
-      //   alert('Please enter First name');
-      //   return false;
-      // }
-      // if(jQuery('#billing_last_name').val() == "")
-      // {
-      //   alert('Please enter Last name');
-      //   return false;
-      // }
-      // if(jQuery('#billing_email').val() == "")
-      // {
-      //   alert('Please enter Email Address');
-      //   return false;
-      // }
-      // if(jQuery('#billing_email-2').val() == "")
-      // {
-      //   alert('Please enter Email Address');
-      //   return false;
-      // }
-      // if(jQuery('#billing_phone').val() == "")
-      // {
-      //   alert('Please enter Phone No');
-      //   return false;
-      // }
-      // if(jQuery('#billing_address_1').val() == "")
-      // {
-      //   alert('Please enter Address');
-      //   return false;
-      // }
-      // if(jQuery('#billing_address2').val() == "")
-      // {
-      //   alert('Please enter Address');
-      //   return false;
-      // }
-      // if(jQuery('#billing_city').val() == "")
-      // {
-      //   alert('Please enter Town/City');
-      //   return false;
-      // }
-      // if(jQuery('#billing_state').val() == "")
-      // {
-      //   alert('Please enter State');
-      //   return false;
-      // }
-      //
-      // jQuery('.accordion-group.two').removeClass('open');
-      // jQuery('.accordion-group.three').addClass('open viewed');
-      //  jQuery('form#myForm').submit();
-       jQuery('form#checkout').submit();
+      jQuery('.validation').remove();
+      if(jQuery('#billing_first_name').val() == "")
+      {
+        jQuery("#billing_first_name").after("<div class='validation' style='color:red'>Please enter First name</div>");
+        return false;
+      }
+      if(jQuery('#billing_last_name').val() == "")
+      {
+        jQuery("#billing_last_name").after("<div class='validation' style='color:red'>Please enter Last name</div>");
+        return false;
+      }
+      if(jQuery('#billing_email').val() == "")
+      {
+        jQuery("#billing_email").after("<div class='validation' style='color:red'>Please enter Email Address</div>");
+        return false;
+      }
+      if(jQuery('#billing_email-2').val() == "")
+      {
+        jQuery("#billing_email-2").after("<div class='validation' style='color:red'>Please enter Email Address</div>");
+        return false;
+      }
+
+
+      if(!(validateEmail(jQuery('#billing_email').val())))
+      {
+        jQuery("#billing_email").after("<div class='validation' style='color:red'>Enter Valid Email Address</div>");
+        return false;
+      }
+      if(!(validateEmail(jQuery('#billing_email-2').val())))
+      {
+        jQuery("#billing_email-2").after("<div class='validation' style='color:red'>Enter Valid Email Address</div>");
+        return false;
+      }
+      if(jQuery('#billing_email-2').val() != jQuery('#billing_email').val())
+      {
+        jQuery("#billing_email-2").after("<div class='validation' style='color:red'>Email addresses you entered do not match</div>");
+           return false;
+      }
+      if(jQuery('#billing_phone').val() == "")
+      {
+        jQuery("#billing_phone").after("<div class='validation' style='color:red'>Please enter Phone No</div>");
+        return false;
+      }
+      var phone = jQuery('#billing_phone').val(),
+        intRegex = /[0-9 -()+]+$/;
+      if((phone.length < 6) || (!intRegex.test(phone)))
+      {
+          jQuery("#billing_phone").after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
+           return false;
+      }
+      if(jQuery('#billing_address_1').val() == "")
+      {
+        jQuery("#billing_address_1").after("<div class='validation' style='color:red'>Please enter Address</div>");
+        return false;
+      }
+      if(jQuery('#billing_address2').val() == "")
+      {
+        jQuery("#billing_address2").after("<div class='validation' style='color:red'>Please enter Address</div>");
+        return false;
+      }
+      if(jQuery('#billing_city').val() == "")
+      {
+        jQuery("#billing_city").after("<div class='validation' style='color:red'>Please enter Town/City</div>");
+        return false;
+      }
+      if(jQuery('#billing_state').val() == "")
+      {
+        jQuery("#billing_state").after("<div class='validation' style='color:red'>Please enter State</div>");
+        return false;
+      }
+
+      jQuery('.accordion-group.two').removeClass('open');
+      jQuery('.accordion-group.three').addClass('open viewed');
+       jQuery('form#myForm').submit();
+      //  jQuery('form#checkout').submit();
     });
 
     jQuery('.two.viewed > .acc-title').click(function() {
@@ -157,8 +182,56 @@ window.onload = function(){
     };
       jQuery('form').clearForm()
 
+      function validateEmail(sEmail) {
+    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (filter.test(sEmail)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+  }
+
+  jQuery('#billing_email').on('change' , function(e){
+      jQuery('.validation').remove();
+      if(!(validateEmail(jQuery('#billing_email').val())))
+      {
+        jQuery("#billing_email").after("<div class='validation' style='color:red'>Enter Valid Email Address</div>");
+         return false;
+      }
+  })
+
+  jQuery('#billing_email-2').on('change' , function(e){
+      jQuery('.validation').remove();
+      if(!(validateEmail(jQuery('#billing_email-2').val())))
+      {
+        jQuery("#billing_email-2").after("<div class='validation' style='color:red'>Enter Valid Email Address</div>");
+         return false;
+      }
+      if(jQuery('#billing_email-2').val() !=   jQuery('#billing_email').val())
+      {
+      jQuery("#billing_email-2").after("<div class='validation' style='color:red'>Email addresses you entered do not match</div>");
+         return false;
+      }
+  })
+
+  jQuery('#billing_phone').on('change' , function(e){
+      jQuery('.validation').remove();
+    var phone = jQuery('#billing_phone').val(),
+    intRegex = /[0-9 -()+]+$/;
+    if((phone.length < 6) || (!intRegex.test(phone)))
+    {
+      jQuery("#billing_phone").after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
+       return false;
+    }
+  })
 
 
+
+jQuery('.input-text ').on('keypress' , function(e){
+    jQuery('.validation').remove();
+
+})
 
 
 }
