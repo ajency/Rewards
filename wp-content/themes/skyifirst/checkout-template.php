@@ -31,7 +31,7 @@ if ( vp_metabox('background_settings.hb_content_background_color') )
           </div>
         </div>
 
-        <?php echo do_shortcode( '[skill number="15" char="%" caption="" color="#2980B9"]' ) ?>
+        <?php echo do_shortcode( '[skill number="15" char="%" caption="" color="#fff"]' ) ?>
       </div>
     </div>
 
