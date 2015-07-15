@@ -24,7 +24,7 @@ global $product, $post, $woocommerce;
 			<input type="hidden" id="product_id" name="product_id" value="" />
 				<input type="hidden" id="add-to-cart" name="add-to-cart" value="" />
 					<input type="hidden" id="attribute_pa_unit_type" name="attribute_pa_unit_type" value="" />
-
+			<div class="row">
 		<?php
 		foreach ($variations as $key => $value) {
 		?>
@@ -41,18 +41,19 @@ global $product, $post, $woocommerce;
 
 
 
-			<div class="hb-woo-product-details">
-				<button type="submit" id="buy_button<?php echo $value['variation_id']?>" data-product="<?php echo $product->id; ?>" value="<?php echo $value['variation_id']?>" class="hb-woo-main-link ">
-					<h2 class="hb-woo-title"><?php echo implode('/', $value['attributes']);?></h2>
-					<div><?php echo $value['price_html'];?> all inclusive*</div>
-				</button>
-			</div>
 
-			
+				<div class="hb-woo-product-details col-4">
+					<button type="submit" id="buy_button<?php echo $value['variation_id']?>" data-product="<?php echo $product->id; ?>" value="<?php echo $value['variation_id']?>" class="hb-woo-main-link ">
+						<h2 class="hb-woo-title"><?php echo implode('/', $value['attributes']);?></h2>
+						<div><?php echo $value['price_html'];?> all inclusive*</div>
+					</button>
+				</div>
+
 
 
 		<?php
 		}
-		?>	</form>
+		?>	</div>
+		</form>
 
 <?php

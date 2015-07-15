@@ -1,39 +1,33 @@
 <?php
+
+/**
+ * @package WordPress
+ * @subpackage Highend
+ */
 /*
-    Template Name: terms Template
+Template Name: Terms Template
 */
-
 ?>
-<!DOCTYPE html>
-<!--[if IE 7]>
-<html class="ie ie7" <?php language_attributes(); ?> xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
-<![endif]-->
-<!--[if IE 8]>
-<html class="ie ie8" <?php language_attributes(); ?> xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
-<![endif]-->
-<!--[if !(IE 7) | !(IE 8)  ]><!-->
-<!--<![endif]-->
-<head>
+<?php get_header(); ?>
+<?php if ( have_posts() ) : while (have_posts()) : the_post(); ?>
+<?php
+$main_content_style = "";
+if ( vp_metabox('background_settings.hb_content_background_color') )
+	$main_content_style = ' style="background-color: ' . vp_metabox('background_settings.hb_content_background_color') . ';"';
+?>
+	<!-- BEGIN #main-content -->
+<div id="main-content"<?php echo $main_content_style; ?>>
+	<div class="container">
+		<div class="row main-row">
+			<div id="page-<?php the_ID(); ?>" <?php post_class('col-12'); ?>>
+				<?php the_content(); ?>
+			</div>
+		</div>
+		<!-- END .row -->
+	</div>
+	<!-- END .container -->
+</div>
+<!-- END #main-content -->
 
-    <meta charset="<?php bloginfo( 'charset' ); ?>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title><?php wp_title( '|', true, 'right' ); ?></title>
-    <link rel="profile" href="http://gmpg.org/xfn/11" />
-    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-      
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.js"></script>
-
-
-
-
-</head>
-<body class="gradient">
-
-Terms and conditions
-
-<?php wp_footer(); ?>
-</body>
-
-
-</html>
+<?php endwhile; endif; ?>
+<?php get_footer(); ?>

@@ -1,0 +1,7 @@
+*** WooCommerce Terms & Conditions Popup Changelog ***
+
+2014.11.18 - version 1.0.1
+ * Fix: Issue with PHP 5.2 displaying empty popups
+
+2014.09.22 - version 1.0
+ * First release!
