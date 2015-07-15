@@ -16,7 +16,27 @@ if ( vp_metabox('background_settings.hb_content_background_color') )
 ?>
   <!-- BEGIN #main-content -->
 <div id="main-content"<?php echo $main_content_style; ?>>
-  <div class="container">
+    <div class="fixed-header">
+      <div class="container">
+          <h1>Freedom Draw Application</h1>
+        <div class="row progress-section">
+          <div class="col-4">
+            <h3> Step 1  <small>| Apartment Preference</small></h3>
+          </div>
+          <div class="col-4">
+            <h3> Step 2  <small>| Your Contact Details</small></h3>
+          </div>
+          <div class="col-4">
+            <h3> Step 3  <small>| Online or Cheque Payment</small></h3>
+          </div>
+        </div>
+
+        <?php echo do_shortcode( '[skill number="15" char="%" caption="" color="#2980B9"]' ) ?>
+      </div>
+    </div>
+
+  <div class="container steps-container">
+
     <div class="row main-row">
       <div id="page-<?php the_ID(); ?>" <?php post_class('col-12'); ?>>
         <?php the_content(); ?>

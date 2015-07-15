@@ -110,7 +110,7 @@
 .hb-woo-product-details .hb-woo-main-link {
 	display: block;
   position: relative;
-	background: #F15922;
+	background: @brand-primary;
 	padding: 35px 15px;
 	color: #fff;
 	border: 6px solid #fff;
@@ -165,8 +165,8 @@
   padding: 8px 35px!important;
 }
 .hb-woo-product-details .hb-woo-main-link:hover {
-	padding-right: 55px;
-	background-color: #DD4007;
+	// padding-right: 55px;
+	background-color: darken(@brand-primary, 10%);
 }
 .hb-woo-product-details .hb-woo-main-link:after {
 	content: "\e2bd";
@@ -181,8 +181,8 @@
 	transition: all 0.5s;
 }
 .hb-woo-product-details .hb-woo-main-link:hover::after {
-	right: 25px;
-	opacity: 1;
+	// right: 25px;
+	// opacity: 1;
 }
 .hb-separator-extra.shop-separator {
 	margin-top: 15px;
@@ -213,9 +213,21 @@
 		.hb-woo-main-link{
 			width: 100%;
 		}
+
 	}
 }
-
+.hb-woo-product-details{
+	.hb-woo-main-link-checkout{
+		width: 100%;
+		background-color: @gray-light;
+		&:hover{
+			background-color: @gray;
+		}
+		&.variation_seleced{
+			background-color: lighten(@brand-primary, 2%);
+		}
+	}
+}
 .hb-woo-product-details2{
 	&.checkout{
 		width: 100%;
@@ -312,7 +324,7 @@
 			height: auto;
 			opacity: 1;
 			overflow: visible;
-			z-index: 5;
+			z-index: 1;
 		}
 	}
 
@@ -334,7 +346,8 @@
 	text-align: center;
 	font-family:Open Sans;
 	font-weight:400;
-	font-style:normal
+	font-style:normal;
+	margin-top: 15px;
 }
 
 .woocommerce-billing-fields{
@@ -375,5 +388,70 @@
 .page-template-checkout-template, .page-template-home-template, .page-template-terms-template{
 	#header-inner, #footer, #pre-footer-area{
 		display: none;
+	}
+}
+
+.variations_form{
+	padding: 25px 10px;
+}
+
+/* Fixed Header */
+.fixed-header{
+	text-align: center;
+	padding: 20px 0 10px;
+	position: fixed;
+	width: 100%;
+	height: 150px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+	transition: all 0.4s ease;
+	z-index: 99;
+	background-color: @color-white;
+	h1{
+		height: 60px;
+		font-size: 40px;
+		transition: all 0.4s ease;
+	}
+	&.smaller{
+		padding: 0;
+		height: 90px;
+		h1{
+			opacity: 0;
+			height: 0;
+		}
+		&+.steps-container{
+			padding-top: 150px;
+		}
+	}
+}
+
+.steps-container{
+	padding-top: 220px;
+}
+
+/* Progress */
+.progress-section{
+	text-align: center;
+	.col-4{
+		margin-bottom: 0;
+	}
+	h3{
+		margin-bottom: 0;
+		small{
+			font-size: 75%;
+		}
+	}
+}
+.hb-skill-meter {
+	.hb-progress-bar{
+		height: 16px;
+	}
+	.progress-outer{
+		height: 15px;
+	}
+	.progress-value{
+		display: none;
+	}
+	.progress-outer{
+		transition: all 1s ease;
 	}
 }

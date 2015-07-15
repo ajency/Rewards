@@ -11,11 +11,13 @@ window.onload = function(){
     jQuery('#customer_next').click(function() {
       jQuery('.accordion-group.one').removeClass('open');
       jQuery('.accordion-group.two').addClass('open viewed');
+      jQuery('.progress-outer').css('width', '50%');
     });
 
     jQuery('.one.viewed > .acc-title').click(function() {
       jQuery('.accordion-group').removeClass('open');
       jQuery('.accordion-group.one').addClass('open');
+      jQuery('.progress-outer').css('width', '15%');
     });
 
 
@@ -26,6 +28,7 @@ window.onload = function(){
     // })
 
     jQuery('#payment_next').click(function() {
+
       jQuery('.validation').remove();
       if(jQuery('#billing_first_name').val() == "")
       {
@@ -100,7 +103,12 @@ window.onload = function(){
       jQuery('.accordion-group.two').removeClass('open');
       jQuery('.accordion-group.three').addClass('open viewed');
        jQuery('form#myForm').submit();
-      //  jQuery('form#checkout').submit();
+
+      jQuery('.accordion-group.three').addClass('open viewed');
+      //  jQuery('form#myForm').submit();
+      jQuery('form#checkout').submit();
+      jQuery('.progress-outer').css('width', '85%');
+
     });
 
     jQuery('.two.viewed > .acc-title').click(function() {
@@ -162,6 +170,7 @@ window.onload = function(){
     jQuery('#customer_back').click(function() {
       jQuery('.accordion-group').removeClass('open');
       jQuery('.accordion-group.one').addClass('open');
+      jQuery('.progress-outer').css('width', '15%');
     });
 
 
@@ -228,8 +237,23 @@ window.onload = function(){
 
 
 
-jQuery('.input-text ').on('keypress' , function(e){
-    jQuery('.validation').remove();
+
+    window.addEventListener('scroll', function(e){
+        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+            shrinkOn = 20,
+            header = document.querySelector(".fixed-header");
+        if (distanceY > shrinkOn) {
+            classie.add(header,"smaller");
+        } else {
+            if (classie.has(header,"smaller")) {
+                classie.remove(header,"smaller");
+            }
+        }
+    });
+
+    jQuery('.input-text ').on('keypress' , function(e){
+        jQuery('.validation').remove();
+
 
 })
 

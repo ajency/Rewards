@@ -63,7 +63,7 @@
 .hb-woo-product-details .hb-woo-main-link {
   display: block;
   position: relative;
-  background: #F15922;
+  background: #ff6600;
   padding: 35px 15px;
   color: #fff;
   border: 6px solid #fff;
@@ -114,8 +114,7 @@
   padding: 8px 35px!important;
 }
 .hb-woo-product-details .hb-woo-main-link:hover {
-  padding-right: 55px;
-  background-color: #DD4007;
+  background-color: #cc5200;
 }
 .hb-woo-product-details .hb-woo-main-link:after {
   content: "\e2bd";
@@ -129,10 +128,6 @@
   opacity: 0;
   -webkit-transition: all 0.5s;
           transition: all 0.5s;
-}
-.hb-woo-product-details .hb-woo-main-link:hover::after {
-  right: 25px;
-  opacity: 1;
 }
 .hb-separator-extra.shop-separator {
   margin-top: 15px;
@@ -162,6 +157,16 @@
 }
 .woocommerce div.product div.summary .hb-woo-product-details .hb-woo-main-link {
   width: 100%;
+}
+.hb-woo-product-details .hb-woo-main-link-checkout {
+  width: 100%;
+  background-color: #999999;
+}
+.hb-woo-product-details .hb-woo-main-link-checkout:hover {
+  background-color: #555555;
+}
+.hb-woo-product-details .hb-woo-main-link-checkout.variation_seleced {
+  background-color: #ff6c0a;
 }
 .hb-woo-product-details2.checkout {
   width: 100%;
@@ -252,7 +257,7 @@
   height: auto;
   opacity: 1;
   overflow: visible;
-  z-index: 5;
+  z-index: 1;
 }
 .accordion-group.viewed .acc-title {
   cursor: pointer;
@@ -266,6 +271,7 @@
   font-family: Open Sans;
   font-weight: 400;
   font-style: normal;
+  margin-top: 15px;
 }
 .woocommerce-billing-fields .hb-heading {
   display: none;
@@ -304,5 +310,67 @@
 .page-template-home-template #pre-footer-area,
 .page-template-terms-template #pre-footer-area {
   display: none;
+}
+.variations_form {
+  padding: 25px 10px;
+}
+/* Fixed Header */
+.fixed-header {
+  text-align: center;
+  padding: 20px 0 10px;
+  position: fixed;
+  width: 100%;
+  height: 150px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.4s ease;
+          transition: all 0.4s ease;
+  z-index: 99;
+  background-color: #ffffff;
+}
+.fixed-header h1 {
+  height: 60px;
+  font-size: 40px;
+  -webkit-transition: all 0.4s ease;
+          transition: all 0.4s ease;
+}
+.fixed-header.smaller {
+  padding: 0;
+  height: 90px;
+}
+.fixed-header.smaller h1 {
+  opacity: 0;
+  height: 0;
+}
+.fixed-header.smaller + .steps-container {
+  padding-top: 150px;
+}
+.steps-container {
+  padding-top: 220px;
+}
+/* Progress */
+.progress-section {
+  text-align: center;
+}
+.progress-section .col-4 {
+  margin-bottom: 0;
+}
+.progress-section h3 {
+  margin-bottom: 0;
+}
+.progress-section h3 small {
+  font-size: 75%;
+}
+.hb-skill-meter .hb-progress-bar {
+  height: 16px;
+}
+.hb-skill-meter .progress-outer {
+  height: 15px;
+}
+.hb-skill-meter .progress-value {
+  display: none;
+}
+.hb-skill-meter .progress-outer {
+  -webkit-transition: all 1s ease;
+          transition: all 1s ease;
 }
 /*# sourceMappingURL=custom.css.map */
