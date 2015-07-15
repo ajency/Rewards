@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package WordPress
  * @subpackage Highend
@@ -9,11 +10,11 @@ Template Name: Terms Template
 ?>
 <?php get_header(); ?>
 <?php if ( have_posts() ) : while (have_posts()) : the_post(); ?>
-<?php 
+<?php
 $main_content_style = "";
 if ( vp_metabox('background_settings.hb_content_background_color') )
 	$main_content_style = ' style="background-color: ' . vp_metabox('background_settings.hb_content_background_color') . ';"';
-?> 
+?>
 	<!-- BEGIN #main-content -->
 <div id="main-content"<?php echo $main_content_style; ?>>
 	<div class="container">

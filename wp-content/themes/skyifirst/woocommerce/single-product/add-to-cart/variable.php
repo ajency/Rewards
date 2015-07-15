@@ -41,33 +41,14 @@ global $product, $post, $woocommerce;
 
 
 
-			
+
 				<div class="hb-woo-product-details col-4">
 					<button type="submit" id="buy_button<?php echo $value['variation_id']?>" data-product="<?php echo $product->id; ?>" value="<?php echo $value['variation_id']?>" class="hb-woo-main-link ">
 						<h2 class="hb-woo-title"><?php echo implode('/', $value['attributes']);?></h2>
 						<div><?php echo $value['price_html'];?> all inclusive*</div>
 					</button>
 				</div>
-			
 
-				<script>
-
-				
-				jQuery(document).ready(function(){
-				jQuery('.hb-woo-main-link').on('click' , function(e){
-				console.log("entered");
-				e.preventDefault()
-				jQuery('#variation_id').val(jQuery(e.currentTarget).val());
-				jQuery('#product_id').val(jQuery(e.currentTarget).attr('data-product'));
-				jQuery('#add-to-cart').val(jQuery(e.currentTarget).attr('data-product'));
-
-				jQuery('#attribute_pa_unit_type').val(jQuery('#attributepa_unit_type'+jQuery(e.currentTarget).val()).val());
-				jQuery('form#myForm').submit();
-				})
-				})
-
-
-				</script>
 
 
 		<?php
