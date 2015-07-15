@@ -11,11 +11,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-?>
 
+$arguments = array(
+				'role' => 'Administrator',
+				'orderby' => 'ID',
+				'order' => 'ASC',
+				'offset' => 0,
+				'number' => 0
+		);
+	$admins = get_users($arguments);
+
+	foreach ((array) $admins as $value) {
+
+
+?>
 <?php do_action( 'woocommerce_email_header', $email_heading ); ?>
 
-<p><?php printf( __( 'Hello  %s', 'woocommerce' ), $order->billing_first_name . ' ' . $order->billing_last_name ); ?></p>
+<p><?php printf( __( 'Hello  %s', 'woocommerce' ), $value->display_name); ?></p>
 <p> A new participant has been registered into the system.
 
 Details as follows:
@@ -90,4 +102,4 @@ Details as follows:
 
 <?php do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_text ); ?> -->
 
-<?php do_action( 'woocommerce_email_footer' ); ?>
+<?php do_action( 'woocommerce_email_footer' ); }?>

@@ -219,8 +219,15 @@ $order = array(
     }
 
     $fields["billing"] = $ordered_fields;
-    $fields['billing']['billing_address_1']['placeholder'] = '';
-    $fields['billing']['billing_address_1']['label'] = 'Address 1';
+    $fields['billing']['billing_address_1']['placeholder'] = ' (apartment,building ,floor etc)';
+		$fields['billing']['billing_address_2']['placeholder'] = '  ( street address, pincode etc)';
+		$fields['billing']['billing_first_name']['placeholder'] = 'John';
+		$fields['billing']['billing_last_name']['placeholder'] = 'Doe';
+		$fields['billing']['billing_email']['placeholder'] = 'john@example.com';
+		$fields['billing']['billing_email-2']['placeholder'] = 'john@example.com';
+		$fields['billing']['billing_phone']['placeholder'] = '+91 9123456780';
+    $fields['billing']['billing_address_1']['label'] = 'Address';
+		$fields['billing']['billing_phone']['label'] = 'Mobile';
     $fields['billing']['billing_state']['label'] = 'State';
     return $fields;
 }
@@ -299,10 +306,10 @@ function MY_COLUMNS_VALUES_FUNCTION($column){
             break;
 
         case 'ordertitle' :
-            $customer_user = get_post_meta( $post->ID, '_customer_user', true);
-            $billing_first_name = get_user_meta($customer_user,'billing_first_name' , true);
-            $billing_last_name = get_user_meta($customer_user,'billing_last_name' , true);
-            $billing_email = get_user_meta($customer_user,'billing_email' , true);
+						$order = new WC_Order($the_order->id);
+						$billing_first_name = $order->billing_first_name;
+            $billing_last_name = $order->billing_last_name;
+            $billing_email = $order->billing_email;
             echo '<a href="'.esc_url( $the_order->get_view_order_url() ).'">#'.$the_order->get_order_number().'</a>
 
             by '.$billing_first_name.' '.$billing_last_name.'<br/>'.$billing_email.'';
@@ -321,10 +328,10 @@ function woo_display_order_username( $order ){
 
     global $post;
 
-    $customer_user = get_post_meta( $post->ID, '_customer_user', true);
-		$billing_first_name = get_user_meta($customer_user,'billing_first_name' , true);
-		$billing_last_name = get_user_meta($customer_user,'billing_last_name' , true);
-		$billing_email = get_user_meta($customer_user,'billing_email' , true);
+		$order = new WC_Order($order->id);
+		$billing_first_name = $order->billing_first_name;
+		$billing_last_name = $order->billing_last_name;
+		$billing_email = $order->billing_email;
     echo '<p><strong style="display: block;">'.__('Customer Username').':</strong> <a href="user-edit.php?user_id=' . $customer_user . '">' .$billing_first_name .' '.$billing_last_name. '</a></p>';
 		echo '<p><strong style="display: block;">'.__('Customer Email Address').':</strong> <a href="user-edit.php?user_id=' . $customer_user . '">' .$billing_email. '</a></p>';
 
@@ -479,4 +486,25 @@ function so_27112461_woocommerce_email_actions( $actions){
 
 	$actions[] = 'woocommerce_order_status_completed';
     return $actions;
+}
+// add_action( 'woocommerce_checkout_after_customer_details', 'some_custom_checkout_field' );
+//
+// function some_custom_checkout_field( $checkout ) {
+// 	echo '<div id="some_custom_checkout_field"><h2>' . __('My Field Header') . '</h2>';
+//
+//     woocommerce_form_field( 'some_field_name', array(
+//         'type'          => 'text',
+//         'class'         => array('my-field-class form-row-wide'),
+//         'label'         => __('My Field Label'),
+//         'placeholder'   => __('Some placeholder text to guide the customer'),
+//         'required'      => true,
+//         ));
+//
+//     echo '</div>';
+//
+// }
+
+add_filter( 'default_checkout_state', 'change_default_checkout_state' );
+function change_default_checkout_state() {
+  return 'MH'; // state code
 }
