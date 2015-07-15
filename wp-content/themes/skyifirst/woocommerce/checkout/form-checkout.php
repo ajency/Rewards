@@ -37,7 +37,7 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 			<table class="shop_table woocommerce-checkout-review-order-table">
 			</table>
 			<div class="hb-aligncenter">
-				<button type="button" name="customer_next" id="customer_next" class="hb-button hb-wet-asphalt hb-medium-button no-three-d" >Next <span class="icon-chevron-right"></span></button>
+				<button type="button" name="customer_next" id="customer_next" class="hb-button hb-belize-hole hb-medium-button no-three-d" >Next <span class="icon-chevron-right"></span></button>
 			</div>
 		</div>
 	</div>
@@ -59,8 +59,8 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 					<div class="clearfix"></div>
 					<br />
 					<div class="hb-aligncenter">
-						<button type="button" name="customer_back" id="customer_back" class="hb-button hb-wet-asphalt hb-medium-button no-three-d"><span class="icon-chevron-left"></span> Back</button>
-						<button type="button" name="payment_next" id="payment_next" class="hb-button hb-wet-asphalt hb-medium-button no-three-d">Next <span class="icon-chevron-right"></span></button>
+						<button type="button" name="customer_back" id="customer_back" class="hb-button hb-belize-hole hb-medium-button no-three-d"><span class="icon-chevron-left"></span> Back</button>
+						<button type="button" name="payment_next" id="payment_next" class="hb-button hb-belize-hole hb-medium-button no-three-d">Next <span class="icon-chevron-right"></span></button>
 					</div>
 				</div>
 			</div>
