@@ -252,7 +252,7 @@
   height: auto;
   opacity: 1;
   overflow: visible;
-  z-index: 5;
+  z-index: 1;
 }
 .accordion-group.viewed .acc-title {
   cursor: pointer;
@@ -304,5 +304,64 @@
 .page-template-home-template #pre-footer-area,
 .page-template-terms-template #pre-footer-area {
   display: none;
+}
+/* Fixed Header */
+.fixed-header {
+  text-align: center;
+  padding: 20px 0 10px;
+  position: fixed;
+  width: 100%;
+  height: 150px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.4s ease;
+          transition: all 0.4s ease;
+  z-index: 99;
+  background-color: #ffffff;
+}
+.fixed-header h1 {
+  height: 60px;
+  font-size: 40px;
+  -webkit-transition: all 0.4s ease;
+          transition: all 0.4s ease;
+}
+.fixed-header.smaller {
+  padding: 0;
+  height: 90px;
+}
+.fixed-header.smaller h1 {
+  opacity: 0;
+  height: 0;
+}
+.fixed-header.smaller + .steps-container {
+  margin-top: 150px;
+}
+.steps-container {
+  margin-top: 220px;
+}
+/* Progress */
+.progress-section {
+  text-align: center;
+}
+.progress-section .col-4 {
+  margin-bottom: 0;
+}
+.progress-section h3 {
+  margin-bottom: 0;
+}
+.progress-section h3 small {
+  font-size: 75%;
+}
+.hb-skill-meter .hb-progress-bar {
+  height: 16px;
+}
+.hb-skill-meter .progress-outer {
+  height: 15px;
+}
+.hb-skill-meter .progress-value {
+  display: none;
+}
+.hb-skill-meter .progress-outer {
+  -webkit-transition: all 1s ease;
+          transition: all 1s ease;
 }
 /*# sourceMappingURL=custom.css.map */

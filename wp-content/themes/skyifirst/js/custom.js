@@ -11,11 +11,13 @@ window.onload = function(){
     jQuery('#customer_next').click(function() {
       jQuery('.accordion-group.one').removeClass('open');
       jQuery('.accordion-group.two').addClass('open viewed');
+      jQuery('.progress-outer').css('width', '50%');
     });
 
     jQuery('.one.viewed > .acc-title').click(function() {
       jQuery('.accordion-group').removeClass('open');
       jQuery('.accordion-group.one').addClass('open');
+      jQuery('.progress-outer').css('width', '15%');
     });
 
 
@@ -74,6 +76,7 @@ window.onload = function(){
 
       jQuery('.accordion-group.two').removeClass('open');
       jQuery('.accordion-group.three').addClass('open viewed');
+      jQuery('.progress-outer').css('width', '75%');
     });
 
     jQuery('.two.viewed > .acc-title').click(function() {
@@ -94,6 +97,7 @@ window.onload = function(){
     jQuery('#customer_back').click(function() {
       jQuery('.accordion-group').removeClass('open');
       jQuery('.accordion-group.one').addClass('open');
+      jQuery('.progress-outer').css('width', '15%');
     });
 
 
@@ -113,6 +117,20 @@ window.onload = function(){
 
     };
       jQuery('form').clearForm()
+
+
+    window.addEventListener('scroll', function(e){
+        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+            shrinkOn = 20,
+            header = document.querySelector(".fixed-header");
+        if (distanceY > shrinkOn) {
+            classie.add(header,"smaller");
+        } else {
+            if (classie.has(header,"smaller")) {
+                classie.remove(header,"smaller");
+            }
+        }
+    });
 
 
 
