@@ -81,8 +81,7 @@ function my_function($order_id) {
 	// order object (optional but handy)
 	global $woocommerce;
 	$order = new WC_Order();
-
-	   if ( $order->status != 'failed' ) {
+  if ( $order->status != 'failed' ) {
 			// $rand = 'FREEDOM'.$order_id;
       $original_string = 'kjlmnopqrst';
       $random_string = get_random_string($original_string, 6);
@@ -100,6 +99,14 @@ function my_function($order_id) {
 			</script>
 
 			<?php
+      $sales_person_email = get_post_meta($order_id, 'sales_person_email' ,true);
+      // if($sales_person_email!="")
+      // {
+      //   wp_redirect( site_url().'/partner_thankyou' );
+      // }
+      // else {
+      //     wp_redirect( site_url().'customer_thankyou' );
+      // }
 	    wp_redirect( home_url() ); exit; // or whatever url you want
 	   }
 
@@ -521,6 +528,7 @@ function some_custom_checkout_field( $checkout ) {
         'label'         => __('Cheque No'),
         'placeholder'   => __('Cheque Number'),
         'required'      => false,
+
         ));
 
     woocommerce_form_field( 'confirm_cheque_no', array(
@@ -537,6 +545,7 @@ function some_custom_checkout_field( $checkout ) {
         'label'         => __('Amount in Rs.'),
         'placeholder'   => __('10000'),
         'required'      => false,
+  
         ));
 
     woocommerce_form_field( 'cheque_bank', array(
@@ -545,6 +554,7 @@ function some_custom_checkout_field( $checkout ) {
         'label'         => __('Bank'),
         'placeholder'   => __('Bank and Branch Name'),
         'required'      => false,
+  
         ));
 
     echo '<div class="clearfix"></div><div class="hb-separator" style="margin-top:0px;margin-top:40px;"></div></div>';
@@ -557,6 +567,7 @@ function some_custom_checkout_field( $checkout ) {
           'label'         => __('Name'),
           'placeholder'   => __('Full Name'),
           'required'      => false,
+  
           ));
 
       woocommerce_form_field( 'sale_person_email', array(
@@ -565,6 +576,7 @@ function some_custom_checkout_field( $checkout ) {
           'label'         => __('Email'),
           'placeholder'   => __('Email address'),
           'required'      => false,
+  
           ));
 
       woocommerce_form_field( 'sale_person_phone', array(
@@ -573,6 +585,7 @@ function some_custom_checkout_field( $checkout ) {
           'label'         => __('Phone'),
           'placeholder'   => __('Phone Number'),
           'required'      => false,
+  
           ));
 
       woocommerce_form_field( 'sale_person_company', array(
@@ -581,6 +594,7 @@ function some_custom_checkout_field( $checkout ) {
           'label'         => __('Company'),
           'placeholder'   => __('Example Pvt. Ltd.'),
           'required'      => false,
+
           ));
 
       echo '<div class="clearfix"></div></div>';

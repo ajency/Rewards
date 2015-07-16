@@ -289,9 +289,92 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
     {
       jQuery('.payment_method_payu_in').hide();
       jQuery('#payment_method_cheque').attr('checked' , true);
+      jQuery('.payment_method_cheque').hide();
     }
 
           // jQuery('#billing_state option[value="MH"]').prop("selected",true)
 
+    jQuery('#place_order').on('click',function(e){
+      e.preventDefault();
+      jQuery('.validation').remove();
+      if(jQuery('#cheque_no').val() == "")
+      {
+        jQuery("#cheque_no").after("<div class='validation' style='color:red'>Please enter Cheque No</div>");
+        return false;
+      }
+      if(jQuery('#confirm_cheque_no').val() == jQuery('#cheque_no').val())
+      {
+        jQuery("#confirm_cheque_no").after("<div class='validation' style='color:red'>Cheque nos do not match</div>");
+        return false;
+      }
+      if(jQuery('#confirm_cheque_no').val() == "")
+      {
+        jQuery("#confirm_cheque_no").after("<div class='validation' style='color:red'>Please enter Cheque No</div>");
+        return false;
+      }
+      if(jQuery('#booking_amount').val() == "")
+      {
+        jQuery("#booking_amount").after("<div class='validation' style='color:red'>Please enter Amount</div>");
+        return false;
+      }
+      if(jQuery('#cheque_bank').val() == "")
+      {
+        jQuery("#cheque_bank").after("<div class='validation' style='color:red'>Please enter Bank details</div>");
+        return false;
+      }
+      if(jQuery('#sale_person_name').val() == "")
+      {
+        jQuery("#sale_person_name").after("<div class='validation' style='color:red'>Please enter name</div>");
+        return false;
+      }
+      if(jQuery('#sale_person_email').val() == "")
+      {
+        jQuery("#sale_person_email").after("<div class='validation' style='color:red'>Please enter email address</div>");
+        return false;
+      }
+      if(jQuery('#sale_person_phone').val() == "")
+      {
+        jQuery("#sale_person_phone").after("<div class='validation' style='color:red'>Please enter phone no</div>");
+        return false;
+      }
+      if(jQuery('#sale_person_company').val() == "")
+      {
+        jQuery("#sale_person_company").after("<div class='validation' style='color:red'>Please enter company</div>");
+        return false;
+      }
+
+      var phone = jQuery('#sale_person_phone').val(),
+        intRegex = /[0-9 -()+]+$/;
+      if((phone.length < 6) || (!intRegex.test(phone)))
+      {
+          jQuery("#sale_person_phone").after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
+           return false;
+      }
+      var amount = jQuery('#booking_amount').val(),
+        intRegex = /[0-9 -()+]+$/;
+      if((amount.length < 6) || (!intRegex.test(amount)))
+      {
+          jQuery("#booking_amount").after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
+           return false;
+      }
+      if(!(jQuery('#terms').is(":checked")))
+      {
+          jQuery("#terms").after("<div class='validation' style='color:red'>Accept terms and conditions to proceed</div>");
+           return false;
+      }
+
+
+
+    });
+    jQuery('#booking_amount,#sale_person_phone').on('change' , function(e){
+        jQuery('.validation').remove();
+      var phone = jQuery(e.target).val(),
+      intRegex = /[0-9 -()+]+$/;
+      if((phone.length < 6) || (!intRegex.test(phone)))
+      {
+        jQuery(e.target).after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
+         return false;
+      }
+    })
 
 }
