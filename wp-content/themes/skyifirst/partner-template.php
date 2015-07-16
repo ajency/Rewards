@@ -98,11 +98,7 @@ if ( vp_metabox('background_settings.hb_content_background_color') )
                     <?php do_action( 'woocommerce_checkout_paymen_options' ); ?>
                   </div>
         				</div>
-                <div class="form-row place-order">
-                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="de36be6088"><input type="hidden" name="_wp_http_referer" value="/woocommerce2/wp-admin/admin-ajax.php">
-
-                    <input type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="Place order" data-value="Place order">
-                </div>
+                
               </div>
             </div>
           </form>
