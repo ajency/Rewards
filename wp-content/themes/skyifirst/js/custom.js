@@ -294,7 +294,7 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
 
           // jQuery('#billing_state option[value="MH"]').prop("selected",true)
 
-    jQuery('#place_order').on('click',fucntion(e){
+    jQuery('#place_order').on('click',function(e){
       e.preventDefault();
       jQuery('.validation').remove();
       if(jQuery('#cheque_no').val() == "")
@@ -307,7 +307,7 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
         jQuery("#confirm_cheque_no").after("<div class='validation' style='color:red'>Cheque nos do not match</div>");
         return false;
       }
-      if(jQuery('#confirm_cheque_no').val() != "")
+      if(jQuery('#confirm_cheque_no').val() == "")
       {
         jQuery("#confirm_cheque_no").after("<div class='validation' style='color:red'>Please enter Cheque No</div>");
         return false;
@@ -357,7 +357,7 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
           jQuery("#booking_amount").after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
            return false;
       }
-      if(!jQuery('#terms').is(":checked"))
+      if(!(jQuery('#terms').is(":checked")))
       {
           jQuery("#terms").after("<div class='validation' style='color:red'>Accept terms and conditions to proceed</div>");
            return false;
