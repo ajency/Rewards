@@ -114,7 +114,7 @@ window.onload = function(){
       jQuery('.accordion-group.two').addClass('open');
     });
 
-    jQuery('.hb-woo-main-link').on('click' , function(e){
+    jQuery('.variant_product').on('click' , function(e){
       e.preventDefault()
        jQuery('#variation_id').val(jQuery(e.currentTarget).val());
        jQuery('#product_id').val(jQuery(e.currentTarget).attr('data-product'));
@@ -285,6 +285,7 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
 
 
     })
+
     if(window.location.href == SITEURL+'/partner-application/')
     {
       jQuery('.payment_method_payu_in').hide();

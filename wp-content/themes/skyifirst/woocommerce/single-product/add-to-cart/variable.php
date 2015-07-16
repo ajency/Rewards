@@ -43,7 +43,7 @@ global $product, $post, $woocommerce;
 
 
 				<div class="hb-woo-product-details col-4">
-					<button type="submit" id="buy_button<?php echo $value['variation_id']?>" data-product="<?php echo $product->id; ?>" value="<?php echo $value['variation_id']?>" class="hb-woo-main-link ">
+					<button type="submit" id="buy_button<?php echo $value['variation_id']?>" data-product="<?php echo $product->id; ?>" value="<?php echo $value['variation_id']?>" class="hb-woo-main-link variant_product">
 						<h2 class="hb-woo-title"><?php echo implode('/', $value['attributes']);?></h2>
 						<div><?php echo $value['price_html'];?> all inclusive*</div>
 					</button>

@@ -82,7 +82,7 @@ if ( vp_metabox('background_settings.hb_content_background_color') )
                 </div>
               </div>
             </div>
-            <div class="accordion-group three open">
+            <div class="accordion-group three ">
         			<div class="acc-title">
                 <h3>Step 3</h3>
               </div>
@@ -111,7 +111,7 @@ if ( vp_metabox('background_settings.hb_content_background_color') )
       <!-- END .row -->
     </div>
   <!-- END .container -->
-  
+
 </div>
 </div>
 <!-- END #main-content -->
