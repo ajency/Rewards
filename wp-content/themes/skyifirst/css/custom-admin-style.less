@@ -1,0 +1,30 @@
+.order_data_column_container{
+	.order_data_column{
+		&:nth-child(3n){
+			display: none;
+		}
+	}
+}
+
+#order_shipping_line_items{
+	display: none;
+}
+
+.wc-order-totals{
+	tbody{
+		tr:nth-child(1), tr:nth-child(2){
+			display: none;
+		}
+	}
+}
+
+.order_actions{
+	#actions{
+		display: none;
+	}
+}
+
+td.ordertitle a {
+   pointer-events: none;
+   cursor: default;
+}
