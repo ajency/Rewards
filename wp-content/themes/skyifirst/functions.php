@@ -656,6 +656,23 @@ class payment extends WC_Gateway_Payu_In
     }
     public function payment_fields()
     {
-        echo "A save";
+        if ( $this->description ) { echo wpautop( wptexturize( $this->description ) ); }
+
+        if($this->cc_method == 'yes' || $this->dc_method == 'yes' || $this->nb_method == 'yes' || $this->emi_method == 'yes' || $this->cod_method == 'yes') {
+        ?>
+
+        <fieldset>
+            <ul class="form-row payu-options">
+                <?php if($this->cc_method == 'yes') { ?><li><input type="radio" name="pg" value="CC" id="CC"><label for="CC">Credit Card</label></li><?php } ?>
+                <?php if($this->dc_method == 'yes') { ?><li><input type="radio" name="pg" value="DC" id="DC"><label for="DC">Debit Card</label></li><?php } ?>
+                <?php if($this->nb_method == 'yes') { ?><li><input type="radio" name="pg" value="NB" id="NB"><label for="NB">Net Banking</label></li><?php } ?>
+                <?php if($this->emi_method == 'yes') { ?><li><input type="radio" name="pg" value="EMI" id="EMI"><label for="EMI">EMI</label></li><?php } ?>
+                <?php if($this->cod_method == 'yes') { ?><li><input type="radio" name="pg" value="COD" id="COD"><label for="COD">COD</label></li><?php } ?>
+            </ul>
+            <div class="clear"></div>
+        </fieldset>
+
+        <?php
+        }
     }
 }
