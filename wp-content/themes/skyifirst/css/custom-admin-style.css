@@ -14,5 +14,6 @@
 td.ordertitle a {
   pointer-events: none;
   cursor: default;
+  color: #000;
 }
 /*# sourceMappingURL=custom-admin-style.css.map */
