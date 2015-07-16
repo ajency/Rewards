@@ -69,8 +69,7 @@ function my_function($order_id) {
 	// order object (optional but handy)
 	global $woocommerce;
 	$order = new WC_Order();
-
-	   if ( $order->status != 'failed' ) {
+  if ( $order->status != 'failed' ) {
 			// $rand = 'FREEDOM'.$order_id;
       $original_string = 'kjlmnopqrst';
       $random_string = get_random_string($original_string, 6);
@@ -88,6 +87,14 @@ function my_function($order_id) {
 			</script>
 
 			<?php
+      $sales_person_email = get_post_meta($order_id, 'sales_person_email' ,true);
+      // if($sales_person_email!="")
+      // {
+      //   wp_redirect( site_url().'/partner_thankyou' );
+      // }
+      // else {
+      //     wp_redirect( site_url().'customer_thankyou' );
+      // }
 	    wp_redirect( home_url() ); exit; // or whatever url you want
 	   }
 
@@ -508,7 +515,7 @@ function some_custom_checkout_field( $checkout ) {
         'class'         => array('my-field-class form-row-wide'),
         'label'         => __('Cheque No'),
         'placeholder'   => __('no validation and database cross check'),
-        'required'      => false,
+        'required'      => true,
         ));
 
     woocommerce_form_field( 'confirm_cheque_no', array(
@@ -516,7 +523,7 @@ function some_custom_checkout_field( $checkout ) {
         'class'         => array('my-field-class form-row-wide'),
         'label'         => __('Confirm Cheque No'),
         'placeholder'   => __('no validation and database cross check'),
-        'required'      => false,
+        'required'      => true,
         ));
 
     woocommerce_form_field( 'booking_amount', array(
@@ -524,7 +531,7 @@ function some_custom_checkout_field( $checkout ) {
         'class'         => array('my-field-class form-row-wide'),
         'label'         => __('Amount in Rs.'),
         'placeholder'   => __('1100'),
-        'required'      => false,
+        'required'      => true,
         ));
 
     woocommerce_form_field( 'cheque_bank', array(
@@ -532,7 +539,7 @@ function some_custom_checkout_field( $checkout ) {
         'class'         => array('my-field-class form-row-wide'),
         'label'         => __('Bank'),
         'placeholder'   => __('bank,branch name'),
-        'required'      => false,
+        'required'      => true,
         ));
 
     echo '</div>';
@@ -544,7 +551,7 @@ function some_custom_checkout_field( $checkout ) {
           'class'         => array('my-field-class form-row-wide'),
           'label'         => __('Name'),
           'placeholder'   => __('first name last name'),
-          'required'      => false,
+          'required'      => true,
           ));
 
       woocommerce_form_field( 'sale_person_email', array(
@@ -552,7 +559,7 @@ function some_custom_checkout_field( $checkout ) {
           'class'         => array('my-field-class form-row-wide'),
           'label'         => __('Email'),
           'placeholder'   => __('email'),
-          'required'      => false,
+          'required'      => true,
           ));
 
       woocommerce_form_field( 'sale_person_phone', array(
@@ -560,7 +567,7 @@ function some_custom_checkout_field( $checkout ) {
           'class'         => array('my-field-class form-row-wide'),
           'label'         => __('Phone'),
           'placeholder'   => __('phone'),
-          'required'      => false,
+          'required'      => true,
           ));
 
       woocommerce_form_field( 'sale_person_company', array(
@@ -568,7 +575,7 @@ function some_custom_checkout_field( $checkout ) {
           'class'         => array('my-field-class form-row-wide'),
           'label'         => __('Company'),
           'placeholder'   => __('example.pvt.ltd/NA'),
-          'required'      => false,
+          'required'      => true,
           ));
 
       echo '</div>';
