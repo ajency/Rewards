@@ -398,6 +398,31 @@
 
 form.woocommerce-checkout{
 	margin-bottom: 100px;
+	#payment{
+		.payment_method_payu_in{
+			margin: 0;
+			padding: 0;
+			&:after{
+				border: none;
+			}
+			fieldset{
+				border: none;
+				margin: 0;
+				padding: 0;
+			}
+			#payment_method_payu_in{
+				display: none;
+				&+label{
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+
+.woocommerce #payment div.payment_box.payment_method_payu_in, .woocommerce-page #payment div.payment_box.payment_method_payu_in{
+	background: transparent;
 }
 
 /* Fixed Header */

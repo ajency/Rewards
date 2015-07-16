@@ -12,6 +12,13 @@ function site_template_directory_uri() {
     return site_url('wp-content/themes/skyifirst');
 }
 
+$preview = site_template_directory_uri() . '/woocommerce/emails/woo-preview-emails.php';
+
+if(file_exists($preview)) {
+    require $preview;
+}
+
+
 /* Code added by Surekha */
 // remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 //
