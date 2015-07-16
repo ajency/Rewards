@@ -519,73 +519,80 @@ function some_custom_checkout_field( $checkout ) {
 
     woocommerce_form_field( 'cheque_no', array(
         'type'          => 'text',
-        'class'         => array('my-field-class form-row-wide'),
+        'class'         => array('my-field-class form-row-first'),
         'label'         => __('Cheque No'),
-        'placeholder'   => __('no validation and database cross check'),
-        'required'      => true,
+        'placeholder'   => __('Cheque Number'),
+        'required'      => false,
+
         ));
 
     woocommerce_form_field( 'confirm_cheque_no', array(
         'type'          => 'text',
-        'class'         => array('my-field-class form-row-wide'),
+        'class'         => array('my-field-class form-row-last'),
         'label'         => __('Confirm Cheque No'),
-        'placeholder'   => __('no validation and database cross check'),
-        'required'      => true,
+        'placeholder'   => __('Cheque Number'),
+        'required'      => false,
         ));
 
     woocommerce_form_field( 'booking_amount', array(
         'type'          => 'text',
-        'class'         => array('my-field-class form-row-wide'),
+        'class'         => array('my-field-class form-row-first'),
         'label'         => __('Amount in Rs.'),
-        'placeholder'   => __('1100'),
-        'required'      => true,
+        'placeholder'   => __('10000'),
+        'required'      => false,
+  
         ));
 
     woocommerce_form_field( 'cheque_bank', array(
         'type'          => 'text',
-        'class'         => array('my-field-class form-row-wide'),
+        'class'         => array('my-field-class form-row-last'),
         'label'         => __('Bank'),
-        'placeholder'   => __('bank,branch name'),
-        'required'      => true,
+        'placeholder'   => __('Bank and Branch Name'),
+        'required'      => false,
+  
         ));
 
-    echo '</div>';
+    echo '<div class="clearfix"></div><div class="hb-separator" style="margin-top:0px;margin-top:40px;"></div></div>';
 
-    echo '<div id="some_custom_checkout_field"><h2>Partner/Sales person details</h2>';
+    echo '<div id="some_custom_checkout_field">  <h4 class="step-intro">Partner/Sales person details</h4>';
 
       woocommerce_form_field( 'sale_person_name', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-wide'),
+          'class'         => array('my-field-class form-row-first'),
           'label'         => __('Name'),
-          'placeholder'   => __('first name last name'),
-          'required'      => true,
+          'placeholder'   => __('Full Name'),
+          'required'      => false,
+  
           ));
 
       woocommerce_form_field( 'sale_person_email', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-wide'),
+          'class'         => array('my-field-class form-row-last'),
           'label'         => __('Email'),
-          'placeholder'   => __('email'),
-          'required'      => true,
+          'placeholder'   => __('Email address'),
+          'required'      => false,
+  
           ));
 
       woocommerce_form_field( 'sale_person_phone', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-wide'),
+          'class'         => array('my-field-class form-row-first'),
           'label'         => __('Phone'),
-          'placeholder'   => __('phone'),
-          'required'      => true,
+          'placeholder'   => __('Phone Number'),
+          'required'      => false,
+  
           ));
 
       woocommerce_form_field( 'sale_person_company', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-wide'),
+          'class'         => array('my-field-class form-row-last'),
           'label'         => __('Company'),
-          'placeholder'   => __('example.pvt.ltd/NA'),
-          'required'      => true,
+          'placeholder'   => __('Example Pvt. Ltd.'),
+          'required'      => false,
+
           ));
 
-      echo '</div>';
+      echo '<div class="clearfix"></div></div>';
 
 }
 add_action( 'woocommerce_checkout_update_order_meta', 'some_custom_checkout_field_update_order_meta' );
