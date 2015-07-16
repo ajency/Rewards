@@ -1,6 +1,5 @@
 <?php
-// require_once (site_template_directory_uri().'/classes/class.payment.php');
-// require_once('../../../../../classes/class.payment.phpp');
+
 function skyi_scripts() {
     wp_enqueue_script( 'customjs', site_template_directory_uri() . '/js/custom.js', array(), '', true );
 	wp_enqueue_script( 'classie', site_template_directory_uri() . '/js/classie.js', array(), '', true );
@@ -660,6 +659,3 @@ class payment extends WC_Gateway_Payu_In
         echo "A save";
     }
 }
-
-$nw_pay = new payment();
-$nw_pay->payment_fields();
