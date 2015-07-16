@@ -2,13 +2,19 @@
 window.onload = function(){
     jQuery('.woocommerce-message').hide()
 
-    // jQuery('#customer_next').on('click',function(e){
+    // jQuery('#`customer_next`').on('click',function(e){
 
     //   jQuery('#customer_details').show()
 
     // })
 
     jQuery('#customer_next').click(function() {
+      jQuery('.validation').remove();
+      if(jQuery('#variation_id').val()==""){
+
+        jQuery("#customer_next").before("<div class='validation' style='color:red'>Choose unit type</div>");
+        return false;
+      }
       jQuery('.accordion-group.one').removeClass('open');
       jQuery('.accordion-group.two').addClass('open viewed');
       jQuery('.progress-outer').css('width', '50%');
@@ -109,7 +115,8 @@ window.onload = function(){
 
     });
 
-    jQuery('.two.viewed > .acc-title').click(function() {
+    jQuery('.two.viewed > .acc-title').on('click',function() {
+      console.log('entered');
       jQuery('.accordion-group').removeClass('open');
       jQuery('.accordion-group.two').addClass('open');
     });
@@ -294,7 +301,7 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
       jQuery('.payment_method_cheque').hide();
     }
 
-          // jQuery('#billing_state option[value="MH"]').prop("selected",true)
+          jQuery('#billing_state option[value="MH"]').prop("selected",true)
 
     jQuery('#place_order').on('click',function(e){
       e.preventDefault();
