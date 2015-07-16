@@ -12,6 +12,11 @@ function site_template_directory_uri() {
     return site_url('wp-content/themes/skyifirst');
 }
 
+add_action( 'admin_enqueue_scripts', 'load_admin_style' );
+    function load_admin_style() {
+        wp_enqueue_style( 'admin_css', site_template_directory_uri() . '/css/custom-admin-style.css', false, '1.0.0' );
+    }
+
 $preview = site_template_directory_uri() . '/woocommerce/emails/woo-preview-emails.php';
 
 if(file_exists($preview)) {
