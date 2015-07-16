@@ -317,6 +317,28 @@
 form.woocommerce-checkout {
   margin-bottom: 100px;
 }
+form.woocommerce-checkout #payment .payment_method_payu_in {
+  margin: 0;
+  padding: 0;
+}
+form.woocommerce-checkout #payment .payment_method_payu_in:after {
+  border: none;
+}
+form.woocommerce-checkout #payment .payment_method_payu_in fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+form.woocommerce-checkout #payment .payment_method_payu_in #payment_method_payu_in {
+  display: none;
+}
+form.woocommerce-checkout #payment .payment_method_payu_in #payment_method_payu_in + label {
+  display: none;
+}
+.woocommerce #payment div.payment_box.payment_method_payu_in,
+.woocommerce-page #payment div.payment_box.payment_method_payu_in {
+  background: transparent;
+}
 /* Fixed Header */
 .fixed-header {
   text-align: center;
