@@ -1,5 +1,6 @@
 <?php
-
+// require_once (site_template_directory_uri().'/classes/class.payment.php');
+// require_once('../../../../../classes/class.payment.phpp');
 function skyi_scripts() {
     wp_enqueue_script( 'customjs', site_template_directory_uri() . '/js/custom.js', array(), '', true );
 	wp_enqueue_script( 'classie', site_template_directory_uri() . '/js/classie.js', array(), '', true );
@@ -11,18 +12,6 @@ add_action( 'wp_enqueue_scripts', 'skyi_scripts' );
 function site_template_directory_uri() {
     return site_url('wp-content/themes/skyifirst');
 }
-
-add_action( 'admin_enqueue_scripts', 'load_admin_style' );
-    function load_admin_style() {
-        wp_enqueue_style( 'admin_css', site_template_directory_uri() . '/css/custom-admin-style.css', false, '1.0.0' );
-    }
-
-$preview = site_template_directory_uri() . '/woocommerce/emails/woo-preview-emails.php';
-
-if(file_exists($preview)) {
-    require $preview;
-}
-
 
 /* Code added by Surekha */
 // remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
@@ -524,80 +513,73 @@ function some_custom_checkout_field( $checkout ) {
 
     woocommerce_form_field( 'cheque_no', array(
         'type'          => 'text',
-        'class'         => array('my-field-class form-row-first'),
+        'class'         => array('my-field-class form-row-wide'),
         'label'         => __('Cheque No'),
-        'placeholder'   => __('Cheque Number'),
-        'required'      => false,
-
+        'placeholder'   => __('no validation and database cross check'),
+        'required'      => true,
         ));
 
     woocommerce_form_field( 'confirm_cheque_no', array(
         'type'          => 'text',
-        'class'         => array('my-field-class form-row-last'),
+        'class'         => array('my-field-class form-row-wide'),
         'label'         => __('Confirm Cheque No'),
-        'placeholder'   => __('Cheque Number'),
-        'required'      => false,
+        'placeholder'   => __('no validation and database cross check'),
+        'required'      => true,
         ));
 
     woocommerce_form_field( 'booking_amount', array(
         'type'          => 'text',
-        'class'         => array('my-field-class form-row-first'),
+        'class'         => array('my-field-class form-row-wide'),
         'label'         => __('Amount in Rs.'),
-        'placeholder'   => __('10000'),
-        'required'      => false,
-  
+        'placeholder'   => __('1100'),
+        'required'      => true,
         ));
 
     woocommerce_form_field( 'cheque_bank', array(
         'type'          => 'text',
-        'class'         => array('my-field-class form-row-last'),
+        'class'         => array('my-field-class form-row-wide'),
         'label'         => __('Bank'),
-        'placeholder'   => __('Bank and Branch Name'),
-        'required'      => false,
-  
+        'placeholder'   => __('bank,branch name'),
+        'required'      => true,
         ));
 
-    echo '<div class="clearfix"></div><div class="hb-separator" style="margin-top:0px;margin-top:40px;"></div></div>';
+    echo '</div>';
 
-    echo '<div id="some_custom_checkout_field">  <h4 class="step-intro">Partner/Sales person details</h4>';
+    echo '<div id="some_custom_checkout_field"><h2>Partner/Sales person details</h2>';
 
       woocommerce_form_field( 'sale_person_name', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-first'),
+          'class'         => array('my-field-class form-row-wide'),
           'label'         => __('Name'),
-          'placeholder'   => __('Full Name'),
-          'required'      => false,
-  
+          'placeholder'   => __('first name last name'),
+          'required'      => true,
           ));
 
       woocommerce_form_field( 'sale_person_email', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-last'),
+          'class'         => array('my-field-class form-row-wide'),
           'label'         => __('Email'),
-          'placeholder'   => __('Email address'),
-          'required'      => false,
-  
+          'placeholder'   => __('email'),
+          'required'      => true,
           ));
 
       woocommerce_form_field( 'sale_person_phone', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-first'),
+          'class'         => array('my-field-class form-row-wide'),
           'label'         => __('Phone'),
-          'placeholder'   => __('Phone Number'),
-          'required'      => false,
-  
+          'placeholder'   => __('phone'),
+          'required'      => true,
           ));
 
       woocommerce_form_field( 'sale_person_company', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-last'),
+          'class'         => array('my-field-class form-row-wide'),
           'label'         => __('Company'),
-          'placeholder'   => __('Example Pvt. Ltd.'),
-          'required'      => false,
-
+          'placeholder'   => __('example.pvt.ltd/NA'),
+          'required'      => true,
           ));
 
-      echo '<div class="clearfix"></div></div>';
+      echo '</div>';
 
 }
 add_action( 'woocommerce_checkout_update_order_meta', 'some_custom_checkout_field_update_order_meta' );
@@ -666,3 +648,18 @@ add_filter( 'woocommerce_order_button_text', 'woo_custom_order_button_text' );
 function woo_custom_order_button_text() {
     return __( 'Submit', 'woocommerce' );
 }
+class payment extends WC_Gateway_Payu_In
+{
+
+    public function __construct(){
+        parent::__construct();
+
+    }
+    public function payment_fields()
+    {
+        echo "A save";
+    }
+}
+
+$nw_pay = new payment();
+$nw_pay->payment_fields();

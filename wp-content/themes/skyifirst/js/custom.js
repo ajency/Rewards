@@ -288,6 +288,7 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
 
     if(window.location.href == SITEURL+'/partner-application/')
     {
+
       jQuery('.payment_method_payu_in').hide();
       jQuery('#payment_method_cheque').attr('checked' , true);
       jQuery('.payment_method_cheque').hide();
