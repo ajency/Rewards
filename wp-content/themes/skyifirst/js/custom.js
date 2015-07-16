@@ -102,7 +102,7 @@ window.onload = function(){
 
       jQuery('.accordion-group.two').removeClass('open');
       jQuery('.accordion-group.three').addClass('open viewed');
-    
+
 
 
       jQuery('.progress-outer').css('width', '85%');
@@ -142,7 +142,7 @@ window.onload = function(){
       function addToCart(p_id, v_id) {
       jQuery.ajax({
         type: 'POST',
-        url: 'http://localhost/Skyicoupon/?add-to-cart=variation&product_id='+p_id,
+        url: SITEURL+'/?add-to-cart=variation&product_id='+p_id,
         data: { 'variation_id':  v_id,
                 'product_id':  p_id},
         success: function(response, textStatus, jqXHR){
@@ -154,7 +154,32 @@ window.onload = function(){
     }
 });
 
+variation_id = jQuery('#variation_id').val();
+jQuery('#buy_button'+variation_id).addClass('variation_seleced');
 
+jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
+  jQuery('.hb-woo-main-link-checkout').removeClass('variation_seleced');
+
+   e.preventDefault()
+   jQuery('#variation_id').val(jQuery(e.currentTarget).val());
+   jQuery('#product_id').val(jQuery(e.currentTarget).attr('data-product'));
+   jQuery('#buy_button'+jQuery('#variation_id').val()).addClass('variation_seleced');
+   addToCart(jQuery('#product_id').val(),jQuery('#variation_id').val());
+  return false;
+})
+  function addToCart(p_id, v_id) {
+  jQuery.ajax({
+    type: 'POST',
+    url: SITEURL+'/?add-to-cart=variation&product_id='+p_id,
+    data: { 'variation_id':  v_id,
+            'product_id':  p_id},
+    success: function(response, textStatus, jqXHR){
+          // log a message to the console
+          console.log("It worked!");
+      }/*,
+    dataType: 'JSON'*/
+  });
+}
 
     // jQuery('#customer_back').on('click',function(e){
 
@@ -260,6 +285,11 @@ window.onload = function(){
 
 
     })
+    if(window.location.href == SITEURL+'/partner-application/')
+    {
+      jQuery('.payment_method_payu_in').hide();
+      jQuery('#payment_method_cheque').attr('checked' , true);
+    }
 
           // jQuery('#billing_state option[value="MH"]').prop("selected",true)
 

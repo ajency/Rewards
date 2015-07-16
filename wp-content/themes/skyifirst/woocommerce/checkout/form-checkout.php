@@ -35,6 +35,7 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 				Select your apartment preference from 1BHK, 2BHK and 2BHK compact to initiate the enrollment for the draw.
 			</h4>
 			<table class="shop_table woocommerce-checkout-review-order-table">
+
 			</table>
 			<div class="hb-aligncenter">
 				<button type="button" name="customer_next" id="customer_next" class="hb-button hb-belize-hole hb-medium-button no-three-d" >Next <span class="icon-chevron-right"></span></button>
