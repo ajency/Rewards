@@ -4,6 +4,7 @@ function skyi_scripts() {
     wp_enqueue_script( 'customjs', site_template_directory_uri() . '/js/custom.js', array(), '', true );
 	wp_enqueue_script( 'classie', site_template_directory_uri() . '/js/classie.js', array(), '', true );
 	wp_enqueue_style( 'customcss', site_template_directory_uri() . '/css/custom.css');
+   wp_localize_script(  "customjs", "SITEURL", site_url() );
 }
 add_action( 'wp_enqueue_scripts', 'skyi_scripts' );
 
@@ -234,7 +235,7 @@ $order = array(
     $fields['billing']['billing_address_1']['label'] = 'Address';
 		$fields['billing']['billing_phone']['label'] = 'Mobile';
     $fields['billing']['billing_state']['label'] = 'State';
-    
+
     return $fields;
 }
 remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
@@ -498,21 +499,111 @@ function so_27112461_woocommerce_email_actions( $actions){
     return $actions;
 }
 // add_action( 'woocommerce_checkout_after_customer_details', 'some_custom_checkout_field' );
-//
-// function some_custom_checkout_field( $checkout ) {
-// 	echo '<div id="some_custom_checkout_field"><h2>' . __('My Field Header') . '</h2>';
-//
-//     woocommerce_form_field( 'some_field_name', array(
-//         'type'          => 'text',
-//         'class'         => array('my-field-class form-row-wide'),
-//         'label'         => __('My Field Label'),
-//         'placeholder'   => __('Some placeholder text to guide the customer'),
-//         'required'      => true,
-//         ));
-//
-//     echo '</div>';
-//
-// }
+
+function some_custom_checkout_field( $checkout ) {
+	echo '<div id="some_custom_checkout_field">';
+
+    woocommerce_form_field( 'cheque_no', array(
+        'type'          => 'text',
+        'class'         => array('my-field-class form-row-wide'),
+        'label'         => __('Cheque No'),
+        'placeholder'   => __('no validation and database cross check'),
+        'required'      => false,
+        ));
+
+    woocommerce_form_field( 'confirm_cheque_no', array(
+        'type'          => 'text',
+        'class'         => array('my-field-class form-row-wide'),
+        'label'         => __('Confirm Cheque No'),
+        'placeholder'   => __('no validation and database cross check'),
+        'required'      => false,
+        ));
+
+    woocommerce_form_field( 'booking_amount', array(
+        'type'          => 'text',
+        'class'         => array('my-field-class form-row-wide'),
+        'label'         => __('Amount in Rs.'),
+        'placeholder'   => __('1100'),
+        'required'      => false,
+        ));
+
+    woocommerce_form_field( 'cheque_bank', array(
+        'type'          => 'text',
+        'class'         => array('my-field-class form-row-wide'),
+        'label'         => __('Bank'),
+        'placeholder'   => __('bank,branch name'),
+        'required'      => false,
+        ));
+
+    echo '</div>';
+
+    echo '<div id="some_custom_checkout_field"><h2>Partner/Sales person details</h2>';
+
+      woocommerce_form_field( 'sale_person_name', array(
+          'type'          => 'text',
+          'class'         => array('my-field-class form-row-wide'),
+          'label'         => __('Name'),
+          'placeholder'   => __('first name last name'),
+          'required'      => false,
+          ));
+
+      woocommerce_form_field( 'sale_person_email', array(
+          'type'          => 'text',
+          'class'         => array('my-field-class form-row-wide'),
+          'label'         => __('Email'),
+          'placeholder'   => __('email'),
+          'required'      => false,
+          ));
+
+      woocommerce_form_field( 'sale_person_phone', array(
+          'type'          => 'text',
+          'class'         => array('my-field-class form-row-wide'),
+          'label'         => __('Phone'),
+          'placeholder'   => __('phone'),
+          'required'      => false,
+          ));
+
+      woocommerce_form_field( 'sale_person_company', array(
+          'type'          => 'text',
+          'class'         => array('my-field-class form-row-wide'),
+          'label'         => __('Company'),
+          'placeholder'   => __('example.pvt.ltd/NA'),
+          'required'      => false,
+          ));
+
+      echo '</div>';
+
+}
+add_action( 'woocommerce_checkout_update_order_meta', 'some_custom_checkout_field_update_order_meta' );
+
+function some_custom_checkout_field_update_order_meta( $order_id ) {
+    if ( ! empty( $_POST['cheque_no'] ) ) {
+        update_post_meta( $order_id, 'cheque_no', sanitize_text_field( $_POST['cheque_no'] ) );
+    }
+    if ( ! empty( $_POST['confirm_cheque_no'] ) ) {
+        update_post_meta( $order_id, 'confirm_cheque_no', sanitize_text_field( $_POST['confirm_cheque_no'] ) );
+    }
+    if ( ! empty( $_POST['booking_amount'] ) ) {
+        update_post_meta( $order_id, 'booking_amount', sanitize_text_field( $_POST['booking_amount'] ) );
+    }
+    if ( ! empty( $_POST['cheque_bank'] ) ) {
+        update_post_meta( $order_id, 'cheque_bank', sanitize_text_field( $_POST['cheque_bank'] ) );
+    }
+    if ( ! empty( $_POST['sale_person_name'] ) ) {
+        update_post_meta( $order_id, 'sale_person_name', sanitize_text_field( $_POST['sale_person_name'] ) );
+    }
+    if ( ! empty( $_POST['sale_person_email'] ) ) {
+        update_post_meta( $order_id, 'sale_person_email', sanitize_text_field( $_POST['sale_person_email'] ) );
+    }
+    if ( ! empty( $_POST['sale_person_phone'] ) ) {
+        update_post_meta( $order_id, 'sale_person_phone', sanitize_text_field( $_POST['sale_person_phone'] ) );
+    }
+    if ( ! empty( $_POST['sale_person_company'] ) ) {
+        update_post_meta( $order_id, 'sale_person_company', sanitize_text_field( $_POST['sale_person_company'] ) );
+    }
+
+
+}
 
 // add_filter( 'default_checkout_state', 'change_default_checkout_state' );
 // function change_default_checkout_state() {
@@ -542,4 +633,10 @@ function get_random_string($valid_chars, $length)
 
     // return our finished random string
     return $random_string;
+}
+/* Add to the functions.php file of your theme */
+add_filter( 'woocommerce_order_button_text', 'woo_custom_order_button_text' );
+
+function woo_custom_order_button_text() {
+    return __( 'Submit', 'woocommerce' );
 }
