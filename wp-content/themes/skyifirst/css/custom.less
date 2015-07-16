@@ -402,6 +402,10 @@ form.woocommerce-checkout{
 		.payment_method_payu_in{
 			margin: 0;
 			padding: 0;
+			width: 100%;
+			p{
+				display: none;
+			}
 			&:after{
 				border: none;
 			}
@@ -414,6 +418,48 @@ form.woocommerce-checkout{
 				display: none;
 				&+label{
 					display: none;
+				}
+			}
+
+			.payu-options{
+				list-style-type:none;
+				li {
+				    float:left;
+				    margin:0 5px 0 0;
+				    width:30.3%;
+				    margin-right: 4% !important;
+				    // padding: 0 20px;
+				    position:relative;
+				    &:nth-child(3n){
+				    	margin-right: 0 !important;
+				    }
+				}
+				input[type="radio"] {
+				    display: none;
+				}
+				label {
+				    display: block;
+				    cursor:pointer;
+				    text-indent: 0;
+				    text-align: center;
+				    padding: 10px 0;
+				    width: 100%;
+				    margin: 0;
+				    font-size: 22px;
+				    font-family: 'kievit' !important;
+				    text-transform: uppercase;
+				    color: @color-white;
+				    background-color: @gray-light;
+				    border: 6px solid @color-white;
+				    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+				    transition: all 0.3s;
+				    &:hover {
+					     background: @gray;
+					}
+				}
+
+				input[type="radio"]:checked + label {
+				    background:@brand-primary;
 				}
 			}
 		}
@@ -487,3 +533,6 @@ form.woocommerce-checkout{
 		transition: all 1s ease;
 	}
 }
+
+/* PayU buttons */
+
