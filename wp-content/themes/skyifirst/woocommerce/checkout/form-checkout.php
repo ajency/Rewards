@@ -25,7 +25,7 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->get_checkout_url() ); ?>
 
 <form id="checkout" name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( $get_checkout_url ); ?>" enctype="multipart/form-data">
-	<div class="accordion-group one open viewed">
+	<div class="accordion-group one ">
 		<!-- <h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3> -->
 		<div class="acc-title">
 		    <h3>Step 1</h3>
@@ -45,7 +45,7 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 	<?php if ( sizeof( $checkout->checkout_fields ) > 0 ) : ?>
 
 		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
-		<div class="accordion-group two">
+		<div class="accordion-group two open viewed">
 			<div class="acc-title">
 			    <h3>Step 2</h3>
 			</div>
