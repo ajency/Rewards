@@ -286,7 +286,7 @@
 #billing_state_field {
   float: right;
 }
-#billing_state_field .state_select {
+#billing_state_field div.state_select {
   min-height: 43px;
   line-height: 2.5em;
 }
