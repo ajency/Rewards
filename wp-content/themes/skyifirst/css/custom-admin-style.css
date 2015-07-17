@@ -1,6 +1,9 @@
 .order_data_column_container .order_data_column:nth-child(3n) {
   display: none;
 }
+.order_data_column_container .order_data_column .wc-customer-user {
+  display: none;
+}
 #order_shipping_line_items {
   display: none;
 }
