@@ -80,7 +80,7 @@ window.onload = function(){
         return false;
       }
       var phone = jQuery('#billing_phone').val(),
-        intRegex = /[0-9 -()+]+$/;
+        intRegex = /^[0-9]*(?:\.\d{1,2})?$/;
       if((phone.length < 6) || (!intRegex.test(phone)))
       {
           jQuery("#billing_phone").after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
@@ -259,7 +259,7 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
   jQuery('#billing_phone').on('change' , function(e){
       jQuery('.validation').remove();
     var phone = jQuery('#billing_phone').val(),
-    intRegex = /[0-9 -()+]+$/;
+    intRegex = /^[0-9]*(?:\.\d{1,2})?$/;
     if((phone.length < 6) || (!intRegex.test(phone)))
     {
       jQuery("#billing_phone").after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
@@ -313,7 +313,7 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
         jQuery("#cheque_no").after("<div class='validation' style='color:red'>Please enter Cheque No</div>");
         return false;
       }
-      if(jQuery('#confirm_cheque_no').val() == jQuery('#cheque_no').val())
+      if(jQuery('#confirm_cheque_no').val() != jQuery('#cheque_no').val())
       {
         jQuery("#confirm_cheque_no").after("<div class='validation' style='color:red'>Cheque nos do not match</div>");
         return false;
@@ -355,14 +355,14 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
       }
 
       var phone = jQuery('#sale_person_phone').val(),
-        intRegex = /[0-9 -()+]+$/;
+        intRegex = /^[0-9]*(?:\.\d{1,2})?$/;
       if((phone.length < 6) || (!intRegex.test(phone)))
       {
           jQuery("#sale_person_phone").after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
            return false;
       }
       var amount = jQuery('#booking_amount').val(),
-        intRegex = /[0-9 -()+]+$/;
+        intRegex = /^[0-9]*(?:\.\d{1,2})?$/;
       if((amount.length < 6) || (!intRegex.test(amount)))
       {
           jQuery("#booking_amount").after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
@@ -380,7 +380,7 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
     jQuery('#booking_amount,#sale_person_phone').on('change' , function(e){
         jQuery('.validation').remove();
       var phone = jQuery(e.target).val(),
-      intRegex = /[0-9 -()+]+$/;
+      intRegex = /^[0-9]*(?:\.\d{1,2})?$/;
       if((phone.length < 6) || (!intRegex.test(phone)))
       {
         jQuery(e.target).after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
@@ -388,15 +388,42 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
       }
     })
 
-    jQuery('#cheque_no').on('keypress' , function(e){
+    jQuery('#cheque_no,#confirm_cheque_no').on('keypress' , function(e){
         jQuery('.validation').remove();
       var phone = jQuery(e.target).val(),
-      intRegex = /[0-9 -()+]+$/;
+      intRegex = /^[0-9 A-Z]*(?:\.\d{1,2})?$/;
       if((!intRegex.test(phone)))
       {
-        jQuery(e.target).after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
+        jQuery(e.target).val("");
+        jQuery(e.target).after("<div class='validation' style='color:red'>Please enter a valid cheque number</div>");
          return false;
       }
+    })
+    jQuery('#cheque_no').on('change' , function(e){
+      jQuery('.validation').remove();
+      jQuery.ajax({
+        type: 'POST',
+        url: AJAXURL+'?action=check_cheque_no',
+        data: { 'cheque_no':  jQuery(e.target).val()},
+        success: function(response, textStatus, jqXHR){
+              // log a message to the console
+
+              if(jqXHR.status ==200){
+                if(response == 1){
+                  jQuery(e.target).val("");
+                  jQuery(e.target).after("<div class='validation' style='color:red'>Duplicate entry!!Please enter again</div>");
+                   return false;
+                }
+              }
+              else {
+                jQuery(e.target).val("");
+                jQuery(e.target).after("<div class='validation' style='color:red'>Some problerm occurred.Please enter again</div>");
+                 return false;
+              }
+
+          }/*,
+        dataType: 'JSON'*/
+      });
     })
 
 }
