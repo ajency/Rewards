@@ -10,6 +10,7 @@ window.onload = function(){
 
     jQuery('#customer_next').click(function() {
       jQuery('.validation').remove();
+      jQuery('#billing_state option[value="MH"]').attr("selected",true)
       if(jQuery('#variation_id').val()==""){
 
         jQuery("#customer_next").before("<div class='validation' style='color:red'>Choose unit type</div>");
@@ -25,7 +26,7 @@ window.onload = function(){
       jQuery('.accordion-group.one').addClass('open');
       jQuery('.progress-outer').css('width', '15%');
     });
-
+    jQuery('#billing_state option[value="MH"]').attr("selected",true)
 
     // jQuery('#payment_next').on('click',function(e){
 
@@ -112,14 +113,15 @@ window.onload = function(){
 
 
       jQuery('.progress-outer').css('width', '85%');
+      jQuery('.two.viewed > .acc-title').on('click',function() {
+        jQuery('.accordion-group').removeClass('open');
+        jQuery('.accordion-group.two').addClass('open');
+      });
+
+
 
     });
 
-    jQuery('.two.viewed > .acc-title').on('click',function() {
-      console.log('entered');
-      jQuery('.accordion-group').removeClass('open');
-      jQuery('.accordion-group.two').addClass('open');
-    });
 
     jQuery('.variant_product').on('click' , function(e){
       e.preventDefault()
@@ -301,7 +303,7 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
       jQuery('.payment_method_cheque').hide();
     }
 
-          jQuery('#billing_state option[value="MH"]').prop("selected",true)
+
 
     jQuery('#place_order').on('click',function(e){
       e.preventDefault();

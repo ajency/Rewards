@@ -656,6 +656,7 @@ class payment extends WC_Gateway_Payu_In
     }
     public function payment_fields()
     {
+    
         if ( $this->description ) { echo wpautop( wptexturize( $this->description ) ); }
 
         if($this->cc_method == 'yes' || $this->dc_method == 'yes' || $this->nb_method == 'yes' || $this->emi_method == 'yes' || $this->cod_method == 'yes') {
