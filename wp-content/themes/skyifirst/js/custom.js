@@ -388,4 +388,15 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
       }
     })
 
+    jQuery('#cheque_no').on('keypress' , function(e){
+        jQuery('.validation').remove();
+      var phone = jQuery(e.target).val(),
+      intRegex = /[0-9 -()+]+$/;
+      if((!intRegex.test(phone)))
+      {
+        jQuery(e.target).after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
+         return false;
+      }
+    })
+
 }
