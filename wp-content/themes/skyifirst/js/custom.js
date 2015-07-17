@@ -26,7 +26,7 @@ window.onload = function(){
       jQuery('.accordion-group.one').addClass('open');
       jQuery('.progress-outer').css('width', '15%');
     });
-    jQuery('#billing_state option[value="MH"]').attr("selected",true)
+
 
     // jQuery('#payment_next').on('click',function(e){
 
@@ -425,5 +425,5 @@ jQuery('.hb-woo-main-link-checkout').on('click' , function(e){
         dataType: 'JSON'*/
       });
     })
-
+jQuery('#billing_state option[value="MH"]').attr("selected",true)
 }
