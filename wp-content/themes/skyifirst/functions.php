@@ -12,6 +12,11 @@ function site_template_directory_uri() {
     return site_url('wp-content/themes/skyifirst');
 }
 
+add_action( 'admin_enqueue_scripts', 'load_admin_style' );
+    function load_admin_style() {
+        wp_enqueue_style( 'admin_css', site_template_directory_uri() . '/css/custom-admin-style.css', false, '1.0.0' );
+}
+
 /* Code added by Surekha */
 // remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 //
