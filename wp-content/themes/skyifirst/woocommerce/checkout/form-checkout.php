@@ -22,13 +22,17 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 }
 
 // filter hook for include new pages inside the payment method
-$get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->get_checkout_url() ); ?>
+$get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->get_checkout_url() );
+foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+$unit_type = strtoupper($cart_item['variation']['attribute_pa_unit_type']);
+}
+ ?>
 
 <form id="checkout" name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( $get_checkout_url ); ?>" enctype="multipart/form-data">
 	<div class="accordion-group one ">
 		<!-- <h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3> -->
 		<div class="acc-title">
-		    <h3>Step 1</h3>
+		    <h3>Step 1</h3><h3>Apartment</h3>:<?php echo $unit_type;?>
 		</div>
 		<div class="acc-body">
 			<h4 class="step-intro">

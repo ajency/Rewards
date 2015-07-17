@@ -307,7 +307,7 @@ function MY_COLUMNS_VALUES_FUNCTION($column){
                  	foreach($terms as $term)
     		             {
 
-                  		echo $term['item_meta']['pa_unit_type'][0];
+                  		echo strtoupper($term['item_meta']['pa_unit_type'][0]);
                   		}
                   } else {
                   	_e( 'Unable get the producten', 'woocommerce' );

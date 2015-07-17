@@ -52,7 +52,7 @@ Details as follows:
 
 
 	 ?>
-  Apartment :<?php echo 	$variation->get_formatted_name(); ?>
+  Apartment :<?php echo 	strtoupper($variation->get_formatted_name()); ?>
   Payment :<?php echo  $order->payment_method;?></p>
 
 <?php	if($order->payment_method != 'cheque')
