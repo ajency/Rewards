@@ -28,13 +28,13 @@ $arguments = array(
 <?php do_action( 'woocommerce_email_header', $email_heading ); ?>
 
 <p><?php printf( __( 'Hello  %s', 'woocommerce' ), $value->display_name); ?></p>
-<p> A new participant has been registered into the system.
+<p> A new participant has been registered into the system.</p><br/>
 
-Details as follows:
-  Full Name:<?php echo  $order->billing_last_name.' '.$order->billing_last_name ;?>
-  Email:<?php echo  $order->billing_email;?>
-  Phone:<?php echo  $order->billing_phone;?>
-  City:<?php echo  $order->billing_city;?>
+<p>Details as follows:<br/>
+  Full Name:<?php echo  $order->billing_last_name.' '.$order->billing_last_name ;?><br/>
+  Email:<?php echo  $order->billing_email;?><br/>
+  Phone:<?php echo  $order->billing_phone;?><br/>
+  City:<?php echo  $order->billing_city;?><br/>
 	<?php
 	$order = new WC_Order( $order->id );
     $items = $order->get_items();
@@ -52,19 +52,23 @@ Details as follows:
 
 
 	 ?>
-  Apartment :<?php echo 	strtoupper($variation->get_formatted_name()); ?>
-  Payment :<?php echo  $order->payment_method;?></p>
+  Apartment :<?php echo 	strtoupper($variation->get_formatted_name()); ?><br/>
+  Payment :<?php echo  $order->payment_method;?></p><br/>
 
 <?php	if($order->payment_method != 'cheque')
 {
 		$coupon = get_post_meta($order->id, 'coupon' ,true);
 	?>
 
-	Coupon code generated :<?php echo  $coupon;?></p>
+	<p>Coupon code generated :</p>
+	<div style="max-width:300px; margin:auto; background: #ff6600; color: #fff; border: 6px solid #fff; box-shadow: 0 0 2px rgba(0,0,0,0.2); font-size:22px; text-align: center; padding: 20px 0; word-wrap: break-word;">
+		<?php echo  $coupon;?>
+	</div>
 	<?php
 }
 
 ?>
+
 <!-- <?php do_action( 'woocommerce_email_before_order_table', $order, true, false ); ?>
 
 <h2><a href="<?php echo admin_url( 'post.php?post=' . $order->id . '&action=edit' ); ?>"><?php printf( __( 'Order #%s', 'woocommerce'), $order->get_order_number() ); ?></a> (<?php printf( '<time datetime="%s">%s</time>', date_i18n( 'c', strtotime( $order->order_date ) ), date_i18n( wc_date_format(), strtotime( $order->order_date ) ) ); ?>)</h2>

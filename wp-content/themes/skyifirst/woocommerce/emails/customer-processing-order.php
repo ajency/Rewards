@@ -19,12 +19,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php	if($order->payment_method != 'cheque')
 {
 	?>
-Thank you for participating.Your application has been registered in our database.
- You coupon code is as follows
+<p>Thank you for participating.Your application has been registered in our database.</p><br/>
+<p>Here is your coupon code:</p>
+<div style="max-width:300px; margin:auto; background: #ff6600; color: #fff; border: 6px solid #fff; box-shadow: 0 0 2px rgba(0,0,0,0.2); font-size:22px; text-align: center; padding: 20px 0; word-wrap: break-word;">
 <?php
 	$coupon = get_post_meta($order->id, 'coupon' ,true);
 echo $coupon ;
  ?>
+</div>
 
 The result of the draw will be declared on 19th July 2015>
 	<?php
