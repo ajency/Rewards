@@ -17,6 +17,43 @@ add_action( 'admin_enqueue_scripts', 'load_admin_style' );
         wp_enqueue_style( 'admin_css', site_template_directory_uri() . '/css/custom-admin-style.css', false, '1.0.0' );
 }
 
+/**
+ * Open a preview e-mail.
+ *
+ * @return null
+**/
+ 
+function previewEmail() {
+ 
+    if (is_admin()) {
+        $default_path = WC()->plugin_path() . '/templates/';
+ 
+        $files = scandir($default_path . 'emails');
+        $exclude = array( '.', '..', 'email-header.php', 'email-footer.php','plain' );
+        $list = array_diff($files,$exclude);
+        ?><form method="get" action="<?php echo site_url(); ?>/wp-admin/admin-ajax.php">
+<input type="hidden" name="order" value="593">
+<input type="hidden" name="action" value="previewemail">
+        <select name="file">
+        <?php
+        foreach( $list as $item ){ ?>
+            <option value="<?php echo $item; ?>"><?php echo str_replace('.php', '', $item); ?></option>
+        <?php } ?>
+        </select><input type="submit" value="Go"></form><?php
+        global $order;
+        $order = new WC_Order($_GET['order']);
+        wc_get_template( 'emails/email-header.php', array( 'order' => $order ) );
+ 
+ 
+        wc_get_template( 'emails/'.$_GET['file'], array( 'order' => $order ) );
+        wc_get_template( 'emails/email-footer.php', array( 'order' => $order ) );
+ 
+    }
+    return null; 
+}
+ 
+add_action('wp_ajax_previewemail', 'previewEmail');
+
 /* Code added by Surekha */
 // remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 //

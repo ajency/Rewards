@@ -23,14 +23,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php	if($order->payment_method == 'cheque')
 {
 	?>
-Thank you for participating.Your application has been registered in our database.
- You coupon code is as follows
+<p>Thank you for participating in the Freedom Draw.</p> 
+<p>Your application has been registered in our database.</p><br/>
+<p>Here is your coupon code.</p>
 <?php
 	$coupon = get_post_meta($order->id, 'coupon' ,true);
 echo $coupon ;
  ?>
-
-The result of the draw will be declared on 19th July 2015>
+<br/>
+<p>The result of the draw will be declared on 19th August 2015.</p>
 	<?php
 }
 ?>
