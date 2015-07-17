@@ -5,6 +5,7 @@ function skyi_scripts() {
 	wp_enqueue_script( 'classie', site_template_directory_uri() . '/js/classie.js', array(), '', true );
 	wp_enqueue_style( 'customcss', site_template_directory_uri() . '/css/custom.css');
    wp_localize_script(  "customjs", "SITEURL", site_url() );
+   wp_localize_script(  "customjs", "AJAXURL", admin_url( "admin-ajax.php" ) );
 }
 add_action( 'wp_enqueue_scripts', 'skyi_scripts' );
 
@@ -22,12 +23,12 @@ add_action( 'admin_enqueue_scripts', 'load_admin_style' );
  *
  * @return null
 **/
- 
+
 function previewEmail() {
- 
+
     if (is_admin()) {
         $default_path = WC()->plugin_path() . '/templates/';
- 
+
         $files = scandir($default_path . 'emails');
         $exclude = array( '.', '..', 'email-header.php', 'email-footer.php','plain' );
         $list = array_diff($files,$exclude);
@@ -43,15 +44,15 @@ function previewEmail() {
         global $order;
         $order = new WC_Order($_GET['order']);
         wc_get_template( 'emails/email-header.php', array( 'order' => $order ) );
- 
- 
+
+
         wc_get_template( 'emails/'.$_GET['file'], array( 'order' => $order ) );
         wc_get_template( 'emails/email-footer.php', array( 'order' => $order ) );
- 
+
     }
-    return null; 
+    return null;
 }
- 
+
 add_action('wp_ajax_previewemail', 'previewEmail');
 
 /* Code added by Surekha */
@@ -137,7 +138,7 @@ function my_function($order_id) {
       // else {
       //     wp_redirect( site_url().'customer_thankyou' );
       // }
-	    wp_redirect( home_url() ); exit; // or whatever url you want
+	    wp_redirect( site_url().'/thank-you/' ); exit; // or whatever url you want
 	   }
 
 
@@ -698,7 +699,7 @@ class payment extends WC_Gateway_Payu_In
     }
     public function payment_fields()
     {
-    
+
         if ( $this->description ) { echo wpautop( wptexturize( $this->description ) ); }
 
         if($this->cc_method == 'yes' || $this->dc_method == 'yes' || $this->nb_method == 'yes' || $this->emi_method == 'yes' || $this->cod_method == 'yes') {
@@ -719,3 +720,43 @@ class payment extends WC_Gateway_Payu_In
         }
     }
 }
+
+function check_cheque_no(){
+
+$chequeno = $_REQUEST['cheque_no'];
+
+  $args = array(
+  'post_type' => 'shop_order',
+  'post_status' => 'publish',
+  'meta_key' => '_customer_user',
+  'posts_per_page' => '-1'
+);
+$my_query = new WP_Query($args);
+
+$customer_orders = $my_query->posts;
+$cheques = array();
+foreach ($customer_orders as $customer_order) {
+ $order = new WC_Order();
+
+ $order->populate($customer_order);
+ $orderdata = (array) $order;
+ $cheque_no = get_post_meta($orderdata['id'],'cheque_no',true);
+  if($cheque_no != "")
+  array_push($cheques,$cheque_no);
+
+ // $orderdata Array will have Information. for e.g Shippin firstname, Lastname, Address ... and MUCH more.... Just enjoy!
+}
+
+  if(in_array($chequeno,$cheques))
+  {
+    $output = 1;
+  }
+  else {
+    $output = 0;
+  }
+  echo $output;
+	die();
+
+}
+
+add_action('wp_ajax_check_cheque_no','check_cheque_no');
