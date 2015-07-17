@@ -138,7 +138,7 @@ function my_function($order_id) {
       // else {
       //     wp_redirect( site_url().'customer_thankyou' );
       // }
-	    wp_redirect( home_url() ); exit; // or whatever url you want
+	    wp_redirect( site_url().'/thank-you/' ); exit; // or whatever url you want
 	   }
 
 
