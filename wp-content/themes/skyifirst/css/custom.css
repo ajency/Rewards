@@ -462,12 +462,28 @@ form.woocommerce-checkout #payment .payment_methods > li.payment_method_payu_in 
   left: auto;
 }
 form.woocommerce-checkout #payment .payment_methods > li label {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 500;
 }
 @media (max-width: 767px) {
   form.woocommerce-checkout #payment .payment_methods {
     padding-top: 80px;
+  }
+  form.woocommerce-checkout #payment .payment_methods > li input {
+    margin: 0 0 0 1em;
+  }
+  form.woocommerce-checkout #payment .payment_methods > li label {
+    text-indent: 0;
+  }
+  form.woocommerce-checkout #payment .terms .input-checkbox {
+    float: left;
+    margin: 5px 8px 0 0;
+  }
+  form.woocommerce-checkout #payment .terms label {
+    margin-left: 0px;
+    text-indent: 0;
+    width: 85%;
+    float: left;
   }
 }
 .woocommerce #payment div.payment_box.payment_method_payu_in,

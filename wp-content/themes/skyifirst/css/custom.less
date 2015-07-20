@@ -534,7 +534,7 @@ form.woocommerce-checkout{
   					left: auto;
   				}
   				label{
-  					font-size: 20px;
+  					font-size: 21px;
   					font-weight: 500;
   				}
 			}
@@ -543,9 +543,29 @@ form.woocommerce-checkout{
 		@media(max-width:767px){
 			.payment_methods{
 				padding-top: 80px;
+				&>li{
+					input{
+						margin: 0 0 0 1em;
+					}
+					label{
+						text-indent: 0;
+					}
+				}
+			}
+
+			.terms{
+				.input-checkbox{
+					float: left;
+					margin: 5px 8px 0 0;
+				}
+				label{
+					margin-left: 0px;
+					text-indent: 0;
+					width: 85%;
+					float: left;
+				}
 			}
 		}
-
 
 	}
 }
