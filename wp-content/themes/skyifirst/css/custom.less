@@ -401,11 +401,15 @@
 	.woocommerce form .form-row-first, 
 	.woocommerce form .form-row-last, 
 	.woocommerce-page form .form-row-first, 
-	.woocommerce-page form .form-row-last{
+	.woocommerce-page form .form-row-last,
+	#billing_city_field{
 		width: 100%;
 		float: left;
 	}
 	#billing_email-2_field{
+		float: left;
+	}
+	#billing_state_field{
 		float: left;
 	}
 }
@@ -426,6 +430,10 @@
 
 form.woocommerce-checkout{
 	margin-bottom: 100px;
+	select{
+		background-color: #EDEDED;
+		box-shadow: 0 1px 2px rgba(10,10,0,0.1) inset;
+	}
 	#payment{
 		.payment_method_payu_in, .payment_method_cheque{
 			margin: 0;
@@ -459,6 +467,7 @@ form.woocommerce-checkout{
 				    margin:0 5px 0 0;
 				    width:30.3%;
 				    margin-right: 4% !important;
+				    margin-left: 0 !important;
 				    // padding: 0 20px;
 				    position:relative;
 				    &:nth-child(3n){
@@ -474,7 +483,7 @@ form.woocommerce-checkout{
 				    text-indent: 0;
 				    text-align: center;
 				    padding: 10px 0;
-				    width: 100%;
+				    // width: 100%;
 				    margin: 0;
 				    font-size: 22px;
 				    font-family: 'kievit' !important;
@@ -642,5 +651,8 @@ form.woocommerce-checkout{
 	}
 }
 
-/* PayU buttons */
+#page-256{
+	margin-bottom: 0;
+}
+
 

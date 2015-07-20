@@ -1,8 +1,33 @@
-.order_data_column_container .order_data_column:nth-child(3n) {
+#order_data .order_data_column_container .order_data_column {
+  width: 98%;
+  border-bottom: 1px solid #E2E2E2;
+  padding-bottom: 20px;
+}
+#order_data .order_data_column_container .order_data_column .form-field-wide {
+  width: 50%;
+  float: left;
+  clear: none;
+}
+#order_data .order_data_column_container .order_data_column:nth-child(3n) {
   display: none;
 }
-.order_data_column_container .order_data_column .wc-customer-user {
+#order_data .order_data_column_container .order_data_column:nth-child(2n) {
+  border: none;
+}
+#order_data .order_data_column_container .order_data_column .wc-customer-user {
   display: none;
+}
+#order_data .order_data_column_container .order_data_column .address {
+  float: left;
+  width: 50%;
+  height: 300px;
+}
+#order_data .order_data_column_container .order_data_column .address p:nth-child(2n) {
+  display: none;
+}
+#order_data .order_data_column_container .order_data_column > p {
+  float: left;
+  width: 50%;
 }
 #order_shipping_line_items {
   display: none;
