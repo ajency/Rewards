@@ -339,7 +339,12 @@
 .page-template-home-template #pre-footer-area,
 .page-template-terms-template #pre-footer-area,
 .page-template-partner-template #pre-footer-area,
-.page-template-thankyou-template #pre-footer-area {
+.page-template-thankyou-template #pre-footer-area,
+.page-template-checkout-template #contact-button,
+.page-template-home-template #contact-button,
+.page-template-terms-template #contact-button,
+.page-template-partner-template #contact-button,
+.page-template-thankyou-template #contact-button {
   display: none;
 }
 .variations_form {
