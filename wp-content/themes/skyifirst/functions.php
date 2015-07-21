@@ -327,6 +327,8 @@ function MY_COLUMNS_FUNCTION($columns){
     $new_columns['order_product'] = 'Product';
     $new_columns['order_date'] = 'Booking Date';
     $new_columns['order_total'] = 'Amount';
+    $new_columns['broker_name'] = 'Broker';
+
     $new_columns['status'] = 'Status';
 
     //stop editing
@@ -360,6 +362,12 @@ function MY_COLUMNS_VALUES_FUNCTION($column){
 
         case 'status' :
              print_r($the_order->get_status());
+
+            break;
+
+         case 'broker_name' :
+            $customer_name = get_post_meta( $the_order->id, 'sale_person_name', true ) != "" ? get_post_meta( $the_order->id, 'sale_person_name', true ) : '--';
+            echo  $customer_name;
 
             break;
 
@@ -400,6 +408,18 @@ function woo_display_order_username( $order ){
     echo '<p><strong style="display: block;">'.__('Cheque No').':</strong>'.$customer_chequeno.'</p>';
 		$customer_cheque_bank = get_post_meta( $post->ID, 'cheque_bank', true ) != "" ? get_post_meta( $post->ID, 'cheque_bank', true ) : 'Not present';
     echo '<p><strong style="display: block;">'.__('Bank').':</strong>'.$customer_cheque_bank.'</p>';
+    $customer_name = get_post_meta( $post->ID, 'sale_person_name', true ) != "" ? get_post_meta( $post->ID, 'sale_person_name', true ) : 'Not present';
+    echo '<p><strong style="display: block;">'.__('Broker Name').':</strong>'.$customer_name.'</p>';
+    $customer_email = get_post_meta( $post->ID, 'sale_person_email', true ) != "" ? get_post_meta( $post->ID, 'sale_person_email', true ) : 'Not present';
+    echo '<p><strong style="display: block;">'.__('Broker Email').':</strong>'.$customer_email.'</p>';
+    $customer_phone = get_post_meta( $post->ID, 'sale_person_phone', true ) != "" ? get_post_meta( $post->ID, 'sale_person_phone', true ) : 'Not present';
+    echo '<p><strong style="display: block;">'.__('Broker Email').':</strong>'.$customer_phone.'</p>';
+    $customer_company = get_post_meta( $post->ID, 'sale_person_company', true ) != "" ? get_post_meta( $post->ID, 'sale_person_company', true ) : 'Not present';
+    echo '<p><strong style="display: block;">'.__('Broker Company').':</strong>'.$customer_company.'</p>';
+
+
+
+
 }
 
 

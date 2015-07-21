@@ -1,4 +1,8 @@
 
+jQuery(document).ready(function(){
+	jQuery('.woocommerce-message').hide()
+
+})
 window.onload = function(){
 	jQuery('.woocommerce-message').hide()
 
@@ -112,6 +116,8 @@ window.onload = function(){
 		  url: AJAXURL+'?action=get_product_variantion',
 		  success: function(response, textStatus, jqXHR){
 			jQuery('.amount').text(response.price)
+			validate();
+
 				jQuery('.accordion-group.two').removeClass('open');
 				jQuery('.accordion-group.three').addClass('open viewed');
 
@@ -122,6 +128,7 @@ window.onload = function(){
 				  jQuery('.accordion-group').removeClass('open');
 				  jQuery('.accordion-group.two').addClass('open');
 				});
+
 
 			}/*,
 		  dataType: 'JSON'*/
@@ -157,7 +164,7 @@ window.onload = function(){
 	   jQuery('#product_id').val(jQuery(e.currentTarget).attr('data-product'));
 	   jQuery('#buy_button'+jQuery('#variation_id').val()).addClass('variation_seleced');
 	   jQuery('#attribute_pa_unit_type').val(jQuery('#attributepa_unit_type'+jQuery('#product_id').val()).val());
-   variation = jQuery('#attributepa_unit_type'+jQuery('#variation_id').val()).val();
+   	   variation = jQuery('#attributepa_unit_type'+jQuery('#variation_id').val()).val();
 	   addToCart(jQuery('#product_id').val(),jQuery('#variation_id').val(),variation);
 	  return false;
 	})
@@ -175,8 +182,7 @@ window.onload = function(){
 	success: function(response, textStatus, jqXHR){
 		  // log a message to the console
 		  jQuery('.unit_type').text(response.unit_type)
-		  console.log(response);
-
+		  
 	  }/*,
 	dataType: 'JSON'*/
   });
@@ -325,11 +331,14 @@ jQuery('#customer_back').click(function() {
 	  jQuery('.payment_method_cheque').hide();
 	}
 
-
-
+validate();
+function validate(){
 	jQuery('#place_order').on('click',function(e){
 	  e.preventDefault();
 	  jQuery('.validation').remove();
+	  
+	 if(window.location.href == SITEURL+'/partner-application/')
+	{
 	  if(jQuery('#cheque_no').val() == "")
 	  {
 		jQuery("#cheque_no").after("<div class='validation' style='color:red'>Please enter Cheque No</div>");
@@ -383,18 +392,33 @@ jQuery('#customer_back').click(function() {
 
 	  var phone = jQuery('#sale_person_phone').val(),
 		intRegex = /^[0-9]*(?:\.\d{1,2})?$/;
-	  if((phone.length < 6) || (!intRegex.test(phone)))
-	  {
-		  jQuery("#sale_person_phone").after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
-		   return false;
-	  }
-	  // var amount = jQuery('#booking_amount').val(),
-	  //   intRegex = /^[0-9]*(?:\.\d{1,2})?$/;
-	  // if((amount.length < 6) || (!intRegex.test(amount)))
-	  // {
-	  //     jQuery("#booking_amount").after("<div class='validation' style='color:red'>Please enter a number</div>");
-	  //      return false;
-	  // }
+		if(jQuery('#sale_person_phone').val() != undefined){
+			 if((phone.length < 6) || (!intRegex.test(phone)))
+			  {
+				  jQuery("#sale_person_phone").after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
+				   return false;
+			  }
+		}
+	 }
+	 else
+	 {
+	 	if(jQuery('#payment_method_payu_in').is(':checked')){
+	 			flag = 0;
+			   jQuery('.payu-options input[type="radio"]').each(function(indx,value){
+			  		if(jQuery(value).is(':checked') && jQuery('#payment_method_payu_in').is(':checked'))
+			  		{
+			  			flag = 1;
+			  		}
+
+			  })
+			   if(flag == 0){
+			   	jQuery(".payu-options").after("<div class='validation' style='color:red'>Choose atleast one online mode of Payment</div>");
+				   return false;
+			   }
+	 	}
+	 	
+	 }
+	  
 	  if(!(jQuery('#terms').is(":checked")))
 	  {
 		  jQuery("#terms").after("<div class='validation' style='color:red'>Accept terms and conditions to proceed</div>");
@@ -405,7 +429,7 @@ jQuery('#customer_back').click(function() {
 
 
 	});
-
+}
 	jQuery('#sale_person_email').on('change' , function(e){
 		jQuery('.validation').remove();
 		if(!(validateEmail(jQuery('#sale_person_email').val())))
@@ -425,7 +449,7 @@ jQuery('#customer_back').click(function() {
 	  }
 	})
 
-	jQuery('#cheque_no,#confirm_cheque_no').on('keypress' , function(e){
+	jQuery('#cheque_no').on('keypress' , function(e){
 		jQuery('.validation').remove();
 	  var phone = jQuery(e.target).val(),
 	  intRegex = /^[0-9 A-Z]*(?:\.\d{1,2})?$/;
@@ -436,31 +460,46 @@ jQuery('#customer_back').click(function() {
 		 return false;
 	  }
 	})
-	jQuery('#cheque_no').on('change' , function(e){
-	  jQuery('.validation').remove();
-	  jQuery.ajax({
-		type: 'POST',
-		url: AJAXURL+'?action=check_cheque_no',
-		data: { 'cheque_no':  jQuery(e.target).val()},
-		success: function(response, textStatus, jqXHR){
-			  // log a message to the console
 
-			  if(jqXHR.status ==200){
-				if(response == 1){
-				  jQuery(e.target).val("");
-				  jQuery(e.target).after("<div class='validation' style='color:red'>Duplicate entry!!Please enter again</div>");
-				   return false;
-				}
-			  }
-			  else {
-				jQuery(e.target).val("");
-				jQuery(e.target).after("<div class='validation' style='color:red'>Some problerm occurred.Please enter again</div>");
-				 return false;
-			  }
+	
+	jQuery('#confirm_cheque_no').on('change' , function(e){
+		jQuery('.validation').remove();
+		  var phone = jQuery(e.target).val(),
+		  intRegex = /^[0-9 A-Z]*(?:\.\d{1,2})?$/;
+		  if((!intRegex.test(phone)))
+		  {
+			jQuery(e.target).val("");
+			jQuery(e.target).after("<div class='validation' style='color:red'>Please enter a valid cheque number</div>");
+			 return false;
+		  }
+		  if(jQuery('#confirm_cheque_no').val() !=   jQuery('#cheque_no').val())
+		  {
+		  jQuery("#confirm_cheque_no").after("<div class='validation' style='color:red'>Cheque nos do not match</div>");
+			 return false;
+		  }
+		  jQuery.ajax({
+			type: 'POST',
+			url: AJAXURL+'?action=check_cheque_no',
+			data: { 'cheque_no':  jQuery(e.target).val()},
+			success: function(response, textStatus, jqXHR){
+				  // log a message to the console
 
-		  }/*,
-		dataType: 'JSON'*/
-	  });
+				  if(jqXHR.status ==200){
+					if(response == 1){
+					  jQuery(e.target).val("");
+					  jQuery(e.target).after("<div class='validation' style='color:red'>Duplicate entry!!Please enter again</div>");
+					   return false;
+					}
+				  }
+				  else {
+					jQuery(e.target).val("");
+					jQuery(e.target).after("<div class='validation' style='color:red'>Some problerm occurred.Please enter again</div>");
+					 return false;
+				  }
+
+			  }/*,
+			dataType: 'JSON'*/
+		  });
 	})
 jQuery('#billing_state option[value="MH"]').attr("selected",true)
 }

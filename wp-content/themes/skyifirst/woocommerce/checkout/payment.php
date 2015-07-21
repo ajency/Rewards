@@ -53,7 +53,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</p>
 		<?php endif; ?>
 
-		<?php echo apply_filters( 'woocommerce_order_button_html', '<div class="hb-aligncenter"><input type="submit" class="button alt hb-button hb-wet-asphalt hb-medium-button no-three-d" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" /></div>' ); ?>
+		<?php echo apply_filters( 'woocommerce_order_button_html', '<div class="hb-aligncenter"><input type="button" class="button alt hb-button hb-wet-asphalt hb-medium-button no-three-d" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" /></div>' ); ?>
 
 		<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 
