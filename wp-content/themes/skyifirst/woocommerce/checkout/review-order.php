@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	}  if ( WC()->cart->get_cart_contents_count() == 0 ){
 
 		$_pf = new WC_Product_Factory();
-		$new_product = $_pf->get_product(29);
+		$new_product = $_pf->get_product(269);
 
 
 	}?>
@@ -58,6 +58,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<?php
 			foreach ($variations as $key => $value) {
+
 			?>
 
 				<?php
@@ -75,7 +76,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<div class="hb-woo-product-details col-4">
 					<button type="button" id="buy_button<?php echo $value['variation_id']?>" data-product="<?php echo $product->id; ?>" value="<?php echo $value['variation_id']?>" class="hb-woo-main-link-checkout hb-woo-main-link">
 						<h2 class="hb-woo-title"><?php echo implode('/', $value['attributes']);?></h2>
-						<div><?php echo $value['price_html'];?> all inclusive*</div>
+						<div><?php echo $value['sku'];?> all inclusive*</div>
 					</button>
 				</div>
 

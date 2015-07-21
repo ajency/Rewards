@@ -33,7 +33,7 @@ $unit_type = strtoupper($cart_item['variation']['attribute_pa_unit_type']);
 		<!-- <h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3> -->
 		<div class="acc-title">
 		    <h3 class="one-title">Step 1</h3>
-		    <h4><?php echo $unit_type;?></h4>
+		    <h4 class="unit_type"><?php echo $unit_type;?></h4>
 		    <div class="clearfix"></div>
 		</div>
 		<div class="acc-body">

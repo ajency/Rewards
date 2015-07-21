@@ -93,12 +93,18 @@ if ( vp_metabox('background_settings.hb_content_background_color') )
         					 Supply us with your contact details and Payment details.
         					</h4>
 
-          				<?php some_custom_checkout_field($checkout); ?>
+          				<?php foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+                    $price = get_post_meta($cart_item['product_id'] , '_price', true);
+
+                };?>
+                <div>Amont to be paid :</div><div  class="amount"> <?php echo $price ; ?></div>
+                <?php
+                some_custom_checkout_field($checkout); ?>
                   <div id="order_review" class="woocommerce-checkout-review-order" >
                     <?php do_action( 'woocommerce_checkout_paymen_options' ); ?>
                   </div>
         				</div>
-                
+
               </div>
             </div>
           </form>

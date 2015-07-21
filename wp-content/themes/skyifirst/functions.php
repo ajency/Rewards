@@ -349,8 +349,9 @@ function MY_COLUMNS_VALUES_FUNCTION($column){
            if ( is_array( $terms ) ) {
                  	foreach($terms as $term)
     		             {
+                     echo strtoupper($term['item_meta']['pa_unit_type'][0]);
+                    
 
-                  		echo strtoupper($term['item_meta']['pa_unit_type'][0]);
                   		}
                   } else {
                   	_e( 'Unable get the producten', 'woocommerce' );
@@ -569,13 +570,13 @@ function some_custom_checkout_field( $checkout ) {
         'required'      => true,
         ));
 
-    woocommerce_form_field( 'booking_amount', array(
-        'type'          => 'text',
-        'class'         => array('my-field-class form-row-wide'),
-        'label'         => __('Amount in Rs.'),
-        'placeholder'   => __('1100'),
-        'required'      => true,
-        ));
+    // woocommerce_form_field( 'booking_amount', array(
+    //     'type'          => 'text',
+    //     'class'         => array('my-field-class form-row-wide'),
+    //     'label'         => __('Amount in Rs.'),
+    //     'placeholder'   => __('1100'),
+    //     'required'      => true,
+    //     ));
 
     woocommerce_form_field( 'cheque_bank', array(
         'type'          => 'text',
@@ -633,9 +634,9 @@ function some_custom_checkout_field_update_order_meta( $order_id ) {
     if ( ! empty( $_POST['confirm_cheque_no'] ) ) {
         update_post_meta( $order_id, 'confirm_cheque_no', sanitize_text_field( $_POST['confirm_cheque_no'] ) );
     }
-    if ( ! empty( $_POST['booking_amount'] ) ) {
-        update_post_meta( $order_id, 'booking_amount', sanitize_text_field( $_POST['booking_amount'] ) );
-    }
+    // if ( ! empty( $_POST['booking_amount'] ) ) {
+    //     update_post_meta( $order_id, 'booking_amount', sanitize_text_field( $_POST['booking_amount'] ) );
+    // }
     if ( ! empty( $_POST['cheque_bank'] ) ) {
         update_post_meta( $order_id, 'cheque_bank', sanitize_text_field( $_POST['cheque_bank'] ) );
     }
@@ -773,3 +774,69 @@ function mgt_dequeue_stylesandscripts() {
 
     }
 }
+function add_prodcut_variation(){
+
+  global $woocommerce;
+  // ob_start();
+
+  //   $product_id        = apply_filters( 'woocommerce_add_to_cart_product_id', absint( $_REQUEST['pid'] ) );
+  //   $quantity          = empty( $_POST['quantity'] ) ? 1 : wc_stock_amount( $_REQUEST['qty'] );
+
+  //   $variation_id      = isset( $_POST['variation_id'] ) ? absint( $_POST['vid'] ) : '';
+  //   $variation         = ! empty( $_POST['variation'] ) ? (array) $_POST['variation'] : '';
+
+  //   $passed_validation = apply_filters( 'woocommerce_add_to_cart_validation', true, $product_id, $quantity );
+
+  //   if ( $passed_validation && WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $variation ) ) {
+
+  //       do_action( 'woocommerce_ajax_added_to_cart', $product_id );
+
+  //       if ( get_option( 'woocommerce_cart_redirect_after_add' ) == 'yes' ) {
+  //           wc_add_to_cart_message( $product_id );
+  //       }
+
+  //       // Return fragments
+  //       WC_AJAX::get_refreshed_fragments();
+
+  //   } else {
+
+  //       // If there was an error adding to the cart, redirect to the product page to show any errors
+  //       $data = array(
+  //           'error' => true,
+  //           'product_url' => apply_filters( 'woocommerce_cart_redirect_after_error', get_permalink( $product_id ), $product_id )
+  //       );
+
+  //       wp_send_json( $data );
+
+  //   }
+
+  //   die();
+
+  $quantity       = (isset($_REQUEST['qty'])) ? (int) $_REQUEST['qty'] : 1;
+  $product_id     = (int) apply_filters('woocommerce_add_to_cart_product_id', $_REQUEST['pid']);
+  $vid            = (int) apply_filters('woocommerce_add_to_cart_product_id', $_REQUEST['vid']);
+  
+  
+  
+  
+  if ($vid > 0) $woocommerce->cart->add_to_cart( $product_id, $quantity, $vid,$_REQUEST['variation'],null);
+  else $woocommerce->cart->add_to_cart( $product_id, $quantity );
+
+  get_product_variantion();
+
+ // $orderdata Array will have Information. for e.g Shippin firstname, Lastname, Address ... and MUCH more.... Just enjoy!
+}
+
+function get_product_variantion(){
+
+      foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        $unit_type = strtoupper($cart_item['variation']['unit_type']);
+          $price = get_post_meta($cart_item['product_id'] , '_price', true);
+    }
+
+    $term = array('unit_type' =>  $unit_type,'price'=>$price );
+    wp_send_json($term);
+}
+add_action('wp_ajax_add_prodcut_variation','add_prodcut_variation');
+
+add_action('wp_ajax_get_product_variantion','get_product_variantion');
