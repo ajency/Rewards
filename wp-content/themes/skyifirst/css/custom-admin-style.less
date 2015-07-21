@@ -1,7 +1,35 @@
-.order_data_column_container{
-	.order_data_column{
-		&:nth-child(3n){
-			display: none;
+#order_data{
+	.order_data_column_container{
+		.order_data_column{
+			width: 98%;
+			border-bottom: 1px solid #E2E2E2;
+			padding-bottom: 20px;
+			.form-field-wide{
+				width: 50%;
+				float: left;
+				clear: none;
+			}
+			&:nth-child(3n){
+				display: none;
+			}
+			&:nth-child(2n){
+				border: none;
+			}
+			.wc-customer-user{
+				display: none;
+			}
+			.address{
+				float: left;
+				width: 50%;
+				height: 300px;
+				p:nth-child(2n){
+					display: none;
+				}
+			}
+			&>p{
+				float: left;
+				width: 50%;
+			}
 		}
 	}
 }

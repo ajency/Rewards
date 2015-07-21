@@ -29,7 +29,7 @@ $unit_type = strtoupper($cart_item['variation']['attribute_pa_unit_type']);
  ?>
 
 <form id="checkout" name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( $get_checkout_url ); ?>" enctype="multipart/form-data">
-	<div class="accordion-group one ">
+	<div class="accordion-group one viewed">
 		<!-- <h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3> -->
 		<div class="acc-title">
 		    <h3 class="one-title">Step 1</h3>
