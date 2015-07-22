@@ -116,8 +116,7 @@ window.onload = function(){
 		  url: AJAXURL+'?action=get_product_variantion',
 		  success: function(response, textStatus, jqXHR){
 			jQuery('.amount').text(response.price)
-			validate();
-
+		
 				jQuery('.accordion-group.two').removeClass('open');
 				jQuery('.accordion-group.three').addClass('open viewed');
 
@@ -311,15 +310,26 @@ jQuery('#customer_back').click(function() {
 		}
 	});
 
-	jQuery('.input-text ').on('keypress' , function(e){
+	jQuery(document).bind('keypress' , '.input-text', function(e){
 		jQuery('.validation').remove();
+		jQuery('.accept_text').hide();
+	    jQuery('.place_order_button').hide();
 
 
 	})
+	jQuery(document).bind('change' , '.input-text', function(e){
+		jQuery('.validation').remove();
+		jQuery('.accept_text').hide();
+	    jQuery('.place_order_button').hide();
+
+
+	})
+
+
 	jQuery(document).on('keypress' , function(e){
 		if(e.keyCode == 13)
 		e.preventDefault();
-
+		
 
 	})
 
@@ -329,11 +339,13 @@ jQuery('#customer_back').click(function() {
 	  jQuery('.payment_method_payu_in').hide();
 	  jQuery('#payment_method_cheque').attr('checked' , true);
 	  jQuery('.payment_method_cheque').hide();
+	  jQuery('input[name="_wp_http_referer"]').val("/Skyicoupon/wp-admin/admin-ajax.php")
+	  // jQuery('.added').remove();
 	}
 
-validate();
-function validate(){
-	jQuery('#place_order').on('click',function(e){
+
+
+	jQuery(document).on('click','#accpt_terms',function(e){
 	  e.preventDefault();
 	  jQuery('.validation').remove();
 	  
@@ -421,15 +433,20 @@ function validate(){
 	  
 	  if(!(jQuery('#terms').is(":checked")))
 	  {
-		  jQuery("#terms").after("<div class='validation' style='color:red'>Accept terms and conditions to proceed</div>");
-		   return false;
+	  		jQuery( "#payment .terms a" ).trigger('click')
+		    jQuery("#terms").after("<div class='validation' style='color:red'>Accept terms and conditions to proceed</div>");
+		    return false;
 	  }
 
-	  jQuery('form#checkout').submit();
+
+	
+	  jQuery('.accept_text').show();
+	 jQuery('.place_order_button').show();
+
 
 
 	});
-}
+
 	jQuery('#sale_person_email').on('change' , function(e){
 		jQuery('.validation').remove();
 		if(!(validateEmail(jQuery('#sale_person_email').val())))
@@ -503,3 +520,8 @@ function validate(){
 	})
 jQuery('#billing_state option[value="MH"]').attr("selected",true)
 }
+
+jQuery('#disagree').on('click',function(){
+	jQuery('#terms').attr('checked',false);
+	tb_remove();
+})

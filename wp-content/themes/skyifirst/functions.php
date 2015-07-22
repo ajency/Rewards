@@ -116,7 +116,7 @@ function my_function($order_id) {
 			// $rand = 'FREEDOM'.$order_id;
       $original_string = 'kjlmnopqrst';
       $random_string = get_random_string($original_string, 6);
-      $rand = md5(uniqid($order_id, true));
+      $rand = getRandomCode(10);
       // $rand = $random_string;
 			$payment = get_post_meta($order_id, '_payment_method' ,true);
 			if( $payment != 'cheque' ){
@@ -351,7 +351,10 @@ function MY_COLUMNS_VALUES_FUNCTION($column){
            if ( is_array( $terms ) ) {
                  	foreach($terms as $term)
     		             {
-                     echo strtoupper($term['item_meta']['pa_unit_type'][0]);
+                     
+                      $unit_type = strtoupper($term['item_meta']['pa_unit_type'][0]);
+                     $unit_type = strtoupper($term['item_meta']['unit_type'][0]);
+                     echo $unit_type;
                     
 
                   		}
@@ -411,7 +414,7 @@ function woo_display_order_username( $order ){
     $customer_name = get_post_meta( $post->ID, 'sale_person_name', true ) != "" ? get_post_meta( $post->ID, 'sale_person_name', true ) : 'Not present';
     echo '<p><strong style="display: block;">'.__('Broker Name').':</strong>'.$customer_name.'</p>';
     $customer_email = get_post_meta( $post->ID, 'sale_person_email', true ) != "" ? get_post_meta( $post->ID, 'sale_person_email', true ) : 'Not present';
-    echo '<p><strong style="display: block;">'.__('Broker Email').':</strong>'.$customer_email.'</p>';
+    echo '<p><strong style="display: block;">'.__('Broker Phone').':</strong>'.$customer_email.'</p>';
     $customer_phone = get_post_meta( $post->ID, 'sale_person_phone', true ) != "" ? get_post_meta( $post->ID, 'sale_person_phone', true ) : 'Not present';
     echo '<p><strong style="display: block;">'.__('Broker Email').':</strong>'.$customer_phone.'</p>';
     $customer_company = get_post_meta( $post->ID, 'sale_person_company', true ) != "" ? get_post_meta( $post->ID, 'sale_person_company', true ) : 'Not present';
@@ -555,7 +558,7 @@ function order_complete_function($order_id) {
       $original_string = 'abcdefghi';
       $random_string = get_random_string($original_string, 6);
       // $random = $random_string;
-      $random = md5(uniqid($order_id, true));
+      $random = getRandomCode(10);
 
 		 update_post_meta( $order_id, 'coupon', $random );
 		 add_filter( 'woocommerce_email_actions', 'so_27112461_woocommerce_email_actions' );
@@ -579,7 +582,7 @@ function some_custom_checkout_field( $checkout ) {
         'class'         => array('my-field-class form-row-wide'),
         'label'         => __('Cheque No'),
         'placeholder'   => __('no validation and database cross check'),
-        'required'      => true,
+        'required'      => false,
         ));
 
     woocommerce_form_field( 'confirm_cheque_no', array(
@@ -587,7 +590,7 @@ function some_custom_checkout_field( $checkout ) {
         'class'         => array('my-field-class form-row-wide'),
         'label'         => __('Confirm Cheque No'),
         'placeholder'   => __('no validation and database cross check'),
-        'required'      => true,
+        'required'      => false,
         ));
 
     // woocommerce_form_field( 'booking_amount', array(
@@ -603,7 +606,7 @@ function some_custom_checkout_field( $checkout ) {
         'class'         => array('my-field-class form-row-wide'),
         'label'         => __('Bank'),
         'placeholder'   => __('bank,branch name'),
-        'required'      => true,
+        'required'      => false,
         ));
 
     echo '</div>';
@@ -615,7 +618,7 @@ function some_custom_checkout_field( $checkout ) {
           'class'         => array('my-field-class form-row-wide'),
           'label'         => __('Name'),
           'placeholder'   => __('first name last name'),
-          'required'      => true,
+          'required'      => false,
           ));
 
       woocommerce_form_field( 'sale_person_email', array(
@@ -623,7 +626,7 @@ function some_custom_checkout_field( $checkout ) {
           'class'         => array('my-field-class form-row-wide'),
           'label'         => __('Email'),
           'placeholder'   => __('email'),
-          'required'      => true,
+          'required'      => false,
           ));
 
       woocommerce_form_field( 'sale_person_phone', array(
@@ -631,7 +634,7 @@ function some_custom_checkout_field( $checkout ) {
           'class'         => array('my-field-class form-row-wide'),
           'label'         => __('Phone'),
           'placeholder'   => __('phone'),
-          'required'      => true,
+          'required'      => false,
           ));
 
       woocommerce_form_field( 'sale_person_company', array(
@@ -639,7 +642,7 @@ function some_custom_checkout_field( $checkout ) {
           'class'         => array('my-field-class form-row-wide'),
           'label'         => __('Company'),
           'placeholder'   => __('example.pvt.ltd/NA'),
-          'required'      => true,
+          'required'      => false,
           ));
 
       echo '</div>';
@@ -859,4 +862,50 @@ function get_product_variantion(){
 }
 add_action('wp_ajax_add_prodcut_variation','add_prodcut_variation');
 
+add_action('wp_ajax_nopriv_add_prodcut_variation','add_prodcut_variation');
+
 add_action('wp_ajax_get_product_variantion','get_product_variantion');
+add_action('wp_ajax_nopriv_get_product_variantion','get_product_variantion');
+
+function wpg_add_fields($settings) {
+
+  $settings['cheque_no'] = array(
+                'name' => __( 'Cheque No', 'woocommerce-simply-order-export' ),
+                'type' => 'checkbox',
+                'desc' => __( 'Cheque No', 'woocommerce-simply-order-export' ),
+                'id'   => 'wc_settings_tab_cheque_no'
+              );
+
+  $settings['cheque_bank'] = array(
+                'name' => __( 'Cheque Bank', 'woocommerce-simply-order-export' ),
+                'type' => 'checkbox',
+                'desc' => __( 'Cheque Bank', 'woocommerce-simply-order-export' ),
+                'id'   => 'wc_settings_tab_cheque_bank'
+              );
+
+  return $settings;
+
+}
+
+function csv_write( &$csv, $od, $fields ) {
+
+  if( !empty( $fields['wc_settings_tab_cheque_no'] ) && $fields['wc_settings_tab_cheque_no'] === true ){
+    $cheque_no = get_post_meta( $od->id, 'cheque_no', true );
+    array_push( $csv, $cheque_no );
+  }
+  if( !empty( $fields['wc_settings_tab_cheque_bank'] ) && $fields['wc_settings_tab_cheque_bank'] === true ){
+    $cheque_bank = get_post_meta( $od->id, 'cheque_bank', true );
+    array_push( $csv, $cheque_bank );
+  }
+
+}
+add_action('wpg_before_csv_write', 'csv_write', 10, 3);
+add_filter('wc_settings_tab_order_export', 'wpg_add_fields');
+
+function getRandomCode($len){
+    $an = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $su = strlen($an) - 1;
+    return substr($an, rand(0, $su), $len);
+}
+
+

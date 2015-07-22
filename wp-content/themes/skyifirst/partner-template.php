@@ -39,15 +39,22 @@ if ( vp_metabox('background_settings.hb_content_background_color') )
   </div>
 
   <div class="container steps-container">
+<?php
+foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 
+$unit_type = strtoupper($cart_item['variation']['unit_type']);
+}
+?>
     <div class="row main-row">
       <div id="page-<?php the_ID(); ?>" <?php post_class('col-12'); ?>>
         <div class="woocommerce">
-          <form id="checkout" name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo site_url() ?>/application" enctype="multipart/form-data">
+          <form id="checkout" name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo site_url() ?>/checkout" enctype="multipart/form-data">
             <div class="accordion-group one open viewed">
           		<!-- <h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3> -->
           		<div class="acc-title">
           		    <h3>Step 1</h3>
+                   <h4 class="unit_type"><?php echo $unit_type;?></h4>
+                    <div class="clearfix"></div>
           		</div>
           		<div class="acc-body">
           			<h4 class="step-intro">
@@ -101,8 +108,10 @@ if ( vp_metabox('background_settings.hb_content_background_color') )
                 <?php
                 some_custom_checkout_field($checkout); ?>
                   <div id="order_review" class="woocommerce-checkout-review-order" >
-                    <?php do_action( 'woocommerce_checkout_paymen_options' ); ?>
+                    <?php woocommerce_checkout_payment(); ?>
+                    
                   </div>
+                  
         				</div>
 
               </div>

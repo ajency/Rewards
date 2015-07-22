@@ -16,6 +16,8 @@ if ( ! defined( 'WOOCOMMERCE_CHECKOUT' ) ) {
 $main_content_style = "";
 if ( vp_metabox('background_settings.hb_content_background_color') )
   $main_content_style = ' style="background-color: ' . vp_metabox('background_settings.hb_content_background_color') . ';"';
+
+
 ?>
   <!-- BEGIN #main-content -->
 <div id="main-content"<?php echo $main_content_style; ?>>
