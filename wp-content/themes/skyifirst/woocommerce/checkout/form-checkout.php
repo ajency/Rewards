@@ -74,7 +74,7 @@ $unit_type = strtoupper($cart_item['variation']['attribute_pa_unit_type']);
 		</div>
 
 		<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
-		<div class="accordion-group three">
+		<div class="accordion-group three open">
 			 <div class="acc-title">
                 <h3>Step 3</h3>
             </div>

@@ -89,7 +89,7 @@ $unit_type = strtoupper($cart_item['variation']['unit_type']);
                 </div>
               </div>
             </div>
-            <div class="accordion-group three ">
+            <div class="accordion-group three">
         			<div class="acc-title">
                 <h3>Step 3</h3>
               </div>
@@ -104,7 +104,9 @@ $unit_type = strtoupper($cart_item['variation']['unit_type']);
                     $price = get_post_meta($cart_item['product_id'] , '_price', true);
 
                 };?>
-                <div>Amont to be paid :</div><div  class="amount"> <?php echo $price ; ?></div>
+                <h4 class="paymnt-amnt">
+                  Amount to be paid : <span  class="amount"> <b><?php echo $price ; ?></b></span>
+                </h4>
                 <?php
                 some_custom_checkout_field($checkout); ?>
                   <div id="order_review" class="woocommerce-checkout-review-order" >

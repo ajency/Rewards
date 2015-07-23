@@ -579,17 +579,17 @@ function some_custom_checkout_field( $checkout ) {
 
     woocommerce_form_field( 'cheque_no', array(
         'type'          => 'text',
-        'class'         => array('my-field-class form-row-wide'),
+        'class'         => array('my-field-class form-row-first'),
         'label'         => __('Cheque No'),
-        'placeholder'   => __('no validation and database cross check'),
+        'placeholder'   => __('Cheque Number'),
         'required'      => false,
         ));
 
     woocommerce_form_field( 'confirm_cheque_no', array(
         'type'          => 'text',
-        'class'         => array('my-field-class form-row-wide'),
+        'class'         => array('my-field-class form-row-last'),
         'label'         => __('Confirm Cheque No'),
-        'placeholder'   => __('no validation and database cross check'),
+        'placeholder'   => __('Cheque Number'),
         'required'      => false,
         ));
 
@@ -605,47 +605,47 @@ function some_custom_checkout_field( $checkout ) {
         'type'          => 'text',
         'class'         => array('my-field-class form-row-wide'),
         'label'         => __('Bank'),
-        'placeholder'   => __('bank,branch name'),
+        'placeholder'   => __('Bank and Branch Name'),
         'required'      => false,
         ));
 
-    echo '</div>';
+    echo '<div class="clearfix"></div><div class="hb-separator" style="margin-top:0px;margin-top:40px;"></div></div>';
 
-    echo '<div id="some_custom_checkout_field"><h2>Partner/Sales person details</h2>';
+    echo '<div id="some_custom_checkout_field"><h4 class="step-intro">Partner/Sales person details</h4>';
 
       woocommerce_form_field( 'sale_person_name', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-wide'),
+          'class'         => array('my-field-class form-row-first'),
           'label'         => __('Name'),
-          'placeholder'   => __('first name last name'),
+          'placeholder'   => __('Full Name'),
           'required'      => false,
           ));
 
       woocommerce_form_field( 'sale_person_email', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-wide'),
+          'class'         => array('my-field-class form-row-last'),
           'label'         => __('Email'),
-          'placeholder'   => __('email'),
+          'placeholder'   => __('Email address'),
           'required'      => false,
           ));
 
       woocommerce_form_field( 'sale_person_phone', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-wide'),
+          'class'         => array('my-field-class form-row-first'),
           'label'         => __('Phone'),
-          'placeholder'   => __('phone'),
+          'placeholder'   => __('Phone Number'),
           'required'      => false,
           ));
 
       woocommerce_form_field( 'sale_person_company', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-wide'),
+          'class'         => array('my-field-class form-row-last'),
           'label'         => __('Company'),
-          'placeholder'   => __('example.pvt.ltd/NA'),
+          'placeholder'   => __('Example Pvt. Ltd.'),
           'required'      => false,
           ));
 
-      echo '</div>';
+      echo '<div class="clearfix"></div></div>';
 
 }
 add_action( 'woocommerce_checkout_update_order_meta', 'some_custom_checkout_field_update_order_meta' );
