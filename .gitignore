@@ -2,4 +2,6 @@
 wp-config.php
 wp-includes/
 wp-admin/
-wp-content/themes/skyifirst/grunt
+spa/src/bower_components
+grunt
+
