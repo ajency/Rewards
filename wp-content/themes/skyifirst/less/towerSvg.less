@@ -1,0 +1,87 @@
+.aviable:hover, rect.selected-flat, polygon.selected-flat{
+  fill:#99DD1F !important;
+  cursor:pointer;
+  opacity :0.8;
+  .ease;
+  & + text{
+    opacity:1 !important;
+    fill:#000 !important;
+//    font-size: 18px;
+  }
+}
+
+.fadeout{
+  fill: #ff6600 !important;
+  color: #000 !important;
+}
+
+rect, polygon{
+  &.range{
+    fill:#FF6600 !important;
+    cursor:pointer;
+    opacity :0.5;
+  }
+}
+
+polygon, rect{
+  .sold:hover{
+    fill:#DD1F1F   !important;
+    cursor:pointer;
+    opacity :0.8;
+    .ease;
+  }
+}
+.position{
+  fill:#F60   !important;
+  cursor:pointer;
+  content : ""
+}
+
+.sliderPlans .selected{
+  fill:#99DD1F   !important;
+  opacity :0.8
+}
+.unit-hover{
+  content: ""
+}
+.disable{
+  fill: #999; 
+  opacity:0.9;
+}
+polygon, rect{
+    &.other:hover{
+    fill:#EEEEEE !important;
+    cursor:default;
+    opacity :0.8;
+    .ease;
+  }
+}
+polygon, rect{
+    &.onhold{
+    fill: #ECD21F !important;
+    cursor:default;
+    opacity :0.8;
+    .ease;
+    &:hover{
+      fill: #ECD21F !important;
+    }
+  }
+}
+text.selected-flat{
+  // fill:#000 !important;
+  // font-size: 18px;
+}
+
+text{ 
+  pointer-events: none;
+}
+
+.floorSvg{
+  .other:hover{
+    fill: #808080!important;
+    cursor: default;
+  }
+  .alrtMsg{
+    width: 100%;
+  }
+}

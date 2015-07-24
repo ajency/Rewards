@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php endif; ?>
 
 <div id="payment" class="woocommerce-checkout-payment">
+	
 	<?php if ( WC()->cart->needs_payment() ) : ?>
 	<ul class="payment_methods methods">
 		<?php
@@ -47,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 
 		<?php if ( wc_get_page_id( 'terms' ) > 0 && apply_filters( 'woocommerce_checkout_show_terms', true ) ) : ?>
-			<p class="form-row terms">
+			<p class="form-row terms" style="display:none">
 				<input type="checkbox" class="input-checkbox" name="terms" <?php checked( apply_filters( 'woocommerce_terms_is_checked_default', isset( $_POST['terms'] ) ), true ); ?> id="terms" />
 				<label for="terms" class="checkbox"><?php printf( __( 'I&rsquo;ve read and accept the <a href="%s" target="_blank">terms &amp; conditions</a>', 'woocommerce' ), esc_url( wc_get_page_permalink( 'terms' ) ) ); ?></label>
 			</p>

@@ -1,0 +1,327 @@
+.costsheetclass{
+	width: 100%;
+	max-width: 860px;
+	// height: 650px;
+	overflow-y: scroll;
+	min-height: 0;
+	height: 95%;
+	margin: 20px 0;
+}
+
+.costClose, .formClose{
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	color: @gray-dark;
+	z-index: 999;
+	padding: 6px 0 0 6px;
+	border: 2px solid @gray-dark;
+	border-radius: 25px;
+	width: 32px;
+	cursor: pointer;
+	background: @color-white;
+	.ease;
+	&:hover{
+		color: @color-white;
+		background: @gray-dark;
+		.ease;
+	}
+}
+.formClose{
+	top: -20px;
+	right: -20px;
+	padding: 6px 0 0 0;
+}
+
+.b-modal{
+	z-index: 9999 !important;
+}
+
+#invoice{
+	position: relative;
+	padding: 18px;
+	// max-width: 840px;
+	margin: 0 auto 0;
+	background: #f5f5f5;
+	text-align: left;
+	// border: 10px solid #fff;
+
+	&.unpaid:before, &.paid:before{
+		// position: absolute;
+		// top: -20px;
+		// right: 0;
+		// left: 0;
+		// height: 10px;
+		// background: red;
+		// background: rgba(187,0,0, .8);
+		// content:"";
+	}
+
+	&.paid:before{
+		// background: green;
+		// background: rgba(122,185,0, .7);
+	}
+
+	h5, h4{
+		.bold;
+	}
+	h5{
+		color: @gray-light;
+	}
+}
+
+.paymentDetails{
+	border-top: 1px solid darken(@gray-lighter, 10%);
+	border-bottom: 1px solid darken(@gray-lighter, 10%);
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	h4, h5{
+		display: inline-block;
+	}
+}
+
+.discountToggle{
+	cursor: pointer;
+}
+.discountBox{
+	// padding-left: 15px;
+	display: none;
+}
+
+.costsRow{
+	width: 100%;
+	padding: 10px 8px;
+	border-bottom: 1px solid @gray-lighter;
+	.light;
+	.costCell{
+		display: inline-block;
+		width: 24%;
+		text-align: right;
+		float: right;
+		&.discCol{
+			display: none;
+			&.showDisc{
+				display: block;
+			}
+		}
+	}
+	.costName{
+		width: 48%;
+		text-align: left;
+		float: left;
+	}
+	&.totals{
+		.h4;
+		.bold;
+		margin: 0;
+		border-top: 1px solid lighten(@color-primary, 20%);
+		border-bottom: none;
+		margin-bottom: 20px;
+		color: darken(@gray-light, 10%);
+		&.title{
+			border: none;
+			// background-color: lighten(@color-primary, 20%);
+			background-color: @color-primary;
+			color: @color-white;
+			margin-bottom: 15px;
+		}
+		&.final{
+			border-top: 2px solid lighten(@color-primary, 20%);
+			border-bottom: 2px solid lighten(@color-primary, 20%);
+			// background: lighten(@color-primary, 30%);
+			margin-bottom: 40px;
+			color: @gray-dark;
+		}
+	}
+	&:nth-child(2n){
+		// background-color: @gray-lighter;
+	}
+	&:before, &:after{
+		display: table;
+		content: "";
+	}
+	&:after{
+		clear: both;
+	}
+}
+
+#paymentTable{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.msPercent{
+	.h3;
+	font-size: 32px;
+	.light;
+	margin-top: 0;
+	margin-right: 5px;
+	float: left;
+}
+.milestoneList{
+	.h4;
+	margin: 0;
+	.bold;
+	position: relative;
+	width: 90%;
+	border: 2px solid lighten(@gray-light, 25%);
+	padding: 10px;
+	margin-bottom: 10px;
+	float: right;
+
+	.msName{
+		z-index: 2;
+		position: relative;
+		width: 48%;
+		display: inline-block;
+		float: left;
+		.completionDate{
+			.h5;
+			.bold;
+			margin: 0;
+			color: @gray-light;
+		}
+	}
+	.msVal{
+		z-index: 2;
+		position: relative;
+		width: 24%;
+		display: inline-block;
+		text-align: right;
+		float: right;
+		&.discCol{
+			display: none;
+			&.showDisc{
+				display: inline-block;
+			}
+		}
+		.label{
+			color: @gray;
+			padding-right: 0;
+		}
+	}
+	.barBg{
+		position: absolute;
+		height: 100%;
+		background-color: lighten(@gray-light, 25%);
+		// background-color: @gray-lighter;
+		left: 0;
+		top: 0;
+	}
+	&.milestoneReached{
+		border-color: lighten(@color-primary, 30%);
+		.msName{
+			.completionDate{
+				display: none;
+			}
+		}
+		.barBg{
+			background-color: lighten(@color-primary, 30%);
+		}
+	}
+	&:before, &:after{
+		display: table;
+		content: "";
+	}
+	&:after{
+		clear: both;
+	}
+}
+
+.headers{
+	margin-bottom: 0;
+	padding: 5px;
+	border-bottom: none;
+	cursor: pointer;
+	text-decoration: underline;
+	&:hover{
+		background: @gray-lighter;
+	}
+}
+
+.costDtls{
+	display: none;
+}
+
+.panel-body{
+	color: @color-grey;
+	background: @gray-lighter;
+}
+
+.this-is{
+	padding: 0;
+	text-align: center;
+	// font-size: 16px;
+	// font-weight: bold;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+#header{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+tr.milestoneReached{
+	th, td{
+		background-color:lighten(@color-primary, 20%);
+		color: @color-white;
+	}
+}
+
+
+/* some margin for middling sceens */
+@media only screen and (min-width: 420px) and (max-width: 869px) {
+	#invoice{
+		margin: 0 20px;
+	}
+}
+
+
+
+/* layout splits at 600 css pixels */
+@media only screen and (min-width: 700px){
+
+	h1{
+		padding: 10px 0;
+	}
+
+	#header{
+		overflow: hidden;
+		// padding-top: 40px;
+	}
+
+		.invoice-intro{
+			// float: left;
+			// width: 50%;
+			// text-align: left;
+			p{
+				// text-align: left;
+			}
+		}
+
+		.invoice-meta{
+			// float: right;
+			// width: 40%;
+
+			dd{
+				// text-align: right;
+			}
+		}
+
+		.invoice-to, .invoice-from, .invoice-status{
+			float: left;
+			width: 30%;
+			margin-right: 5%;
+		}
+
+		.invoice-status{
+			margin-right:0;
+		}
+
+	#footer{
+		padding-top: 18px;
+		font-size: 12px;
+	}
+}

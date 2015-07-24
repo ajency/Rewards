@@ -113,7 +113,9 @@ $unit_type = strtoupper($cart_item['variation']['unit_type']);
                   </div>
                   
         				</div>
-
+<div id="popup" style="display:none">fsdfsfsdfsdsdfdsfsdfsd
+              <input type="button" name="p_agree" id="p_agree" value="Agree" />
+            <input type="button" name="p_disagree" id="p_disagree" value="Disagree" /></div>
               </div>
             </div>
           </form>

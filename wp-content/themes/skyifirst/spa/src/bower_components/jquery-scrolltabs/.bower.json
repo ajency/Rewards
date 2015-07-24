@@ -1,0 +1,15 @@
+{
+  "name": "jquery-scrolltabs",
+  "homepage": "https://github.com/joshreed/jQuery-ScrollTabs",
+  "version": "1.0.1",
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.1",
+    "commit": "57dc3edb083d4f6f0a512d8d8b1be003f65d4437"
+  },
+  "_source": "git://github.com/joshreed/jQuery-ScrollTabs.git",
+  "_target": "~1.0.1",
+  "_originalSource": "jquery-scrolltabs",
+  "_direct": true
+}

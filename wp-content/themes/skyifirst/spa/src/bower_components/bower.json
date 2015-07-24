@@ -1,0 +1,17 @@
+{
+  "name": "jquery.prefetch.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ajency/apartmentselector",
+  "authors": [
+    "Surekha Rane <surekha@ajency.in>"
+  ],
+  "main": "jquery.prefetch.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
