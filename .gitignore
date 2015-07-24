@@ -2,3 +2,6 @@
 wp-config.php
 wp-includes/
 wp-admin/
+spa/src/bower_components
+grunt
+

@@ -50,11 +50,11 @@ class WC_Terms_Conditions_Popup {
 	 * @since 1.0
 	 */
 	private function __construct() {
-		if ( class_exists( 'WooCommerce' ) && function_exists( 'is_checkout' ) ) {
+		// if ( class_exists( 'WooCommerce' ) && function_exists( 'is_checkout' ) ) {
 
 			// load content + scripts
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
-		}
+		// }
 
 		if ( is_admin() ) {
 			// load admin files
@@ -70,7 +70,7 @@ class WC_Terms_Conditions_Popup {
 	 */
 	public function enqueue() {
 		//only run on the checkout page
-		if ( is_checkout() ) {
+		// if ( is_checkout() ) {
 
 			// get terms & conditions page
 			$this->terms_page_id = wc_get_page_id( "terms" );
@@ -94,7 +94,7 @@ class WC_Terms_Conditions_Popup {
 				add_thickbox();
 			}
 
-		}
+		// }
 	}
 
 

@@ -151,7 +151,7 @@ window.onload = function(){
 	})
 
 	jQuery( document ).ajaxComplete(function() {
-
+		jQuery('.woocommerce-message').hide()
 	variation_id = jQuery('#variation_id').val();
 	jQuery('#buy_button'+variation_id).addClass('variation_seleced');
 
@@ -310,7 +310,7 @@ jQuery('#customer_back').click(function() {
 		}
 	});
 
-	jQuery(document).bind('keypress' , '.input-text', function(e){
+	jQuery(document).bind('keyup' , '.input-text', function(e){
 		jQuery('.validation').remove();
 		jQuery('.accept_text').hide();
 	    jQuery('.place_order_button').hide();
@@ -401,6 +401,11 @@ jQuery('#customer_back').click(function() {
 		jQuery("#sale_person_company").after("<div class='validation' style='color:red'>Please enter company</div>");
 		return false;
 	  }
+	  if(!(jQuery('#terms').is(":checked")))
+	{
+
+	  			jQuery('#popup').bPopup();
+	  }
 
 	  var phone = jQuery('#sale_person_phone').val(),
 		intRegex = /^[0-9]*(?:\.\d{1,2})?$/;
@@ -428,15 +433,16 @@ jQuery('#customer_back').click(function() {
 				   return false;
 			   }
 	 	}
+	 	if(!(jQuery('#terms').is(":checked")))
+		  {
+		  		jQuery( "#payment .terms a" ).trigger('click')
+			    jQuery("#terms").after("<div class='validation' style='color:red'>Accept terms and conditions to proceed</div>");
+			    return false;
+		  }
 	 	
 	 }
 	  
-	  if(!(jQuery('#terms').is(":checked")))
-	  {
-	  		jQuery( "#payment .terms a" ).trigger('click')
-		    jQuery("#terms").after("<div class='validation' style='color:red'>Accept terms and conditions to proceed</div>");
-		    return false;
-	  }
+	  
 
 
 	
@@ -466,7 +472,7 @@ jQuery('#customer_back').click(function() {
 	  }
 	})
 
-	jQuery('#cheque_no').on('keypress' , function(e){
+	jQuery('#cheque_no').on('keyup' , function(e){
 		jQuery('.validation').remove();
 	  var phone = jQuery(e.target).val(),
 	  intRegex = /^[0-9 A-Z]*(?:\.\d{1,2})?$/;
@@ -525,3 +531,36 @@ jQuery('#disagree').on('click',function(){
 	jQuery('#terms').attr('checked',false);
 	tb_remove();
 })
+jQuery('#p_disagree').on('click',function(){
+	jQuery('#terms').attr('checked',false);
+	jQuery("#terms").bPopup().close()
+	
+})
+jQuery('#p_agree').on('click',function(){
+	jQuery('#terms').attr('checked',true);
+	jQuery("#terms").bPopup().close()
+	
+})
+
+
+
+// jQuery('.save_order ').on('click',function(e){
+
+// 	e.preventDefault();
+// 	console.log(jQuery('#order_status').val())
+// 	if(jQuery('#order_status').val() == 'wc-completed')
+// 	{
+// 		console.log(jQuery('#order_status').val())
+// 		if(jQuery('#myplugin_cheque_no').val() == "")
+// 		{
+// 			jQuery('#myplugin_cheque_no').after("<div class='validation' style='color:red'>Enter Cheque No</div>");
+// 			return false;
+// 		}
+// 		if(jQuery('#myplugin_cheque_bank').val() == "")
+// 		{
+// 			jQuery('#myplugin_cheque_bank').after("<div class='validation' style='color:red'>Enter Bank details</div>");
+// 			return false;
+// 		}
+// 	}
+// 	jQuery('form#post').submit();
+// })
