@@ -53,8 +53,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<label for="terms" class="checkbox"><?php printf( __( 'I&rsquo;ve read and accept the <a href="%s" target="_blank">terms &amp; conditions</a>', 'woocommerce' ), esc_url( wc_get_page_permalink( 'terms' ) ) ); ?></label>
 			</p>
 		<?php endif; ?>
-		<input type="button" class="button alt hb-button hb-wet-asphalt hb-medium-button no-three-d" name="accpt_terms" id="accpt_terms" value="Accept Terms" data-value="Accept Terms" />
-		<div class="accept_text" style="display:none">You have accepted your terms and conditions.To proceed click on the below button</div>
+		<div class="hb-aligncenter">
+			<button type="button" class="hb-button hb-belize-hole hb-medium-button no-three-d" name="accpt_terms" id="accpt_terms" value="Accept Terms" >Accept Terms</button>
+		</div>
+		<h5 class="accept_text" style="display:none">You have accepted our terms and conditions. To proceed click on the below button</h5>
 		<?php echo apply_filters( 'woocommerce_order_button_html', '<div class="hb-aligncenter place_order_button" style="display:none"><input type="submit" class="button alt hb-button hb-wet-asphalt hb-medium-button no-three-d" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" /></div>' ); ?>
 		<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 
