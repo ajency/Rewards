@@ -689,3 +689,60 @@ form.woocommerce-checkout{
 	box-shadow: none;
 	border: none;
 }
+
+
+.formPopup{
+	background: @color-white;
+	padding: 20px;
+	width: 100%;
+	max-width: 500px;
+	text-align: center;
+	border: 10px solid @gray-light;
+	min-height: 0;
+	.formIntro{
+		line-height: 30px;
+		font-size: 28px;
+		margin: 10px 0 20px;
+		span{
+			color: @brand-primary;
+			font-weight: 500;
+		}
+	}
+	.remodal-close{
+		background: @gray;
+		top: -20px;
+		right: -20px;
+		&:hover{
+			text-decoration: none;
+		}
+		&:after{
+			line-height: 25px;
+		}
+	}
+	.with_frm_style label.frm_primary_label, .with_frm_style.frm_login_form label{
+		margin-bottom: 5px;
+		font-weight: 600;
+	}
+
+	.with_frm_style input[type=text], .with_frm_style input[type=password], .with_frm_style input[type=email], .with_frm_style input[type=number], .with_frm_style input[type=url], .with_frm_style input[type=tel], .with_frm_style select, .with_frm_style textarea, .frm_form_fields_style, .with_frm_style .frm_scroll_box .frm_opt_container, .frm_form_fields_active_style, .frm_form_fields_error_style, .with_frm_style .chzn-container-multi .chzn-choices, .with_frm_style .chzn-container-single .chzn-single{
+		padding: 8px;
+		margin-top: 0;
+		border-radius: 0;
+	}
+
+	.with_frm_style .frm_submit input[type=submit]{
+		margin: auto;
+		display: block
+	}
+
+	img{
+		margin: auto;
+		display: block;
+		margin-top: 10px;
+	}
+
+	.with_frm_style .frm_message, .frm_success_style{
+		background: @gray-lighter;
+		border: none;
+	}
+}

@@ -115,9 +115,13 @@ $unit_type = strtoupper($cart_item['variation']['unit_type']);
                   </div>
                   
         				</div>
-<div id="popup" style="display:none">fsdfsfsdfsdsdfdsfsdfsd
-              <input type="button" name="p_agree" id="p_agree" value="Agree" />
-            <input type="button" name="p_disagree" id="p_disagree" value="Disagree" /></div>
+                <div id="popup" class="formPopup" style="display:none">
+                  fsdfsfsdfsdsdfdsfsdfsd
+                  <div class="hb-aligncenter">
+                    <button type="button" name="p_agree" id="p_agree" value="Agree" class="hb-button hb-belize-hole hb-small-button no-three-d">Agree</button>
+                    <button type="button" name="p_disagree" id="p_disagree" value="Disagree" class="disagree-btn hb-button hb-wet-asphalt hb-small-button no-three-d" >Disagree</button>
+                  </div>
+                </div>
               </div>
             </div>
           </form>
