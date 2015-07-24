@@ -104,7 +104,9 @@ $attribute_pa_unit_type = strtoupper($cart_item['variation']['attribute_pa_unit_
                     $price = get_post_meta($cart_item['product_id'] , '_price', true);
 
                 };?>
-                <div>Amont to be paid :</div><div  class="amount"> <?php echo $price ; ?></div> 
+                <h4 class="paymnt-amnt">
+                  Amount to be paid : <span  class="amount"> <b><?php echo $price ; ?></b></span>
+                </h4>
                
                   <div id="order_review" class="woocommerce-checkout-review-order" >
                     <?php woocommerce_checkout_payment(); ?>
