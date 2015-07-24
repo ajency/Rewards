@@ -604,4 +604,70 @@ form.woocommerce-checkout #payment .payment_methods > li label {
   box-shadow: none;
   border: none;
 }
+.formPopup {
+  background: #ffffff;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  border: 10px solid #999999;
+  min-height: 0;
+}
+.formPopup .formIntro {
+  line-height: 30px;
+  font-size: 28px;
+  margin: 10px 0 20px;
+}
+.formPopup .formIntro span {
+  color: #ff6600;
+  font-weight: 500;
+}
+.formPopup .remodal-close {
+  background: #555555;
+  top: -20px;
+  right: -20px;
+}
+.formPopup .remodal-close:hover {
+  text-decoration: none;
+}
+.formPopup .remodal-close:after {
+  line-height: 25px;
+}
+.formPopup .with_frm_style label.frm_primary_label,
+.formPopup .with_frm_style.frm_login_form label {
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+.formPopup .with_frm_style input[type=text],
+.formPopup .with_frm_style input[type=password],
+.formPopup .with_frm_style input[type=email],
+.formPopup .with_frm_style input[type=number],
+.formPopup .with_frm_style input[type=url],
+.formPopup .with_frm_style input[type=tel],
+.formPopup .with_frm_style select,
+.formPopup .with_frm_style textarea,
+.formPopup .frm_form_fields_style,
+.formPopup .with_frm_style .frm_scroll_box .frm_opt_container,
+.formPopup .frm_form_fields_active_style,
+.formPopup .frm_form_fields_error_style,
+.formPopup .with_frm_style .chzn-container-multi .chzn-choices,
+.formPopup .with_frm_style .chzn-container-single .chzn-single {
+  padding: 8px;
+  margin-top: 0;
+  border-radius: 0;
+}
+.formPopup .with_frm_style .frm_submit input[type=submit] {
+  margin: auto;
+  display: block;
+}
+.formPopup img {
+  margin: auto;
+  display: block;
+  margin-top: 10px;
+}
+.formPopup .with_frm_style .frm_message,
+.formPopup .frm_success_style {
+  background: #eeeeee;
+  border: none;
+}
 /*# sourceMappingURL=custom.css.map */

@@ -118,6 +118,7 @@ function my_function($order_id) {
 	// order object (optional but handy)
 	global $woocommerce;
 	$order = new WC_Order();
+   
   if ( $order->status != 'failed' ) {
 			// $rand = 'FREEDOM'.$order_id;
       $original_string = 'kjlmnopqrst';
@@ -642,7 +643,7 @@ function some_custom_checkout_field( $checkout ) {
         'type'          => 'text',
         'class'         => array('my-field-class form-row-first'),
         'label'         => __('Cheque No'),
-        'placeholder'   => __('Cheque Number'),
+        'placeholder'   => __('1000000'),
         'required'      => false,
         ));
 
@@ -650,9 +651,10 @@ function some_custom_checkout_field( $checkout ) {
         'type'          => 'text',
         'class'         => array('my-field-class form-row-last'),
         'label'         => __('Confirm Cheque No'),
-        'placeholder'   => __('Cheque Number'),
+        'placeholder'   => __('1000000'),
         'required'      => false,
         ));
+    echo '<div class="clear"></div>';
 
     // woocommerce_form_field( 'booking_amount', array(
     //     'type'          => 'text',
@@ -666,11 +668,11 @@ function some_custom_checkout_field( $checkout ) {
         'type'          => 'text',
         'class'         => array('my-field-class form-row-wide'),
         'label'         => __('Bank'),
-        'placeholder'   => __('Bank and Branch Name'),
+        'placeholder'   => __('SBI'),
         'required'      => false,
         ));
 
-    echo '<div class="clearfix"></div><div class="hb-separator" style="margin-top:0px;margin-top:40px;"></div></div>';
+    echo '<div class="clear"></div><div class="hb-separator" style="margin-top:0px;margin-top:40px;"></div></div>';
 
     echo '<div id="some_custom_checkout_field"><h4 class="step-intro">Partner/Sales person details</h4>';
 
@@ -678,7 +680,7 @@ function some_custom_checkout_field( $checkout ) {
           'type'          => 'text',
           'class'         => array('my-field-class form-row-first'),
           'label'         => __('Name'),
-          'placeholder'   => __('Full Name'),
+          'placeholder'   => __('Ram Singh'),
           'required'      => false,
           ));
 
@@ -686,15 +688,16 @@ function some_custom_checkout_field( $checkout ) {
           'type'          => 'text',
           'class'         => array('my-field-class form-row-last'),
           'label'         => __('Email'),
-          'placeholder'   => __('Email address'),
+          'placeholder'   => __('ram@gmail.com'),
           'required'      => false,
           ));
+      echo '<div class="clear"></div>';
 
       woocommerce_form_field( 'sale_person_phone', array(
           'type'          => 'text',
           'class'         => array('my-field-class form-row-first'),
           'label'         => __('Phone'),
-          'placeholder'   => __('Phone Number'),
+          'placeholder'   => __('9023560202'),
           'required'      => false,
           ));
 
@@ -702,11 +705,11 @@ function some_custom_checkout_field( $checkout ) {
           'type'          => 'text',
           'class'         => array('my-field-class form-row-last'),
           'label'         => __('Company'),
-          'placeholder'   => __('Example Pvt. Ltd.'),
+          'placeholder'   => __('My Company Pvt. Ltd.'),
           'required'      => false,
           ));
 
-      echo '<div class="clearfix"></div></div>';
+      echo '<div class="clear"></div></div>';
 
 }
 add_action( 'woocommerce_checkout_update_order_meta', 'some_custom_checkout_field_update_order_meta' );
@@ -914,11 +917,15 @@ function add_prodcut_variation(){
 function get_product_variantion(){
 
       foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        // print_r($cart_item);
+        // echo WC()->cart->get_cart_total();
         $unit_type = strtoupper($cart_item['variation']['unit_type']);
-          $price = get_post_meta($cart_item['product_id'] , '_price', true);
+          $price = floatval( preg_replace( '#[^\d.]#', '', WC()->cart->get_cart_total() ) );;
     }
 
     $term = array('unit_type' =>  $unit_type,'price'=>$price );
+    // print_r($term);
+    // die();
     wp_send_json($term);
 }
 add_action('wp_ajax_add_prodcut_variation','add_prodcut_variation');
@@ -980,7 +987,7 @@ add_action('admin_menu', 'register_menu');
 function set_coupons(){
 
 $_pf = new WC_Product_Factory();
-$new_product = $_pf->get_product(29);
+$new_product = $_pf->get_product(269);
 $variations = $new_product->get_available_variations();
 ?>
 
@@ -1062,7 +1069,8 @@ function generate($count,$pool){
     $args = array(
       'post_type' => 'shop_order',
       'post_status' => 'publish',
-      'posts_per_page' => $count
+      'posts_per_page' => $count,
+      'orderby'=>'rand'
     );
     $my_query = new WP_Query($args);
 
@@ -1113,6 +1121,17 @@ function generate_coupon(){
 }
 
 add_action('wp_ajax_generate_coupon','generate_coupon');
+
+add_action( 'template_redirect', 'wc_custom_redirect_after_purchase' ); 
+function wc_custom_redirect_after_purchase() {
+    global $wp;
+    
+    if ( is_checkout() && ! empty( $wp->query_vars['order-received'] ) ) {
+        wp_redirect( site_url().'/thank-you/' );
+
+        exit;
+    }
+}
 
 //apartment selector/////////
 

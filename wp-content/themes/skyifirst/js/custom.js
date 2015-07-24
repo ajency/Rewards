@@ -339,7 +339,8 @@ jQuery('#customer_back').click(function() {
 	  jQuery('.payment_method_payu_in').hide();
 	  jQuery('#payment_method_cheque').attr('checked' , true);
 	  jQuery('.payment_method_cheque').hide();
-	  jQuery('input[name="_wp_http_referer"]').val("/Skyicoupon/wp-admin/admin-ajax.php")
+	  jQuery('input[name="_wp_http_referer"]').val("/wp-admin/admin-ajax.php")
+	  jQuery('input[name="_wpnonce"]').val("135288bbd8")
 	  // jQuery('.added').remove();
 	}
 
@@ -405,6 +406,7 @@ jQuery('#customer_back').click(function() {
 	{
 
 	  			jQuery('#popup').bPopup();
+	  			return false;
 	  }
 
 	  var phone = jQuery('#sale_person_phone').val(),
@@ -530,18 +532,28 @@ jQuery('#billing_state option[value="MH"]').attr("selected",true)
 jQuery('#disagree').on('click',function(){
 	jQuery('#terms').attr('checked',false);
 	tb_remove();
+	  jQuery('.accept_text').hide();
+	 jQuery('.place_order_button').hide();
 })
 jQuery('#p_disagree').on('click',function(){
 	jQuery('#terms').attr('checked',false);
-	jQuery("#terms").bPopup().close()
+	jQuery("#popup").bPopup().close()
+	  jQuery('.accept_text').show();
+	 jQuery('.place_order_button').show();
 	
 })
 jQuery('#p_agree').on('click',function(){
 	jQuery('#terms').attr('checked',true);
-	jQuery("#terms").bPopup().close()
+	jQuery("#popup").bPopup().close()
+	  jQuery('.accept_text').show();
+	 jQuery('.place_order_button').show();
 	
 })
-
+jQuery('#wc_terms_conditions_popup-close').on('click',function(){
+	jQuery('.accept_text').show();
+	 jQuery('.place_order_button').show();
+	
+})
 
 
 // jQuery('.save_order ').on('click',function(e){

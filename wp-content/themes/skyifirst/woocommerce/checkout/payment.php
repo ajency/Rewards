@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div id="payment" class="woocommerce-checkout-payment">
 	
-	<?php if ( WC()->cart->needs_payment() ) : ?>
+	
 	<ul class="payment_methods methods">
 		<?php
 			if ( ! empty( $available_gateways ) ) {
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			}
 		?>
 	</ul>
-	<?php endif; ?>
+	
 
 	<div class="form-row place-order">
 

@@ -105,7 +105,7 @@ $unit_type = strtoupper($cart_item['variation']['unit_type']);
 
                 };?>
                 <h4 class="paymnt-amnt">
-                  Amount to be paid : <span  class="amount"> <b><?php echo $price ; ?></b></span>
+                  Amount to be paid :Rs.  <span  class="amount"><b><?php echo $price ; ?></b></span>
                 </h4>
                 <?php
                 some_custom_checkout_field($checkout); ?>
@@ -115,9 +115,16 @@ $unit_type = strtoupper($cart_item['variation']['unit_type']);
                   </div>
                   
         				</div>
-<div class="formPopup" id="popup" style="display:none">Terms and conditions
-              <input type="button" name="p_agree" id="p_agree" value="Agree" />
-            <input type="button" name="p_disagree" id="p_disagree" value="Disagree" /></div>
+
+                <div id="popup" class="formPopup" style="display:none">
+                <?php  $post_12 = get_post(232);
+                  echo $post_12->post_content; ?>
+                  <div class="hb-aligncenter">
+                    <button type="button" name="p_agree" id="p_agree" value="Agree" class="hb-button hb-belize-hole hb-small-button no-three-d">Agree</button>
+                    <button type="button" name="p_disagree" id="p_disagree" value="Disagree" class="disagree-btn hb-button hb-wet-asphalt hb-small-button no-three-d" >Disagree</button>
+                  </div>
+                </div>
+
               </div>
             </div>
           </form>

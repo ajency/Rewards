@@ -105,7 +105,7 @@ $attribute_pa_unit_type = strtoupper($cart_item['variation']['attribute_pa_unit_
 
                 };?>
                 <h4 class="paymnt-amnt">
-                  Amount to be paid : <span  class="amount"> <b><?php echo $price ; ?></b></span>
+                  Amount to be paid :Rs. <span  class="amount"><b><?php echo $price ; ?></b></span>
                 </h4>
                
                   <div id="order_review" class="woocommerce-checkout-review-order" >
