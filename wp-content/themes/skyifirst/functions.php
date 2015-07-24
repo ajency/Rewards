@@ -592,6 +592,7 @@ function some_custom_checkout_field( $checkout ) {
         'placeholder'   => __('Cheque Number'),
         'required'      => false,
         ));
+    echo '<div class="clear"></div>';
 
     // woocommerce_form_field( 'booking_amount', array(
     //     'type'          => 'text',
@@ -609,7 +610,7 @@ function some_custom_checkout_field( $checkout ) {
         'required'      => false,
         ));
 
-    echo '<div class="clearfix"></div><div class="hb-separator" style="margin-top:0px;margin-top:40px;"></div></div>';
+    echo '<div class="clear"></div><div class="hb-separator" style="margin-top:0px;margin-top:40px;"></div></div>';
 
     echo '<div id="some_custom_checkout_field"><h4 class="step-intro">Partner/Sales person details</h4>';
 
@@ -628,6 +629,7 @@ function some_custom_checkout_field( $checkout ) {
           'placeholder'   => __('Email address'),
           'required'      => false,
           ));
+      echo '<div class="clear"></div>';
 
       woocommerce_form_field( 'sale_person_phone', array(
           'type'          => 'text',
@@ -645,7 +647,7 @@ function some_custom_checkout_field( $checkout ) {
           'required'      => false,
           ));
 
-      echo '<div class="clearfix"></div></div>';
+      echo '<div class="clear"></div></div>';
 
 }
 add_action( 'woocommerce_checkout_update_order_meta', 'some_custom_checkout_field_update_order_meta' );
