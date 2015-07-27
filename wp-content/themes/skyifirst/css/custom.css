@@ -69,6 +69,9 @@
   border: 6px solid #fff;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
   transition: all 0.5s;
 }
 .hb-woo-product-details .hb-woo-main-link .hb-woo-title {
@@ -104,7 +107,7 @@
   margin-left: 0;
 }
 #main-content .hb-woo-wrapper ul.sort-count .current-li {
-  text-indent: 0
+  text-indent: 0;
   /*padding: 0 60px 0 35px!important;*/
 }
 #main-content .hb-woo-wrapper ul.sort-count .current-li a {
@@ -126,8 +129,7 @@
   margin-top: -12px;
   right: -25px;
   opacity: 0;
-  -webkit-transition: all 0.5s;
-          transition: all 0.5s;
+  transition: all 0.5s;
 }
 .hb-separator-extra.shop-separator {
   margin-top: 15px;
@@ -209,9 +211,11 @@
 .ease {
   -webkit-transition: all 0.3s ease-out;
   /* Chrome 1-25, Safari 3.2+ */
+  -moz-transition: all 0.3s ease-out;
   /* Firefox 4-15 */
+  -o-transition: all 0.3s ease-out;
   /* Opera 10.50–12.00 */
-  transition: all 0.3s ease-out
+  transition: all 0.3s ease-out;
   /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
 }
 /* Booking Styles */
@@ -248,9 +252,11 @@
   z-index: 0;
   -webkit-transition: all 0.3s ease-out;
   /* Chrome 1-25, Safari 3.2+ */
+  -moz-transition: all 0.3s ease-out;
   /* Firefox 4-15 */
+  -o-transition: all 0.3s ease-out;
   /* Opera 10.50–12.00 */
-  transition: all 0.3s ease-out
+  transition: all 0.3s ease-out;
   /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
 }
 .accordion-group.open .acc-title {
@@ -425,8 +431,7 @@ form.woocommerce-checkout #payment .payment_method_cheque .payment_methods label
   background-color: #999999;
   border: 6px solid #ffffff;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-  -webkit-transition: all 0.3s;
-          transition: all 0.3s;
+  transition: all 0.3s;
 }
 form.woocommerce-checkout #payment .payment_method_payu_in .payu-options label:hover,
 form.woocommerce-checkout #payment .payment_method_cheque .payu-options label:hover,
@@ -507,16 +512,14 @@ form.woocommerce-checkout #payment .payment_methods > li label {
   width: 100%;
   height: 150px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  -webkit-transition: all 0.4s ease;
-          transition: all 0.4s ease;
+  transition: all 0.4s ease;
   z-index: 99;
   background-color: #ff751a;
 }
 .fixed-header h1 {
   height: 60px;
   font-size: 40px;
-  -webkit-transition: all 0.4s ease;
-          transition: all 0.4s ease;
+  transition: all 0.4s ease;
   color: #ffffff;
 }
 .fixed-header.smaller {
@@ -587,8 +590,7 @@ form.woocommerce-checkout #payment .payment_methods > li label {
   display: none;
 }
 .hb-skill-meter .progress-outer {
-  -webkit-transition: all 1s ease;
-          transition: all 1s ease;
+  transition: all 1s ease;
 }
 #page-256 {
   margin-bottom: 0;
@@ -674,4 +676,3 @@ form.woocommerce-checkout #payment .payment_methods > li label {
   background: #eeeeee;
   border: none;
 }
-/*# sourceMappingURL=custom.css.map */
