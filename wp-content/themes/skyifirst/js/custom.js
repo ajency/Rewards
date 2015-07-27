@@ -340,7 +340,7 @@ jQuery('#customer_back').click(function() {
 	  jQuery('#payment_method_cheque').attr('checked' , true);
 	  jQuery('.payment_method_cheque').hide();
 	  jQuery('input[name="_wp_http_referer"]').val("/wp-admin/admin-ajax.php")
-	  jQuery('input[name="_wpnonce"]').val("135288bbd8")
+	  jQuery('input[name="_wpnonce"]').val("a1f1ba4333")
 	  // jQuery('.added').remove();
 	}
 
