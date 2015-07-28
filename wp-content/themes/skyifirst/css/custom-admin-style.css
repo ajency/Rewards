@@ -49,8 +49,15 @@ td.ordertitle a {
   width: 413px;
   padding: 10px;
 }
-.coupon-table .table {
-  border: 1px solid #C5C1C1;
+.coupon-table table,
+.coupon-table th,
+.coupon-table td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.coupon-table th,
+.coupon-table td {
+  padding: 15px;
 }
 .show input {
   height: 37px;
