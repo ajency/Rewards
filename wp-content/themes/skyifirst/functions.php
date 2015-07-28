@@ -998,11 +998,16 @@ function show_list_coupons(){
     $_pf = new WC_Product_Factory();
     $new_product = $_pf->get_product(29);
     $variations = $new_product->get_available_variations();
+
+    ?>
+    <div class="winners">
+
+    <?php
     foreach ($variations as $key => $value) {
 
     ?>
 
-    <table>
+    <table >
         <tr>
             <td>Winners - <?php echo strtoupper(implode('/', $value['attributes']));?></td></tr>
             
