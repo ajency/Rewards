@@ -1061,6 +1061,14 @@ function show_list_coupons(){
 
     }
 
+     ?>
+    </div>
+
+
+    <div class="wishlist">
+
+    <?php
+
     foreach ($variations as $key => $value) {?>
 
     
@@ -1110,9 +1118,11 @@ function show_list_coupons(){
 
 
     }
-
     ?>
+   
 
+    
+    </div>
     <input type="button" name="send_winners" id="send_winners" value="Send emails to Winners" />
     <input type="button" name="send_non_winners" id="send_non_winners" value="Send emails to Non Winners" />
     <img id="loading" style="display:none" src="../wp-content/themes/skyifirst/images/loading.gif" />
@@ -1243,13 +1253,13 @@ jQuery('#generate').on('click',function(){
                   if(jqXHR.status ==200){
                     
                     if(response.response.length !=0){
-                    html = '<table ><tr><td>Order ID</td><td>Coupon</td></tr>';
+                    html = '<div class="generate_table"><table ><tr><td>Order ID</td><td>Coupon</td></tr>';
 
                     jQuery.each(response.response,function(index,value){
                         console.log(value)
                         html += '<tr><td>'+value.id+'</td><td>'+value.coupon+'</td></tr>';
                     })
-                    html += '</table>';
+                    html += '</table></div>';
                 }
                 else
                 {
