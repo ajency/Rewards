@@ -506,7 +506,10 @@ jQuery('.validation').remove();
      
      if(flag == 0 ||(flag ==1 && jQuery('#add_order_note').val()!=""))
      {
-         jQuery('#add_order_note').after("<div class='validation' style='color:red'>Enter reason for cancellation</div>");
+        jQuery('#add_order_note').after("<div class='validation' style='color:red'>Enter reason for cancellation</div>");
+        jQuery('html, body').animate({
+                            scrollTop: jQuery(document).height()
+                          }, 'slow')
          return false;
      }
      

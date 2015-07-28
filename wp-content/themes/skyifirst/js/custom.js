@@ -545,8 +545,8 @@ jQuery('#disagree').on('click',function(){
 jQuery('#p_disagree').on('click',function(){
 	jQuery('#terms').attr('checked',false);
 	jQuery("#popup").bPopup().close()
-	  jQuery('.accept_text').show();
-	 jQuery('.place_order_button').show();
+	  jQuery('.accept_text').hide();
+	 jQuery('.place_order_button').hide();
 	
 })
 jQuery('#p_agree').on('click',function(){
