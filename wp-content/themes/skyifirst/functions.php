@@ -283,12 +283,12 @@ $order = array(
 
     $fields["billing"] = $ordered_fields;
     $fields['billing']['billing_address_1']['placeholder'] = 'apartment,building ,floor etc';
-		$fields['billing']['billing_address_2']['placeholder'] = 'street address, pincode etc';
+		$fields['billing']['billing_address_2']['placeholder'] = 'street address etc';
 		$fields['billing']['billing_first_name']['placeholder'] = 'John';
 		$fields['billing']['billing_last_name']['placeholder'] = 'Doe';
 		$fields['billing']['billing_email']['placeholder'] = 'john@example.com';
 		$fields['billing']['billing_email-2']['placeholder'] = 'john@example.com';
-		$fields['billing']['billing_phone']['placeholder'] = '+91 9123456780';
+		$fields['billing']['billing_phone']['placeholder'] = '9123456780';
         $fields['billing']['billing_address_1']['label'] = 'Address';
 		$fields['billing']['billing_phone']['label'] = 'Mobile';
         $fields['billing']['billing_phone']['type'] = 'text';
@@ -335,7 +335,7 @@ function MY_COLUMNS_FUNCTION($columns){
     $new_columns['order_product'] = 'Product';
     $new_columns['order_date'] = 'Booking Date';
     $new_columns['order_total'] = 'Amount';
-    $new_columns['broker_name'] = 'Broker';
+    $new_columns['broker_name'] = 'Partner';
     $new_columns['cheque_no'] = 'Cheque No';
 
     $new_columns['status'] = 'Status';
@@ -379,7 +379,8 @@ function MY_COLUMNS_VALUES_FUNCTION($column){
 
         case 'broker_name' :
             $customer_name = get_post_meta( $the_order->id, 'sale_person_name', true ) != "" ? get_post_meta( $the_order->id, 'sale_person_name', true ) : '--';
-            echo  $customer_name;
+            $customer_last_name = get_post_meta( $the_order->id, 'sale_person_last_name', true ) != "" ? get_post_meta( $the_order->id, 'sale_person_last_name', true ) : '--';
+            echo  $customer_name.' '.$customer_last_name;
 
             break;
 
@@ -427,13 +428,14 @@ function woo_display_order_username( $order ){
 		$customer_cheque_bank = get_post_meta( $post->ID, 'cheque_bank', true ) != "" ? get_post_meta( $post->ID, 'cheque_bank', true ) : 'Not present';
     echo '<p><strong style="display: block;">'.__('Bank').':</strong>'.$customer_cheque_bank.'</p>';
     $customer_name = get_post_meta( $post->ID, 'sale_person_name', true ) != "" ? get_post_meta( $post->ID, 'sale_person_name', true ) : 'Not present';
-    echo '<p><strong style="display: block;">'.__('Broker Name').':</strong>'.$customer_name.'</p>';
+    $customer_last_name = get_post_meta( $post->ID, 'sale_person_last_name', true ) != "" ? get_post_meta( $post->ID, 'sale_person_last_name', true ) : 'Not present';
+    echo '<p><strong style="display: block;">'.__('Partner Name').':</strong>'.$customer_name.' '.$customer_last_name.'</p>';
     $customer_email = get_post_meta( $post->ID, 'sale_person_email', true ) != "" ? get_post_meta( $post->ID, 'sale_person_email', true ) : 'Not present';
-    echo '<p><strong style="display: block;">'.__('Broker Phone').':</strong>'.$customer_email.'</p>';
+    echo '<p><strong style="display: block;">'.__('Partner Phone').':</strong>'.$customer_email.'</p>';
     $customer_phone = get_post_meta( $post->ID, 'sale_person_phone', true ) != "" ? get_post_meta( $post->ID, 'sale_person_phone', true ) : 'Not present';
-    echo '<p><strong style="display: block;">'.__('Broker Email').':</strong>'.$customer_phone.'</p>';
+    echo '<p><strong style="display: block;">'.__('Partner Email').':</strong>'.$customer_phone.'</p>';
     $customer_company = get_post_meta( $post->ID, 'sale_person_company', true ) != "" ? get_post_meta( $post->ID, 'sale_person_company', true ) : 'Not present';
-    echo '<p><strong style="display: block;">'.__('Broker Company').':</strong>'.$customer_company.'</p>';
+    echo '<p><strong style="display: block;">'.__('Partner Company').':</strong>'.$customer_company.'</p>';
 
 
 
@@ -686,8 +688,16 @@ function some_custom_checkout_field( $checkout ) {
       woocommerce_form_field( 'sale_person_name', array(
           'type'          => 'text',
           'class'         => array('my-field-class form-row-first'),
-          'label'         => __('Name'),
-          'placeholder'   => __('Ram Singh'),
+          'label'         => __('First Name'),
+          'placeholder'   => __('Ram'),
+          'required'      => false,
+          ));
+
+      woocommerce_form_field( 'sale_person_last_name', array(
+          'type'          => 'text',
+          'class'         => array('my-field-class form-row-first'),
+          'label'         => __('Last Name'),
+          'placeholder'   => __('Singh'),
           'required'      => false,
           ));
 
@@ -736,6 +746,9 @@ function some_custom_checkout_field_update_order_meta( $order_id ) {
     }
     if ( ! empty( $_POST['sale_person_name'] ) ) {
         update_post_meta( $order_id, 'sale_person_name', sanitize_text_field( $_POST['sale_person_name'] ) );
+    }
+    if ( ! empty( $_POST['sale_person_last_name'] ) ) {
+        update_post_meta( $order_id, 'sale_person_last_name', sanitize_text_field( $_POST['sale_person_last_name'] ) );
     }
     if ( ! empty( $_POST['sale_person_email'] ) ) {
         update_post_meta( $order_id, 'sale_person_email', sanitize_text_field( $_POST['sale_person_email'] ) );

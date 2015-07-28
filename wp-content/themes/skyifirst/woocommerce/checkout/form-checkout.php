@@ -45,7 +45,7 @@ $unit_type = strtoupper($cart_item['variation']['attribute_pa_unit_type']);
 
 			</table>
 			<div class="hb-aligncenter">
-				<button type="button" name="customer_next" id="customer_next" class="hb-button hb-belize-hole hb-medium-button no-three-d" >Next <span class="icon-chevron-right"></span></button>
+				<button type="button" name="customer_next" id="customer_next" class="hb-button hb-belize-hole hb-medium-button no-three-d" >Confirm<span class="icon-chevron-right"></span></button>
 			</div>
 		</div>
 	</div>
