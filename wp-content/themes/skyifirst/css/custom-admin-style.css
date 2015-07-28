@@ -60,23 +60,31 @@ td.ordertitle a {
   padding: 15px;
 }
 .toplevel_page_coupons_settings .update-nag,
-.toplevel_page_coupons_settings .updated {
+.coupons_page_List-settings .update-nag,
+.toplevel_page_coupons_settings .updated,
+.coupons_page_List-settings .updated {
   display: none;
 }
-.toplevel_page_coupons_settings .generate .coupon {
+.toplevel_page_coupons_settings .generate .coupon,
+.coupons_page_List-settings .generate .coupon {
   display: inline;
 }
 .toplevel_page_coupons_settings .generate .coupon input,
-.toplevel_page_coupons_settings .generate .coupon select {
+.coupons_page_List-settings .generate .coupon input,
+.toplevel_page_coupons_settings .generate .coupon select,
+.coupons_page_List-settings .generate .coupon select {
   height: 37px;
   width: 190px;
   margin-top: 10px;
   border-radius: 5px;
 }
 .toplevel_page_coupons_settings .generate .coupon input#pool,
-.toplevel_page_coupons_settings .generate .coupon select#pool {
+.coupons_page_List-settings .generate .coupon input#pool,
+.toplevel_page_coupons_settings .generate .coupon select#pool,
+.coupons_page_List-settings .generate .coupon select#pool {
   vertical-align: top;
 }
-.toplevel_page_coupons_settings .generate #show {
-  margin-top: 35px;
+.toplevel_page_coupons_settings .generate #show,
+.coupons_page_List-settings .generate #show {
+  margin-top: 30px;
 }
