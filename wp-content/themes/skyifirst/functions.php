@@ -1006,8 +1006,8 @@ function show_list_coupons(){
     foreach ($variations as $key => $value) {
 
     ?>
-
-    <table >
+    <div class="coupon-table">
+    <table cellspacing="6" cellpadding="4" style="width:100%">
         <tr>
             <td>Winners - <?php echo strtoupper(implode('/', $value['attributes']));?></td></tr>
             
@@ -1053,7 +1053,8 @@ function show_list_coupons(){
         
             ?>
 
-    </table></br>
+    </table>
+</div>
 
     <?php
 
@@ -1077,7 +1078,8 @@ function show_list_coupons(){
     $pool = strtoupper(implode('/', $value['attributes']));
     for ($i=2; $i <= $pool_val; $i++) { 
         $pool_list = maybe_unserialize(get_option('coupons_'.$pool.'_'.$i));?>
-        <table class="">
+        <div class="coupon-table">
+        <table class="" cellspacing="6" cellpadding="4" style="width:100%">
             <tr><td>Waiting List - <?php echo (intval($i) - 1).'-'.$pool;?></td></tr>
        
            
@@ -1109,6 +1111,7 @@ function show_list_coupons(){
              ?>
 
          </table>
+     </div>
              <?php
     }
     ?>
