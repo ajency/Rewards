@@ -996,7 +996,7 @@ add_action('admin_menu', 'register_menu');
 function show_list_coupons(){
 
     $_pf = new WC_Product_Factory();
-    $new_product = $_pf->get_product(29);
+    $new_product = $_pf->get_product(269);
     $variations = $new_product->get_available_variations();
 
     ?>
@@ -1196,7 +1196,7 @@ function show_list_coupons(){
 function set_coupons(){
 
 $_pf = new WC_Product_Factory();
-$new_product = $_pf->get_product(29);
+$new_product = $_pf->get_product(269);
 $variations = $new_product->get_available_variations();
 
 ?>
@@ -1263,7 +1263,7 @@ jQuery('#generate').on('click',function(){
                 }
                 else
                 {
-                      html = 'No data found';
+                      html = '<div class="generate_table">No data found</div>';
                 }
                     jQuery('#show').html(html);
 
@@ -1413,7 +1413,7 @@ function send_emails_to_winners(){
    
 
     $_pf = new WC_Product_Factory();
-    $new_product = $_pf->get_product(29);
+    $new_product = $_pf->get_product(269);
     $variations = $new_product->get_available_variations();
     foreach ($variations as $key => $value) {
 
@@ -1508,7 +1508,7 @@ function send_emails_to_non_winners(){
         );
 
     $_pf = new WC_Product_Factory();
-    $new_product = $_pf->get_product(29);
+    $new_product = $_pf->get_product(269);
     $variations = $new_product->get_available_variations();
 
     foreach ($variations as $key => $value) {?>
@@ -2009,7 +2009,7 @@ $bust = '?'.BUST;
 //         $html = "";
 //         $image = '<div><img src="'.$attachment.'" /></div>';
 //     // $pdf->writeHTML($image, true, 0, true, 0);
-//     // $pdf->Image($zoomed_in_imag , 0, 0, 210, 297, '', '', '', true, 150);
+//     // $pdf->Image($zoomed_in_imag , 0, 0, 210, 2697, '', '', '', true, 150);
 
 //     // $html .= "<span>Flat No. </span><span>".$units_data->post_name."</span><br/><span>".$buildingmodel['name']."
 //     //         </span><br/><span>Floor Range: </span>".$result."<span>".$unitytpes->name;
