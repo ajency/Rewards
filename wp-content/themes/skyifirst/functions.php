@@ -91,8 +91,8 @@ add_action('init','remove_loop_button');
 add_filter('add_to_cart_redirect', 'themeprefix_add_to_cart_redirect');
 function themeprefix_add_to_cart_redirect() {
  global $woocommerce;
- // $checkout_url = $woocommerce->cart->get_checkout_url();
- $checkout_url = site_url().'/application';
+ $checkout_url = $woocommerce->cart->get_checkout_url();
+ // $checkout_url = site_url().'/application';
  return $checkout_url;
 }
 //Add New Pay Button Text
@@ -336,6 +336,7 @@ function MY_COLUMNS_FUNCTION($columns){
     $new_columns['order_date'] = 'Booking Date';
     $new_columns['order_total'] = 'Amount';
     $new_columns['broker_name'] = 'Broker';
+    $new_columns['cheque_no'] = 'Cheque No';
 
     $new_columns['status'] = 'Status';
 
@@ -376,7 +377,7 @@ function MY_COLUMNS_VALUES_FUNCTION($column){
 
             break;
 
-         case 'broker_name' :
+        case 'broker_name' :
             $customer_name = get_post_meta( $the_order->id, 'sale_person_name', true ) != "" ? get_post_meta( $the_order->id, 'sale_person_name', true ) : '--';
             echo  $customer_name;
 
@@ -392,6 +393,12 @@ function MY_COLUMNS_VALUES_FUNCTION($column){
             by '.$billing_first_name.' '.$billing_last_name.'<br/>'.$billing_email.'';
 
 
+
+            break;
+
+        case 'cheque_no' :
+            $cheque_no = get_post_meta( $the_order->id, 'cheque_no', true ) != "" ? get_post_meta( $the_order->id, 'cheque_no', true ) : '--';
+            echo  $cheque_no;
 
             break;
 
@@ -979,16 +986,219 @@ function getRandomCode($len){
 function register_menu() {
   add_menu_page( __( 'Coupons' ), __( 'Coupons' ),
     'manage_options', 'coupons_settings', 'set_coupons');
+ add_submenu_page( 'coupons_settings', 'List', 'List',
+    'manage_options', 'List-settings', 'show_list_coupons');
   
 
 }
 add_action('admin_menu', 'register_menu');
 
+function show_list_coupons(){
+
+    $_pf = new WC_Product_Factory();
+    $new_product = $_pf->get_product(29);
+    $variations = $new_product->get_available_variations();
+
+    ?>
+    <div class="winners">
+
+    <?php
+    foreach ($variations as $key => $value) {
+
+    ?>
+
+    <table >
+        <tr>
+            <td>Winners - <?php echo strtoupper(implode('/', $value['attributes']));?></td></tr>
+            
+            <?php  
+            $pool_val = get_option('pool_'.strtoupper(implode('/', $value['attributes'])));
+            $pool = strtoupper(implode('/', $value['attributes']));
+            if($pool_val)
+            {
+                
+                 $pool_list = maybe_unserialize(get_option('coupons_'.$pool.'_1'));
+                 if(count($pool_list)>0){
+                    ?>
+                <tr><td>Coupon</td><td>Name</td></tr>
+                <?php
+                 foreach ($pool_list as $key => $value) {
+                    $order = new WC_Order($value['id']);
+                    $billing_first_name = $order->billing_first_name;
+                    $billing_last_name = $order->billing_last_name;
+                    $billing_email = $order->billing_email;
+                    $url = get_edit_post_link($value['id']);
+                   
+                    ?>
+                        <tr><td><?php echo $value['coupon'];?></td><td><a href="<?php echo $url;?>"><?php echo $billing_first_name.$billing_last_name;?></a></td></tr>
+
+                    <?php
+                     # code...
+                 }
+             }
+             else
+             {
+                ?>
+                 <tr><td>No data found</td></tr>
+                 <?php
+             }
+            }
+           else
+             {
+                ?>
+                 <tr><td>No data found</td></tr>
+                 <?php
+             }
+
+        
+            ?>
+
+    </table></br>
+
+    <?php
+
+
+
+    }
+
+     ?>
+    </div>
+
+
+    <div class="wishlist">
+
+    <?php
+
+    foreach ($variations as $key => $value) {?>
+
+    
+    <?php
+    $pool_val = get_option('pool_'.strtoupper(implode('/', $value['attributes'])));
+    $pool = strtoupper(implode('/', $value['attributes']));
+    for ($i=2; $i <= $pool_val; $i++) { 
+        $pool_list = maybe_unserialize(get_option('coupons_'.$pool.'_'.$i));?>
+        <table class="">
+            <tr><td>Waiting List - <?php echo (intval($i) - 1).'-'.$pool;?></td></tr>
+       
+           
+            <?php  
+        if(count($pool_list)>0){?>
+
+         <tr><td>Coupon</td><td>Name</td></tr>
+        <?php
+                 foreach ($pool_list as $key => $value) {
+                    $order = new WC_Order($value['id']);
+                    $billing_first_name = $order->billing_first_name;
+                    $billing_last_name = $order->billing_last_name;
+                    $billing_email = $order->billing_email;
+                    $url = get_edit_post_link($value['id']);
+                   
+                    ?>
+                        <tr><td><?php echo $value['coupon'];?></td><td><a href="<?php echo $url;?>"><?php echo $billing_first_name.$billing_last_name;?></a></td></tr>
+
+                    <?php
+                     # code...
+                 }
+             }
+             else
+             {
+                ?>
+                 <tr><td>No data found</td></tr>
+                 <?php
+             }
+             ?>
+
+         </table>
+             <?php
+    }
+    ?>
+
+    <?php
+
+
+
+    }
+    ?>
+   
+
+    
+    </div>
+    <input type="button" name="send_winners" id="send_winners" value="Send emails to Winners" />
+    <input type="button" name="send_non_winners" id="send_non_winners" value="Send emails to Non Winners" />
+    <img id="loading" style="display:none" src="../wp-content/themes/skyifirst/images/loading.gif" />
+    <br/><div id="show"></div>
+    <script type="text/javascript">
+        jQuery('#send_winners').on('click',function(){
+            jQuery('#loading').show();
+              jQuery('#show').empty()
+            jQuery.ajax({
+                type: 'POST',
+                url: AJAXURL+'?action=send_emails_to_winners',
+                success: function(response, textStatus, jqXHR){
+                      // log a message to the console
+
+
+
+                    if(jqXHR.status ==200){
+                       
+                        jQuery('#loading').hide();
+                        jQuery('#show').text('Emails sent')
+
+                    }
+                    else
+                    {
+                        jQuery('#loading').hide();
+                        jQuery('#show').text('some problem occurred')
+                    }
+
+                  }/*,
+                dataType: 'JSON'*/
+              });
+
+
+        })
+
+        jQuery('#send_non_winners').on('click',function(){
+             jQuery('#loading').show();
+            jQuery('#show').empty()
+            jQuery.ajax({
+                type: 'POST',
+                url: AJAXURL+'?action=send_emails_to_non_winners',
+                success: function(response, textStatus, jqXHR){
+                      // log a message to the console
+                       
+                        if(jqXHR.status ==200){
+                       
+                        jQuery('#loading').hide();
+                        jQuery('#show').text('Emails sent')
+
+                    }
+                    else
+                    {
+                        jQuery('#loading').hide();
+                        jQuery('#show').text('some problem occurred')
+                    }
+
+                  }/*,
+                dataType: 'JSON'*/
+              });
+
+
+        })
+
+
+    </script>
+
+    <?php
+
+
+}
 function set_coupons(){
 
 $_pf = new WC_Product_Factory();
-$new_product = $_pf->get_product(269);
+$new_product = $_pf->get_product(29);
 $variations = $new_product->get_available_variations();
+
 ?>
 
 <html>
@@ -1016,13 +1226,23 @@ foreach ($variations as $key => $value) {
 </select>
 <input type="button" name="generate" id="generate" value="Generate" />
 <br/>
-<div id="show"></div>
+<div id="show" class="show"></div>
 </body>
 
 </html>
 <script type="text/javascript">
 jQuery('#generate').on('click',function(){
-        console.log('aaaaaaaaaa')
+        jQuery('.validation').remove();
+        if(jQuery('#count').val()== "")
+        {
+            jQuery('#count').after("<div class='validation' style='color:red'>Enter the count</div>");
+            return false;
+        }
+        if(jQuery('#pool').val()== "")
+        {
+            jQuery('#count').after("<div class='validation' style='color:red'>Select unit type</div>");
+            return false;
+        }
     jQuery.ajax({
             type: 'POST',
             url: AJAXURL+'?action=generate_coupon',
@@ -1033,13 +1253,13 @@ jQuery('#generate').on('click',function(){
                   if(jqXHR.status ==200){
                     
                     if(response.response.length !=0){
-                    html = '<table><tr><td>Order ID</td><td>Coupon</td></tr>';
+                    html = '<div class="generate_table"><table ><tr><td>Order ID</td><td>Coupon</td></tr>';
 
                     jQuery.each(response.response,function(index,value){
                         console.log(value)
                         html += '<tr><td>'+value.id+'</td><td>'+value.coupon+'</td></tr>';
                     })
-                    html += '</table>';
+                    html += '</table></div>';
                 }
                 else
                 {
@@ -1066,10 +1286,27 @@ jQuery('#generate').on('click',function(){
 
 function generate($count,$pool){
 
+    //exclude////
+         $pool_val = get_option('pool_'.$pool);
+         $coupon_ids = array();
+         for ($i=1; $i <= $pool_val; $i++) { 
+            
+             $pool_list = maybe_unserialize(get_option('coupons_'.$pool.'_'.$i));
+             foreach ($pool_list as $key => $value) {
+                array_push($coupon_ids, intval($value['id']));
+               
+               
+             }
+         }
+       $unique = array_unique($coupon_ids, SORT_NUMERIC);
+       
+    //exclude///
+
     $args = array(
       'post_type' => 'shop_order',
       'post_status' => 'publish',
       'posts_per_page' => $count,
+      'post__not_in' =>  $unique,
       'orderby'=>'rand'
     );
     $my_query = new WP_Query($args);
@@ -1080,6 +1317,7 @@ function generate($count,$pool){
         $order = new WC_Order();
         $order->populate($customer_order);
         $orderdata = (array) $order;
+        // print_r($orderdata);
         $terms = $order->get_items();
        if ( is_array( $terms ) ) {
             foreach($terms as $term)
@@ -1101,11 +1339,20 @@ function generate($count,$pool){
 
                 );
         }
-        // print_r($posts);
-
-     // $orderdata Array will have Information. for e.g Shippin firstname, Lastname, Address ... and MUCH more.... Just enjoy!
     }
 
+    //save it in the database
+   
+    if($pool_val)
+        $curr_count  = intval(get_option('pool_'.$pool)) + 1 ; 
+    else
+        $curr_count = 1;
+    $pool_key = 'pool_'.$pool;
+    update_option($pool_key,$curr_count);
+    $serialized_posts  = maybe_serialize($posts);
+  
+    $pool_list_key = 'coupons_'.$pool.'_'.$curr_count;
+    add_option($pool_list_key,$serialized_posts);
     return $posts;
 
 }
@@ -1133,6 +1380,193 @@ function wc_custom_redirect_after_purchase() {
     }
 }
 
+function dba_add_communication_components($defined_comm_components){
+
+    $defined_comm_components['draw_emails'] = array(
+                'winner_email' => array('preference'=>1),
+                'non-winner-email'  => array('preference'=>1)
+
+        );
+
+   
+
+    return $defined_comm_components;
+}
+add_filter('add_commponents_filter','dba_add_communication_components',10,1);
+
+
+
+
+function send_emails_to_winners(){
+
+    global $aj_comm;
+
+    $user_id = get_current_user_id();
+
+
+    $args = array(
+        'component'             => 'draw_emails',
+        'communication_type'    => 'winner_email',
+        'user_id'               => $user_id
+
+        );
+   
+
+    $_pf = new WC_Product_Factory();
+    $new_product = $_pf->get_product(29);
+    $variations = $new_product->get_available_variations();
+    foreach ($variations as $key => $value) {
+
+   
+
+    
+            $pool_val = get_option('pool_'.strtoupper(implode('/', $value['attributes'])));
+            $pool = strtoupper(implode('/', $value['attributes']));
+            
+            if($pool_val)
+            {
+                
+                 $pool_list = maybe_unserialize(get_option('coupons_'.$pool.'_1'));
+                 if(count($pool_list)>0){
+                
+                 foreach ($pool_list as $key => $value) {
+                    $order = new WC_Order($value['id']);
+                    $billing_first_name = $order->billing_first_name;
+                    $billing_last_name = $order->billing_last_name;
+                    $billing_email = $order->billing_email;
+                    $url = get_edit_post_link($value['id']);
+
+                    $meta = array(
+                        'username'        => $billing_first_name.' '.$billing_last_name,
+                        'product_name'    => $pool
+                        
+
+
+                    );
+
+                     $recipients_args = array(
+                            array(
+                                'type'        => 'email',
+                                'value'       =>  $billing_email
+
+                            )
+
+                    );
+
+                    $aj_comm->create_communication($args,$meta,$recipients_args);
+
+                    $aj_comm->cron_process_communication_queue("draw_emails",'winner_email');
+
+                   
+                   
+                 }
+             }
+            
+             
+            }
+           
+
+        
+
+
+    }
+
+   
+
+    
+
+   
+
+    
+
+   
+
+    return true;
+}
+
+// function send_emails(){
+
+//     global $aj_comm;
+
+//      $aj_comm->cron_process_communication_queue("draw_emails",'winner_email');
+//      wp_die();
+// }
+// add_action('admin_init','send_emails');
+
+function send_emails_to_non_winners(){
+
+    global $aj_comm;
+
+    $user_id = get_current_user_id();
+
+
+    $args = array(
+        'component'             => 'draw_emails',
+        'communication_type'    => 'winner_non_email',
+        'user_id'               => $user_id
+
+        );
+
+    $_pf = new WC_Product_Factory();
+    $new_product = $_pf->get_product(29);
+    $variations = $new_product->get_available_variations();
+
+    foreach ($variations as $key => $value) {?>
+
+    
+    <?php
+    $pool_val = get_option('pool_'.strtoupper(implode('/', $value['attributes'])));
+    $pool = strtoupper(implode('/', $value['attributes']));
+    for ($i=2; $i <= $pool_val; $i++) { 
+        $pool_list = maybe_unserialize(get_option('coupons_'.$pool.'_'.$i));
+        
+        if(count($pool_list)>0){
+
+        
+                 foreach ($pool_list as $key => $value) {
+                    $order = new WC_Order($value['id']);
+                    $billing_first_name = $order->billing_first_name;
+                    $billing_last_name = $order->billing_last_name;
+                    $billing_email = $order->billing_email;
+                    $url = get_edit_post_link($value['id']);
+
+                     $meta = array(
+                        'username'        => $billing_first_name.' '.$billing_last_name,
+                        'product_name'    => $pool
+                        
+
+
+                    );
+
+                     $recipients_args = array(
+                            array(
+                                'type'        => 'email',
+                                'value'       =>  $billing_email
+
+                            )
+
+                    );
+
+                    $aj_comm->create_communication($args,$meta,$recipients_args);
+
+                    $aj_comm->cron_process_communication_queue("draw_emails",'winner_non_email');
+
+                   
+                   
+                 }
+             }
+             
+             
+    }
+    
+
+
+    }
+}
+
+add_action('wp_ajax_send_emails_to_winners','send_emails_to_winners');
+
+add_action('wp_ajax_send_emails_to_non_winners','send_emails_to_non_winners');
 //apartment selector/////////
 
 
