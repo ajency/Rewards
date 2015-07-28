@@ -63,11 +63,20 @@ td.ordertitle a {
 .toplevel_page_coupons_settings .updated {
   display: none;
 }
-.toplevel_page_coupons_settings input,
-.toplevel_page_coupons_settings select {
+.toplevel_page_coupons_settings .generate .coupon {
+  display: inline;
+}
+.toplevel_page_coupons_settings .generate .coupon input,
+.toplevel_page_coupons_settings .generate .coupon select {
   height: 37px;
   width: 190px;
   margin-top: 10px;
   border-radius: 5px;
+}
+.toplevel_page_coupons_settings .generate .coupon input#pool,
+.toplevel_page_coupons_settings .generate .coupon select#pool {
   vertical-align: top;
+}
+.toplevel_page_coupons_settings .generate #show {
+  margin-top: 35px;
 }
