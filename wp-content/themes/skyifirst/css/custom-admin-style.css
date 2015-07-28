@@ -59,9 +59,15 @@ td.ordertitle a {
 .coupon-table td {
   padding: 15px;
 }
-.show input {
+.toplevel_page_coupons_settings .update-nag,
+.toplevel_page_coupons_settings .updated {
+  display: none;
+}
+.toplevel_page_coupons_settings input,
+.toplevel_page_coupons_settings select {
   height: 37px;
   width: 190px;
   margin-top: 10px;
   border-radius: 5px;
+  vertical-align: top;
 }
