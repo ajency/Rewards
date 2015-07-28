@@ -3,8 +3,8 @@
 function skyi_scripts() {
     wp_enqueue_script( 'customjs', site_template_directory_uri() . '/js/custom.js', array(), '', true );
     wp_enqueue_script( 'bpopupjs', site_template_directory_uri() . '/js/jquery.bpopup.min.js', array(), '', true );
-	wp_enqueue_script( 'classie', site_template_directory_uri() . '/js/classie.js', array(), '', true );
-	wp_enqueue_style( 'customcss', site_template_directory_uri() . '/css/custom.css');
+    wp_enqueue_script( 'classie', site_template_directory_uri() . '/js/classie.js', array(), '', true );
+    wp_enqueue_style( 'customcss', site_template_directory_uri() . '/css/custom.css');
    wp_localize_script(  "customjs", "SITEURL", site_url() );
    wp_localize_script(  "customjs", "AJAXURL", admin_url( "admin-ajax.php" ) );
 }
@@ -71,19 +71,19 @@ add_action('wp_ajax_previewemail', 'previewEmail');
 
 add_filter( 'woocommerce_product_tabs', 'wcs_woo_remove_reviews_tab', 98 );
 function wcs_woo_remove_reviews_tab($tabs) {
-	unset( $tabs['description'] ); // Remove the description tab
+    unset( $tabs['description'] ); // Remove the description tab
 unset( $tabs['reviews'] ); // Remove the reviews tab
 unset( $tabs['additional_information'] ); // Remove the additional information tab
  return $tabs;
 }
 
 function remove_loop_button(){
-	// remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title',5);
-	// remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price',10);
-	// remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt',20);
-	// remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart',30);
-	// remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta',40);
-	// remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing',50);
+    // remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title',5);
+    // remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price',10);
+    // remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt',20);
+    // remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart',30);
+    // remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta',40);
+    // remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing',50);
 
 
 }
@@ -115,28 +115,28 @@ add_action( 'woocommerce_thankyou', 'my_function' );
  */
 function my_function($order_id) {
 
-	// order object (optional but handy)
-	global $woocommerce;
-	$order = new WC_Order();
+    // order object (optional but handy)
+    global $woocommerce;
+    $order = new WC_Order();
    
   if ( $order->status != 'failed' ) {
-			// $rand = 'FREEDOM'.$order_id;
+            // $rand = 'FREEDOM'.$order_id;
       $original_string = 'kjlmnopqrst';
       $random_string = get_random_string($original_string, 6);
       $rand = getRandomCode(10);
       // $rand = $random_string;
-			$payment = get_post_meta($order_id, '_payment_method' ,true);
-			if( $payment != 'cheque' ){
-			update_post_meta($order_id,'coupon' ,$rand );
-			}
+            $payment = get_post_meta($order_id, '_payment_method' ,true);
+            if( $payment != 'cheque' ){
+            update_post_meta($order_id,'coupon' ,$rand );
+            }
 
-			?>
-			<script type="text/javascript">
-			jQuery('form').clearForm()
+            ?>
+            <script type="text/javascript">
+            jQuery('form').clearForm()
 
-			</script>
+            </script>
 
-			<?php
+            <?php
       $sales_person_email = get_post_meta($order_id, 'sales_person_email' ,true);
       // if($sales_person_email!="")
       // {
@@ -145,8 +145,8 @@ function my_function($order_id) {
       // else {
       //     wp_redirect( site_url().'customer_thankyou' );
       // }
-	    wp_redirect( site_url().'/thank-you/' ); exit; // or whatever url you want
-	   }
+        wp_redirect( site_url().'/thank-you/' ); exit; // or whatever url you want
+       }
 
 
 
@@ -208,7 +208,7 @@ function wc_custom_addresses_labels( $translated_text, $text, $domain )
     switch ( $translated_text )
 
     {
-      	case 'Billing Details' : // Back-end
+        case 'Billing Details' : // Back-end
             $translated_text = __( 'Customer Details', 'woocommerce' );
             break;
 
@@ -221,10 +221,10 @@ add_filter( 'gettext', 'wc_custom_addresses_labels', 20, 3 );
 
 $wdm_address_fields = array('address2','city','first_name','last_name','state','country' ,'address_1'
 
-				);
+                );
 
 //global array only for extra fields
-	$wdm_ext_fields = array('address2');
+    $wdm_ext_fields = array('address2');
 
 add_filter( 'woocommerce_default_address_fields' , 'wdm_override_default_address_fields' );
 
@@ -239,9 +239,9 @@ add_filter( 'woocommerce_default_address_fields' , 'wdm_override_default_address
     'type'  => 'text',
      );
 
-		// $address_fields['refund'] = array(
+        // $address_fields['refund'] = array(
     // 'label'     => __('Refund', 'woocommerce'),
-  	// 'class'     => array('form-row-wide'),
+    // 'class'     => array('form-row-wide'),
     // 'type'  => 'label',
     //  );
 
@@ -266,14 +266,14 @@ function order_fields($fields) {
 
 $order = array(
     "billing_first_name",
-	"billing_last_name",
+    "billing_last_name",
     "billing_email",
-	"billing_email-2",
+    "billing_email-2",
     "billing_address_1",
     "billing_address_2",
     "billing_city",
     "billing_state",
-	"billing_phone"
+    "billing_phone"
 
     );
     foreach($order as $field)
@@ -283,6 +283,7 @@ $order = array(
 
     $fields["billing"] = $ordered_fields;
     $fields['billing']['billing_address_1']['placeholder'] = 'apartment,building ,floor etc';
+
 		$fields['billing']['billing_address_2']['placeholder'] = 'street address etc';
 		$fields['billing']['billing_first_name']['placeholder'] = 'John';
 		$fields['billing']['billing_last_name']['placeholder'] = 'Doe';
@@ -290,7 +291,7 @@ $order = array(
 		$fields['billing']['billing_email-2']['placeholder'] = 'john@example.com';
 		$fields['billing']['billing_phone']['placeholder'] = '9123456780';
         $fields['billing']['billing_address_1']['label'] = 'Address';
-		$fields['billing']['billing_phone']['label'] = 'Mobile';
+        $fields['billing']['billing_phone']['label'] = 'Mobile';
         $fields['billing']['billing_phone']['type'] = 'text';
         $fields['billing']['billing_state']['label'] = 'State';
 
@@ -358,18 +359,18 @@ function MY_COLUMNS_VALUES_FUNCTION($column){
         case 'order_product' :
             $terms = $the_order->get_items();
            if ( is_array( $terms ) ) {
-                 	foreach($terms as $term)
-    		             {
+                    foreach($terms as $term)
+                         {
                      
                       $unit_type = strtoupper($term['item_meta']['pa_unit_type'][0]);
                      $unit_type = strtoupper($term['item_meta']['unit_type'][0]);
                      echo $unit_type;
                     
 
-                  		}
+                        }
                   } else {
-                  	_e( 'Unable get the producten', 'woocommerce' );
-    		              }
+                    _e( 'Unable get the producten', 'woocommerce' );
+                          }
                 break;
 
         case 'status' :
@@ -385,8 +386,8 @@ function MY_COLUMNS_VALUES_FUNCTION($column){
             break;
 
         case 'ordertitle' :
-						$order = new WC_Order($the_order->id);
-						$billing_first_name = $order->billing_first_name;
+                        $order = new WC_Order($the_order->id);
+                        $billing_first_name = $order->billing_first_name;
             $billing_last_name = $order->billing_last_name;
             $billing_email = $order->billing_email;
             echo '<a href="'.esc_url( $the_order->get_view_order_url() ).'">#'.$the_order->get_order_number().'</a>
@@ -413,19 +414,19 @@ function woo_display_order_username( $order ){
 
     global $post;
 
-		$order = new WC_Order($order->id);
-		$billing_first_name = $order->billing_first_name;
-		$billing_last_name = $order->billing_last_name;
-		$billing_email = $order->billing_email;
+        $order = new WC_Order($order->id);
+        $billing_first_name = $order->billing_first_name;
+        $billing_last_name = $order->billing_last_name;
+        $billing_email = $order->billing_email;
     echo '<p><strong style="display: block;">'.__('Customer Username').':</strong> <a href="user-edit.php?user_id=' . $customer_user . '">' .$billing_first_name .' '.$billing_last_name. '</a></p>';
-		echo '<p><strong style="display: block;">'.__('Customer Email Address').':</strong> <a href="user-edit.php?user_id=' . $customer_user . '">' .$billing_email. '</a></p>';
+        echo '<p><strong style="display: block;">'.__('Customer Email Address').':</strong> <a href="user-edit.php?user_id=' . $customer_user . '">' .$billing_email. '</a></p>';
 
 
-		$customer_coupon = get_post_meta( $post->ID, 'coupon', true ) != "" ? get_post_meta( $post->ID, 'coupon', true ) : 'Not generated';
+        $customer_coupon = get_post_meta( $post->ID, 'coupon', true ) != "" ? get_post_meta( $post->ID, 'coupon', true ) : 'Not generated';
     echo '<p><strong style="display: block;">'.__('Customer Coupon').':</strong>'.$customer_coupon.'</p>';
-		$customer_chequeno = get_post_meta( $post->ID, 'cheque_no', true ) != "" ? get_post_meta( $post->ID, 'cheque_no', true ) : 'Not present';
+        $customer_chequeno = get_post_meta( $post->ID, 'cheque_no', true ) != "" ? get_post_meta( $post->ID, 'cheque_no', true ) : 'Not present';
     echo '<p><strong style="display: block;">'.__('Cheque No').':</strong>'.$customer_chequeno.'</p>';
-		$customer_cheque_bank = get_post_meta( $post->ID, 'cheque_bank', true ) != "" ? get_post_meta( $post->ID, 'cheque_bank', true ) : 'Not present';
+        $customer_cheque_bank = get_post_meta( $post->ID, 'cheque_bank', true ) != "" ? get_post_meta( $post->ID, 'cheque_bank', true ) : 'Not present';
     echo '<p><strong style="display: block;">'.__('Bank').':</strong>'.$customer_cheque_bank.'</p>';
     $customer_name = get_post_meta( $post->ID, 'sale_person_name', true ) != "" ? get_post_meta( $post->ID, 'sale_person_name', true ) : 'Not present';
     $customer_last_name = get_post_meta( $post->ID, 'sale_person_last_name', true ) != "" ? get_post_meta( $post->ID, 'sale_person_last_name', true ) : 'Not present';
@@ -460,23 +461,23 @@ function add_meta_boxes()
 function order_my_custom($post)
 {
 
-	wp_nonce_field( 'myplugin_save_meta_box_data', 'myplugin_meta_box_nonce' );
+    wp_nonce_field( 'myplugin_save_meta_box_data', 'myplugin_meta_box_nonce' );
 
 
-	$value = get_post_meta( $post->ID, 'cheque_no', true );
+    $value = get_post_meta( $post->ID, 'cheque_no', true );
 
-	echo '<label for="myplugin_cheque_no">';
-	_e( 'Cheque No', 'myplugin_textdomain' );
-	echo '</label> ';
-	echo '<input type="text" id="myplugin_cheque_no" name="myplugin_cheque_no" value="' . esc_attr( $value ) . '" size="25" />';
+    echo '<label for="myplugin_cheque_no">';
+    _e( 'Cheque No', 'myplugin_textdomain' );
+    echo '</label> ';
+    echo '<input type="text" id="myplugin_cheque_no" name="myplugin_cheque_no" value="' . esc_attr( $value ) . '" size="25" />';
 
-	$value = get_post_meta( $post->ID, 'cheque_bank', true );
+    $value = get_post_meta( $post->ID, 'cheque_bank', true );
     $payment = get_post_meta( $post->ID, '_payment_method', true );
 
-	echo '<br/><label for="myplugin_cheque_bank">';
-	_e( 'Bank', 'myplugin_textdomain' );
-	echo '</label> ';
-	echo '<br/><input type="text" id="myplugin_cheque_bank" name="myplugin_cheque_bank" value="' . esc_attr( $value ) . '" size="25" />';
+    echo '<br/><label for="myplugin_cheque_bank">';
+    _e( 'Bank', 'myplugin_textdomain' );
+    echo '</label> ';
+    echo '<br/><input type="text" id="myplugin_cheque_bank" name="myplugin_cheque_bank" value="' . esc_attr( $value ) . '" size="25" />';
     echo '<br/><input type="hidden" name="payment_mode" id="payment_mode" value="'.$payment.'" / >';
 
 ?>
@@ -537,64 +538,64 @@ jQuery('#myplugin_cheque_no').on('keyup' , function(e){
 
 function myplugin_save_meta_box_data( $post_id ) {
 
-	/*
-	 * We need to verify this came from our screen and with proper authorization,
-	 * because the save_post action can be triggered at other times.
-	 */
+    /*
+     * We need to verify this came from our screen and with proper authorization,
+     * because the save_post action can be triggered at other times.
+     */
 
-	// Check if our nonce is set.
-	if ( ! isset( $_POST['myplugin_meta_box_nonce'] ) ) {
-		return;
-	}
+    // Check if our nonce is set.
+    if ( ! isset( $_POST['myplugin_meta_box_nonce'] ) ) {
+        return;
+    }
 
-	// Verify that the nonce is valid.
-	if ( ! wp_verify_nonce( $_POST['myplugin_meta_box_nonce'], 'myplugin_save_meta_box_data' ) ) {
-		return;
-	}
+    // Verify that the nonce is valid.
+    if ( ! wp_verify_nonce( $_POST['myplugin_meta_box_nonce'], 'myplugin_save_meta_box_data' ) ) {
+        return;
+    }
 
-	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
-	}
+    // If this is an autosave, our form has not been submitted, so we don't want to do anything.
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
 
-	// Check the user's permissions.
-	if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
+    // Check the user's permissions.
+    if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
 
-		if ( ! current_user_can( 'edit_page', $post_id ) ) {
-			return;
-		}
+        if ( ! current_user_can( 'edit_page', $post_id ) ) {
+            return;
+        }
 
-	} else {
+    } else {
 
-		if ( ! current_user_can( 'edit_post', $post_id ) ) {
-			return;
-		}
-	}
+        if ( ! current_user_can( 'edit_post', $post_id ) ) {
+            return;
+        }
+    }
 
-	/* OK, it's safe for us to save the data now. */
+    /* OK, it's safe for us to save the data now. */
 
-	// Make sure that it is set.
-	if ( ! isset( $_POST['myplugin_cheque_no'] ) ) {
-		return;
-	}
+    // Make sure that it is set.
+    if ( ! isset( $_POST['myplugin_cheque_no'] ) ) {
+        return;
+    }
 
-	// Sanitize user input.
-	$my_data = sanitize_text_field( $_POST['myplugin_cheque_no'] );
+    // Sanitize user input.
+    $my_data = sanitize_text_field( $_POST['myplugin_cheque_no'] );
 
-	// Update the meta field in the database.
-	update_post_meta( $post_id, 'cheque_no', $my_data );
+    // Update the meta field in the database.
+    update_post_meta( $post_id, 'cheque_no', $my_data );
 
 
-	// Make sure that it is set.
-	if ( ! isset( $_POST['myplugin_cheque_bank'] ) ) {
-		return;
-	}
+    // Make sure that it is set.
+    if ( ! isset( $_POST['myplugin_cheque_bank'] ) ) {
+        return;
+    }
 
-	// Sanitize user input.
-	$my_data = sanitize_text_field( $_POST['myplugin_cheque_bank'] );
+    // Sanitize user input.
+    $my_data = sanitize_text_field( $_POST['myplugin_cheque_bank'] );
 
-	// Update the meta field in the database.
-	update_post_meta( $post_id, 'cheque_bank', $my_data );
+    // Update the meta field in the database.
+    update_post_meta( $post_id, 'cheque_bank', $my_data );
 
   order_complete_function($post_id);
 }
@@ -608,45 +609,45 @@ add_action( 'woocommerce_order_status_completed ', 'order_complete_function' );
 function order_complete_function($order_id) {
 
 
-	// order object (optional but handy)
-	$order = new WC_Order( $order_id );
+    // order object (optional but handy)
+    $order = new WC_Order( $order_id );
 
-	$cheque_no = get_post_meta( $order_id, 'cheque_no', true );
+    $cheque_no = get_post_meta( $order_id, 'cheque_no', true );
 
-	$cheque_bank = get_post_meta( $order_id, 'cheque_bank', true );
-
-
-	$_payment_method = get_post_meta( $order_id, '_payment_method', true );
-
-	$coupon = get_post_meta( $order_id, 'coupon', true );
+    $cheque_bank = get_post_meta( $order_id, 'cheque_bank', true );
 
 
+    $_payment_method = get_post_meta( $order_id, '_payment_method', true );
+
+    $coupon = get_post_meta( $order_id, 'coupon', true );
 
 
-	if($order->status == 'completed' && $cheque_no != "" && $cheque_bank != "" && $_payment_method == 'cheque' && $coupon =="")
-	{
-			// $random = 'FREEDOM'.$order_id;
+
+
+    if($order->status == 'completed' && $cheque_no != "" && $cheque_bank != "" && $_payment_method == 'cheque' && $coupon =="")
+    {
+            // $random = 'FREEDOM'.$order_id;
       $original_string = 'abcdefghi';
       $random_string = get_random_string($original_string, 6);
       // $random = $random_string;
       $random = getRandomCode(10);
 
-		 update_post_meta( $order_id, 'coupon', $random );
-		 add_filter( 'woocommerce_email_actions', 'so_27112461_woocommerce_email_actions' );
+         update_post_meta( $order_id, 'coupon', $random );
+         add_filter( 'woocommerce_email_actions', 'so_27112461_woocommerce_email_actions' );
 
-	}
+    }
 
 }
 
 function so_27112461_woocommerce_email_actions( $actions){
 
-	$actions[] = 'woocommerce_order_status_completed';
+    $actions[] = 'woocommerce_order_status_completed';
     return $actions;
 }
 // add_action( 'woocommerce_checkout_after_customer_details', 'some_custom_checkout_field' );
 
 function some_custom_checkout_field( $checkout ) {
-	echo '<div id="some_custom_checkout_field">';
+    echo '<div id="some_custom_checkout_field">';
 
     woocommerce_form_field( 'cheque_no', array(
         'type'          => 'text',
@@ -863,7 +864,7 @@ foreach ($customer_orders as $customer_order) {
     $output = 0;
   }
   echo $output;
-	die();
+    die();
 
 }
 
@@ -1013,16 +1014,17 @@ function show_list_coupons(){
     $variations = $new_product->get_available_variations();
 
     ?>
-    <div class="winners">
-
+    <div class="winners row">
+        <h3>Winners List</h3>
     <?php
     foreach ($variations as $key => $value) {
 
     ?>
     <div class="coupon-table">
+        <h4>Winners - <span style="color: #4269B7;"><?php echo strtoupper(implode('/', $value['attributes']));?></span></h4>
     <table cellspacing="6" cellpadding="4" style="width:100%">
-        <tr>
-            <td>Winners - <?php echo strtoupper(implode('/', $value['attributes']));?></td></tr>
+        
+           
             
             <?php  
             $pool_val = get_option('pool_'.strtoupper(implode('/', $value['attributes'])));
@@ -1033,7 +1035,7 @@ function show_list_coupons(){
                  $pool_list = maybe_unserialize(get_option('coupons_'.$pool.'_1'));
                  if(count($pool_list)>0){
                     ?>
-                <tr><td>Coupon</td><td>Name</td></tr>
+                <tr><th>Coupon</th><th>Name</th></tr>
                 <?php
                  foreach ($pool_list as $key => $value) {
                     $order = new WC_Order($value['id']);
@@ -1052,14 +1054,14 @@ function show_list_coupons(){
              else
              {
                 ?>
-                 <tr><td>No data found</td></tr>
+                 <tr><td><b>No data found</b></td></tr>
                  <?php
              }
             }
            else
              {
                 ?>
-                 <tr><td>No data found</td></tr>
+                 <tr><td><b>No data found</b></td></tr>
                  <?php
              }
 
@@ -1067,8 +1069,7 @@ function show_list_coupons(){
             ?>
 
     </table>
-</div>
-
+    </div>
     <?php
 
 
@@ -1079,8 +1080,8 @@ function show_list_coupons(){
     </div>
 
 
-    <div class="wishlist">
-
+    <div class="wishlist row">
+        <h3>Wishlist</h3>
     <?php
 
     foreach ($variations as $key => $value) {?>
@@ -1091,15 +1092,18 @@ function show_list_coupons(){
     $pool = strtoupper(implode('/', $value['attributes']));
     for ($i=2; $i <= $pool_val; $i++) { 
         $pool_list = maybe_unserialize(get_option('coupons_'.$pool.'_'.$i));?>
+
+        
         <div class="coupon-table">
+            <h4>Waiting List - <span style="color: #4269B7;"><?php echo (intval($i) - 1).'-'.$pool;?></span></h4>
         <table class="" cellspacing="6" cellpadding="4" style="width:100%">
-            <tr><td>Waiting List - <?php echo (intval($i) - 1).'-'.$pool;?></td></tr>
+           
        
            
             <?php  
         if(count($pool_list)>0){?>
 
-         <tr><td>Coupon</td><td>Name</td></tr>
+         <tr><th>Coupon</th><th>Name</th></tr>
         <?php
                  foreach ($pool_list as $key => $value) {
                     $order = new WC_Order($value['id']);
@@ -1118,7 +1122,7 @@ function show_list_coupons(){
              else
              {
                 ?>
-                 <tr><td>No data found</td></tr>
+                 <tr><td><b>No data found</b></td></tr>
                  <?php
              }
              ?>
@@ -1218,8 +1222,16 @@ $variations = $new_product->get_available_variations();
 ?>
 
 <html>
-<body>
+<body class="show">
+     <h3>Declare Winners</h3>
+      <div class="generate">
+     <div class="coupon">
+        <label>No of Winners</label><span class="text-danger" style="color: red;">*</span>
+        
 <input type="text" name="count" id="count" value="" />
+</div>
+ <div class="coupon">
+     <label>Select Pool</label><span class="text-danger" style="color: red;">*</span>
 <select name="pool" id="pool">
     <option value=""></option>
     <?php
@@ -1240,9 +1252,14 @@ foreach ($variations as $key => $value) {
             }
 ?>
 </select>
+</div>
+ <div class="coupon">
 <input type="button" name="generate" id="generate" value="Generate" />
+</div>
+</div>
 <br/>
-<div id="show" class="show"></div>
+<h3>The winners in the Pool are as follows : </h3>
+<h4 id="show" class="show"></h4>
 </body>
 
 </html>

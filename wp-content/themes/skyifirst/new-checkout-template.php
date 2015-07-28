@@ -53,8 +53,9 @@ $attribute_pa_unit_type = strtoupper($cart_item['variation']['attribute_pa_unit_
             <div class="accordion-group one open viewed">
           		<!-- <h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3> -->
           		<div class="acc-title">
+                <h4 class="unit_type pull-right"><?php echo $unit_type;echo $attribute_pa_unit_type;?></h4>
           		    <h3>Step 1</h3>
-                   <h4 class="unit_type"><?php echo $unit_type;echo $attribute_pa_unit_type;?></h4>
+                   
                     <div class="clearfix"></div>
           		</div>
           		<div class="acc-body">
