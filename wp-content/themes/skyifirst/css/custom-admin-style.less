@@ -64,24 +64,31 @@ td.ordertitle a {
 }
 .coupon-table {
 	table, th, td {
-    border: 1px solid black;
+    border: 1px solid #BDBDBD;
     border-collapse: collapse;
 }
 th, td {
-    padding: 15px;
+    padding: 8px;
+    text-align: left;
 }
 }
 .toplevel_page_coupons_settings,.coupons_page_List-settings{
 .update-nag,.updated{
 	display:none;
 }
+input{
+	height: 37px;
+    width: 200px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
 .generate{
 	
 .coupon{
 	display: inline;
-input,select{
+select{
     height: 37px;
-    width: 190px;
+    width: 200px;
     margin-top: 10px;
     border-radius: 5px;
    &#pool{
@@ -94,4 +101,9 @@ input,select{
 		margin-top: 30px;
 	}
 	}
+	.row::after {
+    content: '';
+    clear: both;
+    display: block;
+}
 }
