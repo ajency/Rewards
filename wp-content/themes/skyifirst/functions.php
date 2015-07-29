@@ -1277,7 +1277,7 @@ jQuery('#generate').on('click',function(){
         }
         if(jQuery('#pool').val()== "")
         {
-            jQuery('#count').after("<div class='validation' style='color:red'>Select unit type</div>");
+            jQuery('#count').after("<div class='validation' style='color:red'>Select pool</div>");
             return false;
         }
     jQuery.ajax({
