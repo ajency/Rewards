@@ -807,6 +807,7 @@ class payment extends WC_Gateway_Payu_In
                 <?php if($this->nb_method == 'yes') { ?><li><input type="radio" name="pg" value="NB" id="NB"><label for="NB">Net Banking</label></li><?php } ?>
                 <?php if($this->emi_method == 'yes') { ?><li><input type="radio" name="pg" value="EMI" id="EMI"><label for="EMI">EMI</label></li><?php } ?>
                 <?php if($this->cod_method == 'yes') { ?><li><input type="radio" name="pg" value="COD" id="COD"><label for="COD">COD</label></li><?php } ?>
+                <li><img src="../wp-content/themes/skyifirst/images/payu-logo.png" alt="payu"/></li>
             </ul>
             <div class="clear"></div>
         </fieldset>
