@@ -699,7 +699,7 @@ function some_custom_checkout_field( $checkout ) {
 
       woocommerce_form_field( 'sale_person_last_name', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-first'),
+          'class'         => array('my-field-class form-row-last'),
           'label'         => __('Last Name'),
           'placeholder'   => __('Singh'),
           'required'      => false,
@@ -707,16 +707,16 @@ function some_custom_checkout_field( $checkout ) {
 
       woocommerce_form_field( 'sale_person_email', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-last'),
+          'class'         => array('my-field-class form-row-first'),
           'label'         => __('Email'),
           'placeholder'   => __('ram@gmail.com'),
           'required'      => false,
           ));
-      echo '<div class="clear"></div>';
+      echo '<div class=" "></div>';
 
       woocommerce_form_field( 'sale_person_phone', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-first'),
+          'class'         => array('my-field-class form-row-last'),
           'label'         => __('Phone'),
           'placeholder'   => __('9023560202'),
           'required'      => false,
@@ -724,7 +724,7 @@ function some_custom_checkout_field( $checkout ) {
 
       woocommerce_form_field( 'sale_person_company', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-last'),
+          'class'         => array('my-field-class form-row-first'),
           'label'         => __('Company'),
           'placeholder'   => __('My Company Pvt. Ltd.'),
           'required'      => false,
@@ -1261,7 +1261,7 @@ foreach ($variations as $key => $value) {
 <input type="button" name="generate" id="generate" value="Generate" />
 </div>
 </div>
-<br/>
+<div class="clearfix"></div>
 <h3>The winners in the Pool are as follows : </h3>
 <h4 id="show" class="show"></h4>
 </body>
