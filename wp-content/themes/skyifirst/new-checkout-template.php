@@ -65,7 +65,7 @@ $attribute_pa_unit_type = strtoupper($cart_item['variation']['attribute_pa_unit_
           			<table class="shop_table woocommerce-checkout-review-order-table">
                            			</table>
           			<div class="hb-aligncenter">
-          				<button type="button" name="customer_next" id="customer_next" class="hb-button hb-belize-hole hb-medium-button no-three-d" >Next <span class="icon-chevron-right"></span></button>
+          				<button type="button" name="customer_next" id="customer_next" class="hb-button hb-belize-hole hb-medium-button no-three-d" >Confirm<span class="icon-chevron-right"></span></button>
           			</div>
           		</div>
           	</div>
@@ -110,7 +110,11 @@ $attribute_pa_unit_type = strtoupper($cart_item['variation']['attribute_pa_unit_
                 </h4>
                
                   <div id="order_review" class="woocommerce-checkout-review-order" >
-                    <?php woocommerce_checkout_payment(); ?>
+                    <?php echo wc_get_template( 'checkout/payment.php', array(
+                    'checkout'         => WC()->checkout(), 
+                    'available_gateways' => WC()->payment_gateways()->get_available_payment_gateways(), 
+                    'order_button_text' => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) )
+                ) ); ?>
                     
                   </div>
                   

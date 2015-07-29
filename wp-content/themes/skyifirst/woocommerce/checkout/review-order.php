@@ -37,10 +37,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 		// 	</div>-->
 			<?php
 		// }
-	}  if ( WC()->cart->get_cart_contents_count() == 0 ){
+	} 
+
+	 if ( WC()->cart->get_cart_contents_count() == 0 ){
 
 		$_pf = new WC_Product_Factory();
-		$new_product = $_pf->get_product(269);
+		$new_product = $_pf->get_product(29);
 
 
 	}?>

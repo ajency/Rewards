@@ -21,7 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	
 	
 	<ul class="payment_methods methods">
+
 		<?php
+		
 			if ( ! empty( $available_gateways ) ) {
 				foreach ( $available_gateways as $gateway ) {
 					wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );

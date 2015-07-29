@@ -48,6 +48,7 @@ $unit_type = strtoupper($cart_item['variation']['attribute_pa_unit_type']);
 				<button type="button" name="customer_next" id="customer_next" class="hb-button hb-belize-hole hb-medium-button no-three-d" >Confirm<span class="icon-chevron-right"></span></button>
 			</div>
 		</div>
+
 	</div>
 	<?php if ( sizeof( $checkout->checkout_fields ) > 0 ) : ?>
 
