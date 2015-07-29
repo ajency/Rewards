@@ -5,6 +5,7 @@ jQuery(document).ready(function(){
 })
 window.onload = function(){
 	jQuery('.woocommerce-message').hide()
+	
 
 	// jQuery('#`customer_next`').on('click',function(e){
 
@@ -538,12 +539,15 @@ jQuery('#billing_state option[value="MH"]').attr("selected",true)
 
 jQuery('#disagree').on('click',function(){
 	jQuery('#terms').attr('checked',false);
+	jQuery('.place_order_button').before('Your application is not submitted and will not be considered for freedeom first draw. Please accept the terms and conditins to submit your application');
 	tb_remove();
 	  jQuery('.accept_text').hide();
 	 jQuery('.place_order_button').hide();
 })
 jQuery('#p_disagree').on('click',function(){
 	jQuery('#terms').attr('checked',false);
+	jQuery('.place_order_button').before('Your application is not submitted and will not be considered for freedeom first draw. Please accept the terms and conditins to submit your application');
+	
 	jQuery("#popup").bPopup().close()
 	  jQuery('.accept_text').hide();
 	 jQuery('.place_order_button').hide();

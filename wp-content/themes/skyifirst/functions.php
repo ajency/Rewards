@@ -16,9 +16,11 @@ function site_template_directory_uri() {
 
 add_action( 'admin_enqueue_scripts', 'load_admin_style' );
     function load_admin_style() {
+         wp_enqueue_script( 'jqueryjs', site_template_directory_uri() . '/js/jquery.js', array(), '', true );
+    
         wp_enqueue_style( 'admin_css', site_template_directory_uri() . '/css/custom-admin-style.css', false, '1.0.0' );
         wp_enqueue_script( 'bpopupjs', site_template_directory_uri() . '/js/jquery.bpopup.min.js', array(), '', true );
-    
+        
     wp_localize_script(  "bpopupjs", "SITEURL", site_url() );
    wp_localize_script(  "bpopupjs", "AJAXURL", admin_url( "admin-ajax.php" ) );
 }
@@ -876,6 +878,7 @@ add_action('wp_ajax_check_cheque_no','check_cheque_no');
 
 add_action( 'wp_enqueue_scripts', 'mgt_dequeue_stylesandscripts', 100 );
 
+add_action( 'admin_enqueue_scripts', 'mgt_dequeue_stylesandscripts', 100 );
 function mgt_dequeue_stylesandscripts() {
     if ( class_exists( 'woocommerce' ) ) {
         wp_dequeue_style( 'select2' );
@@ -1342,7 +1345,7 @@ function generate($count,$pool){
     $args = array(
       'post_type' => 'shop_order',
       'post_status' => 'publish',
-      'posts_per_page' => $count,
+      'showposts' => $count,
       'post__not_in' =>  $unique,
       'orderby'=>'rand'
     );
@@ -1410,9 +1413,9 @@ add_action( 'template_redirect', 'wc_custom_redirect_after_purchase' );
 function wc_custom_redirect_after_purchase() {
     global $wp;
     
-    if ( is_checkout() && ! empty( $wp->query_vars['order-received'] ) ) {
+    if ( is_checkout() && ! empty( $wp->query_vars['order-received'] )  ) {
         wp_redirect( site_url().'/thank-you/' );
-
+        wp_cache_flush();
         exit;
     }
 }
@@ -1512,7 +1515,6 @@ function send_emails_to_winners(){
 
     
 
-   
 
     
 
@@ -1521,14 +1523,23 @@ function send_emails_to_winners(){
     return true;
 }
 
-// function send_emails(){
+function send_emails(){
 
-//     global $aj_comm;
-
-//      $aj_comm->cron_process_communication_queue("draw_emails",'winner_email');
-//      wp_die();
-// }
-// add_action('admin_init','send_emails');
+    ?>
+    <script type="text/javascript">
+    window.onload = function(){
+   
+    jQuery('option[value="wc-refunded"]').hide();
+    jQuery('option[value="wc-pending"]').hide();
+    jQuery('option[value="wc-processing"]').hide();
+    jQuery('option[value="wc-failed"]').hide();
+    jQuery('.processing').hide();
+    jQuery('.complete').hide();
+}
+    </script>
+    <?php
+}
+add_action('admin_init','send_emails');
 
 function send_emails_to_non_winners(){
 
@@ -1604,6 +1615,21 @@ function send_emails_to_non_winners(){
 add_action('wp_ajax_send_emails_to_winners','send_emails_to_winners');
 
 add_action('wp_ajax_send_emails_to_non_winners','send_emails_to_non_winners');
+
+add_filter( 'woocommerce_shop_order_search_fields', 'woocommerce_shop_order_search_order_total' );
+ 
+ 
+ 
+function woocommerce_shop_order_search_order_total( $search_fields ) {
+ 
+  $search_fields[] = 'billing_first_name';
+  $search_fields[] = 'billing_last_name';
+  $search_fields[] = 'cheque_no';
+  $search_fields[] = 'attribute_unit-type';
+ 
+  return $search_fields;
+ 
+}
 //apartment selector/////////
 
 
