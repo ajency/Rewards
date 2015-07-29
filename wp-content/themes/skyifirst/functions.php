@@ -699,7 +699,7 @@ function some_custom_checkout_field( $checkout ) {
 
       woocommerce_form_field( 'sale_person_last_name', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-first'),
+          'class'         => array('my-field-class form-row-last'),
           'label'         => __('Last Name'),
           'placeholder'   => __('Singh'),
           'required'      => false,
@@ -707,16 +707,16 @@ function some_custom_checkout_field( $checkout ) {
 
       woocommerce_form_field( 'sale_person_email', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-last'),
+          'class'         => array('my-field-class form-row-first'),
           'label'         => __('Email'),
           'placeholder'   => __('ram@gmail.com'),
           'required'      => false,
           ));
-      echo '<div class="clear"></div>';
+      echo '<div class=" "></div>';
 
       woocommerce_form_field( 'sale_person_phone', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-first'),
+          'class'         => array('my-field-class form-row-last'),
           'label'         => __('Phone'),
           'placeholder'   => __('9023560202'),
           'required'      => false,
@@ -724,7 +724,7 @@ function some_custom_checkout_field( $checkout ) {
 
       woocommerce_form_field( 'sale_person_company', array(
           'type'          => 'text',
-          'class'         => array('my-field-class form-row-last'),
+          'class'         => array('my-field-class form-row-first'),
           'label'         => __('Company'),
           'placeholder'   => __('My Company Pvt. Ltd.'),
           'required'      => false,
@@ -824,6 +824,7 @@ class payment extends WC_Gateway_Payu_In
                 <?php if($this->nb_method == 'yes') { ?><li><input type="radio" name="pg" value="NB" id="NB"><label for="NB">Net Banking</label></li><?php } ?>
                 <?php if($this->emi_method == 'yes') { ?><li><input type="radio" name="pg" value="EMI" id="EMI"><label for="EMI">EMI</label></li><?php } ?>
                 <?php if($this->cod_method == 'yes') { ?><li><input type="radio" name="pg" value="COD" id="COD"><label for="COD">COD</label></li><?php } ?>
+                <li><img src="../wp-content/themes/skyifirst/images/payu-logo.png" alt="payu"/></li>
             </ul>
             <div class="clear"></div>
         </fieldset>
@@ -1260,7 +1261,7 @@ foreach ($variations as $key => $value) {
 <input type="button" name="generate" id="generate" value="Generate" />
 </div>
 </div>
-<br/>
+<div class="clearfix"></div>
 <h3>The winners in the Pool are as follows : </h3>
 <h4 id="show" class="show"></h4>
 </body>
@@ -1276,7 +1277,7 @@ jQuery('#generate').on('click',function(){
         }
         if(jQuery('#pool').val()== "")
         {
-            jQuery('#count').after("<div class='validation' style='color:red'>Select unit type</div>");
+            jQuery('#count').after("<div class='validation' style='color:red'>Select pool</div>");
             return false;
         }
     jQuery.ajax({

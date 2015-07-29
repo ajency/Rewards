@@ -70,18 +70,24 @@ td.ordertitle a {
 .coupons_page_List-settings input {
   height: 37px;
   width: 200px;
-  margin-top: 10px;
   border-radius: 5px;
 }
 .toplevel_page_coupons_settings .generate .coupon,
 .coupons_page_List-settings .generate .coupon {
-  display: inline;
+  float: left;
+}
+.toplevel_page_coupons_settings .generate .coupon label,
+.coupons_page_List-settings .generate .coupon label {
+  line-height: 42px;
+}
+.toplevel_page_coupons_settings .generate .coupon .validation,
+.coupons_page_List-settings .generate .coupon .validation {
+  padding-left: 100px;
 }
 .toplevel_page_coupons_settings .generate .coupon select,
 .coupons_page_List-settings .generate .coupon select {
   height: 37px;
   width: 200px;
-  margin-top: 10px;
   border-radius: 5px;
 }
 .toplevel_page_coupons_settings .generate .coupon select#pool,
