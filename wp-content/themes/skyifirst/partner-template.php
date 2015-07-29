@@ -64,7 +64,7 @@ $unit_type = strtoupper($cart_item['variation']['unit_type']);
                   <?php echo wc_get_template( "checkout/review-order.php", array( "checkout" => WC()->checkout() ) ) ?>
           			</table>
           			<div class="hb-aligncenter">
-          				<button type="button" name="customer_next" id="customer_next" class="hb-button hb-belize-hole hb-medium-button no-three-d" >Next <span class="icon-chevron-right"></span></button>
+          				<button type="button" name="customer_next" id="customer_next" class="hb-button hb-belize-hole hb-medium-button no-three-d" >Confirm<span class="icon-chevron-right"></span></button>
           			</div>
           		</div>
           	</div>

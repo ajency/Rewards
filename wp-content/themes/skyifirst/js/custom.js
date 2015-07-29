@@ -78,18 +78,6 @@ window.onload = function(){
 		jQuery("#billing_email-2").after("<div class='validation' style='color:red'>Email addresses you entered do not match</div>");
 		   return false;
 	  }
-	  if(jQuery('#billing_phone').val() == "")
-	  {
-		jQuery("#billing_phone").after("<div class='validation' style='color:red'>Please enter Phone No</div>");
-		return false;
-	  }
-	  var phone = jQuery('#billing_phone').val(),
-		intRegex = /^[0-9]*(?:\.\d{1,2})?$/;
-	  if((phone.length < 6) || (!intRegex.test(phone)))
-	  {
-		  jQuery("#billing_phone").after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
-		   return false;
-	  }
 	  if(jQuery('#billing_address_1').val() == "")
 	  {
 		jQuery("#billing_address_1").after("<div class='validation' style='color:red'>Please enter Address</div>");
@@ -110,6 +98,20 @@ window.onload = function(){
 		jQuery("#billing_state").after("<div class='validation' style='color:red'>Please enter State</div>");
 		return false;
 	  }
+	  if(jQuery('#billing_phone').val() == "")
+	  {
+		jQuery("#billing_phone").after("<div class='validation' style='color:red'>Please enter Phone No</div>");
+		return false;
+	  }
+	  var phone = jQuery('#billing_phone').val(),
+		intRegex = /^[0-9]*(?:\.\d{1,2})?$/;
+	  if((phone.length < 6) || (!intRegex.test(phone)))
+	  {
+		  jQuery("#billing_phone").after("<div class='validation' style='color:red'>Please enter a valid phone number</div>");
+		   return false;
+	  }
+	  
+	 
 
 	   jQuery.ajax({
 		  type: 'POST',
@@ -379,7 +381,12 @@ jQuery('#customer_back').click(function() {
 	  }
 	  if(jQuery('#sale_person_name').val() == "")
 	  {
-		jQuery("#sale_person_name").after("<div class='validation' style='color:red'>Please enter name</div>");
+		jQuery("#sale_person_name").after("<div class='validation' style='color:red'>Please enter first name</div>");
+		return false;
+	  }
+	  if(jQuery('#sale_person_last_name').val() == "")
+	  {
+		jQuery("#sale_person_last_name").after("<div class='validation' style='color:red'>Please enter last name</div>");
 		return false;
 	  }
 	  if(jQuery('#sale_person_email').val() == "")
@@ -538,8 +545,8 @@ jQuery('#disagree').on('click',function(){
 jQuery('#p_disagree').on('click',function(){
 	jQuery('#terms').attr('checked',false);
 	jQuery("#popup").bPopup().close()
-	  jQuery('.accept_text').show();
-	 jQuery('.place_order_button').show();
+	  jQuery('.accept_text').hide();
+	 jQuery('.place_order_button').hide();
 	
 })
 jQuery('#p_agree').on('click',function(){
