@@ -17,6 +17,7 @@ function site_template_directory_uri() {
 add_action( 'admin_enqueue_scripts', 'load_admin_style' );
     function load_admin_style() {
          wp_enqueue_script( 'jqueryjs', site_template_directory_uri() . '/js/jquery.js', array(), '', true );
+    wp_enqueue_script( 'custom-adminjs', site_template_directory_uri() . '/js/custom-admin.js', array(), '', true );
     
         wp_enqueue_style( 'admin_css', site_template_directory_uri() . '/css/custom-admin-style.css', false, '1.0.0' );
         wp_enqueue_script( 'bpopupjs', site_template_directory_uri() . '/js/jquery.bpopup.min.js', array(), '', true );
@@ -1087,7 +1088,7 @@ function show_list_coupons(){
     </div>
 
 
-    <div class="wishlist row">
+    <div class="row">
         <h3>Wishlist</h3>
     <?php
 
@@ -1098,7 +1099,9 @@ function show_list_coupons(){
     $pool_val = get_option('pool_'.strtoupper(implode('/', $value['attributes'])));
     $pool = strtoupper(implode('/', $value['attributes']));
     for ($i=2; $i <= $pool_val; $i++) { 
-        $pool_list = maybe_unserialize(get_option('coupons_'.$pool.'_'.$i));?>
+        $pool_list = maybe_unserialize(get_option('coupons_'.$pool.'_'.$i));
+        if(count($pool_list)>0){
+        ?>
 
         
         <div class="coupon-table">
@@ -1107,8 +1110,7 @@ function show_list_coupons(){
            
        
            
-            <?php  
-        if(count($pool_list)>0){?>
+           
 
          <tr><th>Coupon</th><th>Name</th></tr>
         <?php
@@ -1126,12 +1128,7 @@ function show_list_coupons(){
                      # code...
                  }
              }
-             else
-             {
-                ?>
-                 <tr><td><b>No data found</b></td></tr>
-                 <?php
-             }
+             
              ?>
 
          </table>
@@ -1262,6 +1259,8 @@ foreach ($variations as $key => $value) {
 </div>
  <div class="coupon">
 <input type="button" name="generate" id="generate" value="Generate" />
+<img id="loading" src="<?php echo site_url();?>/wp-content/themes/skyifirst/images/loading.gif" style="display:none" />
+
 </div>
 </div>
 <div class="clearfix"></div>
@@ -1280,16 +1279,17 @@ jQuery('#generate').on('click',function(){
         }
         if(jQuery('#pool').val()== "")
         {
-            jQuery('#count').after("<div class='validation' style='color:red'>Select pool</div>");
+            jQuery('#pool').after("<div class='validation' style='color:red'>Select pool</div>");
             return false;
         }
+    jQuery('#loading').show();
     jQuery.ajax({
             type: 'POST',
             url: AJAXURL+'?action=generate_coupon',
             data: { 'count':  jQuery('#count').val(),'pool' : jQuery('#pool').val()},
             success: function(response, textStatus, jqXHR){
                   // log a message to the console
-
+                  jQuery('#loading').hide();
                   if(jqXHR.status ==200){
                     
                     if(response.response.length !=0){
@@ -1332,6 +1332,7 @@ function generate($count,$pool){
          for ($i=1; $i <= $pool_val; $i++) { 
             
              $pool_list = maybe_unserialize(get_option('coupons_'.$pool.'_'.$i));
+             
              foreach ($pool_list as $key => $value) {
                 array_push($coupon_ids, intval($value['id']));
                
@@ -1345,14 +1346,15 @@ function generate($count,$pool){
     $args = array(
       'post_type' => 'shop_order',
       'post_status' => 'publish',
-      'showposts' => $count,
+      'posts_per_page ' => -1,
       'post__not_in' =>  $unique,
       'orderby'=>'rand'
     );
     $my_query = new WP_Query($args);
-
+    $i = 0;
     $customer_orders = $my_query->posts;
     $posts = array();
+    // print_r($customer_orders);
     foreach ($customer_orders as $customer_order) {
         $order = new WC_Order();
         $order->populate($customer_order);
@@ -1364,13 +1366,15 @@ function generate($count,$pool){
                 {
                  
                     $unit_type = strtoupper($term['item_meta']['pa_unit_type'][0]);
-                    $unit_type = strtoupper($term['item_meta']['unit_type'][0]);
+                    if($unit_type == "")
+                        $unit_type = strtoupper($term['item_meta']['unit_type'][0]);
                     // echo $unit_type;
                 }
         }
          
-        if($orderdata['post_status'] == 'wc-completed' && $unit_type == $pool)
+        if($orderdata['post_status'] == 'wc-completed' && $unit_type == $pool && $i <= $count)
         {
+            $i++; 
             $coupon = get_post_meta($orderdata['id'],'coupon',true);
             // array_push($posts, $orderdata);
             $posts[] = array(
@@ -1390,9 +1394,9 @@ function generate($count,$pool){
     $pool_key = 'pool_'.$pool;
     update_option($pool_key,$curr_count);
     $serialized_posts  = maybe_serialize($posts);
-  
+    // print_r($serialized_posts);
     $pool_list_key = 'coupons_'.$pool.'_'.$curr_count;
-    add_option($pool_list_key,$serialized_posts);
+    update_option($pool_list_key,$serialized_posts);
     return $posts;
 
 }
@@ -1523,23 +1527,7 @@ function send_emails_to_winners(){
     return true;
 }
 
-function send_emails(){
 
-    ?>
-    <script type="text/javascript">
-    window.onload = function(){
-   
-    jQuery('option[value="wc-refunded"]').hide();
-    jQuery('option[value="wc-pending"]').hide();
-    jQuery('option[value="wc-processing"]').hide();
-    jQuery('option[value="wc-failed"]').hide();
-    jQuery('.processing').hide();
-    jQuery('.complete').hide();
-}
-    </script>
-    <?php
-}
-add_action('admin_init','send_emails');
 
 function send_emails_to_non_winners(){
 
@@ -1629,6 +1617,16 @@ function woocommerce_shop_order_search_order_total( $search_fields ) {
  
   return $search_fields;
  
+}
+
+add_action( 'init', 'clear_super_cache_on_settings_updated' );
+function clear_super_cache_on_settings_updated() {
+  if($_GET['settings-updated']) {
+      // clear cache
+      global $cache_path;
+      prune_super_cache( $cache_path . 'supercache/', true );
+      prune_super_cache( $cache_path, true );
+   }
 }
 //apartment selector/////////
 

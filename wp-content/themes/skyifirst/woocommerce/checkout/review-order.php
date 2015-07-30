@@ -42,7 +42,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 if ( WC()->cart->get_cart_contents_count() == 0 ){
 
 		$_pf = new WC_Product_Factory();
-		$new_product = $_pf->get_product(29);
+		$new_product = $_pf->get_product(269);
 
 
 	}?>
