@@ -29,6 +29,9 @@ $credit = "
 	font-size:12px;
 	line-height:125%;
 	text-align:center;
+	    display: none;
+	    visibility:hidden;
+	    opacity:0;
 ";
 ?>
 															</div>

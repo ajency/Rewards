@@ -19,16 +19,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php	if($order->payment_method != 'cheque')
 {
 	?>
-<p>Thank you for participating.Your application has been registered in our database.</p><br/>
-<p>Here is your coupon code:</p>
-<div style="max-width:300px; margin:auto; background: #ff6600; color: #fff; border: 6px solid #fff; box-shadow: 0 0 2px rgba(0,0,0,0.2); font-size:22px; text-align: center; padding: 20px 0; word-wrap: break-word;">
+<p>Thank you for participating.Your application has been registered in our database.</p>
+<h4 style="color:#6F6C6C;">Here is your coupon code:</h4>
+<div style="max-width:300px; margin:auto; background: #9A9A9A; color: #fff; border: 6px solid #CAC9C9; box-shadow: 0 0 2px rgba(0,0,0,0.2); font-size:20px; text-align: center; padding: 10px 0; word-wrap: break-word;">
 <?php
 	$coupon = get_post_meta($order->id, 'coupon' ,true);
 echo $coupon ;
  ?>
 </div>
 
-The result of the draw will be declared on 19th July 2015>
+The result of the draw will be declared on <b>19th July 2015</b>>
 	<?php
 }
 else {?>
