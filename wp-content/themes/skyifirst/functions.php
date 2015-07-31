@@ -1147,9 +1147,11 @@ function show_list_coupons(){
 
     
     </div>
+    <div class="row">
     <input type="button" name="send_winners" id="send_winners" value="Send emails to Winners" />
     <input type="button" name="send_non_winners" id="send_non_winners" value="Send emails to Non Winners" />
     <img id="loading" style="display:none" src="../wp-content/themes/skyifirst/images/loading.gif" />
+</div>
     <br/><div id="show"></div>
     <script type="text/javascript">
         jQuery('#send_winners').on('click',function(){

@@ -104,3 +104,11 @@ td.ordertitle a {
   clear: both;
   display: block;
 }
+.draw-winners {
+  text-align: center;
+  padding: 30px;
+  background-color: #ff751a;
+  color: #fff;
+  font-size: 40px;
+  margin-bottom: 80px;
+}

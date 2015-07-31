@@ -17,13 +17,13 @@ if ( vp_metabox('background_settings.hb_content_background_color') )
 ?>
   <!-- BEGIN #main-content -->
 <div id="main-content"<?php echo $main_content_style; ?>>
-  <div class="fixed-header">
+  <!-- <div class="fixed-header">
     <div class="container">
       <h1>Freedom First Draw Winners</h1>
       
 
       </div>
-  </div>
+  </div> -->
 
   <div class="container steps-container">
 
