@@ -1451,7 +1451,8 @@ function send_emails_to_winners(){
     $args = array(
         'component'             => 'draw_emails',
         'communication_type'    => 'winner_email',
-        'user_id'               => $user_id
+        'user_id'               => $user_id,
+        'blog_id'               => get_current_blog_id()
 
         );
    
@@ -1459,6 +1460,7 @@ function send_emails_to_winners(){
     $_pf = new WC_Product_Factory();
     $new_product = $_pf->get_product(269);
     $variations = $new_product->get_available_variations();
+
     foreach ($variations as $key => $value) {
 
    
@@ -1467,10 +1469,11 @@ function send_emails_to_winners(){
             $pool_val = get_option('pool_'.strtoupper(implode('/', $value['attributes'])));
             $pool = strtoupper(implode('/', $value['attributes']));
             
-            if($pool_val)
+            if($pool_val != false)
             {
                 
                  $pool_list = maybe_unserialize(get_option('coupons_'.$pool.'_1'));
+                
                  if(count($pool_list)>0){
                 
                  foreach ($pool_list as $key => $value) {
@@ -1488,6 +1491,7 @@ function send_emails_to_winners(){
 
                     );
 
+                    // print_r($meta);
                      $recipients_args = array(
                             array(
                                 'type'        => 'email',
@@ -1539,7 +1543,8 @@ function send_emails_to_non_winners(){
     $args = array(
         'component'             => 'draw_emails',
         'communication_type'    => 'winner_non_email',
-        'user_id'               => $user_id
+        'user_id'               => $user_id,
+        'blog_id'               => get_current_blog_id()
 
         );
 
@@ -1628,6 +1633,8 @@ function clear_super_cache_on_settings_updated() {
       prune_super_cache( $cache_path, true );
    }
 }
+
+
 //apartment selector/////////
 
 
