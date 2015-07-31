@@ -245,6 +245,8 @@ function send_initiate_reminder($ID,$str){
      $wpdb->insert($comm_meta_table, array('comm_module_id' => $wpdb->insert_id, 'key' => 'packages',
             'value' => $str));
 
+      $arr = array('code'=> 200 , 'status'=> 'sent');
+        return $arr;
 }
 
 
@@ -289,6 +291,8 @@ function set_closure_email($ID){
       
 
     }
+    $arr = array('code'=> 200 , 'status'=> 'sent');
+        return $arr;
        
     }
 

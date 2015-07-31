@@ -124,6 +124,12 @@ define(['app', 'text!apps/Options/Add/templates/addOption.html'], function(App, 
         }
       };
 
+      OptionAdd.prototype.onShow = function() {
+        min_range = 0;
+        max_range = 0;
+        return price_total = 0;
+      };
+
       OptionAdd.prototype.onOptionAdded = function() {
         this.$el.find('.alert').remove();
         this.$el.find('.pace-inactive').hide();

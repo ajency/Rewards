@@ -82,7 +82,7 @@ define(['app', 'controllers/region-controller', 'apps/program-member/members/mem
         object = this;
         return $.ajax({
           method: "POST",
-          url: AJAXURL + "?actio=set-notinitiated-email",
+          url: AJAXURL + "?action=set-notinitiated-email",
           data: 'option=' + option + '&ID=' + ID + '&str=' + str,
           success: function(result) {
             return object.sendInitiateMail(result);

@@ -58,7 +58,7 @@ define [ 'app', 'text!apps/program-member/members/templates/member_info.html' ],
                     $( '#approved-redemt' ).hide()
                 else if stringname == 'Redemption Not initiated' && rejected_status == 0
                     $( '#redem_not' ).removeClass 'hidden'
-                    $( '#noti_redem_not' ).removeClass 'hidden'
+                    $( '#noti_redem_not' ).addClass 'hidden'
                     if parseInt( points ) == 0
                         @$el.find( '#ini_redemption' ).hide()
                 else if stringname == 'Initiated'
@@ -149,6 +149,7 @@ define [ 'app', 'text!apps/program-member/members/templates/member_info.html' ],
 
             onSendInitiateReminder: ->
                 $( '.modal-backdrop.in' ).remove()
+                $( 'body' ).removeClass 'modal-open'
                 @$el.find( ".email_message" ).after '<div class="alert alert-info ref_msg">
                                         <button data-dismiss="alert" class="close"></button>
                         				Message has been sent.
