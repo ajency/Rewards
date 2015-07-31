@@ -423,3 +423,13 @@ function custom_login_msg (){
 
 }
 add_filter('login_message', 'custom_login_msg');
+
+add_filter('wpmu_validate_user_signup', 'skip_email_exist');
+function skip_email_exist($result){
+    if(isset($result['errors']->errors['user_email']) && ($key = array_search(__('Sorry, that email address is already used!'), $result['errors']->errors['user_email'])) !== false) {
+        unset($result['errors']->errors['user_email'][$key]);
+        if (empty($result['errors']->errors['user_email'])) unset($result['errors']->errors['user_email']);
+    }
+    define( 'WP_IMPORTING', 'SKIP_EMAIL_EXIST' );
+    return $result;
+}
