@@ -32,7 +32,10 @@ function get_skyi_users( $args = array() ) {
     $argsc = array( 'role' => 'product_manager' );
     $c     = get_users( $argsc );
 
-    $users = array_merge( $a, $b, $c );
+    $argsd = array( 'role' => 'sales' );
+    $d     = get_users( $argsd );
+
+    $users = array_merge( $a, $b, $c ,$d);
 
 
     foreach ( (array) $users as $value ) {
