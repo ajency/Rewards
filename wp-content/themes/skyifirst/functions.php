@@ -16,6 +16,14 @@ function site_template_directory_uri() {
 
 add_action( 'admin_enqueue_scripts', 'load_admin_style' );
     function load_admin_style() {
+        if ( class_exists( 'woocommerce' ) ) {
+        wp_dequeue_style( 'select2' );
+        wp_deregister_style( 'select2' );
+
+        wp_dequeue_script( 'select2');
+        wp_deregister_script('select2');
+
+    }
          wp_enqueue_script( 'jqueryjs', site_template_directory_uri() . '/js/jquery.js', array(), '', true );
     wp_enqueue_script( 'custom-adminjs', site_template_directory_uri() . '/js/custom-admin.js', array(), '', true );
     
@@ -485,7 +493,7 @@ function order_my_custom($post)
 
 ?>
 <script type="text/javascript">
-flag = 0;
+flag_order = 0;
 jQuery('.save_order ').on('click',function(e){
 jQuery('.validation').remove();
  e.preventDefault();
@@ -507,7 +515,7 @@ jQuery('.validation').remove();
  if(jQuery('#order_status').val() == 'wc-cancelled')
  {
      
-     if(flag == 0 ||(flag ==1 && jQuery('#add_order_note').val()!=""))
+     if(flag_order == 0 ||(flag_order ==1 && jQuery('#add_order_note').val()!=""))
      {
         jQuery('#add_order_note').after("<div class='validation' style='color:red'>Enter reason for cancellation</div>");
         jQuery('html, body').animate({
@@ -522,9 +530,9 @@ jQuery('.validation').remove();
 jQuery(document).on('keyup', '#add_order_note',function(e){
     jQuery('.validation').remove();
     if(jQuery(e.target).val()!="")
-        flag = 1;
+        flag_order = 1;
     else
-        flag = 0;
+        flag_order = 0;
 })
 jQuery('#myplugin_cheque_no').on('keyup' , function(e){
         jQuery('.validation').remove();
@@ -879,7 +887,7 @@ add_action('wp_ajax_check_cheque_no','check_cheque_no');
 
 add_action( 'wp_enqueue_scripts', 'mgt_dequeue_stylesandscripts', 100 );
 
-add_action( 'admin_enqueue_scripts', 'mgt_dequeue_stylesandscripts', 100 );
+// add_action( 'admin_enqueue_scripts', 'mgt_dequeue_stylesandscripts', 100 );
 function mgt_dequeue_stylesandscripts() {
     if ( class_exists( 'woocommerce' ) ) {
         wp_dequeue_style( 'select2' );
@@ -999,16 +1007,24 @@ function csv_write( &$csv, $od, $fields ) {
 add_action('wpg_before_csv_write', 'csv_write', 10, 3);
 add_filter('wc_settings_tab_order_export', 'wpg_add_fields');
 
-function getRandomCode($len){
-    $an = "AB0CD1CD2EF3GH4IJ5KL6MN7PQ8RS9TUOVWXYZ";
-    $su = strlen($an) - 1;
-    return substr($an, rand(0, $su), $len);
+function getRandomCode($length){
+    // $characters = "AB0CD1CD2EF3GH4IJ5KL6MN7PQ8RS9TUOVWXYZ";
+    // $su = strlen($an) - 1;
+    // return substr($an, mt_rand(0, $su), 9);
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $string = '';
+
+    for ($i = 0; $i < $length; $i++) {
+        $string .= $characters[mt_rand(0, strlen($characters) - 1)];
+    }
+
+    return $string;
 }
 
 function register_menu() {
-  add_menu_page( __( 'Coupons' ), __( 'Coupons' ),
+  add_menu_page( __( 'Generate winners' ), __( 'Generate winners' ),
     'manage_options', 'coupons_settings', 'set_coupons');
- add_submenu_page( 'coupons_settings', 'List', 'List',
+ add_submenu_page( 'coupons_settings', 'Winner list', 'Winner list',
     'manage_options', 'List-settings', 'show_list_coupons');
   
 
@@ -1089,7 +1105,7 @@ function show_list_coupons(){
 
 
     <div class="row">
-        <h3>Wishlist</h3>
+        <h3>Waiting list</h3>
     <?php
 
     foreach ($variations as $key => $value) {?>
@@ -1127,13 +1143,15 @@ function show_list_coupons(){
                     <?php
                      # code...
                  }
-             }
-             
-             ?>
+
+                    ?>
 
          </table>
      </div>
              <?php
+             }
+             
+          
     }
     ?>
 
@@ -1299,7 +1317,7 @@ jQuery('#generate').on('click',function(){
 
                     jQuery.each(response.response,function(index,value){
                         console.log(value)
-                        html += '<tr><td>'+value.id+'</td><td>'+value.coupon+'</td></tr>';
+                        html += '<tr><td>'+value.coupon+'</td></tr>';
                     })
                     html += '</table></div>';
                 }
@@ -1626,15 +1644,6 @@ function woocommerce_shop_order_search_order_total( $search_fields ) {
  
 }
 
-add_action( 'init', 'clear_super_cache_on_settings_updated' );
-function clear_super_cache_on_settings_updated() {
-  if($_GET['settings-updated']) {
-      // clear cache
-      global $cache_path;
-      prune_super_cache( $cache_path . 'supercache/', true );
-      prune_super_cache( $cache_path, true );
-   }
-}
 
 
 //apartment selector/////////

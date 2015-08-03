@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
 })
 window.onload = function(){
 	jQuery('.woocommerce-message').hide()
-	
+
 
 	// jQuery('#`customer_next`').on('click',function(e){
 
@@ -24,6 +24,7 @@ window.onload = function(){
 	  jQuery('.accordion-group.one').removeClass('open');
 	  jQuery('.accordion-group.two').addClass('open viewed');
 	  jQuery('.progress-outer').css('width', '50%');
+	  jQuery('.input-text ').css('border-color' , '#F3EFEF');
 	});
 
 	jQuery('.one.viewed > .acc-title').click(function() {
@@ -539,14 +540,14 @@ jQuery('#billing_state option[value="MH"]').attr("selected",true)
 
 jQuery('#disagree').on('click',function(){
 	jQuery('#terms').attr('checked',false);
-	jQuery('.place_order_button').before('Your application is not submitted and will not be considered for freedeom first draw. Please accept the terms and conditins to submit your application');
+	jQuery('.place_order_button').before('<div class="validation" style="color:red">Your application is not submitted and will not be considered for freedeom first draw. Please accept the terms and conditins to submit your application</div>');
 	tb_remove();
 	  jQuery('.accept_text').hide();
 	 jQuery('.place_order_button').hide();
 })
 jQuery('#p_disagree').on('click',function(){
 	jQuery('#terms').attr('checked',false);
-	jQuery('.place_order_button').before('Your application is not submitted and will not be considered for freedeom first draw. Please accept the terms and conditins to submit your application');
+	jQuery('.place_order_button').before('<div class="validation" style="color:red">Your application is not submitted and will not be considered for freedeom first draw. Please accept the terms and conditins to submit your application</div>');
 	
 	jQuery("#popup").bPopup().close()
 	  jQuery('.accept_text').hide();

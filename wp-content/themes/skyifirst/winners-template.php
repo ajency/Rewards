@@ -67,7 +67,7 @@ if ( vp_metabox('background_settings.hb_content_background_color') )
                     $url = get_edit_post_link($value['id']);
                    
                     ?>
-                        <tr><td><?php echo $value['coupon'];?></td></tr>
+                        <tr><td><?php echo $value['coupon'];?></td><td><?php echo $billing_first_name.' '.$billing_last_name;?></td></tr>
 
                     <?php
                      # code...
